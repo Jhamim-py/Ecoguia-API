@@ -1,5 +1,5 @@
-function gerarNickname (nome) {
-    const numero = Math.floor(Math.random() * 100*nome.length);
+function gerarNickname (nome,sobrenome) {
+    const numero =nome.length + sobrenome.length;
     return `${nome}#${numero}`
 
 };

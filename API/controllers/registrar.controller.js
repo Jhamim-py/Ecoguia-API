@@ -1,11 +1,14 @@
 const conectar       = require('../data/conexao');
 const validator      = require('email-validator');
-const gerarNick      = require('../utils/gerarNick')
-const bcrypt         = require('bcrypt')
+const meuCache       = require('../utils/cache')
+const mandarEmail    = require('../utils/email')
+const crypto         =  require('crypto')
+const verificarSenha = require('../utils/VerificarSenha')
 exports.postRegistro =
 async (req, res) => {
     const { nome, sobrenome, email, senha } = req.body;
     const connection = conectar.getConnection();
+    meuCache.flushAll();
 
     // Validações
     if (!nome || !sobrenome || !email || !senha) {
@@ -16,6 +19,7 @@ async (req, res) => {
         return res.status(422).json({ msg: "Email inválido" });
     }
 
+ 
     // Checar se já existe o usuário
 const sql= `SELECT * FROM tbl_user WHERE email_user=?`;
 const value = email
@@ -28,27 +32,23 @@ connection.query(sql,value,function (erro,result){
             return res.status(422).json({ msg: "Já existe um usuário com esse email"})
         }
     })
+    const verificacao = verificarSenha(senha)
+    if(verificacao[0] == false){
+        return res.status(400).json({erro: verificacao[1]})
+    }
 
-    // Criar senha
-    const salt = await bcrypt.genSalt(12);
-    const passwordHash = await bcrypt.hash(senha, salt);
+    const tokenForget = crypto.randomBytes(10).toString("hex");
+    meuCache.set(tokenForget,true); 
+    meuCache.set("nome",nome);
+    meuCache.set("sobrenome",sobrenome);
+    meuCache.set("email",email);
+    meuCache.set("senha", senha);
 
-    // Criar Nick
-    const nameNick = gerarNick(nome);
+    const mensagem = `Copie o token abaixo para verificar seu email em até 30 minutos | rápido >:(\n
+        Token: ${tokenForget}`
+    mandarEmail(mensagem);
+    
+    connection.end()
 
-    // Criar usuário
-
-const sql2 = `CALL CreateUser(?,?,?,?,?,?)`;
-const values = [nome,sobrenome,email,passwordHash,nameNick,1]
-connection.query(sql2,values,function(erro,result){
-        if (erro) {
-            console.log(erro);
-            return res.status(500).json({ msg: "Erro ao criar usuário" });
-        }
-        if(result){
-            return res.status(201).json({ msg: "Usuário criado com sucesso!" })
-        }
-    }) 
-    connection.end();
 }
 
