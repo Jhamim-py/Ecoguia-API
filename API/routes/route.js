@@ -9,8 +9,9 @@ const  login           = require ('../controllers/Functions User/login.controlle
 const  register        = require ('../controllers/Functions User/registerUser');
 const  update          = require ('../controllers/Functions User/update.controller');
 const  updateUser      = require ('../controllers/Functions User/updateUser.controller');
-const  createUser      = require ('../controllers/Functions User/createUser.controller')
-const confirmEmailUpdate = require('../controllers/Functions User/confirmUpdateEmail.controller')
+const  createUser      = require ('../controllers/Functions User/createUser.controller');
+const confirmEmailUpdate = require('../controllers/Functions User/confirmUpdateEmail.controller');
+const  dicaDiaria        = require ('../controllers/dica.controller');
 const rotas = Router();
 
 rotas.post('/register',register.postRegistro);
@@ -23,7 +24,7 @@ rotas.put('/update',checkToken.checkToken,update.update);
 rotas.put('/updateUser',checkToken.checkToken,updateUser.updateUser);
 rotas.post('/createUser',createUser.CreateUser);
 rotas.put('/confirmUpdateEmail',checkToken.checkToken,confirmEmailUpdate.updateEmail);
-
+rotas.get('/dica-diaria', dicaDiaria.getDicaDoDia);
 
 
 module.exports = rotas;
