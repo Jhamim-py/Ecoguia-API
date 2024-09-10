@@ -1,22 +1,26 @@
 // responsável por mandar emails de validação ao cliente
 const nodemailer     =  require('nodemailer')
 
+// importação do arquivo de configuração .env
+require('dotenv').config();
+
 function checkEmail(mensagem){
     const transporter = nodemailer.createTransport({
         // login e locação de conta responsável pelo envio do email
-        host:"sandbox.smtp.mailtrap.io",
-        port:2525,
+        host:"smtp.gmail.com",
+        port:465,
+        secure:true,
         auth:{
             // conta da empresa
-            user:"33423ee6f5c575",
-            pass:"688b37b0bb3af6"
+            user:process.env.EMAIL,
+            pass:process.env.PASSWORDEMAIL
         },
      
     })
     transporter.sendMail({
         // configuração para localizar o email endereçado e enviar o token
-        from:"3987b0ba0b-7b608f@inbox.mailtrap.io",
-        to:"3987b0ba0b-7b608f@inbox.mailtrap.io",
+        from:process.env.EMAIL,
+        to:"houtarousenki@gmail.com",
         subject:"Recuperação de senha",
         text:mensagem
 
