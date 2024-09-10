@@ -1,3 +1,4 @@
+// preciso que o Jhamim comente e arrume esse arquivo...
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 exports.checkToken = 

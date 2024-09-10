@@ -1,3 +1,4 @@
+// Obriga o aplicativo a utilizar o express para realizar requisições
 const express    =     require('express');
 const config     =     require('config');
 
