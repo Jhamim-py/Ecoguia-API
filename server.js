@@ -1,7 +1,7 @@
 const app  = require('./config/express')();
 const port = app.get('port');
 const cors = require('cors');
-const router = require('./API/routes/rotas')
+const router = require('./API/routes/route');
 app.use(cors())
 
 
