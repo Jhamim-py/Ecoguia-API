@@ -1,4 +1,3 @@
-// preciso que o Jhamim comente e arrume esse arquivo...
 // componentes do Node
 const bcrypt = require('bcrypt')  // codifica em hash
 
@@ -15,7 +14,7 @@ async (req, res) => {
     const {token, pwd}   = req.body;                               // variável responsável por armazenar os dados
     
     const email = null;
-    const verificacao = verificatePwd(pwd);
+    const verificacao = verificatePwd(pwd);                        //Verificar se a senha está nos padrões corretos
 
     // verificação de dados
     console.log(token);
@@ -23,24 +22,29 @@ async (req, res) => {
 
     // envio de query de visualização para o banco de dados e armazena o resultado
     const executeConnection = connection.getConnection();
-    if(verificacao[0] == false){
-        return res.status(400).json({erro: verificacao[1]})
+    //Resultado da verificação da senha
+    if(verificacao[0] == false){   
+        return res.status(400).json({erro: verificacao[1]})//Mensagem correspondente ao erro encontrado na senha
     }
 
+    //verificação se o token está salvo corretamente no cache
     console.log(appCache.get(token))
 
+    //verificar se o token enviado pelo usuário é o mesmo salvo no cache
     if(!appCache.get(token)){
       return   res.status(400).json({msg: "Token inválido ou expirado"}) 
     }
 
-    const salt = await bcrypt.genSalt(12);
-    const passwordHash = await bcrypt.hash(pwd, salt);
+    // criptografa a senha dada em hash
+    const salt = await bcrypt.genSalt(12);   // define o tamanho do hash (12 caracteres)
+    const passwordHash = await bcrypt.hash(pwd, salt); // cria o hash da senha
     try{
+        // executa a query de atualização da senha no banco de dados
         const sql = `CALL ModifyUser(?,?,?)`
         const values =[userID,email,passwordHash]
         executeConnection.query(sql,values, async function(erro,result){
             if(erro){
-                console.log(erro)
+                console.log(erro) //verificação
                 return res.status(500).json({msg: "Erro ao tentar atualizar a senha",erro})
             }
             else if(result){
@@ -52,6 +56,6 @@ async (req, res) => {
      catch(erro){
         return res.status(500).json({msg: "Erro ao tentar atualizar o usuário"})
      }
-     connection.end();
-     appCache.flushAll();
+     connection.end(); //fecha a conexão com banco de dados
+     appCache.flushAll(); // comando que reseta o cachê do app
 }

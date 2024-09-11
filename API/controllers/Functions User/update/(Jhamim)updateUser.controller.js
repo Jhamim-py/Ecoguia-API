@@ -1,21 +1,26 @@
-// preciso que o Jhamim comente e arrume esse arquivo...
-const validator      = require('email-validator');
-const conectar       = require('../../../data/connection');
-const bcrypt         = require('bcrypt');
-const meuCache       = require('../../utils/cache')
-const mandarEmail    = require('../utils/email')
-const crypto         = require('crypto')
-const verificarSenha = require('../utils/VerificarSenha')
+// componentes do Node
+const validator      = require('email-validator');           //verificação de formato do email
+const conectar       = require('../../../data/connection');  // conexão com o banco de dados
+const bcrypt         = require('bcrypt');                    // criptografa dados em hash
+const appCache       = require('../../utils/cache')          // armazena os dados de usuário, usado posteriormente para validações
+const mandarEmail    = require('../utils/email')             //importa função de enviar token por email
+const crypto         = require('crypto')                     // gera um token aleatório
+const verificarSenha = require('../utils/VerificarSenha')    // importa função de verificar padrão de senha
+
 exports.updateUser =
     async (req,res) => {
+     // variáveis responsáveis por armazenar os dados requeridos na requisição
     const userId = req.user.id;
     let {email,senha} = req.body;
+    // variável que armazena a execução de conexão com o banco de dados
     const connection = conectar.getConnection();
+    //verificar o padrão da senha
     const verificacao = verificarSenha(senha)
     if(verificacao[0] == false){
-        return res.status(400).json({erro: verificacao[1]})
+        return res.status(400).json({erro: verificacao[1]})//Mensagem correspondente ao erro encontrado na senha
     }
 
+    //validar formato do email e se ele existe na requisição
     if (!validator.validate(email) & email == "") {
        email = null;
     }
@@ -23,19 +28,27 @@ exports.updateUser =
         return res.status(400).json({message: "Email invalido"})
     }
     else{
-        meuCache.set("email",email);
-        meuCache.set("senha",senha);
+        //Se ouver um novo endereço de email na requisição, um email será enviado para esse novo endereço para verificar se realmente existe
+
+        // puxa os dados do cliente armazenados no cachê do app
+        appCache.set("email",email);
+        appCache.set("senha",senha);
+
+        //Cria um token para a averificação
         const tokenForget = crypto.randomBytes(10).toString("hex");
+        // envia o token armazenado no e-mail
         const mensagem =`Utilize o token para a sua validação de troca de email :)\n
         token: ${tokenForget}`;
         mandarEmail(mensagem);
         return res.status(200).json({message:"confirme seu email com o token para efetuar a atualização!"})
     }
-    const salt = await bcrypt.genSalt(12);
-    const passwordHash = await bcrypt.hash(senha, salt);
+    // criptografa a senha dada em hash
+    const salt          = await bcrypt.genSalt(12);      // define o tamanho do hash (12 caracteres)
+    const passwordHash  = await bcrypt.hash(senha, salt); // cria o hash da senha
 
   
     try{
+        // executa a query de atualização do usuário
        const sql = `CALL ModifyUser(?,?,?)`
        const values =[userId,email,passwordHash]
        connection.query(sql,values, async function(erro,result){
@@ -52,5 +65,5 @@ exports.updateUser =
     catch(erro){
        return res.status(500).json({msg: "Erro ao tentar atualizar o usuário"})
     }
-    connection.end();
+    connection.end();//fecha a conexão com banco de dados
    }
