@@ -64,4 +64,4 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
     }
     connection.end();     //fecha a conexão com banco de dados
     appCache.flushAll();  // comando que reseta o cachê do app
-};
+}; 

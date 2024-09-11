@@ -1,28 +1,31 @@
 // preciso que o Jhamim comente e arrume esse arquivo...
-const conectar       =  require('../../../data/connection');
-const bcrypt         =  require('bcrypt');
-const meuCache       = require('../../utils/cache')
+const conectar       =  require('../../../data/connection');  // conexão com o banco de dados
+const bcrypt         =  require('bcrypt');                   // criptografa dados em hash
+const appCache       = require('../../utils/cache')          // armazena os dados de usuário, usado posteriormente para validações
 
 exports.updateEmail =
 
  async (req,res) => {
 
-    const userId = req.user.id;
+    // variáveis responsáveis por armazenar os dados
+    const userId = req.user.id; 
     const email  = meuCache.take("email");
     const senha  = meuCache.take("senha");
 
  
-  const connection = conectar.getConnection();
+  const connection = conectar.getConnection(); // variável que armazena a execução de conexão com o banco de dados
 
-  const salt = await bcrypt.genSalt(12);
-  const passwordHash = await bcrypt.hash(senha, salt);
+  // criptografa a senha dada em hash
+  const salt = await bcrypt.genSalt(12); // define o tamanho do hash (12 caracteres)
+  const passwordHash = await bcrypt.hash(senha, salt); // cria o hash da senha
 
   try{
+     // executa a query de atualização da senha e do email no banco de dados
     const sql = `CALL ModifyUser(?,?,?)`
     const values =[userId,email,passwordHash]
     connection.query(sql,values, async function(erro,result){
         if(erro){
-            console.log(erro)
+            console.log(erro) //verificação
             return res.status(500).json({msg: "Erro ao tentar atualizar o usuário"})
         }
         if(result){
@@ -34,7 +37,7 @@ exports.updateEmail =
  catch(erro){
     return res.status(500).json({msg: "Erro ao tentar atualizar o usuário"})
  }
- connection.end();
- meuCache.flushAll();
+ connection.end(); //fecha a conexão com banco de dados
+ appCache.flushAll(); // comando que reseta o cachê do app
 
  }
