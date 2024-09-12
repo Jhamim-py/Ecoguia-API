@@ -9,14 +9,14 @@ function acharId (email){
     const value = email
     executeConnection.query(sql,value,(err, results) => {
         if (err) {
-            console.error(err);
+            console.error(err); //caso ocorra erro mostrar no console
         }
-        console.log(results)
-        return results.pk_IDuser;
+        console.log(results) //verificar resultado da query
+        return results.pk_IDuser;//retornar id do susário
  })
     }catch(erro){
     console.error(erro);
 }
 executeConnection.end(); //fecha a conexão com banco de dados
 }
-module.exports = acharId;
+module.exports = acharId; //exportar função 
