@@ -13,7 +13,7 @@ exports.password =
     const {token, pwd}   = req.body;                               // variável responsável por armazenar os dados
 
     const userID = pegarId(appCache.get('email'))
-    const email = null;
+    const email = appCache.get("email");
     const verificacao = verificatePwd(pwd);                        //Verificar se a senha está nos padrões corretos
 
     // verificação de dados
@@ -37,7 +37,7 @@ exports.password =
 
     // criptografa a senha dada em hash
     const salt = await bcrypt.genSalt(12);   // define o tamanho do hash (12 caracteres)
-    const passwordHash = await bcrypt.hash(pwd, salt); // cria o hash da senha
+    const passwordHash = await bcrypt.hash(pwd,salt); // cria o hash da senha
     try{
         // executa a query de atualização da senha no banco de dados
         const sql = `CALL ModifyUser(?,?,?)`

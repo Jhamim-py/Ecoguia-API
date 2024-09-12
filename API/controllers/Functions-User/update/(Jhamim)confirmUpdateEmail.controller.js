@@ -7,13 +7,22 @@ const acharId        =  require('../../../utils/acharId');
 exports.updateEmail =
 
  async (req,res) => {
-
+    
+   
     // variáveis responsáveis por armazenar os dados
-    const userId = acharId(meuCache.take("email")); 
-    const email  = meuCache.take("email");
-    const senha  = meuCache.take("senha");
+    const {token} = req.body;
+    const userId = req.user.id;
+    const email = appCache.take("endereco");
+    const senha  = appCache.take("senha");
+    console.log("email:",email)
+    console.log("senha:" ,senha)
+    console.log("ID: ",userId)
 
- 
+    //verifica se o token é válido
+    if (!appCache.get(token)) {
+        console.log(appCache.get(token));  //verificação
+        return res.status(400).json({ msg: "Token inválido ou expirado" });
+    }
 const executeConnection = connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
 
   // criptografa a senha dada em hash

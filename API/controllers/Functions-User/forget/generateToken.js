@@ -36,11 +36,12 @@ async (req, res)  => {
         appCache.set(sendToken,true);
         appCache.set("email",email)
         
-        console.log(appCache.get(tokenForget)); //verificação
+        console.log(appCache.get(sendToken)); //verificação
         
         // envia o token armazenado no e-mail
         const message = `Insira este token no aplicativo para validar seu e-mail. Expira em 30 minutos. \n Token: ${sendToken}`;
         sendEmail(message);
+        res.status(200).json({ msg: "email enviado" });
 
     }catch(error){
         console.error("Algo deu errado ao realizar a autenticação, tente novamente: ", error);

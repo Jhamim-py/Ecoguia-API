@@ -7,10 +7,11 @@ function acharId (email){
     //executa a query para achar os dados do usuario pelo email
     const sql = `SELECT * FROM ViewAllEmails WHERE email=?;`
     const value = email
-    executeConnection.query(sql, value, (err, results) => {
+    executeConnection.query(sql,value,(err, results) => {
         if (err) {
             console.error(err);
         }
+        console.log(results)
         return results.pk_IDuser;
  })
     }catch(erro){

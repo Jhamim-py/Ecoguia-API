@@ -55,7 +55,7 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
             }catch(error){
                 console.error("Algo deu errado ao realizar o login, tente novamente: ", error);
                 res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-            };
+            }; 
 
         });
     }catch(error){

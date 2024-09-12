@@ -42,14 +42,4 @@ routes.put   ('/user',              checkToken.checkToken,updateProfile.updatePr
 routes.put   ('/user/pwd',          checkToken.checkToken,updateUser.updateUser)
 routes.put   ('/user/email',        checkToken.checkToken,updateEmail.updateEmail)
 
-
-//routes.post  ('/user/pwd/token',   checkToken.checkToken);
-//rotas.post('/login',login.postLogin);
-//rotas.get('/profile',checkToken.checkToken,profile.getPerfil);
-//rotas.put('/update',                checkToken.checkToken,update.update);
-//rotas.put('/updateUser',            checkToken.checkToken,updateUser.updateUser);
-//rotas.put('/confirmUpdateEmail',    checkToken.checkToken,confirmEmailUpdate.updateEmail);
-//rotas.get('/dica-diaria',           dicaDiaria.getDicaDoDia);
-
-
 module.exports = routes;

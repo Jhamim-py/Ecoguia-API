@@ -15,7 +15,7 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
     const executeConnection = connection.getConnection();    // variável que armazena a execução de conexão com o banco de dados
 
     // validação de campo
-    if (!email || !pwd) {
+    if (!email || !pwd) { 
         return res.status(422).json({ msg: "É necessário preencher todos os campos para realizar o login." });
     };
 

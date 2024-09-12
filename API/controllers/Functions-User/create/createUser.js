@@ -29,7 +29,7 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
     console.log(email);         //verificação
 
     const pwd   = appCache.take("pwd");
-    console.log(pwd);           //verificação
+    console.log(pwd);           //verificação 
 
     const avatar = appCache.take("avatar");
     console.log(avatar);        //verificação
