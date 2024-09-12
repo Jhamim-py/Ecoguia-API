@@ -22,10 +22,10 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
     //try catch para autenticar usuário
     try {
         // query para visualizar email de acordo com o IDs
-        const sql = `SELECT * FROM ViewAllEmails WHERE email=?;`;
+        const query = `SELECT * FROM ViewAllEmails WHERE email=?;`;
         const values = [email];
         // envio de query e captação de resposta
-        executeConnection.connection.query(sql, values, async function (error,result){
+        executeConnection.query(query, values, async function (error,result){
             if (error) {
                 console.log(error); //verificação
                 return res.status(500).json({ msg: "Algo deu errado ao procurar usuário, tente novamente." });
@@ -34,11 +34,12 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
                 return res.status(404).json({ msg: "Usuário não encontrado." });
             };
             // armazena o valor retornado numa variável (neste caso, o e-mail)
-            const user = res[0];
+            const user = result[0];
+           
 
             // checa a senha com o hash armazenado no banco através da biblioteca bcrypt
-            const checkPwd = await bcrypt.compare(pwd, user.password_user);
-            if (!checkPwd) {
+            const checkPwd = await bcrypt.compare(pwd,user.pwd);
+            if (!checkPwd) { 
                 return res.status(422).json({ msg: "Senha incorreta." });
             }
 

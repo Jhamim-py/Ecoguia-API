@@ -1,14 +1,15 @@
 // preciso que o Jhamim comente e arrume esse arquivo...
-const connection       =  require('../../../data/connection');  // conexão com o banco de dados
+const connection     =  require('../../../data/connection');  // conexão com o banco de dados
 const bcrypt         =  require('bcrypt');                   // criptografa dados em hash
-const appCache       = require('../../../utils/cache')          // armazena os dados de usuário, usado posteriormente para validações
+const appCache       =  require('../../../utils/cache');         // armazena os dados de usuário, usado posteriormente para validações
+const acharId        =  require('../../../utils/acharId');
 
 exports.updateEmail =
 
  async (req,res) => {
 
     // variáveis responsáveis por armazenar os dados
-    const userId = req.user.id; 
+    const userId = acharId(meuCache.take("email")); 
     const email  = meuCache.take("email");
     const senha  = meuCache.take("senha");
 
