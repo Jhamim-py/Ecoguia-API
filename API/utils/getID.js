@@ -1,7 +1,7 @@
 //
 const connection       = require('../data/connection'); // conexão com o banco de dados
 
-function acharId (email){
+function getID (email){
      const executeConnection = connection.getConnection();
     try{
     //executa a query para achar os dados do usuario pelo email
@@ -19,4 +19,4 @@ function acharId (email){
 }
 executeConnection.end(); //fecha a conexão com banco de dados
 }
-module.exports = acharId; //exportar função 
+module.exports = getID; //exportar função 

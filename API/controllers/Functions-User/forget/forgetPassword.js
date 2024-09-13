@@ -5,14 +5,14 @@ const bcrypt = require('bcrypt')  // codifica em hash
 const connection         = require('../../../data/connection');    // conexão com o banco de dados
 const appCache           = require('../../../utils/cache');        // armazena os dados de usuário, usado posteriormente para validações
 const verificatePwd      = require('../../../utils/verificatePwd');// importa função de verificar padrão de senha
-const pegarId            = require('../../../utils/acharId')       // pegar o id do usuario pelo email
+const getID            = require('../../../utils/getID')       // pegar o id do usuario pelo email
 
 // função de visualização que pode ser exportada
 exports.password =   
     async (req, res) => {
     const {token, pwd}   = req.body;                               // variável responsável por armazenar os dados
 
-    const userID = pegarId(appCache.get('email'))
+    const userID = getID(appCache.get('email'))
     const email = appCache.get("email");
     const verificacao = verificatePwd(pwd);                        //Verificar se a senha está nos padrões corretos
 

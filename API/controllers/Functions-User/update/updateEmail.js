@@ -2,7 +2,7 @@
 const connection     =  require('../../../data/connection');  // conexão com o banco de dados
 const bcrypt         =  require('bcrypt');                   // criptografa dados em hash
 const appCache       =  require('../../../utils/cache');         // armazena os dados de usuário, usado posteriormente para validações
-const acharId        =  require('../../../utils/acharId');
+
 
 exports.updateEmail =
 
