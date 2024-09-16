@@ -4,6 +4,18 @@ const { Router }       = require ("express");
 // rotas de SISTEMA
 const viewTip       = require('../controllers/Functions-System/read/viewTip');
 
+const createArticle    = require('../controllers/Functions-System/create/createArticles');
+
+const deleteArticle    = require('../controllers/Functions-System/delete/deleteArticle');
+
+const viewArticles     = require('../controllers/Functions-System/read/viewArticles');
+const selectArticle    = require('../controllers/Functions-System/read/selectArticle');
+
+const updateArticle    = require('../controllers/Functions-System/update/updateArticle');
+
+
+
+
 // rotas de USUÁRIO
 const registerUser  = require('../controllers/Functions-User/create/registerUser');
 const createUser    = require('../controllers/Functions-User/create/createUser');
