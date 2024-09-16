@@ -19,4 +19,7 @@ function getID (email){
 }
 executeConnection.end(); //fecha a conexão com banco de dados
 }
+
+
 module.exports = getID; //exportar função 
+
