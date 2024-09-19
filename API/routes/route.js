@@ -27,6 +27,7 @@ const generateToken = require('../controllers/Functions-User/forget/generateToke
 
 const loginUser     = require('../controllers/Functions-User/login/loginUser');
 const checkToken    = require('../controllers/Functions-User/login/checkToken');
+const googleAuth    = require('../controllers/Functions-User/login/authGoogle');
 
 const viewProfile   = require('../controllers/Functions-User/read/viewProfile');
 
@@ -46,11 +47,12 @@ routes.post('/user/register',    registerUser.postRegister);
 routes.post('/user',             createUser.createUser);
 routes.post('/user/pwd',          forgetPwd.password);
 routes.post('/user/token',        generateToken.getForget);
-routes.post('/user/login',        loginUser.postLogin)
+routes.post('/user/login',        loginUser.postLogin);
+routes.post('/user/auth/google/callback', googleAuth.authGoogleCallback);
 
 //Rota Get
 routes.get   ('/user',              checkToken.checkToken,viewProfile.getPerfil);
-
+routes.get   ('/user/auth/google',        googleAuth.authGoogle);
 
 //Rotas Put
 routes.put   ('/user',              checkToken.checkToken,updateProfile.updateProfile)
