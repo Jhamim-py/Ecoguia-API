@@ -5,13 +5,17 @@ Organização das APIs do projeto Ecoguia **(é necessário um arquivo .env para
 
 1. **Baixe o projeto**: Você pode clonar este repositório ou baixar o arquivo ZIP.
    
-2. **Abra a pasta do projeto**: Navegue até o diretório onde você salvou o projeto.
+2. **Abra a pasta do projeto**: Navegue até o diretório onde você baixou o projeto. Caso seja ZIP, descompacte-o.
 
-3. **Instale as dependências**: Execute o seguinte comando no seu terminal:
+3. **Abra o CMD**: Execute o CMD, ou Terminal, do seu sistema com a rota da pasta onde está instalado o projeto.
+
+4. **Baixe o .env**: Caso não tenha localizado o arquivo '.env' no projeto, instale-o na pasta com as configurações que precisa.
+
+5. **Instale as dependências**: Execute o seguinte comando no seu terminal:
    ```bash
    npm install
 
-4. **Inicie a aplicação**: Após a instalação das dependências, execute:
+6. **Inicie a aplicação**: Após a instalação das dependências, execute:
    ```bash
    npm start
 
