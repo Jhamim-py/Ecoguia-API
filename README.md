@@ -1,5 +1,5 @@
 # Ecoguia-API
-Organização das APIs do projeto Ecoguia (**é necessário um arquivo .env para utilizar essa aplicação**).
+Organização das APIs do projeto Ecoguia **(é necessário um arquivo .env para utilizar essa aplicação)**.
 
 🌟 Obrigado por visitar o repositório! Para utilizar esta aplicação, siga os passos abaixo:
 
