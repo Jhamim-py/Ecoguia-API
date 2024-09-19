@@ -1,6 +1,6 @@
 const connection = require('../../../data/connection') //conexão com o banco de dados
 
-exports.SelectArticle =
+exports.selectArticle =
     async(req,res) => {
     
     const {id} = req.body;  //variáveis responsáveis por armazenar os dados

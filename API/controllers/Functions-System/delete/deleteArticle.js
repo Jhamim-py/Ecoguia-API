@@ -1,6 +1,6 @@
 const connection = require('../../../data/connection') //conexão com o banco de dados
 
-exports.DeleteArticle =
+exports.deleteArticle =
  async(req,res) => {
    
     const {id,title} = req.body  //variáveis responsáveis por armazenar os dados

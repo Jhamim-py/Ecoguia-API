@@ -5,7 +5,7 @@ const axios             = require('axios').default;                  //bibliotec
 const connection        = require('../../../data/connection');       //conexão com o banco de dados
 const checkLenght       = require('../../../utils/characterLimit');  //verifica se o dado ultrapassa o limite de caracteres
 const checkArticle      = require('../../../utils/checkArticle');    //verifica se o artigo adicionado já existe no banco de dados
-exports.CreateArticle   =
+exports.createArticle   =
 
 async (req,res) => {
   //executa a conexão com o banco de dados

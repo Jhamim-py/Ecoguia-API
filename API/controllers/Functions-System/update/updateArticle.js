@@ -2,7 +2,8 @@ const connection = require('../../../data/connection')        //conexão com o b
 const checkArticle = require('../../../utils/checkArticle') //verifica se o artigo adicionado já existe no banco de dados
 const valorNulo = require('../../../utils/nullValue')       //verifica se a variável possui valor nulo 
 const checkLenght = require('../../../utils/characterLimit')//verifica se o dado ultrapassa o limite de caracteres
-exports.UpdateArticle =
+
+exports.updateArticle =
 async(req,res) =>{
     let{id,image,title,category,description,reference} = req.body; //variáveis responsáveis por armazenar os dados
   
