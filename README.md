@@ -1,5 +1,5 @@
 # Ecoguia-API
-Organização das APIs do projeto Ecoguia
+Organização das APIs do projeto Ecoguia (é necessário um arquivo .env para utilizar essa aplicação).
 
 🌟 Obrigado por visitar o repositório! Para utilizar esta aplicação, siga os passos abaixo:
 
@@ -15,4 +15,4 @@ Organização das APIs do projeto Ecoguia
    ```bash
    npm start
 
-   ✨ E pronto! Você está pronto para explorar a aplicação. Se tiver alguma dúvida, não hesite em abrir uma issue!
+✨ E pronto! Você está pronto para explorar a aplicação. Se tiver alguma dúvida, não hesite em abrir uma issue!
