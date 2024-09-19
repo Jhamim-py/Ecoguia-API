@@ -1,6 +1,6 @@
 const connection = require('../../../data/connection')//conexão com o banco de dados
 
-exports.ViewArticles =
+exports.viewArticles =
 async (req,res) =>{
 
     //realiza a conexão com o banco de dados

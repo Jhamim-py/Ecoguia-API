@@ -10,7 +10,7 @@ const deleteArticle    = require('../controllers/Functions-System/delete/deleteA
 
 const viewArticles     = require('../controllers/Functions-System/read/viewArticles');
 const selectArticle    = require('../controllers/Functions-System/read/selectArticle');
-
+const viewRank           = require('../controllers/Functions-System/read/viewRank')
 const updateArticle    = require('../controllers/Functions-System/update/updateArticle');
 
 
@@ -61,18 +61,19 @@ routes.put   ('/user/email',        checkToken.checkToken,updateEmail.updateEmai
 //Sistema --------------------
 
 //Rota delete
-routes.delete('/deleteArticle', deleteArticle.DeleteArticle);
+routes.delete('/deleteArticle', deleteArticle.deleteArticle);
 
 //Rota post
-routes.post('/createArticles', createArticle.CreateArticle);
+routes.post('/createArticles', createArticle.createArticle);
 
 //Rotas get
-routes.get   ('/tips', viewTip.getTip)
-routes.get('/articles', viewArticles.ViewArticles);
-routes.get('/selectArticle', selectArticle.SelectArticle);
+routes.get('/tips', viewTip.getTip)
+routes.get('/articles', viewArticles.viewArticles);
+routes.get('/selectArticle', selectArticle.selectArticle);
+routes.get('/rank',viewRank.viewRank)
 
 //Rota put
-routes.put('/updateArticle', updateArticle.UpdateArticle);
+routes.put('/updateArticle', updateArticle.updateArticle);
 
 
 
