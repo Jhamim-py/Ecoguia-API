@@ -5,7 +5,7 @@ const bcrypt         =  require('bcrypt');                  // gera um token ale
 const connection     = require('../../../data/connection'); // conexão com o banco de dados
 
 // função de exclusão que pode ser exportada
-exports.DeleteUser = 
+exports.deleteUser = 
 async (req, res) => {    //função assíncrona com parâmetros de requisição e resposta
     const userID    = req.user.id;                          // variável que armazena o ID do usuário
     const {pwdHash} = req.body;                             // variável que armazena o hash da senha

@@ -13,7 +13,7 @@ exports.postLogin =
 async (req, res) => {   //função assíncrona com parâmetros de requisição e resposta
     const { email, pwd } = req.body;                         // variável responsável por armazenar os dados
     const executeConnection = connection.getConnection();    // variável que armazena a execução de conexão com o banco de dados
-
+ 
     // validação de campo
     if (!email || !pwd) { 
         return res.status(422).json({ msg: "É necessário preencher todos os campos para realizar o login." });
@@ -35,11 +35,15 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
             };
             // armazena o valor retornado numa variável (neste caso, o e-mail)
             const user = result[0];
+
            
 
             // checa a senha com o hash armazenado no banco através da biblioteca bcrypt
+            console.log(user)
+            console.log(pwd)
+            console.log(user.password_user)
             const checkPwd = await bcrypt.compare(pwd,user.pwd);
-            if (!checkPwd) { 
+            if (!checkPwd) {  
                 return res.status(422).json({ msg: "Senha incorreta." });
             }
 

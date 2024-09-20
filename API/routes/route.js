@@ -3,6 +3,7 @@ const { Router }       = require ("express");
 
 // rotas de SISTEMA
 const viewTip       = require('../controllers/Functions-System/read/viewTip');
+const updadteLevel   = require('../controllers/Functions-System/update/updateLevel')
 
 const createArticle    = require('../controllers/Functions-System/create/createArticles');
 
@@ -74,6 +75,7 @@ routes.get('/rank',viewRank.viewRank)
 
 //Rota put
 routes.put('/updateArticle', updateArticle.updateArticle);
+routes.put('/updateLevel',checkToken.checkToken,updadteLevel.updateLevel)
 
 
 
