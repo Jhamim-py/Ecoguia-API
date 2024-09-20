@@ -2,4 +2,5 @@
 const NodeCache = require('node-cache');
 require('dotenv').config();
 
-exports.cache = new NodeCache({stdTTL: 1800});
+const cache = new NodeCache({stdTTL: 1800});
+module.exports = cache; 
