@@ -1,3 +1,5 @@
+// função para gerar nickname de novos usuários
+module.exports =
 function generateNickname (name) {
     //cria a lógica da constante do ID
     //(segmentada pela ordem de criação)
@@ -9,5 +11,3 @@ function generateNickname (name) {
     return `${name}#${number}`;
 
 };
-
-module.exports = generateNickname; 
