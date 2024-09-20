@@ -4,6 +4,7 @@ const { Router }       = require ("express");
 // rotas de ADMIN
 const createArticle = require('../controllers/Functions-System/create/createArticles');
 
+
 const updateArticle = require('../controllers/Functions-System/update/updateArticle');
 
 const deleteArticle = require('../controllers/Functions-System/delete/deleteArticle');
@@ -11,6 +12,7 @@ const deleteArticle = require('../controllers/Functions-System/delete/deleteArti
 
 // rotas de SISTEMA
 const viewTip       = require('../controllers/Functions-System/read/viewTip');
+const updadteLevel   = require('../controllers/Functions-System/update/updateLevel')
 const viewArticles  = require('../controllers/Functions-System/read/viewArticles');
 const viewRank      = require('../controllers/Functions-System/read/viewRank');
 
@@ -49,6 +51,9 @@ routes.post('/createArticles', createArticle.createArticle);
 //modificar um artigo de acordo com o ID de entrada
 routes.put('/updateArticle', updateArticle.updateArticle);
 
+//atualizar level do usuário
+routes.put('/updateLevel',checkToken.checkToken,updadteLevel.updateLevel)
+
 // DELETE || DELETE
 //excluir um artigo de acordo com o ID e título de entrada
 routes.delete('/deleteArticle', deleteArticle.deleteArticle);
@@ -68,7 +73,6 @@ routes.get('/selectArticle', selectArticle.selectArticle);
 
 //visualiza o ranking de usuários por XP
 routes.get('/rank',viewRank.viewRank);
-
 
 // HTTPS de USUÁRIO
 
@@ -98,6 +102,7 @@ routes.get   ('/user',            checkToken.checkToken, viewProfile.getPerfil);
 
 //???
 routes.get   ('/user/auth/google', googleAuth.authGoogle);
+
 
 
 // DELETE || DELETE
