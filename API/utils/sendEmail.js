@@ -1,9 +1,10 @@
 // responsável por mandar emails de validação ao cliente
-const nodemailer     =  require('nodemailer')
+const nodemailer     =  require('nodemailer');
 
 // importação do arquivo de configuração .env
 require('dotenv').config();
 
+module.exports =
 function checkEmail(mensagem){
     const transporter = nodemailer.createTransport({
         // login e locação de conta responsável pelo envio do email
@@ -33,5 +34,3 @@ function checkEmail(mensagem){
     })
 
 };
-
-module.exports = checkEmail;

@@ -1,12 +1,11 @@
-function nullValue(valor){
-    //se o valor estiver vazio ou undefined ele retorna como nulo
-    if(valor == undefined || valor == ""){
+// função que checa e automatiza o valor nulo para dados de entrada
+module.exports =
+function nullValue(value){
+    //se o valor do dado estiver 'empty' ou 'undefined', retorna como nulo
+    if(value == undefined || value == empty()){
         return null;
     }
     else{
-        return valor;
+        return value;
     }
-}
-
-//exporta a função
-module.exports = nullValue;
+};

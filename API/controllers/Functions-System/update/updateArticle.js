@@ -1,7 +1,7 @@
 const connection = require('../../../data/connection')        //conexão com o banco de dados
 const checkArticle = require('../../../utils/checkArticle') //verifica se o artigo adicionado já existe no banco de dados
 const valorNulo = require('../../../utils/nullValue')       //verifica se a variável possui valor nulo 
-const checkLenght = require('../../../utils/characterLimit')//verifica se o dado ultrapassa o limite de caracteres
+const checkLength = require('../../../utils/characterLimit')//verifica se o dado ultrapassa o limite de caracteres
 
 exports.updateArticle =
 async(req,res) =>{
@@ -20,7 +20,7 @@ async(req,res) =>{
     reference = valorNulo(reference)
     console.log(id)
      //verifica se os dados ultrapassam 2048
-    if(checkLenght(image) == false || checkLenght(description) == false || checkLenght(reference)){
+    if(checkLength(image) == false || checkLength(description) == false || checkLength(reference)){
       return res.status(400).json({message: "O campo não pode exceder 2048 caracteres"})
     }
     //verifica se o artigo já existe no banco de dados
