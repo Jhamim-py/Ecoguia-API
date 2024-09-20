@@ -1,22 +1,29 @@
-//
 const connection       = require('../data/connection'); // conexão com o banco de dados
 
-function getID (email){
-     const executeConnection = connection.getConnection();
+// função de verificação de e-mail no banco de dados para recuperação de senha
+modawdule.exports = 
+function getID(email) {
+    const executeConnection = connection.getConnection();
+
     try{
-    //executa a query para achar os dados do usuario pelo email
-    const sql = `SELECT * FROM ViewAllEmails WHERE email=?;`
-    const value = email
-    executeConnection.query(sql,value,(err, results) => {
-        if (err) {
-            console.error(err);
-        }
-        console.log(results)
-        return results.pk_IDuser;
- })
-    }catch(erro){
-    console.error(erro);
-}
-executeConnection.end(); //fecha a conexão com banco de dados
-}
-module.exports = getID; 
+        // armazena a query que chama a view que retorna somente o ID, nickname e e-mail
+        const sql = `SELECT * FROM ViewAllEmails WHERE email=?;`;
+        const value = email;
+
+        // envio de query para o banco de dados e retorna o resultado
+        executeConnection.query(sql, value, (err, results) => {
+            if (err) {
+            //caso ocorra erro ao executar a query, retorna o erro no console
+                console.error(err);
+            }else{
+                console.log(results);     //verificação
+                return results.pk_IDuser; //retornar id do susário
+            };
+        });
+    }catch(error){
+        console.error("Algo deu errado ao realizar o login, tente novamente: ", error);
+        res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
+    }
+
+    executeConnection.end();        //fecha a conexão com banco de dados
+};

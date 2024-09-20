@@ -3,7 +3,7 @@ require('dotenv').config();
 //componentes do node 
 const axios             = require('axios').default;                  //biblioteca para realizar as requisições na API externa 
 const connection        = require('../../../data/connection');       //conexão com o banco de dados
-const checkLenght       = require('../../../utils/characterLimit');  //verifica se o dado ultrapassa o limite de caracteres
+const checkLength       = require('../../../utils/characterLimit');  //verifica se o dado ultrapassa o limite de caracteres
 const checkArticle      = require('../../../utils/checkArticle');    //verifica se o artigo adicionado já existe no banco de dados
 exports.createArticle   =
 
@@ -33,7 +33,7 @@ const executeConnection = connection.getConnection();
         let description = article.description;
         let reference = article.url;
         //verifica se os dados ultrapassam 2048
-       if(!checkLenght(image) | !checkLenght(description)|| !checkLenght(reference)){
+       if(!checkLength(image) | !checkLength(description)|| !checkLength(reference)){
         //se ultrapassar, não adiciona no banco de dados e passa para próxima interação
        continue;
        } 

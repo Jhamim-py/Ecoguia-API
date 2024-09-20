@@ -1,23 +1,25 @@
 // controle de rotas na URL e funções utilizadas
 const { Router }       = require ("express");
 
+// rotas de ADMIN
+const createArticle = require('../controllers/Functions-System/create/createArticles');
+
+
+const updateArticle = require('../controllers/Functions-System/update/updateArticle');
+
+const deleteArticle = require('../controllers/Functions-System/delete/deleteArticle');
+
+
 // rotas de SISTEMA
 const viewTip       = require('../controllers/Functions-System/read/viewTip');
 const updadteLevel   = require('../controllers/Functions-System/update/updateLevel')
+const viewArticles  = require('../controllers/Functions-System/read/viewArticles');
+const viewRank      = require('../controllers/Functions-System/read/viewRank');
 
-const createArticle    = require('../controllers/Functions-System/create/createArticles');
-
-const deleteArticle    = require('../controllers/Functions-System/delete/deleteArticle');
-
-const viewArticles     = require('../controllers/Functions-System/read/viewArticles');
-const selectArticle    = require('../controllers/Functions-System/read/selectArticle');
-const viewRank           = require('../controllers/Functions-System/read/viewRank')
-const updateArticle    = require('../controllers/Functions-System/update/updateArticle');
+const selectArticle = require('../controllers/Functions-System/read/selectArticle');
 
 
-
-
-//rotas de USUÁRIO
+// rotas de USUÁRIO
 const registerUser  = require('../controllers/Functions-User/create/registerUser');
 const createUser    = require('../controllers/Functions-User/create/createUser');
 
@@ -28,6 +30,7 @@ const generateToken = require('../controllers/Functions-User/forget/generateToke
 
 const loginUser     = require('../controllers/Functions-User/login/loginUser');
 const checkToken    = require('../controllers/Functions-User/login/checkToken');
+const googleAuth    = require('../controllers/Functions-User/login/authGoogle');
 
 const viewProfile   = require('../controllers/Functions-User/read/viewProfile');
 
@@ -35,49 +38,76 @@ const updateUser    = require('../controllers/Functions-User/update/updateUser')
 const updateProfile = require('../controllers/Functions-User/update/updateProfile');
 const updateEmail   = require('../controllers/Functions-User/update/updateEmail');
 
+// composição da requisições
 const routes = Router();
 
-//Usuario -------------------
+// HTTPS de ADMIN
 
-//Rota Delete
-routes.delete('/user',              deleteUser.deleteUser);
-
-//Rotas Post
-routes.post('/user/register',    registerUser.postRegister);
-routes.post('/user',             createUser.createUser);
-routes.post('/user/pwd',          forgetPwd.password);
-routes.post('/user/token',        generateToken.getForget);
-routes.post('/user/login',        loginUser.postLogin)
-
-//Rota Get
-routes.get   ('/user',              checkToken.checkToken,viewProfile.getPerfil);
-
-
-//Rotas Put
-routes.put   ('/user',              checkToken.checkToken,updateProfile.updateProfile)
-routes.put   ('/user/pwd',          checkToken.checkToken,updateUser.updateUser)
-routes.put   ('/user/email',        checkToken.checkToken,updateEmail.updateEmail)
-
-
-//Sistema --------------------
-
-//Rota delete
-routes.delete('/deleteArticle', deleteArticle.deleteArticle);
-
-//Rota post
+// POST || CREATE
+//cria um novo artigo com os dados de entrada
 routes.post('/createArticles', createArticle.createArticle);
 
-//Rotas get
-routes.get('/tips', viewTip.getTip)
-routes.get('/articles', viewArticles.viewArticles);
-routes.get('/selectArticle', selectArticle.selectArticle);
-routes.get('/rank',viewRank.viewRank)
-
-//Rota put
+// PUT || UPDATE
+//modificar um artigo de acordo com o ID de entrada
 routes.put('/updateArticle', updateArticle.updateArticle);
+
+//atualizar level do usuário
 routes.put('/updateLevel',checkToken.checkToken,updadteLevel.updateLevel)
 
+// DELETE || DELETE
+//excluir um artigo de acordo com o ID e título de entrada
+routes.delete('/deleteArticle', deleteArticle.deleteArticle);
 
+
+// HTTPS de SISTEMA
+
+//GET || READ
+//visualiza a dica diária
+routes.get('/tips', viewTip.getTip);
+
+//visualiza os artigos
+routes.get('/articles', viewArticles.viewArticles);
+
+//visualiza um artigo
+routes.get('/selectArticle', selectArticle.selectArticle);
+
+//visualiza o ranking de usuários por XP
+routes.get('/rank',viewRank.viewRank);
+
+// HTTPS de USUÁRIO
+
+// POST || CREATE
+//criar usuário
+routes.post('/user/register',     registerUser.postRegister);
+routes.post('/user',              createUser.createUser);
+
+//autenticação de conta
+routes.post('/user/token',        generateToken.getForget);
+routes.post('/user',              loginUser.postLogin);
+routes.post('/user/google',       googleAuth.authGoogleCallback);
+
+//recuperação de conta
+routes.post('/user/pwd',          forgetPwd.password);
+
+
+//PUT || UPDATE
+routes.put   ('/user',            checkToken.checkToken, updateProfile.updateProfile);
+routes.put   ('/user/pwd',        checkToken.checkToken, updateUser.updateUser);
+routes.put   ('/user/email',      checkToken.checkToken, updateEmail.updateEmail);
+
+
+//GET || READ
+//visualizar dados do perfil do usuário
+routes.get   ('/user',            checkToken.checkToken, viewProfile.getPerfil);
+
+//???
+routes.get   ('/user/auth/google', googleAuth.authGoogle);
+
+
+
+// DELETE || DELETE
+//excluir conta de usuário
+routes.delete('/user',            deleteUser.deleteUser);
 
 
 
