@@ -4,19 +4,20 @@ const { Router }       = require ("express");
 // rotas de ADMIN
 const createArticle = require('../controllers/Functions-System/create/createArticles');
 
-
 const updateArticle = require('../controllers/Functions-System/update/updateArticle');
 
 const deleteArticle = require('../controllers/Functions-System/delete/deleteArticle');
 
 
 // rotas de SISTEMA
+const viewPickupTime= require('../controllers/Functions-System/read/viewPickupTime');
 const viewTip       = require('../controllers/Functions-System/read/viewTip');
-const updadteLevel   = require('../controllers/Functions-System/update/updateLevel')
 const viewArticles  = require('../controllers/Functions-System/read/viewArticles');
 const viewRank      = require('../controllers/Functions-System/read/viewRank');
 
 const selectArticle = require('../controllers/Functions-System/read/selectArticle');
+
+const updadteLevel  = require('../controllers/Functions-System/update/updateLevel');
 
 
 // rotas de USUÁRIO
@@ -62,6 +63,9 @@ routes.delete('/deleteArticle', deleteArticle.deleteArticle);
 // HTTPS de SISTEMA
 
 //GET || READ
+//visualiza horário de coleta
+routes.get('/pickupTime', viewPickupTime.pickupTime);
+
 //visualiza a dica diária
 routes.get('/tips', viewTip.getTip);
 
@@ -84,7 +88,7 @@ routes.post('/user',              createUser.createUser);
 //autenticação de conta
 routes.post('/user/token',        generateToken.getForget);
 routes.post('/user',              loginUser.postLogin);
-routes.post('/user/google',       googleAuth.authGoogleCallback);
+routes.post('/user/auth/google/callback',       googleAuth.authGoogleCallback);
 
 //recuperação de conta
 routes.post('/user/pwd',          forgetPwd.password);
