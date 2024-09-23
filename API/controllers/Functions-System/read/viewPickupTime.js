@@ -6,7 +6,7 @@ async function timeLoga(result){
     let response;
 
     const browser = await puppeteer.launch({
-        headless: false, // Mude para true para produção
+        headless: true, // Mude para true para produção
         args: ['--disable-web-security', '--disable-features=IsolateOrigins,site-per-process', '--no-sandbox', '--disable-setuid-sandbox']
     });
     const page = await browser.newPage();
@@ -64,7 +64,7 @@ async function timeUrbis(result2){
     let response;
 
     const browser = await puppeteer.launch({
-        headless: false, // Mude para true para produção
+        headless: true, // Mude para true para produção
         args: ['--disable-web-security', '--disable-features=IsolateOrigins,site-per-process', '--no-sandbox', '--disable-setuid-sandbox']
     });
     const page = await browser.newPage();
@@ -86,7 +86,9 @@ async function timeUrbis(result2){
     try {
         console.log('Navigating to the page...');
         await page.goto('https://www.ecourbis.com.br/coleta/index.html', { waitUntil: 'networkidle2' });
-
+        
+        await page.setViewport({width: 1080, height: 1024});
+        
         console.log('Waiting for the search input...');
         await page.waitForSelector('.form-control.theme-border-2', { visible: false, timeout: 60000 });
 
