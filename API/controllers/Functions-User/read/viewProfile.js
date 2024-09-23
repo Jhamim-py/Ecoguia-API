@@ -12,21 +12,22 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         const query = `CALL SelectProfile(?)`;
         const value = userID;
 
-        // envio de query para o banco de dados e retorna o resultado
-        executeConnection.query(query, value, async function(error, result){
-            if(error){
-                console.log(error)  //verificação
-                return res.status(500).json({msg: "Algo deu errado ao visualizar o perfil, tente novamente."});
-            };
-            if(result){
-                return res.status(200).json(result);
-            };
-        });
-        
+        // Executa a consulta
+        const [results] = await executeConnection.query(query, values);
+        if(results.length > 0){
+            return res.status(200).json({results});
+        }else{
+            return res.status(500).json({ msg: "Algo deu errado ao visualizar o perfil, tente novamente." });
+        };
+
     }catch(error){
         console.error("Algo deu errado ao realizar o login, tente novamente: ", error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-    }
-
-    executeConnection.end();           //fecha a conexão com banco de dados
+    
+    }finally {
+        // Fecha a conexão com o banco de dados, se foi estabelecida
+        if (executeConnection) {
+            executeConnection.end();
+        };
+    };
 };

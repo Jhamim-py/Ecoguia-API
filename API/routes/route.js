@@ -2,11 +2,13 @@
 const { Router }       = require ("express");
 
 // rotas de ADMIN
-const createArticle = require('../controllers/Functions-System/create/createArticles');
+const createArticle = require('../controllers/Functions-Admin/create/createArticles');
 
-const updateArticle = require('../controllers/Functions-System/update/updateArticle');
+const updateArticle = require('../controllers/Functions-Admin/update/updateArticle');
 
-const deleteArticle = require('../controllers/Functions-System/delete/deleteArticle');
+const updadteLevel  = require('../controllers/Functions-Admin/update/updateLevel');
+
+const deleteArticle = require('../controllers/Functions-Admin/delete/deleteArticle');
 
 
 // rotas de SISTEMA
@@ -16,8 +18,6 @@ const viewArticles  = require('../controllers/Functions-System/read/viewArticles
 const viewRank      = require('../controllers/Functions-System/read/viewRank');
 
 const selectArticle = require('../controllers/Functions-System/read/selectArticle');
-
-const updadteLevel  = require('../controllers/Functions-System/update/updateLevel');
 
 
 // rotas de USUÁRIO
