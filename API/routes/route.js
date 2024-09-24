@@ -87,7 +87,7 @@ routes.post('/user',              createUser.createUser);
 
 //autenticação de conta
 routes.post('/user/token',        generateToken.getForget);
-routes.post('/user',              loginUser.postLogin);
+routes.post('/user/login',              loginUser.postLogin);
 routes.post('/user/auth/google/callback',       googleAuth.authGoogleCallback);
 
 //recuperação de conta

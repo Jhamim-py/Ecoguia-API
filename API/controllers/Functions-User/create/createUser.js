@@ -10,7 +10,7 @@ const generateNickname = require('../../../utils/generateNickname');   // funç�
 exports.createUser =
 async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
    const {token} = req.body;                             // variável responsável por armazenar o token enviado ao cliente
-   const executeConnection = connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
+   const executeConnection = await connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
 
     // validação de token
     if (!appCache.get(token)) {
@@ -45,22 +45,18 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
         // armazena a query de criação de usuário
         const query = `CALL CreateUser(?, ?, ?, ?, ?, ?)`;
         const values = [name, lastname, email, pwdHash, nickname, avatar];
+        const result = await executeConnection.query(query, values)
 
         // envio de query para o banco de dados e retorna o resultado
-        executeConnection.query(query, values, async function(error, result){
-            if (error) {
-                console.log(error); //verificação
-                return res.status(500).json({ msg: "Algo deu errado ao criar o usuário, tente novamente." });
-            }
-            if (result)   {
-                return res.status(201).json({ msg: "Usuário criado com sucesso." });
-            }
-        });
+        if (result){
+            return res.status(201).json({ msg: "Usuário criado com sucesso." });
+        }
+    
         
     }catch(error) {
         console.error("Algo deu errado ao realizar o login, tente novamente: ", error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
     }
-    executeConnection.end();     //fecha a conexão com banco de dados
+   await executeConnection.end();     //fecha a conexão com banco de dados
     appCache.flushAll();  // comando que reseta o cachê do app
 }; 

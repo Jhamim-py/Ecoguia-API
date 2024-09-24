@@ -12,7 +12,7 @@ const verificatePwd  = require('../../../utils/verificatePwd');// verifica e val
 exports.postRegister =
 async (req, res)     => {   //função assíncrona com parâmetros de requisição e resposta
     const { name, lastname, email, pwd, avatar } = req.body;   // variável responsável por armazenar os dados
-    const executeConnection = connection.getConnection();      // variável que armazena a execução de conexão com o banco de dados
+    const executeConnection = await connection.getConnection();      // variável que armazena a execução de conexão com o banco de dados
     appCache.flushAll();                                       // comando que reseta o cachê do app
 
     // validação de campo
@@ -29,17 +29,12 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
         const query = `SELECT * FROM ViewAllEmails WHERE pk_IDuser=?`;
         const value = email; //aloca o valor colocado no campo 'E-mail' para essa variável
 
-        // envio de query para o banco de dados e retorna o resultado
-        executeConnection.query(query, value, async function(error, result){
-            if (error) {
-                console.log(error);
-                return res.status(500).json({ msg: "Algo deu errado ao buscar usuários, tente novamente."});
-            };
+        const result = await executeConnection.query(query, value); // executa a query no banco de
+
+        // envio de query para o banco de dados e retorna o resultado 
             if (result.length > 0) {
                 return res.status(422).json({ msg: "Este e-mail já está em uso."});
             };
-        });
-
         // verifica a formatação do dado colocado no campo 'senha' com função externa
         const verificate = verificatePwd(pwd);
         if (verificate[0] == false) {
@@ -68,5 +63,5 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
     };   
 
     // fecha a conexão com o banco de dados
-    executeConnection.end();
+    await executeConnection.end();
 };
