@@ -1,5 +1,5 @@
 // controle de rotas na URL e funções utilizadas
-const { Router }       = require ("express");
+const { Router }    = require ("express");
 
 // rotas de ADMIN
 const createArticle = require('../controllers/Functions-Admin/create/createArticles');

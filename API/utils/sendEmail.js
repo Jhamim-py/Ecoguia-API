@@ -1,5 +1,5 @@
 // responsável por mandar emails de validação ao cliente
-const nodemailer     =  require('nodemailer');
+const nodemailer = require('nodemailer');
 
 // importação do arquivo de configuração .env
 require('dotenv').config();
@@ -15,9 +15,8 @@ function checkEmail(mensagem){
             // conta da empresa
             user:process.env.EMAIL,
             pass:process.env.PASSWORDEMAIL
-        },
-     
-    })
+        }
+    });
     transporter.sendMail({
         // configuração para localizar o email endereçado e enviar o token
         from:"eco12biotec@gmail.com",
@@ -26,11 +25,9 @@ function checkEmail(mensagem){
         text:mensagem
 
     }).then(info =>{
-       return info
+       return info;
 
-    }).catch(erro => {
-       return erro
-       
-    })
-
+    }).catch(error => {
+       return error;
+    });
 };

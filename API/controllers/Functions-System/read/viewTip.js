@@ -1,4 +1,5 @@
 const connection = require('../../../data/connection');
+const nickname   = require('../../../utils/generateNickname');
 
 // Variável global para armazenar a dica do dia
 let dailyTip = null; // Armazena a dica que será retornada ao usuário
