@@ -20,7 +20,7 @@ async (accessToken, refreshToken, profile, done) => {
         name: given_name,
         lastname: family_name,
         email: email,
-        nickname: (family_name + '#3212'),
+        nickname: (family_name + '#3212'), //atenção a esse erro aqui, modificar posteriormnete p dinâmico!!!
         fk_avatar: 1,
         fk_level: 1,
         XP: 0,

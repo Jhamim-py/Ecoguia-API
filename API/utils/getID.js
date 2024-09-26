@@ -1,7 +1,7 @@
 const connection       = require('../data/connection'); // conexão com o banco de dados
 
 // função de verificação de e-mail no banco de dados para recuperação de senha
-modawdule.exports = 
+module.exports = 
 function getID(email) {
     const executeConnection = connection.getConnection();
 
