@@ -5,7 +5,7 @@ const connection       = require('../../../data/connection');     // conexão co
 exports.updateProfile =
 async (req, res) => {    //função assíncrona com parâmetros de requisição e resposta
     const userID = req.user.id;                          // variável que armazena o ID do usuário
-    const executeConnection = connection.getConnection();// variável que armazena a execução de conexão com o banco de dados
+    const executeConnection = await connection.getConnection();// variável que armazena a execução de conexão com o banco de dados
 
     let {name, lastname, avatar} = req.body;             // variável local responsável por armazenar os dados
     
@@ -34,7 +34,7 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
     }finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida
         if (executeConnection) {
-            executeConnection.end();
+            await executeConnection.end();
         };
     };
 };

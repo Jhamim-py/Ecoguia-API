@@ -17,7 +17,7 @@ async (req,res) => {
         return res.status(400).json({ msg: "Token inválido ou expirado" });
     };
 
-    const executeConnection = connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
+    const executeConnection = await connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
     // criptografa a senha dada em hash
     const salt = await bcrypt.genSalt(12); // define o tamanho do hash (12 caracteres)
     const passwordHash = await bcrypt.hash(senha, salt); // cria o hash da senha
@@ -42,7 +42,7 @@ async (req,res) => {
     }finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida
         if (executeConnection) {
-            executeConnection.end();
+            await executeConnection.end();
         };
         appCache.flushAll(); // comando que reseta o cachê do app
     };

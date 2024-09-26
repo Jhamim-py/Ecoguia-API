@@ -15,7 +15,7 @@ async (req,res) => {
     const userId = req.user.id;
     let {email, pwd} = req.body;
 
-    const executeConnection = connection.getConnection();   //variável que armazena a execução de conexão com o banco de dados
+    const executeConnection = await connection.getConnection();   //variável que armazena a execução de conexão com o banco de dados
 
     //verificar o padrão da senha
     const check  = verificatePwd(pwd);
@@ -75,7 +75,7 @@ async (req,res) => {
     }finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida
         if (executeConnection) {
-            executeConnection.end();
+            await executeConnection.end();
         };
     };
 };
