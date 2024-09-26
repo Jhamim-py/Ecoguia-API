@@ -1,6 +1,9 @@
-const express = require('express');
 const puppeteer = require('puppeteer');
-const cors = require('cors');
+const Correios = require('node-cep-correios');
+const { response } = require('express');
+
+let correios = new Correios();
+
 
 async function timeLoga(result){
     let response;
@@ -120,11 +123,25 @@ async function timeUrbis(result2){
 
 exports.pickupTime = async (req, res) => {
     //verificar qual empresa atende X região chamando as funções
-    const { searchTerm } = req.body;  
+    const { searchTerm } = req.body;
+    //verifica se o cep é válido
+    await correios.consultaCEP({ cep: searchTerm })
+    .then(result => { 
+      if(result.code){
+       return res.status(400).json("CEP inválido")
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+    //faz as buscas dos horários no site da ecourbis 
     const ecoUrbis = await timeUrbis(searchTerm);
-    
+
+    //faz as buscas dos horários no site da LOGA
     const ecoLoga  = await timeLoga(searchTerm);
 
+    //manda a resposta pro usuario se houver respota no site da LOGA ou Ecourbis
     if (ecoLoga){
         return res.status(202).json(ecoLoga);
        }

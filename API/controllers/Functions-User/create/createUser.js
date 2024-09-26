@@ -3,13 +3,12 @@ const bcrypt = require('bcrypt')  // criptografa dados em hash
 
 // variáveis de ambiente para importar funções
 const connection       = require('../../../data/connection');    // conexão com o banco de dados
-const appCache         = require('../../../utils/cache');        // armazena os dados de usuário, usado posteriormente para validações
 const generateNickname = require('../../../utils/generateNickname');   // função externa que é responsável por gerar um nickname (exige a entrada da variável 'name') 
 
 // função de registro que pode ser exportada
 exports.createUser =
 async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
-   const {token} = req.body;                             // variável responsável por armazenar o token enviado ao cliente
+   const { name, lastname, email, pwd, avatar } = req.body;  // variável responsável por armazenar o token enviado ao cliente
    const executeConnection = await connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
 
     // validação de token
@@ -17,22 +16,6 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
         console.log(appCache.get(token));  //verificação
         return res.status(400).json({ msg: "Token inválido ou expirado" });
     }
-
-    // puxa os dados do cliente armazenados no cachê do app
-    const name  = appCache.take("name");
-    console.log(name);          //verificação
-
-    const lastname = appCache.take("lastname");
-    console.log(lastname);      //verificação
-
-    const email = appCache.take("email");
-    console.log(email);         //verificação
-
-    const pwd   = appCache.take("pwd");
-    console.log(pwd);           //verificação 
-
-    const avatar = appCache.take("avatar");
-    console.log(avatar);        //verificação
 
     // criptografa a senha dada em hash
     const salt     = await bcrypt.genSalt(12);     // define o tamanho do hash (12 caracteres)

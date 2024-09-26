@@ -4,7 +4,6 @@ const validatorEmail =  require('email-validator'); // verifica e valida o forma
 
 // variáveis de ambiente para importar funções
 const connection     = require('../../../data/connection');    // conexão com o banco de dados
-const appCache       = require('../../../utils/cache');        // armazena os dados de usuário, usado posteriormente para validações
 const sendEmail      = require('../../../utils/sendEmail');    // importa função de enviar token por email
 const verificatePwd  = require('../../../utils/verificatePwd');// verifica e valida o formato 'senha', se contém 8 caracteres, etc.
 
@@ -41,13 +40,6 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
             // retorna os resultados da função externa caso dê erro
             return res.status(400).json({error: verificate[1]});
         }
-
-        // armazena os valores passados no cachê do app
-        appCache.set("name",    name);
-        appCache.set("lastname",lastname);
-        appCache.set("email",   email);
-        appCache.set("pwd",     pwd);
-        appCache.set("avatar",  avatar);
 
         // cria e armazena o token no cachê da app
         const sendToken = crypto.randomBytes(10).toString("hex");
