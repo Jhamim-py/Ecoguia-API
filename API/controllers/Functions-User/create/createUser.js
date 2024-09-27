@@ -1,3 +1,4 @@
+//VERSÃO P MOBILE SEM CACHÊ
 // componentes do Node
 const bcrypt = require('bcrypt')  // criptografa dados em hash
 
