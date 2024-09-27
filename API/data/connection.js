@@ -7,7 +7,7 @@ exports.getConnection = async () => {
       host: 'localhost',
       user: 'root',
       password: 'root',
-      database: 'bd_ecoguia'
+      database: 'bd_ecoguia' 
     });
     return connection;
   }catch (error) {

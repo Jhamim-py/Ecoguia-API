@@ -11,6 +11,7 @@ async(req, res) =>{
   //executa a conexão com o banco de dados
   const executeConnection = connection.getConnection();
 
+
   //verifica se as variáveis possuem algum valor
   id          = valorNulo(id);
   image       = valorNulo(image);
