@@ -7,10 +7,10 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
     
     userID = req.user.id;  //pegando o id do usuário pelo token
     //pegando os dados a serem modificados
-    const dados = await checkXp(userID);                             // variável responsável por armazenar os dados
+    const dados = await checkXp(userID);                              // variável responsável por armazenar os dados
    
     //verificano os dados
-    console.log(dados);
+    console.log(dados); 
     
     const executeConnection = await connection.getConnection();//variável de conexão com o banco de dados
     
@@ -39,4 +39,5 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
         if (executeConnection) {
             await executeConnection.end();
         };
-    };
+    }
+};

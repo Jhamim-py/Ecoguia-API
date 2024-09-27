@@ -12,7 +12,7 @@ async function checkArticle(title){
         const value = title;
         
         //executa a query
-        const [results] = executeConnection.query(query, value);
+        const results = executeConnection.query(query, value);
         if(results.length > 0){
             return false;
             

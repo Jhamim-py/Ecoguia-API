@@ -4,6 +4,8 @@ const { Router }    = require ("express");
 // rotas de ADMIN
 const createArticle = require('../controllers/Functions-Admin/create/createArticles');
 
+const createArticleManual =  require('../controllers/Functions-Admin/create/createArticleManual');
+
 const updateArticle = require('../controllers/Functions-Admin/update/updateArticle');
 
 const updadteLevel  = require('../controllers/Functions-Admin/update/updateLevel');
@@ -53,6 +55,9 @@ const routes = Router();
 // POST || CREATE
 //cria um novo artigo com os dados de entrada
 routes.post('/createArticles', createArticle.createArticle);
+
+//criar artigos manualmente
+routes.post('/createArticleManual',createArticleManual.createArticle)
 
 //cria uma nova dica com a entrada da descrição
 routes.post('/createTips', createTip.createTip);

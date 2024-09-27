@@ -7,7 +7,7 @@ exports.updateArticle =
 async(req, res) =>{
 
   let{id, image, title, category, description, reference} = req.body; //variáveis responsáveis por armazenar os dados
-
+ 
   //executa a conexão com o banco de dados
   const executeConnection = connection.getConnection();
 
