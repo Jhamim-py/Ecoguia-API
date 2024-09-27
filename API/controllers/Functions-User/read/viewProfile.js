@@ -4,13 +4,13 @@ const connection  = require('../../../data/connection');  // conexão com o banc
 // função de visualização de perfil que pode ser exportada
 exports.getPerfil =
 async (req, res) => {   //função assíncrona com parâmetros de requisição e resposta
-    const executeConnection = connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
-    const userID  = req.user.id;                          // variável que armazena o ID do usuário
+    const executeConnection = await connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
+    const userID  = req.user.id;                                // variável que armazena o ID do usuário
 
     try{
         // armazena a query que chama a procedure de visualização de perfil
-        const query = `CALL SelectProfile(?)`;
-        const value = userID;
+        const query = `CALL SelectProfile(?);`;
+        const values = userID;
 
         // Executa a consulta
         const [results] = await executeConnection.query(query, values);
@@ -27,7 +27,7 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
     }finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida
         if (executeConnection) {
-            executeConnection.end();
+            await executeConnection.end();
         };
     };
 };

@@ -24,36 +24,35 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         // query para visualizar email de acordo com o IDs
         const query = `SELECT * FROM ViewAllEmails WHERE email=?;`;
         const values = [email];
+
         // envio de query e captação de resposta
         const [results] = await executeConnection.query(query, values);
-            if (results.length == 0) {
-                return res.status(404).json({ msg: "Usuário não encontrado." });
-            };
-            // armazena o valor retornado numa variável (neste caso, o e-mail)
-            const user = results[0];
+        if(results.length == 0){
+            return res.status(404).json({msg: "Usuário não encontrado."});
+            
+        };  
+        // armazena o valor retornado numa variável (neste caso, o e-mail)
+        const user = results[0];
 
-            // checa a senha com o hash armazenado no banco através da biblioteca bcrypt
-            console.log(user)
-            console.log(pwd)
-            console.log(user.password_user)
-            const checkPwd = await bcrypt.compare(pwd,user.pwd);
-            if (!checkPwd) {  
-                return res.status(422).json({ msg: "Senha incorreta." });
-            }
+        // checa a senha com o hash armazenado no banco através da biblioteca bcrypt
+        const checkPwd = await bcrypt.compare(pwd, user.pwd);
+        if (!checkPwd) {  
+            return res.status(422).json({ msg: "Senha incorreta." });
+        }
 
-            // com a autenticação feita, é gerado um token de login
-            const secret = process.env.SECRET;
+        // com a autenticação feita, é gerado um token de login
+        const secret = process.env.SECRET;
 
-            // isto faz com que o usuário consiga transitar no app sem logar novamente
-            const token  = jwt.sign({ id: user.pk_IDuser }, secret,{expiresIn:"14d"});
+        // isto faz com que o usuário consiga transitar no app sem logar novamente
+        const token  = jwt.sign({ id: user.pk_IDuser }, secret);
 
-            res.status(200).json({ msg: "Autenticação realizada com sucesso.", token });
-       
+        res.status(200).json({ msg: "Autenticação realizada com sucesso. Token de usuário: ", token });
     }catch (error) {
         console.error("Algo deu errado ao realizar o login, tente novamente: ", error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
+
+    }finally {
+        // Fecha a conexão com o banco de dados, se foi estabelecida
+        await executeConnection.end();
     };
-    
-    // fecha a conexão com o banco de dados
-   (await executeConnection).end();
-}
+};

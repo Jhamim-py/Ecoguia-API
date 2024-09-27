@@ -1,5 +1,5 @@
 // controle de rotas na URL e funções utilizadas
-const { Router }       = require ("express");
+const { Router }    = require ("express");
 
 // rotas de ADMIN
 const createArticle = require('../controllers/Functions-Admin/create/createArticles');
@@ -83,11 +83,11 @@ routes.get('/rank',viewRank.viewRank);
 // POST || CREATE
 //criar usuário
 routes.post('/user/register',     registerUser.postRegister);
-routes.post('/user',              createUser.createUser);
+routes.post('/user/create',       createUser.createUser);
 
 //autenticação de conta
 routes.post('/user/token',        generateToken.getForget);
-routes.post('/user/login',              loginUser.postLogin);
+routes.post('/user/login',        loginUser.postLogin);
 routes.post('/user/auth/google/callback',       googleAuth.authGoogleCallback);
 
 //recuperação de conta
@@ -95,14 +95,14 @@ routes.post('/user/pwd',          forgetPwd.password);
 
 
 //PUT || UPDATE
-routes.put   ('/user',            checkToken.checkToken, updateProfile.updateProfile);
+routes.put   ('/user/profile',    checkToken.checkToken, updateProfile.updateProfile);
 routes.put   ('/user/pwd',        checkToken.checkToken, updateUser.updateUser);
 routes.put   ('/user/email',      checkToken.checkToken, updateEmail.updateEmail);
 
 
 //GET || READ
 //visualizar dados do perfil do usuário
-routes.get   ('/user',            checkToken.checkToken, viewProfile.getPerfil);
+routes.get   ('/user/profile',    checkToken.checkToken, viewProfile.getPerfil);
 
 //???
 routes.get   ('/user/auth/google', googleAuth.authGoogle);
