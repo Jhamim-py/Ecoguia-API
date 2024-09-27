@@ -16,7 +16,7 @@ async function getID(email) {
             return results.pk_IDuser; //retornar id do susário
         };
     }catch(error){
-        console.error("Algo deu errado ao realizar o login, tente novamente: ", error);
+        console.error("Algo deu errado ao extrair ID, tente novamente: ", error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
     }finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida

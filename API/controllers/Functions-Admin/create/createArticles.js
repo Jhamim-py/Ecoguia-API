@@ -7,7 +7,7 @@ const checkLength       = require('../../../utils/characterLimit');  //verifica 
 const checkArticle      = require('../../../utils/checkArticle');    //verifica se o artigo adicionado já existe no banco de dados
 
 exports.createArticle   =
-async (res) => {
+async (req, res) => {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection.getConnection();
 	

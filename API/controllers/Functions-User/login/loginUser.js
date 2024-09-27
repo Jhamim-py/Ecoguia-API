@@ -30,7 +30,6 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         if(results.length == 0){
             return res.status(404).json({msg: "Usuário não encontrado."});
             
-        }else{
         };  
         // armazena o valor retornado numa variável (neste caso, o e-mail)
         const user = results[0];
@@ -47,7 +46,7 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         // isto faz com que o usuário consiga transitar no app sem logar novamente
         const token  = jwt.sign({ id: user.pk_IDuser }, secret);
 
-        res.status(200).json({ msg: "Autenticação realizada com sucesso.", token });
+        res.status(200).json({ msg: "Autenticação realizada com sucesso. Token de usuário: ", token });
     }catch (error) {
         console.error("Algo deu errado ao realizar o login, tente novamente: ", error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });

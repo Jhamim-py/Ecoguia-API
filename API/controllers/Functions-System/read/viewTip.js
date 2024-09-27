@@ -1,13 +1,13 @@
 const connection = require('../../../data/connection');
-const nickname   = require('../../../utils/generateNickname');
 
 // Variável global para armazenar a dica do dia
 let dailyTip = null; // Armazena a dica que será retornada ao usuário
 let lastTipDate = null; // Armazena a data em que a dica foi buscada
 
 // Função assíncrona para obter a dica
-exports.getTip = async (req, res) => {
-    let executeConnection; // Variável para armazenar a conexão com o banco de dados
+exports.getTip = 
+async (req, res) => {
+    const executeConnection = await connection.getConnection();  // Variável para armazenar a conexão com o banco de dados
 
     try {
         const today = new Date(); // Obtém a data e hora atuais
@@ -16,13 +16,10 @@ exports.getTip = async (req, res) => {
         // Verifica se já existe uma dica armazenada para hoje
         if (lastTipDate === formattedDate && dailyTip) {
             return res.json(dailyTip); // Retorna a dica armazenada se for o mesmo dia
-        }
-
-        // Obtém a conexão com o banco de dados
-        executeConnection = await connection.getConnection();
+        };
 
         // Query para buscar uma dica aleatória da tabela ViewAllTip
-        const query = `SELECT * FROM ViewAllTip ORDER BY RAND() LIMIT 1`;
+        const query = `SELECT * FROM ViewAllTip ORDER BY RAND() LIMIT 1;`;
         const [results] = await executeConnection.query(query); // Executa a consulta
 
         if (results.length > 0) { // Verifica se há resultados
@@ -31,7 +28,7 @@ exports.getTip = async (req, res) => {
             lastTipDate = formattedDate; // Atualiza a data da dica
 
             // Retorna a dica encontrada em formato JSON
-            return res.json(dailyTip);
+            return res.status(200).json(dailyTip);
         } else {
             // Se não encontrar nenhuma dica, retorna um erro 404
             return res.status(404).json({ msg: "Nenhuma dica disponível no momento." });
@@ -43,7 +40,7 @@ exports.getTip = async (req, res) => {
     } finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida
         if (executeConnection) {
-            executeConnection.end();
-        }
-    }
+            await executeConnection.end();
+        };
+    };
 };

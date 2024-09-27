@@ -6,13 +6,13 @@ if (!cacheNum.get('nickname')) {
 }
 // função para gerar nickname de novos usuários
 module.exports =
-function generateNickname (name) {
+function generateNickname (lastname) {
 //  Cria a lógica da constante do ID:
     //obtém o número atual do cache
     let number = cacheNum.get('nickname');
 
     // Gera o nickname no formato
-    const nickname = `${name}#${String(number).padStart(4, '0')}`;
+    const nickname = `${lastname}#${String(number).padStart(4, '0')}`;
 
     // Incrementa o número e atualiza o cache
     cacheNum.set('nickname', number + 1);

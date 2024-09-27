@@ -10,7 +10,7 @@ const sendEmail      = require('../../../utils/sendEmail');  //importa função 
 const verificatePwd  = require('../../../utils/verificatePwd'); // importa função de verificar padrão de senha
 
 exports.updateUser =
-async (req,res) => {
+async (req, res) => {
     //variáveis responsáveis por armazenar os dados requeridos na requisição
     const userId = req.user.id;
     let {email, pwd} = req.body;
@@ -35,22 +35,24 @@ async (req,res) => {
         //será enviado um token para esse novo endereço.
 
         //puxa os dados do cliente armazenados no cachê do app
-        appCache.set("endereco",email);
-        appCache.set("senha",pwd);
-        console.log(appCache.take("endereco"))
-        console.log(pwd)
-        console.log("final de verificação de valores")
+        appCache.set("endereco", email);
+        appCache.set("senha",    pwd);
 
-        //Cria um token para verificação
+        //verificação abaixo
+        console.log(appCache.take("endereco"));
+        console.log(pwd);
+        console.log("final de verificação de valores");
+
+        //cria um token para verificação
         const tokenForget = crypto.randomBytes(10).toString("hex");
         appCache.set(tokenForget,true);
 
         // envia o token no e-mail
-        const message =`Utilize o token para validação de troca de email \n
+        const message =`Utilize o token para validação de troca de e-mail \n
         token: ${tokenForget}`;
         sendEmail(message);
 
-        return res.status(200).json({message:"Confirme o email enviado com o token para efetuar a atualização."});
+        return res.status(200).json({message:"Confirme o token enviado pelo email para efetuar a atualização."});
     }
     // criptografa a senha dada em hash
     const salt          = await bcrypt.genSalt(12);     // define o tamanho do hash (12 caracteres)
@@ -58,7 +60,7 @@ async (req,res) => {
 
     try{
         // executa a query de atualização do usuário
-        const query  = `CALL ModifyUser(?, ?, ?)`;
+        const query  = `CALL ModifyUser(?, ?, ?);`;
         const values = [userId, email, passwordHash];
 
         // Executa a consulta

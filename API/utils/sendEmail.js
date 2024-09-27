@@ -20,7 +20,7 @@ function checkEmail(mensagem){
     transporter.sendMail({
         // configuração para localizar o email endereçado e enviar o token
         from:"eco12biotec@gmail.com",
-        to:"houtarousenki@gmail.com",
+        to:"houtarousenki@gmail.com",   //trocar e-mail
         subject:"Recuperação de senha",
         text:mensagem
 

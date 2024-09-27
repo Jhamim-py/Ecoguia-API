@@ -1,15 +1,14 @@
-const connection = require('../../../data/connection')//conexão com o banco de dados
+const connection = require('../../../data/connection'); //conexão com o banco de dados
 
 exports.viewArticles =
 async (res) => {
   //realiza a conexão com o banco de dados
   const executeConnection = await connection.getConnection();
-
   try{
-    const query= `SELECT * FROM ViewAllArticle LIMIT 3`;
+    const query= `SELECT * FROM ViewAllArticle LIMIT 3;`;
 
     // envio de query para o banco de dados e retorna o resultado
-    const [results] = executeConnection.query(query, values);
+    const [results] = await executeConnection.query(query);
     if (results > 0) {
       return res.status(200).json(results);
     };
