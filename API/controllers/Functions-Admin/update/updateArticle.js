@@ -18,7 +18,6 @@ async(req,res) =>{
     category = valorNulo(category)
     description = valorNulo(description)
     reference = valorNulo(reference)
-    console.log(id)
      //verifica se os dados ultrapassam 2048
     if(checkLength(image) == false || checkLength(description) == false || checkLength(reference)){
       return res.status(400).json({message: "O campo não pode exceder 2048 caracteres"})
