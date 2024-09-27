@@ -29,7 +29,6 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         const [results] = await executeConnection.query(query, values);
         if(results.length == 0){
             return res.status(404).json({msg: "Usuário não encontrado."});
-            
         };  
         // armazena o valor retornado numa variável (neste caso, o e-mail)
         const user = results[0];

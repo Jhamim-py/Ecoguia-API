@@ -5,7 +5,6 @@ const { response } = require('express');
 
 let correios = new Correios();
 
-
 async function timeLoga(result){
     let response;
 
@@ -34,6 +33,7 @@ async function timeLoga(result){
         await page.goto('https://sgo3.loga.com.br/consultav2/', { waitUntil: 'networkidle2' });
 
         console.log('Waiting for the search input...');
+
         await page.waitForSelector('#inputSearch', { visible: true, timeout: 1000 });
 
         console.log('Typing search term...');
@@ -44,6 +44,7 @@ async function timeLoga(result){
 
         console.log('Waiting for the results...');
         // Ajuste o seletor para corresponder corretamente ao elemento
+      
         await page.waitForSelector('.result-header--item.toggle-off', { visible: true, timeout: 2000 });
 
         console.log('Extracting header item...');
@@ -101,7 +102,7 @@ async function timeUrbis(result2){
 
         console.log('Pressing Enter to initiate search...');
         await page.keyboard.press('Enter');
-        
+
         console.log('Waiting for the results...');
         await page.waitForSelector('.cd-loc-table--result', { visible: true, timeout: 10000 });
 
@@ -151,4 +152,4 @@ exports.pickupTime = async (req, res) => {
     }else{
         return res.status(404).json("Verifique se o cep está digitado corretamente." );
     }
-}
+};

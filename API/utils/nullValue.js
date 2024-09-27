@@ -1,8 +1,8 @@
 // função que checa e automatiza o valor nulo para dados de entrada
 module.exports =
 function nullValue(value){
-    //se o valor do dado estiver 'empty' ou 'undefined', retorna como nulo
-    if(value == undefined || value == empty()){
+    //se o valor do dado estiver '' (vázio) ou 'undefined', retorna como nulo
+    if(value == undefined || value === ''){
         return null;
     }
     else{

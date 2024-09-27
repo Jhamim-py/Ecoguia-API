@@ -40,4 +40,3 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
             await executeConnection.end();
         };
     };
-}

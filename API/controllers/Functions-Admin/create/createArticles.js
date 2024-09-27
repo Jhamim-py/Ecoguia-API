@@ -13,6 +13,7 @@ async (req, res) => {
 	
 	//variáveis responsáveis por armazenar os dados
 	const url = 'https://gnews.io/api/v4/search';
+  
     const params = {
       q: 'meio ambiente',         //palavra chave utilizada na busca dos artigos
       lang: 'pt',                 //idioma do artigo

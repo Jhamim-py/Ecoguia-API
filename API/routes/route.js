@@ -10,6 +10,12 @@ const updadteLevel  = require('../controllers/Functions-Admin/update/updateLevel
 
 const deleteArticle = require('../controllers/Functions-Admin/delete/deleteArticle');
 
+const createTip     = require('../controllers/Functions-Admin/create/createTips');
+
+const updateTip     = require('../controllers/Functions-Admin/update/updateTip');
+
+const deleteTip     = require('../controllers/Functions-Admin/delete/deleteTip');
+
 
 // rotas de SISTEMA
 const viewPickupTime= require('../controllers/Functions-System/read/viewPickupTime');
@@ -48,9 +54,15 @@ const routes = Router();
 //cria um novo artigo com os dados de entrada
 routes.post('/createArticles', createArticle.createArticle);
 
+//cria uma nova dica com a entrada da descrição
+routes.post('/createTips', createTip.createTip);
+
 // PUT || UPDATE
 //modificar um artigo de acordo com o ID de entrada
 routes.put('/updateArticle', updateArticle.updateArticle);
+
+//modificar uma dica de acordo com o ID de entrada
+routes.put('/updateTip', updateTip.updateTip);
 
 //atualizar level do usuário
 routes.put('/updateLevel',checkToken.checkToken,updadteLevel.updateLevel)
@@ -58,6 +70,9 @@ routes.put('/updateLevel',checkToken.checkToken,updadteLevel.updateLevel)
 // DELETE || DELETE
 //excluir um artigo de acordo com o ID e título de entrada
 routes.delete('/deleteArticle', deleteArticle.deleteArticle);
+
+//Excluir uma dica de acordo com o ID de entrada
+routes.delete('/deleteTip', deleteTip.deleteTip);
 
 
 // HTTPS de SISTEMA
