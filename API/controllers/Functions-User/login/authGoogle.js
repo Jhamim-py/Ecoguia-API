@@ -46,7 +46,7 @@ passport.deserializeUser((obj, done) => done(null, obj));
 const checkEmailExists = async (email) => {
   const connection = await getConnection();
   try {
-    const [rows] = await connection.query('SELECT * FROM tbl_user WHERE email_user = ?', [email]);
+    const [rows] = await connection.query('SELECT * FROM ViewAllEmails WHERE email=?;', [email]);
     return rows.length > 0; // Retorna true se o e-mail existir
   } catch (error) {
     console.error('Erro ao verificar e-mail:', error);

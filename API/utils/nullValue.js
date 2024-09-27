@@ -7,5 +7,5 @@ function nullValue(value){
     }
     else{
         return value;
-    }
+    };
 };

@@ -11,9 +11,9 @@ const verificatePwd  = require('../../../utils/verificatePwd');// verifica e val
 // função de registro que pode ser exportada
 exports.postRegister =
 async (req, res)     => {   //função assíncrona com parâmetros de requisição e resposta
-    const { name, lastname, email, pwd, avatar } = req.body;   // variável responsável por armazenar os dados
-    const executeConnection = await connection.getConnection();      // variável que armazena a execução de conexão com o banco de dados
-    appCache.flushAll();                                       // comando que reseta o cachê do app
+    const { name, lastname, email, pwd, avatar } = req.body;     // variável responsável por armazenar os dados
+    const executeConnection = await connection.getConnection();  // variável que armazena a execução de conexão com o banco de dados
+    appCache.flushAll();                                         // comando que reseta o cachê do app
 
     // validação de campo
     if (!name || !lastname || !email || !pwd || !avatar) {
@@ -27,18 +27,13 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
     try{
         // verificar existência do E-mail no Banco de Dados através do uso de View
         const query = `SELECT * FROM ViewAllEmails WHERE pk_IDuser=?`;
-        const value = email; //aloca o valor colocado no campo 'E-mail' para essa variável
+        const values = email;  //aloca o valor colocado no campo 'E-mail' para essa variável
 
         // envio de query para o banco de dados e retorna o resultado
-        await executeConnection.query(query, value, async function(error, result){
-            if (error) {
-                console.log(error);
-                return res.status(500).json({ msg: "Algo deu errado ao buscar usuários, tente novamente."});
-            };
-            if (result.length > 0) {
-                return res.status(422).json({ msg: "Este e-mail já está em uso."});
-            };
-        });
+        const [results] = await executeConnection.query(query, values);
+        if(results.length > 0){
+            return res.status(422).json({ msg: "Este e-mail já está em uso."});
+        };
 
         // verifica a formatação do dado colocado no campo 'senha' com função externa
         const verificate = verificatePwd(pwd);
@@ -55,7 +50,7 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
         appCache.set("avatar",  avatar);
 
         // cria e armazena o token no cachê da app
-        const sendToken = crypto.randomBytes(10).toString("hex");
+        const sendToken = crypto.randomBytes(4).toString("hex");
         appCache.set(sendToken,true); 
 
         // envia o token armazenado no e-mail
@@ -63,10 +58,13 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
         
         res.status(200).json(sendEmail(message));
     }catch(error){
-        console.error("Algo deu errado ao realizar o login, tente novamente: ", error);
+        console.error("Algo deu errado ao registrar usuário, tente novamente: ", error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-    };   
-
-    // fecha a conexão com o banco de dados
-     await executeConnection.end();
+    
+    }finally {
+        // Fecha a conexão com o banco de dados, se foi estabelecida
+        if (executeConnection) {
+            await executeConnection.end();
+        };
+    };
 };

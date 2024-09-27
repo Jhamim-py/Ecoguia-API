@@ -1,18 +1,18 @@
 // controle de rotas na URL e funções utilizadas
-const { Router }       = require ("express");
+const { Router }    = require ("express");
 
 // rotas de ADMIN
 const createArticle = require('../controllers/Functions-Admin/create/createArticles');
 
-const createTip     = require('../controllers/Functions-Admin/create/createTips');
-
 const updateArticle = require('../controllers/Functions-Admin/update/updateArticle');
-
-const updateTip     = require('../controllers/Functions-Admin/update/updateTip');
 
 const updadteLevel  = require('../controllers/Functions-Admin/update/updateLevel');
 
 const deleteArticle = require('../controllers/Functions-Admin/delete/deleteArticle');
+
+const createTip     = require('../controllers/Functions-Admin/create/createTips');
+
+const updateTip     = require('../controllers/Functions-Admin/update/updateTip');
 
 const deleteTip     = require('../controllers/Functions-Admin/delete/deleteTip');
 

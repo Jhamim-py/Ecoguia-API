@@ -1,6 +1,9 @@
-const express = require('express');
 const puppeteer = require('puppeteer');
-const cors = require('cors');
+
+const Correios = require('node-cep-correios');
+const { response } = require('express');
+
+let correios = new Correios();
 
 async function timeLoga(result){
     let response;
@@ -30,7 +33,8 @@ async function timeLoga(result){
         await page.goto('https://sgo3.loga.com.br/consultav2/', { waitUntil: 'networkidle2' });
 
         console.log('Waiting for the search input...');
-        await page.waitForSelector('#inputSearch', { visible: false, timeout: 60000 });
+
+        await page.waitForSelector('#inputSearch', { visible: true, timeout: 1000 });
 
         console.log('Typing search term...');
         await page.type('#inputSearch', result);
@@ -40,7 +44,8 @@ async function timeLoga(result){
 
         console.log('Waiting for the results...');
         // Ajuste o seletor para corresponder corretamente ao elemento
-        await page.waitForSelector('.result-header--item.toggle-off', { visible: true, timeout: 60000 });
+      
+        await page.waitForSelector('.result-header--item.toggle-off', { visible: true, timeout: 2000 });
 
         console.log('Extracting header item...');
         const headerItem = await page.evaluate(() => {
@@ -52,7 +57,7 @@ async function timeLoga(result){
 
     } catch (error) {
         console.error('Erro ao processar a página:', error.message);
-        res.status(500).json({ error: 'Erro ao processar a página. ' + error.message });
+        return null
     } finally {
         await browser.close();
         return response;
@@ -99,7 +104,7 @@ async function timeUrbis(result2){
         await page.keyboard.press('Enter');
 
         console.log('Waiting for the results...');
-        await page.waitForSelector('.cd-loc-table--result', { visible: true, timeout: 60000 });
+        await page.waitForSelector('.cd-loc-table--result', { visible: true, timeout: 10000 });
 
         console.log('Extracting header item...');
         const headerItem = await page.evaluate(() => {
@@ -111,7 +116,7 @@ async function timeUrbis(result2){
         
     } catch (error) {
         console.error('Erro ao processar a página:', error.message);
-        res.status(500).json({ error: 'Erro ao processar a página. ' + error.message });
+        return null;
     } finally {
         await browser.close();
         return response;
@@ -120,15 +125,31 @@ async function timeUrbis(result2){
 
 exports.pickupTime = async (req, res) => {
     //verificar qual empresa atende X região chamando as funções
-    const { searchTerm } = req.body;  
-    const ecoUrbis = await timeUrbis(searchTerm);
-    // const ecoLoga  = await timeLoga(searchTerm);
+    const { searchTerm } = req.body;
+    //verifica se o cep é válido
+    await correios.consultaCEP({ cep: searchTerm })
+    .then(result => { 
+      if(result.code){
+       return res.status(400).json("CEP inválido")
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
 
-    // if (ecoLoga){
-    //     return res.status(202).json(ecoLoga);
-     if (ecoUrbis){
+    //faz as buscas dos horários no site da ecourbis 
+    const ecoUrbis = await timeUrbis(searchTerm);
+
+    //faz as buscas dos horários no site da LOGA
+    const ecoLoga  = await timeLoga(searchTerm);
+
+    //manda a resposta pro usuario se houver respota no site da LOGA ou Ecourbis
+    if (ecoLoga){
+        return res.status(202).json(ecoLoga);
+       }
+     else if(ecoUrbis){
         return res.status(202).json(ecoUrbis);
     }else{
-        return res.status(505).json("Algo deu errado, por favor verifique." );
+        return res.status(404).json("Verifique se o cep está digitado corretamente." );
     }
-}
+};

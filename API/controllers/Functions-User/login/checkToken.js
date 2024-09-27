@@ -12,14 +12,14 @@ exports.checkToken =  (req, res, next) => {
 
     //verificar se há realmente um token
     if (!token) {
-        return res.status(401).json({ msg: 'Acesso negado!' });
+        return res.status(401).json({ msg: 'Acesso negado devido a autenticação do token de usuário.' });
     }
 
     //verificar se o token é válido
     try {
         const decodedToken = jwt.verify(token, process.env.SECRET);
         req.user = decodedToken; // Adicionar o ID do usuário ao objeto de solicitação
-        next();                  // Passa para o proximo passo da requiseção 
+        next();                  // Passa para o proximo passo da requisição 
     } catch (e) {
         console.error("Erro ao verificar o token:", e);
         res.status(400).json({ msg: 'Token inválido!', error: e.message });

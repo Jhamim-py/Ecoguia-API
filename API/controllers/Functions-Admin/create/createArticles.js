@@ -1,16 +1,19 @@
-// importação do arquivo de configuração .env
-require('dotenv').config();
-//componentes do node 
+require('dotenv').config(); // importação do arquivo de configuração .env
+
 const axios             = require('axios').default;                  //biblioteca para realizar as requisições na API externa 
+
 const connection        = require('../../../data/connection');       //conexão com o banco de dados
 const checkLength       = require('../../../utils/characterLimit');  //verifica se o dado ultrapassa o limite de caracteres
 const checkArticle      = require('../../../utils/checkArticle');    //verifica se o artigo adicionado já existe no banco de dados
-exports.createArticle   =
 
-async (req,res) => {
-  //executa a conexão com o banco de dados
-const executeConnection = connection.getConnection();
-    const url = 'https://gnews.io/api/v4/search';
+exports.createArticle   =
+async (req, res) => {
+	//executa a conexão com o banco de dados
+	const executeConnection = await connection.getConnection();
+	
+	//variáveis responsáveis por armazenar os dados
+	const url = 'https://gnews.io/api/v4/search';
+  
     const params = {
       q: 'meio ambiente',         //palavra chave utilizada na busca dos artigos
       lang: 'pt',                 //idioma do artigo
@@ -18,56 +21,61 @@ const executeConnection = connection.getConnection();
       max: 10,                    //número máximo de artigos pegos na requisição
       apikey: process.env.APIKEY  //chave da API
     };
-    try{
-      //realiza a requisição na API externa
-      const response = await axios.get(url,{params});
-      //armazena os dados da reqisição 
-      const articles = response.data.articles;
-      //função para adicionar os artigos no banco de dados 
-      for(let i = 0; i < articles.length; i++){
-        //pega cada artigo por índice
-        const article = articles[i];
-        let image = article.image;
-        let title = article.title;
-        let category = "Meio ambiente";
-        let description = article.description;
-        let reference = article.url;
-        //verifica se os dados ultrapassam 2048
-       if(!checkLength(image) | !checkLength(description)|| !checkLength(reference)){
-        //se ultrapassar, não adiciona no banco de dados e passa para próxima interação
-       continue;
-       } 
-    if(!checkArticle(title) && i == articles.length - 1){
-       //se ultrapassar 2048 caracteres e for a ultima interação retorna o resultado da requisição
-        return res.status(200).json({ msg: "Artigos adicionados com successo"});
-       }  
-       //verifica se o artigo já existe no banco de dados
-       if(!checkArticle(title)){
-        console.log("Artigo já existente no banco de dados");
-        continue;
-       }
-     
-        const query= `CALL CreateArticle(?,?,?,?,?);`;
-        const value = [image,title,category,description,reference];
-        //executa a query no banco de dados
-        executeConnection.query(query,value,function (erro,result){
-                if (erro) {
-                    console.log(erro);
-                    return res.status(500).json({ msg: "Erro ao adicionar o artigo"});
-                }
-                if ( i == articles.length - 1) {
-                  //retorna o resultado após a última interação
-                    return res.status(200).json({ msg: "Artigos adicionados com successo"});
-                }
-            })
-  
-      }
-    }
-    catch(erro){
-      console.log(erro);
-    } finally{
-      //fecha a conexão com o banco de dados
-        executeConnection.end();
-    }
-    }
 
+    try{
+		//realiza a requisição na API externa
+		const response = await axios.get(url, {params});
+
+		//armazena os dados da reqisição 
+		const articles = response.data.articles;
+
+		//função para adicionar os artigos no banco de dados 
+		for (let i = 0; i < articles.length; i++){
+
+			//pega cada artigo por índice
+			const article = articles[i];
+
+			//variáveis locais para enviar ao banco de dados
+			let image = article.image;
+			let title = article.title;
+			let category = "artigo";
+			let description = article.description;
+			let reference = article.url;
+
+			//verifica se algum dos dados ultrapassam 2048 caracteres
+			if (!checkLength(image) | !checkLength(description)|| !checkLength(reference)){
+				//se ultrapassar, não adiciona no banco de dados e passa para próxima iteração
+				continue;
+			}
+			else if(!checkArticle(title)){
+				//se existir no banco de dados, não adiciona e passa para próxima iteração
+				continue;
+			}
+			else if (i == articles.length - 1){
+			// else if (!checkArticle(title) && i == articles.length - 1){
+				//caso seja a última iteração retorna o resultado da requisição
+				return res.status(200).json({ msg: "10 artigos foram armazenados."});
+			}; 
+
+			const query	 = `CALL CreateArticle(?, ?, ?, ?, ?);`;
+			const values = [image, title, category, description, reference];
+
+			//executa a query no banco de dados
+			const [results] = await executeConnection.query(query, values);
+			if(i == articles.length - 1 && results > 0){
+				return res.status(200).json({msg: "Artigos adicionados com sucesso!"});
+			}else{
+				return res.status(500).json({ msg: "Algo deu errado. Verifique" });
+			};
+		};
+	}catch(error){
+		console.error("Algo deu errado ao adicionar artigos por via externa, tente novamente: ", error);
+		// return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
+
+	}finally {
+		// Fecha a conexão com o banco de dados, se foi estabelecida
+		if (executeConnection) {
+			await executeConnection.end();
+		};
+	};
+};
