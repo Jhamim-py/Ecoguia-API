@@ -9,8 +9,6 @@ module.exports =
 function generateNickname (lastname) {
 //  Cria a lógica da constante do ID:
 
-    console.log('Número atual no cache:', cache.get('nickname'));
-
     //obtém o número atual do cache
     let number = cache.get('nickname');
 
@@ -19,6 +17,5 @@ function generateNickname (lastname) {
 
     // Incrementa o número e atualiza o cache
     cache.set('nickname', number + 1);
-    console.log('Novo número no cache:', cache.get('nickname'));
     return nickname;
 };
