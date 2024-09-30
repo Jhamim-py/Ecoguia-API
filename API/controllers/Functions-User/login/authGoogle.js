@@ -1,6 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy; 
 const jwt = require('jsonwebtoken');
+const generateNickname  = require('../../../utils/generateNickname');
 const { getConnection } = require('../../../data/connection'); // Importa a função para obter a conexão
 
 // Configura o Passport com a estratégia Google
@@ -16,15 +17,13 @@ async (accessToken, refreshToken, profile, done) => {
     const emailExists = await checkEmailExists(email); // Verifica se o e-mail existe no banco de dados
 
     if (!emailExists) {
+      const nickname = generateNickname(family_name);
+
       const user = { // Dados do novo usuário
         name: given_name,
         lastname: family_name,
         email: email,
-        nickname: (family_name + '#3212'), //atenção a esse erro aqui, modificar posteriormnete p dinâmico!!!
-        fk_avatar: 1,
-        fk_level: 1,
-        XP: 0,
-        fk_quest: 1
+        nickname: nickname,
       };
       await addUserToDatabase(user); // Adiciona o usuário ao banco de dados se não existir
     }
@@ -59,8 +58,8 @@ const checkEmailExists = async (email) => {
 // Função para adicionar um novo usuário ao banco de dados
 const addUserToDatabase = async (user) => {
   const connection = await getConnection();
-  const query = `INSERT INTO tbl_user (name_user, lastname_user, email_user, password_user, fk_level_user, fk_avatar_user, XP_user, nickname_user, fk_quest_user) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-  const values = [user.name, user.lastname, user.email, '', user.fk_level || 1, user.fk_avatar || 1, user.XP || 0, user.nickname, user.fk_quest || 1];
+  const query = `CALL CreateUser(?, ?, ?, ?, ?, ?)`;
+  const values = [user.name, user.lastname, user.email, '', user.nickname, 1];
   try {
     await connection.query(query, values); // Executa a inserção
   } catch (error) {
