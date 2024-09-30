@@ -2,7 +2,7 @@ const connection = require('../data/connection'); ////conexão com o banco de da
 
 //função assíncrona com uma promise
 module.exports =
-async function checkXp(id){ 
+async function checkXp(id,type,xp_material,peso){ 
     // variável que armazena a execução de conexão com o banco de dados
     const executeConnection = await connection.getConnection(); 
     
@@ -15,14 +15,17 @@ async function checkXp(id){
 
             // envio de query e captação de resposta
             const [results] = await executeConnection.query(query,values);
-            if(results.length > 0){
-                calculateLevel(results);
-                
-            }else{
+            if(results.length > 0 && type == 0){
+                calculateLevelQuest(results);             
+            }
+            else if(results.length > 0 && type == 1){
+                calculateLevelMaterial(results);
+            }
+            else{
                 console.error("Algo deu errado verificar os dados de XP do usuário." );
             };
             
-            function calculateLevel(results){
+            function calculateLevelQuest(results){
                 // armazena o valor retornado numa variável 
                 const response = results[0][0];
                 
@@ -39,10 +42,36 @@ async function checkXp(id){
                 else{
                     level = null;
                 }
-
                 //retorno da promise
                 resolve([addXp, level, quest]);
             };
+            
+            function calculateLevelMaterial(results){
+                // armazena o valor retornado numa variável 
+                const response = results[0][0];
+                
+                const userXp = response.XP_user; 
+                const xpMaterial = xp_material
+                const pesoMaterial = peso
+                const calculate = xpMaterial / 1000
+                const xp_total = calculate * pesoMaterial      
+                const addXp   = userXp + xp_total
+
+                let level  = response.ID_nowlevel;      //armazena o level do usuário
+
+                //verifica se a quantidade de xp para o próximo level foi alcançada
+                if (addXp >= response.XP_nowlevel){
+                    level = response.ID_nextlevel;
+                }
+                else{
+                    level = null;
+                }
+                const quest = null
+                //retorno da promise
+                resolve([addXp, level, quest]);
+            }
+            
+
         }catch(error){
             console.error("Algo deu errado ao atualizar XP, tente novamente: ", error); 
             return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });

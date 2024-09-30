@@ -56,7 +56,7 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
         // envia o token armazenado no e-mail
         const message = `Insira este token no aplicativo para validar seu e-mail. Expira em 30 minutos. \n Token: ${sendToken}`;
         
-        res.status(200).json(sendEmail(message));
+        res.status(200).json({msg:"email enviado "});
     }catch(error){
         console.error("Algo deu errado ao registrar usuário, tente novamente: ", error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
