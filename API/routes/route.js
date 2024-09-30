@@ -2,11 +2,15 @@
 const { Router }    = require ("express");
 
 // rotas de ADMIN
+const createAvatar  = require("../controllers/Functions-Admin/create/createAvatar");
+
 const createArticle = require('../controllers/Functions-Admin/create/createArticles');
 
 const createArticleManual =  require('../controllers/Functions-Admin/create/createArticleManual');
 
 const updateArticle = require('../controllers/Functions-Admin/update/updateArticle');
+
+const updateAvatar  = require('../controllers/Functions-Admin/update/updateAvatar');
 
 const updadteLevel  = require('../controllers/Functions-Admin/update/updateLevel');
 
@@ -53,10 +57,14 @@ const routes = Router();
 // HTTPS de ADMIN
 
 // POST || CREATE
-//cria um novo artigo com os dados de entrada
+
+//cria um novo avatar com o link de entrada
+routes.post('/createAvatar', createAvatar.createAvatar);
+
+//cria 10 novos artigos de API externa
 routes.post('/createArticles', createArticle.createArticle);
 
-//criar artigos manualmente
+//cria artigo manualmente com os dados de entrada
 routes.post('/createArticleManual',createArticleManual.createArticle)
 
 //cria uma nova dica com a entrada da descrição
@@ -65,6 +73,9 @@ routes.post('/createTips', createTip.createTip);
 // PUT || UPDATE
 //modificar um artigo de acordo com o ID de entrada
 routes.put('/updateArticle', updateArticle.updateArticle);
+
+//modificar um avatar de acordo com o ID de entrada e o ID do novo avatar
+routes.put('/updateAvatar', updateAvatar.updateAvatar);
 
 //modificar uma dica de acordo com o ID de entrada
 routes.put('/updateTip', updateTip.updateTip);
