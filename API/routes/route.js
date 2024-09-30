@@ -6,6 +6,8 @@ const createAvatar  = require("../controllers/Functions-Admin/create/createAvata
 
 const createArticle = require('../controllers/Functions-Admin/create/createArticles');
 
+const createArticleManual =  require('../controllers/Functions-Admin/create/createArticleManual');
+
 const updateArticle = require('../controllers/Functions-Admin/update/updateArticle');
 
 const updateAvatar  = require('../controllers/Functions-Admin/update/updateAvatar');
@@ -59,8 +61,11 @@ const routes = Router();
 //cria um novo avatar com o link de entrada
 routes.post('/createAvatar', createAvatar.createAvatar);
 
-//cria um novo artigo com os dados de entrada
+//cria 10 novos artigos de API externa
 routes.post('/createArticles', createArticle.createArticle);
+
+//cria artigo manualmente com os dados de entrada
+routes.post('/createArticleManual',createArticleManual.createArticle)
 
 //cria uma nova dica com a entrada da descrição
 routes.post('/createTips', createTip.createTip);
