@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')  // codifica em hash
 
 // variáveis de ambiente para importar funções
 const connection       = require('../../../data/connection');    // conexão com o banco de dados
-const appCache         = require('../../../utils/cache');        // armazena os dados de usuário, usado posteriormente para validações
+const appcacheTemp         = require('../../../utils/cacheTemp');        // armazena os dados de usuário, usado posteriormente para validações
 const verificatePwd    = require('../../../utils/verificatePwd');// importa função de verificar padrão de senha
 const getID            = require('../../../utils/getID')         // pegar o id do usuario pelo email
 
@@ -14,8 +14,8 @@ async (req, res) => {
     
     const executeConnection = await connection.getConnection();    //guarda a conexão com o banco
 
-    const userID = getID(appCache.get("email"));
-    const email  = appCache.get("email");                          
+    const userID = getID(appcacheTemp.get("email"));
+    const email  = appcacheTemp.get("email");                          
     const checkPwd = verificatePwd(pwd);                        //Verifica se a senha está nos padrões corretos
 
     // verificação de dados
@@ -27,11 +27,11 @@ async (req, res) => {
         return res.status(400).json({erro: checkPwd[1]});       //Mensagem correspondente ao erro encontrado na senha
     }
 
-    //verificação se o token está salvo corretamente no cache
-    console.log(appCache.get(token));
+    //verificação se o token está salvo corretamente no cacheTemp
+    console.log(appcacheTemp.get(token));
 
-    //verificar se o token enviado pelo usuário é o mesmo salvo no cache
-    if(!appCache.get(token)){
+    //verificar se o token enviado pelo usuário é o mesmo salvo no cacheTemp
+    if(!appcacheTemp.get(token)){
         return res.status(400).json({msg: "Token de usuário está inválido ou expirado."});
     }
 
