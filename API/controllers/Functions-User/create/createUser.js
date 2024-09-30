@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')  // criptografa dados em hash
 
 // variáveis de ambiente para importar funções
 const connection       = require('../../../data/connection');    // conexão com o banco de dados
-const appCache         = require('../../../utils/cache');        // armazena os dados de usuário, usado posteriormente para validações
+const appcacheTemp     = require('../../../utils/cacheTemp');    // armazena os dados de usuário, usado posteriormente para validações
 const generateNickname = require('../../../utils/generateNickname');   // função externa que é responsável por gerar um nickname (exige a entrada da variável 'name') 
 
 // função de registro que pode ser exportada
@@ -13,25 +13,25 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
    const executeConnection = await connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
 
     // validação de token
-    if (!appCache.get(token)) {
-        console.log(appCache.get(token));  //verificação
+    if (!appcacheTemp.get(token)) {
+        console.log(appcacheTemp.get(token));  //verificação
         return res.status(400).json({ msg: "Token inválido ou expirado" });
     }
 
     // puxa os dados do cliente armazenados no cachê do app
-    const name  = appCache.take("name");
+    const name  = appcacheTemp.take("name");
     console.log(name);          //verificação
 
-    const lastname = appCache.take("lastname");
+    const lastname = appcacheTemp.take("lastname");
     console.log(lastname);      //verificação
 
-    const email = appCache.take("email");
+    const email = appcacheTemp.take("email");
     console.log(email);         //verificação
 
-    const pwd   = appCache.take("pwd");
+    const pwd   = appcacheTemp.take("pwd");
     console.log(pwd);           //verificação 
 
-    const avatar = appCache.take("avatar");
+    const avatar = appcacheTemp.take("avatar");
     console.log(avatar);        //verificação
 
     // criptografa a senha dada em hash
@@ -48,7 +48,7 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
 
         // envio de query para o banco de dados e retorna o resultado
         const [results] = await executeConnection.query(query, values);
-        if (results.length > 0){
+        if (results.length != 0){
             return res.status(201).json({ msg: "Usuário criado com sucesso." });
         }else{
             return res.status(500).json({ msg: "Algo deu errado ao criar o usuário no banco de dados, tente novamente." });
@@ -62,6 +62,6 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
         if (executeConnection) {
             await executeConnection.end();
         };
-        appCache.flushAll();  // comando que reseta o cachê do app
+        appcacheTemp.flushAll();  // comando que reseta o cachê do app
     };
 };

@@ -15,7 +15,7 @@ async (res) => {
   }catch(error){
     console.error("Algo deu errado ao visualizar os artigos, tente novamente: ", error);
     return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-  
+
   }finally {
     // Fecha a conexão com o banco de dados, se foi estabelecida
     if (executeConnection) {

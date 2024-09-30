@@ -3,7 +3,7 @@ const crypto = require('crypto');  // gera token aleatório
 
 // variáveis de ambiente para importar funções
 const connection       = require('../../../data/connection');    // conexão com o banco de dados
-const appCache         = require('../../../utils/cache');        // armazena os dados de usuário, usado posteriormente para validações
+const appcacheTemp         = require('../../../utils/cacheTemp');        // armazena os dados de usuário, usado posteriormente para validações
 const sendEmail        = require('../../../utils/sendEmail');    // importa função de enviar token por email
 
 // importação do arquivo de configuração .env
@@ -28,8 +28,8 @@ async (req, res)  => {
         
         // cria e armazena o token no cachê da app
         const sendToken = crypto.randomBytes(10).toString("hex");
-        appCache.set(sendToken, true);
-        appCache.set("email",   email);
+        appcacheTemp.set(sendToken, true);
+        appcacheTemp.set("email",   email);
         
         // envia o token armazenado no e-mail
         const message = `Insira este token no aplicativo para validar seu e-mail. Expira em 30 minutos. \n Token: ${sendToken}`;
