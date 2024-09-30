@@ -2,11 +2,11 @@
 const { Router }    = require ("express");
 
 // rotas de ADMIN
-const createAvatar  = require("../controllers/Functions-Admin/create/createAvatar");
-
 const createArticle = require('../controllers/Functions-Admin/create/createArticles');
 
 const createArticleManual =  require('../controllers/Functions-Admin/create/createArticleManual');
+
+const createTip     = require('../controllers/Functions-Admin/create/createTips');
 
 const updateArticle = require('../controllers/Functions-Admin/update/updateArticle');
 
@@ -14,11 +14,9 @@ const updateAvatar  = require('../controllers/Functions-Admin/update/updateAvata
 
 const updadteLevel  = require('../controllers/Functions-Admin/update/updateLevel');
 
-const deleteArticle = require('../controllers/Functions-Admin/delete/deleteArticle');
-
-const createTip     = require('../controllers/Functions-Admin/create/createTips');
-
 const updateTip     = require('../controllers/Functions-Admin/update/updateTip');
+
+const deleteArticle = require('../controllers/Functions-Admin/delete/deleteArticle');
 
 const deleteTip     = require('../controllers/Functions-Admin/delete/deleteTip');
 
@@ -57,9 +55,6 @@ const routes = Router();
 // HTTPS de ADMIN
 
 // POST || CREATE
-
-//cria um novo avatar com o link de entrada
-routes.post('/createAvatar', createAvatar.createAvatar);
 
 //cria 10 novos artigos de API externa
 routes.post('/createArticles', createArticle.createArticle);
