@@ -50,7 +50,7 @@ async (req, res) => {
         // envia o token no e-mail
         const message =`Utilize o token para validação de troca de e-mail \n
         token: ${tokenForget}`;
-        sendEmail(message);
+        sendEmail(message,email);
 
         return res.status(200).json({message:"Confirme o token enviado pelo email para efetuar a atualização."});
     }

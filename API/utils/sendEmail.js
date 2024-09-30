@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 module.exports =
-function checkEmail(mensagem){
+function checkEmail(mensagem,email){
     const transporter = nodemailer.createTransport({
         // login e locação de conta responsável pelo envio do email
         host:"smtp.gmail.com",
@@ -20,7 +20,7 @@ function checkEmail(mensagem){
     transporter.sendMail({
         // configuração para localizar o email endereçado e enviar o token
         from:"eco12biotec@gmail.com",
-        to:"houtarousenki@gmail.com",   //trocar e-mail
+        to:`${email}`,   //trocar e-mail
         subject:"Recuperação de senha",
         text:mensagem
 

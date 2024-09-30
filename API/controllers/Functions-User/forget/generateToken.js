@@ -33,7 +33,7 @@ async (req, res)  => {
         
         // envia o token armazenado no e-mail
         const message = `Insira este token no aplicativo para validar seu e-mail. Expira em 30 minutos. \n Token: ${sendToken}`;
-        sendEmail(message);
+        sendEmail(message,email);
         res.status(200).json({ msg: "email enviado" });
 
     }catch(error){
