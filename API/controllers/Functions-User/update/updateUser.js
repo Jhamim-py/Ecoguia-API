@@ -5,7 +5,7 @@ const validator      = require('email-validator');           //verificação de 
 
 // funções exportadas
 const connection     = require('../../../data/connection');  // conexão com o banco de dados
-const appCache       = require('../../../utils/cache');      // armazena os dados de usuário, usado posteriormente para validações
+const appcacheTemp   = require('../../../utils/cacheTemp');  // armazena os dados de usuário, usado posteriormente para validações
 const sendEmail      = require('../../../utils/sendEmail');  //importa função de enviar token por email
 const verificatePwd  = require('../../../utils/verificatePwd'); // importa função de verificar padrão de senha
 
@@ -15,12 +15,12 @@ async (req, res) => {
     const userId = req.user.id;
     let {email, pwd} = req.body;
 
-    const executeConnection = await connection.getConnection();   //variável que armazena a execução de conexão com o banco de dados
+    const executeConnection = await connection.getConnection(); //variável que armazena a execução de conexão com o banco de dados
 
     //verificar o padrão da senha
     const check  = verificatePwd(pwd);
     if (check[0] == false){
-        return res.status(400).json({erro: check[1]}); //Mensagem correspondente ao erro encontrado na senha
+        return res.status(400).json({erro: check[1]});  //Mensagem correspondente ao erro encontrado na senha
     }
 
     //validar formato do email e se ele existe na requisição
@@ -35,22 +35,22 @@ async (req, res) => {
         //será enviado um token para esse novo endereço.
 
         //puxa os dados do cliente armazenados no cachê do app
-        appCache.set("endereco", email);
-        appCache.set("senha",    pwd);
+        appcacheTemp.set("endereco", email);
+        appcacheTemp.set("senha",    pwd);
 
         //verificação abaixo
-        console.log(appCache.take("endereco"));
+        console.log(appcacheTemp.take("endereco"));
         console.log(pwd);
         console.log("final de verificação de valores");
 
         //cria um token para verificação
         const tokenForget = crypto.randomBytes(10).toString("hex");
-        appCache.set(tokenForget,true);
+        appcacheTemp.set(tokenForget, true);
 
         // envia o token no e-mail
         const message =`Utilize o token para validação de troca de e-mail \n
         token: ${tokenForget}`;
-        sendEmail(message);
+        sendEmail(message,email);
 
         return res.status(200).json({message:"Confirme o token enviado pelo email para efetuar a atualização."});
     }

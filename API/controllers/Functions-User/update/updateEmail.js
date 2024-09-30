@@ -1,6 +1,6 @@
 const connection     =  require('../../../data/connection');  // conexão com o banco de dados
 const bcrypt         =  require('bcrypt');                   // criptografa dados em hash
-const appCache       =  require('../../../utils/cache');         // armazena os dados de usuário, usado posteriormente para validações
+const appcacheTemp   =  require('../../../utils/cacheTemp');         // armazena os dados de usuário, usado posteriormente para validações
 
 // Função assíncrona para atualizar o E-mail do usuário
 exports.updateEmail =
@@ -8,12 +8,12 @@ async (req, res) => {
 	// variáveis responsáveis por armazenar os dados
 	const {token} = req.body;
 	const userId  = req.user.id;
-	const email   = appCache.take("endereco");
-	const senha   = appCache.take("senha");
+	const email   = appcacheTemp.take("endereco");
+	const senha   = appcacheTemp.take("senha");
 
 	//verifica se o token é válido
-	if (!appCache.get(token)) {
-		console.log(appCache.get(token));  //verificação
+	if (!appcacheTemp.get(token)) {
+		console.log(appcacheTemp.get(token));  //verificação
 		return res.status(400).json({ msg: "Token inválido ou expirado" });
 		
 	};
@@ -47,6 +47,6 @@ async (req, res) => {
 		if (executeConnection) {
 			await executeConnection.end();
 		};
-		appCache.flushAll(); // comando que reseta o cachê do app
+		appcacheTemp.flushAll(); // comando que reseta o cachê do app
 	};
 };
