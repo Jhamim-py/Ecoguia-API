@@ -4,7 +4,7 @@ const validatorEmail =  require('email-validator'); // verifica e valida o forma
 
 // variáveis de ambiente para importar funções
 const connection     = require('../../../data/connection');    // conexão com o banco de dados
-const appCache       = require('../../../utils/cache');        // armazena os dados de usuário, usado posteriormente para validações
+const appcacheTemp   = require('../../../utils/cacheTemp');    // armazena os dados de usuário, usado posteriormente para validações
 const sendEmail      = require('../../../utils/sendEmail');    // importa função de enviar token por email
 const verificatePwd  = require('../../../utils/verificatePwd');// verifica e valida o formato 'senha', se contém 8 caracteres, etc.
 
@@ -13,7 +13,7 @@ exports.postRegister =
 async (req, res)     => {   //função assíncrona com parâmetros de requisição e resposta
     const { name, lastname, email, pwd, avatar } = req.body;     // variável responsável por armazenar os dados
     const executeConnection = await connection.getConnection();  // variável que armazena a execução de conexão com o banco de dados
-    appCache.flushAll();                                         // comando que reseta o cachê do app
+    appcacheTemp.flushAll();                                         // comando que reseta o cachê do app
 
     // validação de campo
     if (!name || !lastname || !email || !pwd || !avatar) {
@@ -43,20 +43,21 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
         }
 
         // armazena os valores passados no cachê do app
-        appCache.set("name",    name);
-        appCache.set("lastname",lastname);
-        appCache.set("email",   email);
-        appCache.set("pwd",     pwd);
-        appCache.set("avatar",  avatar);
+        appcacheTemp.set("name",    name);
+        appcacheTemp.set("lastname",lastname);
+        appcacheTemp.set("email",   email);
+        appcacheTemp.set("pwd",     pwd);
+        appcacheTemp.set("avatar",  avatar);
 
         // cria e armazena o token no cachê da app
         const sendToken = crypto.randomBytes(4).toString("hex");
-        appCache.set(sendToken,true); 
+        appcacheTemp.set(sendToken,true); 
 
         // envia o token armazenado no e-mail
         const message = `Insira este token no aplicativo para validar seu e-mail. Expira em 30 minutos. \n Token: ${sendToken}`;
         
-        res.status(200).json({msg:"email enviado "});
+        sendEmail(message);
+        res.status(200).json({ msg: "E-mail de validação de conta enviado com sucesso. Verifique."});
     }catch(error){
         console.error("Algo deu errado ao registrar usuário, tente novamente: ", error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
