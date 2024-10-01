@@ -2,9 +2,9 @@
 const { Router }    = require ("express");
 
 // rotas de ADMIN
-const createArticle = require('../controllers/Functions-Admin/create/createArticles');
+const createArticles = require('../controllers/Functions-Admin/create/createArticles');
 
-const createArticleManual =  require('../controllers/Functions-Admin/create/createArticleManual');
+const createArticle = require('../controllers/Functions-Admin/create/createArticle');
 
 const createTip     = require('../controllers/Functions-Admin/create/createTips');
 
@@ -57,10 +57,10 @@ const routes = Router();
 // POST || CREATE
 
 //cria 10 novos artigos de API externa
-routes.post('/createArticles', createArticle.createArticle);
+routes.post('/createArticles', createArticles.createArticles);
 
 //cria artigo manualmente com os dados de entrada
-routes.post('/createArticleManual',createArticleManual.createArticle)
+routes.post('/createArticle',createArticle.createArticle);
 
 //cria uma nova dica com a entrada da descrição
 routes.post('/createTips', createTip.createTip);
