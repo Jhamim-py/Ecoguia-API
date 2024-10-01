@@ -22,7 +22,7 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
 
         // Executa a consulta
         const results = await executeConnection.query(query, values);
-        console.log(results)
+        results;
         if(results.length != 0){
             return res.status(200).json({msg: "Perfil do Usuário atualizado com sucesso."});
             
