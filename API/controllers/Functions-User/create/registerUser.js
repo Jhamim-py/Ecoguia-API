@@ -26,11 +26,12 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
  
     try{
         // verificar existência do E-mail no Banco de Dados através do uso de View
-        const query = `SELECT * FROM ViewAllEmails WHERE pk_IDuser=?`;
+        const query = `SELECT * FROM ViewAllEmails WHERE email=?`;
         const values = email;  //aloca o valor colocado no campo 'E-mail' para essa variável
 
         // envio de query para o banco de dados e retorna o resultado
         const [results] = await executeConnection.query(query, values);
+        console.log(results)
         if(results.length > 0){
             return res.status(422).json({ msg: "Este e-mail já está em uso."});
         };
@@ -56,7 +57,7 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
         // envia o token armazenado no e-mail
         const message = `Insira este token no aplicativo para validar seu e-mail. Expira em 30 minutos. \n Token: ${sendToken}`;
         
-        sendEmail(message);
+        sendEmail(message,email);
         res.status(200).json({ msg: "E-mail de validação de conta enviado com sucesso. Verifique."});
     }catch(error){
         console.error("Algo deu errado ao registrar usuário, tente novamente: ", error);

@@ -13,9 +13,12 @@ exports.updateUser =
 async (req, res) => {
     //variáveis responsáveis por armazenar os dados requeridos na requisição
     const userId = req.user.id;
+    const executeConnection = await connection.getConnection();// variável que armazena a execução de conexão com o banco de dados
     let {email, pwd} = req.body;
-
-    const executeConnection = await connection.getConnection(); //variável que armazena a execução de conexão com o banco de dados
+ 
+    console.log(email)
+    console.log(pwd)
+    
 
     //verificar o padrão da senha
     const check  = verificatePwd(pwd);
@@ -26,7 +29,7 @@ async (req, res) => {
     //validar formato do email e se ele existe na requisição
     if (!validator.validate(email) && email == "") {
        email = null;
-    }
+    } 
     else if(!validator.validate(email)){ 
         return res.status(400).json({message: "E-mail inválido."});
     }
@@ -38,13 +41,10 @@ async (req, res) => {
         appcacheTemp.set("endereco", email);
         appcacheTemp.set("senha",    pwd);
 
-        //verificação abaixo
-        console.log(appcacheTemp.take("endereco"));
-        console.log(pwd);
         console.log("final de verificação de valores");
 
         //cria um token para verificação
-        const tokenForget = crypto.randomBytes(10).toString("hex");
+        const tokenForget = crypto.randomBytes(3).toString("hex");
         appcacheTemp.set(tokenForget, true);
 
         // envia o token no e-mail
@@ -64,7 +64,8 @@ async (req, res) => {
         const values = [userId, email, passwordHash];
 
         // Executa a consulta
-        const [results] = await executeConnection.query(query, values);
+        const [results] = await executeConnection.query(query,values);
+        console.log(results)
         if(results.length > 0){
             return res.status(200).json({msg: "Usuário atualizado com sucesso."});
         }else{

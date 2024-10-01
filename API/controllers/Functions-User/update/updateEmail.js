@@ -8,9 +8,10 @@ async (req, res) => {
 	// variáveis responsáveis por armazenar os dados
 	const {token} = req.body;
 	const userId  = req.user.id;
-	const email   = appcacheTemp.take("endereco");
-	const senha   = appcacheTemp.take("senha");
-
+	const email   = appcacheTemp.get("endereco");
+	const senha   = appcacheTemp.get("senha");
+    console.log(senha) 
+	console.log(email)
 	//verifica se o token é válido
 	if (!appcacheTemp.get(token)) {
 		console.log(appcacheTemp.get(token));  //verificação
@@ -32,12 +33,13 @@ async (req, res) => {
 
 		// Executa a consulta
 		const [results] = await executeConnection.query(query, values);
-		if(results.length > 0){
+		console.log(results)
+		if(results.length != 0){
 			return res.status(200).json({msg: "Usuário atualizado com sucesso."});
 		}else{
 			return res.status(500).json({ msg: "Algo deu errado no banco de dados. Verifique." });
 		};
-
+ 
 	}catch(error){
 		console.error("Algo deu errado ao atualizar e-mail, tente novamente: ", error);
 		return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });

@@ -34,7 +34,7 @@ async (req, res) => {
 
 			//pega cada artigo por índice
 			const article = articles[i];
-
+		
 			//variáveis locais para enviar ao banco de dados
 			let image = article.image;
 			let title = article.title;
@@ -43,7 +43,7 @@ async (req, res) => {
 			let reference = article.url;
 
 			//verifica se algum dos dados ultrapassam 2048 caracteres
-			if (!checkLength(image) | !checkLength(description)|| !checkLength(reference)){
+			if (!checkLength(image) || !checkLength(description)|| !checkLength(reference)){
 				//se ultrapassar, não adiciona no banco de dados e passa para próxima iteração
 				continue;
 			}
