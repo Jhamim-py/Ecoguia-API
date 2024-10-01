@@ -34,7 +34,7 @@ async (req, res) => {
 
 			//pega cada artigo por índice
 			const article = articles[i];
-
+		
 			//variáveis locais para enviar ao banco de dados
 			let image = article.image;
 			let title = article.title;
