@@ -8,29 +8,23 @@ const connection     = require('../../../data/connection');  // conexão com o b
 const appcacheTemp   = require('../../../utils/cacheTemp');  // armazena os dados de usuário, usado posteriormente para validações
 const sendEmail      = require('../../../utils/sendEmail');  //importa função de enviar token por email
 const verificatePwd  = require('../../../utils/verificatePwd'); // importa função de verificar padrão de senha
-
+const nullValue      = require('../../../utils/nullValue');
 exports.updateUser =
 async (req, res) => {
     //variáveis responsáveis por armazenar os dados requeridos na requisição
     const userId = req.user.id;
-    const executeConnection = await connection.getConnection();// variável que armazena a execução de conexão com o banco de dados
     let {email, pwd} = req.body;
  
-    console.log(email)
-    console.log(pwd)
+    const executeConnection = await connection.getConnection();// variável que armazena a execução de conexão com o banco de dados  
     
-
     //verificar o padrão da senha
     const check  = verificatePwd(pwd);
     if (check[0] == false){
         return res.status(400).json({erro: check[1]});  //Mensagem correspondente ao erro encontrado na senha
-    }
-
+    }else if (nullValue(email) == null){
     //validar formato do email e se ele existe na requisição
-    if (!validator.validate(email) && email == "") {
        email = null;
-    } 
-    else if(!validator.validate(email)){ 
+    }else if (!validator.validate(email)){ 
         return res.status(400).json({message: "E-mail inválido."});
     }
     else{
