@@ -8,7 +8,8 @@ const connection     = require('../../../data/connection');  // conexão com o b
 const appcacheTemp   = require('../../../utils/cacheTemp');  // armazena os dados de usuário, usado posteriormente para validações
 const sendEmail      = require('../../../utils/sendEmail');  //importa função de enviar token por email
 const verificatePwd  = require('../../../utils/verificatePwd'); // importa função de verificar padrão de senha
-const nullValue      = require('../../../utils/nullValue');
+const nullValue      = require('../../../utils/nullValue');  // importa função de verificar campo vazio
+
 exports.updateUser =
 async (req, res) => {
     //variáveis responsáveis por armazenar os dados requeridos na requisição
@@ -26,16 +27,13 @@ async (req, res) => {
        email = null;
     }else if (!validator.validate(email)){ 
         return res.status(400).json({message: "E-mail inválido."});
-    }
-    else{
+    }else{
         //Se houver um novo endereço de email na requisição,
         //será enviado um token para esse novo endereço.
 
         //puxa os dados do cliente armazenados no cachê do app
         appcacheTemp.set("endereco", email);
         appcacheTemp.set("senha",    pwd);
-
-        console.log("final de verificação de valores");
 
         //cria um token para verificação
         const tokenForget = crypto.randomBytes(3).toString("hex");
@@ -59,8 +57,8 @@ async (req, res) => {
 
         // Executa a consulta
         const [results] = await executeConnection.query(query,values);
-        console.log(results)
-        if(results.length > 0){
+        results;
+        if(results.length != 0){
             return res.status(200).json({msg: "Usuário atualizado com sucesso."});
         }else{
             return res.status(500).json({msg: "Algo deu errado ao tentar atualizar o usuário, tente novamente."});
