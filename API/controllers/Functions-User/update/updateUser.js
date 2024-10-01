@@ -8,29 +8,26 @@ const connection     = require('../../../data/connection');  // conexão com o b
 const appcacheTemp   = require('../../../utils/cacheTemp');  // armazena os dados de usuário, usado posteriormente para validações
 const sendEmail      = require('../../../utils/sendEmail');  //importa função de enviar token por email
 const verificatePwd  = require('../../../utils/verificatePwd'); // importa função de verificar padrão de senha
+const nullValue      = require('../../../utils/nullValue');  // importa função de verificar campo vazio
 
 exports.updateUser =
 async (req, res) => {
     //variáveis responsáveis por armazenar os dados requeridos na requisição
     const userId = req.user.id;
     let {email, pwd} = req.body;
-
-    const executeConnection = await connection.getConnection(); //variável que armazena a execução de conexão com o banco de dados
-
+ 
+    const executeConnection = await connection.getConnection();// variável que armazena a execução de conexão com o banco de dados  
+    
     //verificar o padrão da senha
     const check  = verificatePwd(pwd);
     if (check[0] == false){
         return res.status(400).json({erro: check[1]});  //Mensagem correspondente ao erro encontrado na senha
-    }
-
+    }else if (nullValue(email) == null){
     //validar formato do email e se ele existe na requisição
-    if (!validator.validate(email) && email == "") {
        email = null;
-    }
-    else if(!validator.validate(email)){ 
+    }else if (!validator.validate(email)){ 
         return res.status(400).json({message: "E-mail inválido."});
-    }
-    else{
+    }else{
         //Se houver um novo endereço de email na requisição,
         //será enviado um token para esse novo endereço.
 
@@ -38,13 +35,8 @@ async (req, res) => {
         appcacheTemp.set("endereco", email);
         appcacheTemp.set("senha",    pwd);
 
-        //verificação abaixo
-        console.log(appcacheTemp.take("endereco"));
-        console.log(pwd);
-        console.log("final de verificação de valores");
-
         //cria um token para verificação
-        const tokenForget = crypto.randomBytes(10).toString("hex");
+        const tokenForget = crypto.randomBytes(3).toString("hex");
         appcacheTemp.set(tokenForget, true);
 
         // envia o token no e-mail
@@ -64,8 +56,9 @@ async (req, res) => {
         const values = [userId, email, passwordHash];
 
         // Executa a consulta
-        const [results] = await executeConnection.query(query, values);
-        if(results.length > 0){
+        const [results] = await executeConnection.query(query,values);
+        results;
+        if(results.length != 0){
             return res.status(200).json({msg: "Usuário atualizado com sucesso."});
         }else{
             return res.status(500).json({msg: "Algo deu errado ao tentar atualizar o usuário, tente novamente."});

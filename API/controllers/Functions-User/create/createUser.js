@@ -6,7 +6,7 @@ const connection       = require('../../../data/connection');    // conexão com
 const appcacheTemp     = require('../../../utils/cacheTemp');    // armazena os dados de usuário, usado posteriormente para validações
 const generateNickname = require('../../../utils/generateNickname');   // função externa que é responsável por gerar um nickname (exige a entrada da variável 'name') 
 
-// função de registro que pode ser exportada
+// função de registro que pode ser exportada 
 exports.createUser =
 async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
    const {token} = req.body;                                   // variável responsável por armazenar o token enviado ao cliente

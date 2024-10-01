@@ -14,27 +14,28 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
     name     = nullValue(name);
     lastname = nullValue(lastname);
     avatar   = nullValue(avatar);
-
+   
     try{
         // executa procedure de modificação que só acontece perante ID do usuário
         const query  = `CALL ModifyProfile(?, ?, ?, ?);`;
         const values = [userID, name, lastname, avatar];
 
         // Executa a consulta
-        const [results] = await executeConnection.query(query, values);
-        if(results.length > 0){
+        const results = await executeConnection.query(query, values);
+        results;
+        if(results.length != 0){
             return res.status(200).json({msg: "Perfil do Usuário atualizado com sucesso."});
             
         }else{
             return res.status(500).json({msg: "Algo deu errado ao atualizar o perfil do usuário, tente novamente."});
         };
-
+ 
     }catch(error){
         console.error("Algo deu errado ao atualizar o perfil do usuário, tente novamente: ", error);
         return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
     }finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida
-        if (executeConnection) {
+        if (executeConnection) { 
             await executeConnection.end();
         };
     };
