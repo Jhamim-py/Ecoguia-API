@@ -13,10 +13,9 @@ async (req, res) => {
     const {token, pwd}   = req.body;                               // variável responsável por armazenar os dados
     
     const executeConnection = await connection.getConnection();    //guarda a conexão com o banco
-    const email  = appcacheTemp.get("email");
-    const userID = await getID(email);
-    console.log(userID)
-                             
+
+    const userID = getID(appcacheTemp.get("email"));
+    const email  = appcacheTemp.get("email");                          
     const checkPwd = verificatePwd(pwd);                        //Verifica se a senha está nos padrões corretos
 
     // verificação de dados
@@ -46,7 +45,7 @@ async (req, res) => {
         const values = [userID,email,passwordHash];
 
         const [results] = await executeConnection.query(query, values);
-        if(results.length != 0){
+        if(results.length > 0){
             return res.status(200).json({msg: "Senha atualizada com sucesso."});
         }else{
             return res.status(500).json({ msg: "Algo deu errado ao atualizar senha, tente novamente." });
