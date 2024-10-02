@@ -13,10 +13,10 @@ async (req, res) => {
     const {token, pwd}   = req.body;                               // variável responsável por armazenar os dados
     
     const executeConnection = await connection.getConnection();    //guarda a conexão com o banco
+
     const email  = appcacheTemp.get("email");
     const userID = await getID(email);
-    console.log(userID)
-                             
+    console.log(userID)                       
     const checkPwd = verificatePwd(pwd);                        //Verifica se a senha está nos padrões corretos
 
     // verificação de dados

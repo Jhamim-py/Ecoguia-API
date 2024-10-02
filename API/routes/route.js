@@ -2,6 +2,8 @@
 const { Router }    = require ("express");
 
 // rotas de ADMIN
+const createQuestAndBadge = require('../controllers/Functions-Admin/create/createQuestAndBadge');
+
 const createArticles = require('../controllers/Functions-Admin/create/createArticles');
 
 const createArticle = require('../controllers/Functions-Admin/create/createArticle');
@@ -15,6 +17,8 @@ const updateAvatar  = require('../controllers/Functions-Admin/update/updateAvata
 const updadteLevel  = require('../controllers/Functions-Admin/update/updateLevel');
 
 const updateTip     = require('../controllers/Functions-Admin/update/updateTip');
+
+const deleteQuestAndBadge = require('../controllers/Functions-Admin/delete/deleteQuestAndBadge');
 
 const deleteArticle = require('../controllers/Functions-Admin/delete/deleteArticle');
 
@@ -56,6 +60,9 @@ const routes = Router();
 
 // POST || CREATE
 
+//criar uma nova quest com a entrada das informações
+routes.post('/createQuestAndBadge', createQuestAndBadge.createQuestAndBadge);
+
 //cria 10 novos artigos de API externa
 routes.post('/createArticles', createArticles.createArticles);
 
@@ -79,6 +86,9 @@ routes.put('/updateTip', updateTip.updateTip);
 routes.put('/updateLevel',checkToken.checkToken,updadteLevel.updateLevel)
 
 // DELETE || DELETE
+//excluiri uma quest de acordo com o ID de entrada
+routes.delete('/deleteQuestAndBadge', deleteQuestAndBadge.deleteQuestAndBadge);
+
 //excluir um artigo de acordo com o ID e título de entrada
 routes.delete('/deleteArticle', deleteArticle.deleteArticle);
 
