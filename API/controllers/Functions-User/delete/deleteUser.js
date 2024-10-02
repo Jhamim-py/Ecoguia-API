@@ -19,7 +19,7 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
 
         // envio de query de visualização para o banco de dados e armazena o resultado
         const [results] = await executeConnection.query(query, values);
-        if(results.length > 0){
+        if(results.length != 0){
             deletarUser(results);
 
         }else if(results.length == 0){
@@ -41,12 +41,12 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
             
             try{
                 // executa procedure de exclusão
-                const query  = `CALL DeleteUser(?,?)`;
+                const query  = `CALL DeleteUser(?, ?)`;
                 const values = [userID, pwd];
 
                 // envio de query de exclusão para o banco de dados
                 const [results] = executeConnection.query(query, values);
-                if(results.length > 0){
+                if(results.length != 0){
                     return res.status(200).json({ msg: "Usuário deletado com sucesso." });
                 }else{
                     console.log(error); //verificação
