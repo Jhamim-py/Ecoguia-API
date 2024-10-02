@@ -20,7 +20,7 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
         // envio de query de visualização para o banco de dados e armazena o resultado
         const [results] = await executeConnection.query(query, values);
         if(results.length != 0){
-            deletarUser(results);
+            await deletarUser(results);
 
         }else if(results.length == 0){
             return res.status(404).json({ msg: "Usuário não encontrado." });
