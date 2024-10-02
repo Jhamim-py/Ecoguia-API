@@ -7,20 +7,20 @@ const connection     = require('../../../data/connection'); // conexão com o ba
 // função de exclusão que pode ser exportada
 exports.deleteUser = 
 async (req, res) => {    //função assíncrona com parâmetros de requisição e resposta
-    const userID    = req.user.id;                          // variável que armazena o ID do usuário
+    const userID = req.user.id;                            // variável que armazena o ID do usuário
     const {pwdHash} = req.body;                             // variável que armazena o hash da senha
-
+    console.log(userID)
     //variável de conexão com o banco de dados
     const executeConnection = await connection.getConnection();
-    try{
+    try{ 
         // executa procedure de seleção de usuário 
-        const query  = `SELECT * FROM ViewAllEmails WHERE pk_IDuser=?;`;
+        const query  = `SELECT * FROM ViewAllEmails WHERE pk_IDuser = ?;`;
         const values = userID;
 
         // envio de query de visualização para o banco de dados e armazena o resultado
         const [results] = await executeConnection.query(query, values);
-        if(results.length > 0){
-            deletarUser(results);
+        if(results.length != 0){
+           await deletarUser(results);
 
         }else if(results.length == 0){
             return res.status(404).json({ msg: "Usuário não encontrado." });
@@ -31,8 +31,10 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
         async function deletarUser(results){
             // armazena as informações recebidas
             const userInfos = results[0];
+            console.log(userInfos)
             const pwd       = userInfos.pwd;
-
+            console.log(pwd)
+            console.log()
             // checa a senha bate com o hash armazenado no banco através da biblioteca bcrypt
             const checkPwd  = await bcrypt.compare(pwdHash, pwd);
             if ( !checkPwd ){
@@ -45,8 +47,8 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
                 const values = [userID, pwd];
 
                 // envio de query de exclusão para o banco de dados
-                const [results] = executeConnection.query(query, values);
-                if(results.length > 0){
+                const results = executeConnection.query(query, values);
+                if(results.length != 0){
                     return res.status(200).json({ msg: "Usuário deletado com sucesso." });
                 }else{
                     console.log(error); //verificação

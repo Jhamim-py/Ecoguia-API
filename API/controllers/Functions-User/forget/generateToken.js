@@ -42,7 +42,7 @@ async (req, res)  => {
     }finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida
         if (executeConnection) {
-            await executeConnection.end();
+            await executeConnection.end(); 
         };
     };
 };
