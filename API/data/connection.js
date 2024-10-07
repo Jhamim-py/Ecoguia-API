@@ -2,7 +2,7 @@ const mysql2 = require('mysql2/promise');
 
 // Função para obter a conexão com o banco de dados
 exports.getConnection = async () => {
-  try {
+  try { 
     const connection = await mysql2.createConnection({
       host: 'localhost',
       user: 'root',
