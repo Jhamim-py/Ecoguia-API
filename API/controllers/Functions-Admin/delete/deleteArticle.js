@@ -14,7 +14,8 @@ async(req, res) => {
 
     //executa a query
     const [results] = await executeConnection.query(query, values);
-    if (results.length > 0){
+    results;
+    if (results.length != 0){
       return res.status(200).json({ msg: "Artigo deletado com sucesso." });
     }else{
       return res.status(404).json({ msg: "Algo deu errado ao deletar o artigo no banco de dados, tente novamente." });
