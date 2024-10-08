@@ -19,7 +19,7 @@ async (req, res) => {
         };
 
         // Query para buscar uma dica aleatória da tabela ViewAllTip
-        const query = `SELECT * FROM ViewRandomTip`;
+        const query = `SELECT * FROM ViewAllTip ORDER BY RAND() LIMIT 1;`;
         const [results] = await executeConnection.query(query); // Executa a consulta
 
         if (results.length > 0) { // Verifica se há resultados
