@@ -1,10 +1,6 @@
 const executeConnection = require('../../../data/connection'); // conexão com o banco de dados
 
 exports.deleteQuestAndBadge = async (req, res) => {
-  // variáveis responsáveis por armazenar os dados
-  const { idQuest } = req.body; // supondo que você está passando o ID da quest que deseja deletar
-  
-  console.log(idQuest); // verificação
 
   // executa a conexão com o banco de dados
   const connection = await executeConnection.getConnection(); // Certifique-se de que essa função retorne uma Promise que resolve a conexão.

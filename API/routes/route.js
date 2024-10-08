@@ -14,9 +14,9 @@ const updateArticle = require('../controllers/Functions-Admin/update/updateArtic
 
 const updateAvatar  = require('../controllers/Functions-Admin/update/updateAvatar');
 
-const updadteLevel  = require('../controllers/Functions-Admin/update/updateLevel');
-
 const updateTip     = require('../controllers/Functions-Admin/update/updateTip');
+
+const updateQuestAndBadge = require('../controllers/Functions-Admin/update/updateQuestAndBadge');
 
 const deleteQuestAndBadge = require('../controllers/Functions-Admin/delete/deleteQuestAndBadge');
 
@@ -82,8 +82,8 @@ routes.put('/updateAvatar', updateAvatar.updateAvatar);
 //modificar uma dica de acordo com o ID de entrada
 routes.put('/updateTip', updateTip.updateTip);
 
-//atualizar level do usuário
-routes.put('/updateLevel',checkToken.checkToken,updadteLevel.updateLevel)
+//atualizar quest e badge de acordo com Dados de entrada
+routes.put('/updateQuestAndBadge', updateQuestAndBadge.updateQuestAndBadge );
 
 // DELETE || DELETE
 //excluiri uma quest de acordo com o ID de entrada
@@ -103,7 +103,7 @@ routes.delete('/deleteTip', deleteTip.deleteTip);
 routes.get('/pickupTime', viewPickupTime.pickupTime);
 
 //visualiza a dica diária
-routes.get('/tip', viewTip.getTip);
+routes.get('/tips', viewTip.getTip);
 
 //visualiza os artigos
 routes.get('/articles', viewArticles.viewArticles);
