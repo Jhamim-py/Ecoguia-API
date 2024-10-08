@@ -55,9 +55,9 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
         appcacheTemp.set(sendToken,true); 
 
         // envia o token armazenado no e-mail
-        const message = `Insira este token no aplicativo para validar seu e-mail. Expira em 30 minutos. \n Token: ${sendToken}`;
+        const message = `${sendToken}`;
         
-        sendEmail(message,email);
+        sendEmail(message,email, name);
         res.status(200).json({ msg: "E-mail de validação de conta enviado com sucesso. Verifique."});
     }catch(error){
         console.error("Algo deu errado ao registrar usuário, tente novamente: ", error);
