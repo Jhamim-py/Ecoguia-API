@@ -8,7 +8,7 @@ async(req, res) => {
   console.log(id);  //verificação
   
   //executa a conexão com o banco de dados
-  const connection = executeConnection.getConnection();
+  const executeConnection = await connection.getConnection();
   
   try{
     const query = `CALL DeleteArticle(?, ?);`;
@@ -16,7 +16,8 @@ async(req, res) => {
 
     //executa a query
     const [results] = await executeConnection.query(query, values);
-    if (results.length > 0){
+    results;
+    if (results.length != 0){
       return res.status(200).json({ msg: "Artigo deletado com sucesso." });
     }else{
       return res.status(404).json({ msg: "Algo deu errado ao deletar o artigo no banco de dados, tente novamente." });
@@ -26,8 +27,8 @@ async(req, res) => {
     res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
   } finally {
     // Fecha a conexão com o banco de dados, se foi estabelecida
-    if (executeConnection) {
-        await executeConnection.end();
+    if (connection) {
+      await executeConnection.end();
     };
   };
 };
