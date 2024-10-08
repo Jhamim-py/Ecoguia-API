@@ -3,12 +3,10 @@ const connection = require('../../../data/connection'); //conexão com o banco d
 exports.deleteArticle =
 async(req, res) => {
   //variáveis responsáveis por armazenar os dados
-  const {id,title} = req.body;
-  
-  console.log(id);  //verificação
+  const {id, title} = req.body;
   
   //executa a conexão com o banco de dados
-  const connection = executeConnection.getConnection();
+  const executeConnection = await connection.getConnection();
   
   try{
     const query = `CALL DeleteArticle(?, ?);`;
