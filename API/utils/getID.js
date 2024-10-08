@@ -11,13 +11,12 @@ async function getID(email) {
         const values = email;
 
         // envio de query para o banco de dados e retorna o resultado
-        const [results] = executeConnection.query(query, values);
-        if (results > 0) {
-            return results.pk_IDuser; //retornar id do susário
+        const [results] = await executeConnection.query(query, values);
+        if (results != 0) {
+            return results[0].pk_IDuser; //retornar id do susário
         };
     }catch(error){
         console.error("Algo deu errado ao extrair ID, tente novamente: ", error);
-        res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
     }finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida
         if (executeConnection) {
