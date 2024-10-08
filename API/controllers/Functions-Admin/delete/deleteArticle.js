@@ -1,4 +1,4 @@
-const executeConnection = require('../../../data/connection'); //conexão com o banco de dados
+const connection = require('../../../data/connection'); //conexão com o banco de dados
 
 exports.deleteArticle =
 async(req, res) => {
@@ -8,14 +8,14 @@ async(req, res) => {
   console.log(id);  //verificação
   
   //executa a conexão com o banco de dados
-  const connection = await executeConnection.getConnection();
+  const executeConnection = await connection.getConnection();
   
   try{
     const query = `CALL DeleteArticle(?, ?);`;
     const values = [id, title];
 
     //executa a query
-    const [results] = await connection.query(query, values);
+    const [results] = await executeConnection.query(query, values);
     results;
     if (results.length != 0){
       return res.status(200).json({ msg: "Artigo deletado com sucesso." });
