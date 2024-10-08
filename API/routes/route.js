@@ -103,7 +103,7 @@ routes.delete('/deleteTip', deleteTip.deleteTip);
 routes.get('/pickupTime', viewPickupTime.pickupTime);
 
 //visualiza a dica diária
-routes.get('/tips', viewTip.getTip);
+routes.get('/tip', viewTip.getTip);
 
 //visualiza os artigos
 routes.get('/articles', viewArticles.viewArticles);
