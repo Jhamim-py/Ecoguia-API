@@ -2,7 +2,7 @@ const connection = require('../../../data/connection');        //conexão com o 
 const checkXp    = require('../../../utils/checkXp');          //checar e modificar o xp,level e quest do usuário
 
 // função de modificação de level do usuário que pode ser exportada
-exports.updateLevel = 
+exports.updateUserLevel = 
 async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
     
     userID = req.user.id;  //pegando o id do usuário pelo token

@@ -14,8 +14,6 @@ const updateArticle = require('../controllers/Functions-Admin/update/updateArtic
 
 const updateAvatar  = require('../controllers/Functions-Admin/update/updateAvatar');
 
-const updadteLevel  = require('../controllers/Functions-Admin/update/updateLevel');
-
 const updateTip     = require('../controllers/Functions-Admin/update/updateTip');
 
 const deleteQuestAndBadge = require('../controllers/Functions-Admin/delete/deleteQuestAndBadge');
@@ -50,6 +48,7 @@ const googleAuth    = require('../controllers/Functions-User/login/authGoogle');
 const viewProfile   = require('../controllers/Functions-User/read/viewProfile');
 
 const updateUser    = require('../controllers/Functions-User/update/updateUser');
+const updadteLevel  = require('../controllers/Functions-User/update/updateUserLevel');
 const updateProfile = require('../controllers/Functions-User/update/updateProfile');
 const updateEmail   = require('../controllers/Functions-User/update/updateEmail');
 
@@ -81,9 +80,6 @@ routes.put('/updateAvatar', updateAvatar.updateAvatar);
 
 //modificar uma dica de acordo com o ID de entrada
 routes.put('/updateTip', updateTip.updateTip);
-
-//atualizar level do usuário
-routes.put('/updateLevel',checkToken.checkToken,updadteLevel.updateLevel)
 
 // DELETE || DELETE
 //excluiri uma quest de acordo com o ID de entrada
@@ -132,6 +128,7 @@ routes.post('/user/pwd',          forgetPwd.password);
 
 //PUT || UPDATE
 routes.put   ('/user/profile',    checkToken.checkToken, updateProfile.updateProfile);
+routes.put   ('/user/levelup',    checkToken.checkToken, updadteLevel.updateUserLevel);
 routes.put   ('/user/pwd',        checkToken.checkToken, updateUser.updateUser);
 routes.put   ('/user/email',      checkToken.checkToken, updateEmail.updateEmail);
 
@@ -144,11 +141,9 @@ routes.get   ('/user/profile',    checkToken.checkToken, viewProfile.getPerfil);
 routes.get   ('/user/auth/google', googleAuth.authGoogle);
 
 
-
 // DELETE || DELETE
 //excluir conta de usuário
 routes.delete('/user',            deleteUser.deleteUser);
-
 
 
 module.exports = routes;
