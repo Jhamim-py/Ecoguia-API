@@ -48,7 +48,7 @@ const googleAuth    = require('../controllers/Functions-User/login/authGoogle');
 const viewProfile   = require('../controllers/Functions-User/read/viewProfile');
 
 const updateUser    = require('../controllers/Functions-User/update/updateUser');
-const updadteLevel  = require('../controllers/Functions-User/update/updateUserLevel');
+const updateLevel  = require('../controllers/Functions-User/update/updateLevel');
 const updateProfile = require('../controllers/Functions-User/update/updateProfile');
 const updateEmail   = require('../controllers/Functions-User/update/updateEmail');
 
@@ -128,7 +128,7 @@ routes.post('/user/pwd',          forgetPwd.password);
 
 //PUT || UPDATE
 routes.put   ('/user/profile',    checkToken.checkToken, updateProfile.updateProfile);
-routes.put   ('/user/levelup',    checkToken.checkToken, updadteLevel.updateUserLevel);
+routes.put   ('/user/levelup',    checkToken.checkToken, updateLevel.updateLevel);
 routes.put   ('/user/pwd',        checkToken.checkToken, updateUser.updateUser);
 routes.put   ('/user/email',      checkToken.checkToken, updateEmail.updateEmail);
 
