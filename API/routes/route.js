@@ -50,6 +50,7 @@ const viewProfile   = require('../controllers/Functions-User/read/viewProfile');
 const updateUser    = require('../controllers/Functions-User/update/updateUser');
 const updateLevel  = require('../controllers/Functions-User/update/updateLevel');
 const updateProfile = require('../controllers/Functions-User/update/updateProfile');
+const registerUpdateEmail = require('../controllers/Functions-User/update/registerUpdateEmail')
 const updateEmail   = require('../controllers/Functions-User/update/updateEmail');
 
 // composição da requisições
@@ -131,6 +132,7 @@ routes.put   ('/user/profile',    checkToken.checkToken, updateProfile.updatePro
 routes.put   ('/user/levelup',    checkToken.checkToken, updateLevel.updateLevel);
 routes.put   ('/user/pwd',        checkToken.checkToken, updateUser.updateUser);
 routes.put   ('/user/email',      checkToken.checkToken, updateEmail.updateEmail);
+routes.put   ('/user/registerEmail',registerUpdateEmail.registerUpdateEmail);
 
 
 //GET || READ
@@ -143,7 +145,7 @@ routes.get   ('/user/auth/google', googleAuth.authGoogle);
 
 // DELETE || DELETE
 //excluir conta de usuário
-routes.delete('/user',            deleteUser.deleteUser);
+routes.delete('/user',checkToken.checkToken,deleteUser.deleteUser);
 
 
 module.exports = routes;
