@@ -43,7 +43,7 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         const secret = process.env.SECRET;
 
         // isto faz com que o usuário consiga transitar no app sem logar novamente
-        const token  = jwt.sign({ id: user.pk_IDuser }, secret);
+        const token  = jwt.sign({ id: user.pk_IDuser, pwd:pwd }, secret);
 
         res.status(200).json({ msg: "Autenticação realizada com sucesso. Token de usuário: ", token });
     }catch (error) {
