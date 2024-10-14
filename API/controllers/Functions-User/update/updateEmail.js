@@ -11,17 +11,15 @@ async (req, res) => {
 	try{
 		// executa a query de atualização da senha e do email no banco de dados
 		const query  = `CALL ModifyUser(?, ?, ?);`;
-		const values = [userId,email,pwd];
-		console.log(userId)
-		console.log(email)
-		console.log(pwd)
+		const values = [userId, email, pwd];
+		
 		// Executa a consulta
 		const [results] = await executeConnection.query(query, values);
-		console.log(results)
+		results;
 		if(results.length != 0){
 			return res.status(200).json({msg: "Usuário atualizado com sucesso."});
 		}else{
-			return res.status(500).json({ msg: "Algo deu errado no banco de dados. Verifique." });
+			return res.status(500).json({ msg: "Algo deu errado no banco de dados, por favor verifique." });
 		};
  
 	}catch(error){
