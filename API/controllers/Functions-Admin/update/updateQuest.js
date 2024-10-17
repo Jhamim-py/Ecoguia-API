@@ -1,6 +1,6 @@
 const connection  = import('../../../data/connection');     // conexão com o banco de dados
 const nullValue   = import('../../../utils/nullValue');     // verifica se a variável possui valor nulo 
-const checkLength = import('../../../utils/characterLimit') //importa a função que verifica o tamanho max
+const checkLength = import('../../../utils/characterLimit'); //importa a função que verifica o tamanho max
 
 exports.updateQuestAndBadge =
 async (req, res) => {

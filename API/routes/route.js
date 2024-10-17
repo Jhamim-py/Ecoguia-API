@@ -28,7 +28,7 @@ const viewPickupTime= require('../controllers/Functions-System/read/viewPickupTi
 const viewTip       = require('../controllers/Functions-System/read/viewTip');
 const viewArticles  = require('../controllers/Functions-System/read/viewArticles');
 const viewRank      = require('../controllers/Functions-System/read/viewRank');
-
+const viewAvatars    = require('../controllers/Functions-System/read/viewAvatar');
 const selectArticle = require('../controllers/Functions-System/read/selectArticle');
 
 
@@ -111,6 +111,8 @@ routes.get('/selectArticle', selectArticle.selectArticle);
 //visualiza o ranking de usuários por XP
 routes.get('/rank',viewRank.viewRank);
 
+//visializar todos os avatares
+routes.get('/avatars', viewAvatars.viewAvatar);
 // HTTPS de USUÁRIO
 
 // POST || CREATE

@@ -28,7 +28,7 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
             return res.status(500).json({ msg: "Algo deu errado ao buscar os dados do usuário, tente novamente."});
         }
 
-        async function deletarUser(results){
+        async function deletarUser(results){ 
             // armazena as informações recebidas
             const userInfos = results[0];
             const pwd       = userInfos.pwd;
