@@ -10,13 +10,15 @@ const createArticle = require('../controllers/Functions-Admin/create/createArtic
 
 const createTip     = require('../controllers/Functions-Admin/create/createTips');
 
+const updateQuest   = require('../controllers/Functions-Admin/update/updateQuest');
+
 const updateArticle = require('../controllers/Functions-Admin/update/updateArticle');
 
 const updateAvatar  = require('../controllers/Functions-Admin/update/updateAvatar');
 
 const updateTip     = require('../controllers/Functions-Admin/update/updateTip');
 
-const deleteQuestAndBadge = require('../controllers/Functions-Admin/delete/deleteQuestAndBadge');
+const deleteQuest   = require('../controllers/Functions-Admin/delete/deleteQuest');
 
 const deleteArticle = require('../controllers/Functions-Admin/delete/deleteArticle');
 
@@ -73,6 +75,9 @@ routes.post('/createArticle',createArticle.createArticle);
 routes.post('/createTips', createTip.createTip);
 
 // PUT || UPDATE
+//modificar três missões e uma badge de acordo com o o ID de entrada
+//sendo ele aquele que detém o badge
+routes.put('/updateQuest', updateQuest.updateQuest);
 //modificar um artigo de acordo com o ID de entrada
 routes.put('/updateArticle', updateArticle.updateArticle);
 
@@ -84,7 +89,7 @@ routes.put('/updateTip', updateTip.updateTip);
 
 // DELETE || DELETE
 //excluiri uma quest de acordo com o ID de entrada
-routes.delete('/deleteQuestAndBadge', deleteQuestAndBadge.deleteQuestAndBadge);
+routes.delete('/deleteQuest', deleteQuest.deleteQuest);
 
 //excluir um artigo de acordo com o ID e título de entrada
 routes.delete('/deleteArticle', deleteArticle.deleteArticle);
