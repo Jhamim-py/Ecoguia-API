@@ -2,7 +2,7 @@ const connection        = require('../../../data/connection');       //conexão 
 const checkLength       = require('../../../utils/characterLimit');  //verifica se o dado ultrapassa o limite de caracteres
 const generateBadge     = require('../../../utils/generateBadge');   //importa a função de incrementar badges
 
-exports.createQuestAndBadge =
+exports.createQuest =
 async (req, res) => {
 	// variáveis responsáveis por armazenar os dados
 	const value = { 

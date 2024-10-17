@@ -2,7 +2,7 @@
 const { Router }    = require ("express");
 
 // rotas de ADMIN
-const createQuestAndBadge = require('../controllers/Functions-Admin/create/createQuestAndBadge');
+const createQuest = require('../controllers/Functions-Admin/create/createQuest');
 
 const createArticles = require('../controllers/Functions-Admin/create/createArticles');
 
@@ -61,7 +61,7 @@ const routes = Router();
 // POST || CREATE
 
 //criar uma nova quest com a entrada das informações
-routes.post('/createQuestAndBadge', createQuestAndBadge.createQuestAndBadge);
+routes.post('/createQuest', createQuest.createQuest);
 
 //cria 10 novos artigos de API externa
 routes.post('/createArticles', createArticles.createArticles);
