@@ -1,32 +1,31 @@
-const connection = import('../../../data/connection'); // conexão com o banco de dados
+const connection = require('../../../data/connection'); // conexão com o banco de dados
 
-exports.deleteQuestAndBadge = 
+exports.deleteQuest = 
 async (req, res) => {
-  // executa a conexão com o banco de dados
-  const executeConnection = await connection.getConnection();
+	// executa a conexão com o banco de dados
+	const executeConnection = await connection.getConnection();
 
-  try {
-    const query = `CALL DeleteQuestAndBadge();`;
-
-    // executa a query
-    const [results] = await executeConnection.query(query);
-    results;
-    
-    // Verifica o resultado
-    if (results != 0) {
-        return res.status(200).json({ msg: "A cadeia de missões foi deletada com sucesso!" });
-
-    } else {
-        return res.status(404).json({ msg: "Algo deu errado ao deletar os registros, tente novamente." });
-    };
-  } catch (error) {
-    console.error("Erro ao tentar deletar cadeia de missões: ", error);
-    return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-
-  } finally {
-    // Fecha a conexão com o banco de dados
-    if (executeConnection) {
-        await executeConnection.end();
-    };
-  };
+	try {
+		const query = `CALL DeleteQuestAndBadge();`;
+		
+		// executa a query
+		const [results] = await executeConnection.query(query);
+		results;
+	} catch (error) {    
+		if (error.sqlState === '45000') {
+			// Caso o erro SQL seja por regras de negócio
+			return res.status(400).json({ 
+				msg: `Erro ao tentar deletar cadeia de missões: ${error.sqlMessage}`
+			});
+		} else {
+			// Caso o erro seja inerente as regras
+			console.error("Erro ao tentar deletar cadeia de missões: ", error);
+			return res.status(500).json({ msg: "Erro interno no servidor, tente novamente." });
+		};
+	} finally {
+		// Fecha a conexão com o banco de dados
+		if (executeConnection) {
+			await executeConnection.end();
+		};
+	};
 };
