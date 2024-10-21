@@ -1,4 +1,5 @@
-require('dotenv').config(); // importação do arquivo de configuração .env
+// importação do arquivo de configuração .env
+require('dotenv').config();
 
 const axios             = require('axios').default;                  //biblioteca para realizar as requisições na API externa 
 

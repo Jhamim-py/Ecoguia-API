@@ -9,12 +9,11 @@ const generateNickname = require('../../../utils/generateNickname');   // funç�
 // função de registro que pode ser exportada 
 exports.createUser =
 async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
-   const {token} = req.body;                                   // variável responsável por armazenar o token enviado ao cliente
-   const executeConnection = await connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
+    const {token} = req.body;                                   // variável responsável por armazenar o token enviado ao cliente
+    const executeConnection = await connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
 
     // validação de token
     if (!appcacheTemp.get(token)) {
-        console.log(appcacheTemp.get(token));  //verificação
         return res.status(400).json({ msg: "Token inválido ou expirado" });
     }
 
@@ -38,8 +37,8 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
         const values = [name, lastname, email, pwdHash, nickname, avatar];
 
         // envio de query para o banco de dados e retorna o resultado
-		const [result] = await executeConnection.query(query, values);
-		result;
+		const [results] = await executeConnection.query(query, values);
+		results;
 
 		return res.status(200).json({msg:"Conta criada com sucesso. Faça seu login."});
 	}catch(error){

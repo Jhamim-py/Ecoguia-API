@@ -11,6 +11,17 @@ async (req, res) => {
 		blob_url, blob_title, blob_description 
 	} = req.body;
 
+	// validação de campo vazio
+	if ( 
+		!description_3 || !XP_3	  	 || 
+		!description_2 || !XP_2	  	 || 
+		!description_1 || !XP_1	  	 || 
+		!blob_url      || !blob_title|| 
+		!blob_description 
+	){
+		return res.status(422).json({ msg: "É obrigatório preencher todos os campos para criar uma cadeia de missões." });
+	};
+
     // array com dados que contém limite de campo
     const data = [
         ['descrição da terceira missão', description_3], 

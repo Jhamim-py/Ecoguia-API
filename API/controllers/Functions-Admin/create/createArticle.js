@@ -4,11 +4,10 @@ require('dotenv').config();
 // funções externas
 const connection        = require('../../../data/connection');       //conexão com o banco de dados
 const checkLength       = require('../../../utils/characterLimit');  //verifica se o dado ultrapassa o limite de caracteres
-const formatCategory	= require('../../../utils/formatData');		 //formata o dado para letras minúsculas e sem acento
+// const formatCategory	= require('../../../utils/formatData');		 //formata o dado para letras minúsculas e sem acento
 
 exports.createArticle   =
 async (req, res) => {
-
   	// array de requisição dos dados
 	const {
 		image, title, category, description, reference
@@ -19,20 +18,12 @@ async (req, res) => {
 		return res.status(422).json({ msg: "É obrigatório preencher todos os campos para criar um artigo." });
 	};
 
-	const categoryClean = formatCategory(category);
-	let category1 = category;
-	category1 = categoryClean;
-	console.log(category1);
-	console.log(categoryClean);
-	console.log(category);
-
 	// Verifica se a categoria formatada é uma das opções válidas
-	if (categoryClean !== 'noticia') {
-		return res.status(400).json({ msg: `A categoria do artigo deve ser: artigo, notícia ou faça você mesmo.` });
-	}else{
-		console.log('a');
-	}
-
+	// const categoryClean = formatCategory(category);
+	if (category !== 'noticia' || category !== 'artigo' || category !== 'faca voce mesmo') {
+		return res.status(400).json({ msg: `A categoria do artigo deve ser: artigo, notícia ou faça você mesmo.`});
+	};
+	
 	// array com dados que contém limite de campo
 	const data = [
 		['imagem do artigo',  image], 

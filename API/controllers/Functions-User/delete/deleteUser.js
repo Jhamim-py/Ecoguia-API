@@ -8,7 +8,7 @@ const connection = require('../../../data/connection'); // conexão com o banco 
 // modificar maneira de validar e-mail e retorno de procedure...
 exports.deleteUser = 
 async (req, res) => {    //função assíncrona com parâmetros de requisição e resposta
-    const userID    = req.user.id;                          // variável que armazena o ID do usuário
+    const  userID   = req.user.id;                          // variável que armazena o ID do usuário
     const {pwdHash} = req.body;                             // variável que armazena o hash da senha
 
     //variável de conexão com o banco de dados

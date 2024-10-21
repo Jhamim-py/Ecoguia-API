@@ -32,6 +32,7 @@ async (req, res) => {
         data[i] = nullValue(data[i]);
 
     };
+    
     //verifica se os dados ultrapassam X caracteres e expõe caso seja verdadeiro
     for (let i = 0; i < data.length; i++){
         const [title, value] = data[i]; // Captura o título e valor do campo
