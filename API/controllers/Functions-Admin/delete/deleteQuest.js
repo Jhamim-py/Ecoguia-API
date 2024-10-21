@@ -11,6 +11,8 @@ async (req, res) => {
 		// executa a query
 		const [results] = await executeConnection.query(query);
 		results;
+
+		return res.status(200).json({ msg: "Cadeia de missões(3) mais recente deletada com sucesso." });
 	} catch (error) {    
 		if (error.sqlState === '45000') {
 			// Caso o erro SQL seja por regras de negócio
