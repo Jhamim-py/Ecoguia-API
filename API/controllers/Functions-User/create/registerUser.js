@@ -7,6 +7,7 @@ const connection     = require('../../../data/connection');    // conexão com o
 const appcacheTemp   = require('../../../utils/cacheTemp');    // armazena os dados de usuário, usado posteriormente para validações
 const sendEmail      = require('../../../utils/sendEmail');    // importa função de enviar token por email
 const verificatePwd  = require('../../../utils/verificatePwd');// verifica e valida o formato 'senha', se contém 8 caracteres, etc.
+const checkLength       = require('../../../utils/characterLimit');  //verifica se o dado ultrapassa o limite de caracteres
 
 // função de registro que pode ser exportada
 exports.postRegister =
@@ -20,22 +21,21 @@ async (req, res)     => {   //função assíncrona com parâmetros de requisiç�
 	// array com dados que contém limite de campo
 	const data = [
 		['nome de usuário',      name], 
-		['sobrenome de usuário', title], 
-		['e-mail',  		     category], 
-		['senha', 		         description]
+		['sobrenome de usuário', lastname], 
+		['e-mail',  		     email], 
+		['senha', 		         pwd],
+        ['avatar',               avatar]
 	];
 
 	// array variável que armazena o limite dos campos no banco de dados
 	const limitlength = [60, 60, 120, 74, 120];
 
     // validação de campo vazio
-    // melhor validação de campo aqui!!!! Transformar em função e externalizar resposta? Hmm
     if (!name || !lastname || !email || !pwd || !avatar) {
         return res.status(422).json({ msg: "É obrigatório preencher todos os campos para realizar o cadastro." });
     }else if(!validatorEmail.validate(email)){
     // validação de e-mail caso os campos tenham sido preenchidos corretamente
         return res.status(422).json({ msg: "Formato de e-mail inválido." });
-
     };
 
     // validação de tamanho
