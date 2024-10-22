@@ -44,7 +44,7 @@ async function timeLoga(result){
         console.log('Waiting for the results...');
         // Ajuste o seletor para corresponder corretamente ao elemento
       
-        await page.waitForSelector('.result-header--item.toggle-off', { visible: true, timeout: 60000 });
+        await page.waitForSelector('.result-header--item.toggle-off', { visible: true, timeout: 10000 });
 
         console.log('Extracting header item...');
         const headerItem = await page.evaluate(() => {
@@ -124,7 +124,8 @@ async function timeUrbis(result2){
 
 exports.pickupTime = async (req, res) => {
     //verificar qual empresa atende X região chamando as funções
-    const { cep } = req.body;
+    const {cep} = req.body;
+    console.log("olha: "+cep)
     //verifica se o cep é válido
     let erro = 0
     await correios.consultaCEP({ cep: cep })
@@ -146,12 +147,25 @@ exports.pickupTime = async (req, res) => {
     //faz as buscas dos horários no site da LOGA
     const ecoLoga  = await timeLoga(cep);
 
+    const parseData = (dataString) => {
+        const linhas = dataString.split('\n').slice(1); // Remove a primeira linha (cabeçalho)
+        const dados = {};
+      
+        linhas.forEach(linha => {
+          const [dia, diurno, noturno] = linha.split('\t');
+          dados[dia] = { diurno, noturno };
+        });
+        return dados;
+      }
+
     //manda a resposta pro usuario se houver respota no site da LOGA ou Ecourbis
     if (ecoLoga){
-        return res.status(202).json(ecoLoga);
+        const dados = parseData(ecoLoga)
+        return res.status(202).json(dados);
        }
      else if(ecoUrbis){
-        return res.status(202).json(ecoUrbis);
+        const dados = parseData(ecoUrbis) 
+        return res.status(202).json(dados);
     }else{
         return res.status(404).json("Verifique se o cep está digitado corretamente." );
     }
