@@ -1,4 +1,5 @@
-require('dotenv').config(); // importação do arquivo de configuração .env
+// importação do arquivo de configuração .env
+require('dotenv').config();
 
 const axios             = require('axios').default;                  //biblioteca para realizar as requisições na API externa 
 
@@ -6,7 +7,7 @@ const connection        = require('../../../data/connection');       //conexão 
 const checkLength       = require('../../../utils/characterLimit');  //verifica se o dado ultrapassa o limite de caracteres
 const checkArticle      = require('../../../utils/checkArticle');    //verifica se o artigo adicionado já existe no banco de dados
 
-exports.createArticles   =
+exports.createArticles  =
 async (req, res) => {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection.getConnection();
@@ -22,6 +23,7 @@ async (req, res) => {
       apikey: process.env.APIKEY  //chave da API
     };
 
+	// dar um jeito nesse arquivo, ele é todo torto de validação e callbacks...
     try{
 		//realiza a requisição na API externa
 		const response = await axios.get(url, {params});

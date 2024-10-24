@@ -8,7 +8,7 @@ const createArticles = require('../controllers/Functions-Admin/create/createArti
 
 const createArticle = require('../controllers/Functions-Admin/create/createArticle');
 
-const createTip     = require('../controllers/Functions-Admin/create/createTips');
+const createTip     = require('../controllers/Functions-Admin/create/createTip');
 
 const updateQuest   = require('../controllers/Functions-Admin/update/updateQuest');
 
