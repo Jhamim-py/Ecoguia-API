@@ -20,11 +20,11 @@ async (req, res)     => {
 
     // validação de campo vazio
     if (!name || !lastname || !email || !pwd || !avatar) {
-        return res.status(422).json({ msg: "É obrigatório preencher todos os campos para realizar o cadastro." });
+        return res.status(424).json({ msg: "É obrigatório preencher todos os campos para realizar o cadastro." });
 
     }else if(!validatorEmail.validate(email)){
     // validação de e-mail caso os campos tenham sido preenchidos corretamente
-        return res.status(422).json({ msg: "Formato de e-mail inválido." });
+        return res.status(423).json({ msg: "Formato de e-mail inválido." });
     };
 
 	// array com dados que contém limite de campo
@@ -64,7 +64,7 @@ async (req, res)     => {
         // envio de query para o banco de dados e retorna o resultado
         const [results] = await executeConnection.query(query, values);
         if(results.length > 0){
-            return res.status(422).json({ msg: "Este e-mail já está em uso."});
+            return res.status(422).json({ msg: "Este e-mail já é utilizado numa conta."});
         };
 
         // verifica a formatação do dado colocado no campo 'senha' com função externa
