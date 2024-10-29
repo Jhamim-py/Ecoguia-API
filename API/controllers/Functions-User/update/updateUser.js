@@ -6,8 +6,8 @@ const verificatePwd  = require('../../../utils/verificatePwd'); // importa funç
 
 exports.updateUser =
 async (req, res) => {
-    //variáveis responsáveis por armazenar os dados requeridos na requisição
-    const userId = req.user.id;
+   // variáveis responsáveis por armazenar os dados
+    const userId = req.user.id;   // variável que armazena o ID do usuário
     const pwd    = req.user.pwd
     const {pwdUser,newPwd} = req.body;
  

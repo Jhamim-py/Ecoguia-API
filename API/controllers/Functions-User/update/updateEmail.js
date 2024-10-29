@@ -6,8 +6,8 @@ async (req, res) => {
 	const userId  = req.user.id;
 	const {email} = req.body;
 	const pwd = null;
-	//variável que armazena a execução de conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	
+	const executeConnection = await connection.getConnection();   //variável que armazena a execução de conexão com o banco de dados
 	try{
 		// executa a query de atualização da senha e do email no banco de dados
 		const query  = `CALL ModifyUser(?, ?, ?);`;

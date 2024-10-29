@@ -48,7 +48,7 @@ async function timeLoga(result){
 
         console.log('Extracting header item...');
         const headerItem = await page.evaluate(() => {
-            const headerElement = document.querySelector('.result-header--item.toggle-off');
+            const headerElement = document.querySelector('.result-header--item.toggle-off tbody');
             return headerElement ? headerElement.innerText.trim() : 'Nenhum item encontrado';
         });
 
@@ -107,7 +107,7 @@ async function timeUrbis(result2){
 
         console.log('Extracting header item...');
         const headerItem = await page.evaluate(() => {
-            const headerElement = document.querySelector('.cd-loc-table--result');
+            const headerElement = document.querySelector('.cd-loc-table--result tbody');
             return headerElement ? headerElement.innerText.trim() : 'Nenhum item encontrado';
         });
 
