@@ -9,20 +9,19 @@ const generateNickname = require('../../../utils/generateNickname');   // funç�
 // função de registro que pode ser exportada 
 exports.createUser =
 async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
-    const {token} = req.body;                                   // variável responsável por armazenar o token enviado ao cliente
+    const {
+        name, lastname, email, pwd, avatar
+    } = req.body;                                   // variável responsável por armazenar o token enviado ao cliente
     const executeConnection = await connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
 
-    // validação de token
-    if (!appcacheTemp.get(token)) {
-        return res.status(400).json({ msg: "Token inválido ou expirado." });
-    }
-
-    // puxa os dados do cliente armazenados no cachê do app
-    const name      = appcacheTemp.take("name");
-    const lastname  = appcacheTemp.take("lastname");
-    const email     = appcacheTemp.take("email");
-    const pwd       = appcacheTemp.take("pwd");
-    const avatar    = appcacheTemp.take("avatar");
+    // puxa os dados do cliente e bota numa matriz
+    const data = [
+        ["nome",       name], 
+        ["sobrenome",  lastname], 
+        ["E-mail",     email], 
+        ["Senha",      pwd], 
+        ["Avatar",     avatar]
+    ];
 
     // criptografa a senha dada em hash
     const salt     = await bcrypt.genSalt(12);     // define o tamanho do hash (12 caracteres)
