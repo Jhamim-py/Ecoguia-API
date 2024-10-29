@@ -82,14 +82,14 @@ async (req, res)     => {
         appcacheTemp.set("avatar",  avatar);
 
         // cria e armazena o token no cachê do app      (CACHE)
-        const sendToken = crypto.randomBytes(4).toString("hex");
+        const sendToken = crypto.randomBytes(2).toString("hex");
         appcacheTemp.set(sendToken,true); 
 
         // envia o token armazenado no e-mail
         const message = `${sendToken}`;
         
         sendEmail(message,email, name);
-        res.status(200).json({ msg: "Registro de usuário criado. Por favor, verifique o token enviado em seu e-mail."});
+        res.status(200).json({ msg: "Registro de usuário criado. Por favor, verifique o token enviado em seu e-mail.", token: sendToken});
 	}catch(error){
 		console.error("Algo deu errado ao registrar usuário, tente novamente:", error);
 		return res.status(500).json({msg: "Erro interno no servidor, tente novamente."});

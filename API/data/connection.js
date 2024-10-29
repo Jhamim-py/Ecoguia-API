@@ -6,7 +6,7 @@ exports.getConnection = async () => {
     const connection = await mysql2.createConnection({
       host: 'localhost',
       user: 'root',
-      password: 'admin',
+      password: 'root',
       database: 'bd_ecoguia' 
     });
     return connection;

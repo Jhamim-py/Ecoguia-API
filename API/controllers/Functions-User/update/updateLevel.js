@@ -5,7 +5,8 @@ const checkXp    = require('../../../utils/checkXp');          //checar e modifi
 exports.updateLevel = 
 async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
     
-    userID = req.user.id;  //pegando o id do usuário pelo token
+    const {userID, type, xp_material, peso} = req.user.id;  //pegando o id do usuário pelo token
+    
     //pegando os dados a serem modificados
     const dados = await checkXp(userID, type, xp_material, peso); // variável responsável por armazenar os dados
    

@@ -14,7 +14,7 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
 
     // validação de token
     if (!appcacheTemp.get(token)) {
-        return res.status(400).json({ msg: "Token inválido ou expirado" });
+        return res.status(400).json({ msg: "Token inválido ou expirado." });
     }
 
     // puxa os dados do cliente armazenados no cachê do app
@@ -44,7 +44,7 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
 	}catch(error){
 		if (error.sqlState === '45000') {
 			// Caso o erro SQL seja por regras de negócio
-			return res.status(400).json({ 
+			return res.status(401).json({ 
 				msg: `Erro ao tentar criar conta: ${error.sqlMessage}`
 			});
 		} else {
