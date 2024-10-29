@@ -2,13 +2,15 @@
 const { Router }    = require ("express");
 
 // rotas de ADMIN
-const createQuestAndBadge = require('../controllers/Functions-Admin/create/createQuestAndBadge');
+const createQuest = require('../controllers/Functions-Admin/create/createQuest');
 
 const createArticles = require('../controllers/Functions-Admin/create/createArticles');
 
 const createArticle = require('../controllers/Functions-Admin/create/createArticle');
 
-const createTip     = require('../controllers/Functions-Admin/create/createTips');
+const createTip     = require('../controllers/Functions-Admin/create/createTip');
+
+const updateQuest   = require('../controllers/Functions-Admin/update/updateQuest');
 
 const updateArticle = require('../controllers/Functions-Admin/update/updateArticle');
 
@@ -16,7 +18,7 @@ const updateAvatar  = require('../controllers/Functions-Admin/update/updateAvata
 
 const updateTip     = require('../controllers/Functions-Admin/update/updateTip');
 
-const deleteQuestAndBadge = require('../controllers/Functions-Admin/delete/deleteQuestAndBadge');
+const deleteQuest   = require('../controllers/Functions-Admin/delete/deleteQuest');
 
 const deleteArticle = require('../controllers/Functions-Admin/delete/deleteArticle');
 
@@ -28,7 +30,7 @@ const viewPickupTime= require('../controllers/Functions-System/read/viewPickupTi
 const viewTip       = require('../controllers/Functions-System/read/viewTip');
 const viewArticles  = require('../controllers/Functions-System/read/viewArticles');
 const viewRank      = require('../controllers/Functions-System/read/viewRank');
-
+const viewAvatars    = require('../controllers/Functions-System/read/viewAvatar');
 const selectArticle = require('../controllers/Functions-System/read/selectArticle');
 
 
@@ -50,6 +52,7 @@ const viewProfile   = require('../controllers/Functions-User/read/viewProfile');
 const updateUser    = require('../controllers/Functions-User/update/updateUser');
 const updateLevel  = require('../controllers/Functions-User/update/updateLevel');
 const updateProfile = require('../controllers/Functions-User/update/updateProfile');
+const registerUpdateEmail = require('../controllers/Functions-User/update/registerUpdateEmail')
 const updateEmail   = require('../controllers/Functions-User/update/updateEmail');
 
 // composição da requisições
@@ -60,7 +63,7 @@ const routes = Router();
 // POST || CREATE
 
 //criar uma nova quest com a entrada das informações
-routes.post('/createQuestAndBadge', createQuestAndBadge.createQuestAndBadge);
+routes.post('/createQuest', createQuest.createQuest);
 
 //cria 10 novos artigos de API externa
 routes.post('/createArticles', createArticles.createArticles);
@@ -72,6 +75,9 @@ routes.post('/createArticle',createArticle.createArticle);
 routes.post('/createTips', createTip.createTip);
 
 // PUT || UPDATE
+//modificar três missões e uma badge de acordo com o o ID de entrada
+//sendo ele aquele que detém o badge
+routes.put('/updateQuest', updateQuest.updateQuest);
 //modificar um artigo de acordo com o ID de entrada
 routes.put('/updateArticle', updateArticle.updateArticle);
 
@@ -83,7 +89,7 @@ routes.put('/updateTip', updateTip.updateTip);
 
 // DELETE || DELETE
 //excluiri uma quest de acordo com o ID de entrada
-routes.delete('/deleteQuestAndBadge', deleteQuestAndBadge.deleteQuestAndBadge);
+routes.delete('/deleteQuest', deleteQuest.deleteQuest);
 
 //excluir um artigo de acordo com o ID e título de entrada
 routes.delete('/deleteArticle', deleteArticle.deleteArticle);
@@ -96,7 +102,7 @@ routes.delete('/deleteTip', deleteTip.deleteTip);
 
 //GET || READ
 //visualiza horário de coleta
-routes.get('/pickupTime', viewPickupTime.pickupTime);
+routes.post('/pickupTime', viewPickupTime.pickupTime);
 
 //visualiza a dica diária
 routes.get('/tip', viewTip.getTip);
@@ -110,6 +116,8 @@ routes.get('/selectArticle', selectArticle.selectArticle);
 //visualiza o ranking de usuários por XP
 routes.get('/rank',viewRank.viewRank);
 
+//visializar todos os avatares
+routes.get('/avatars', viewAvatars.viewAvatar);
 // HTTPS de USUÁRIO
 
 // POST || CREATE
@@ -131,6 +139,7 @@ routes.put   ('/user/profile',    checkToken.checkToken, updateProfile.updatePro
 routes.put   ('/user/levelup',    checkToken.checkToken, updateLevel.updateLevel);
 routes.put   ('/user/pwd',        checkToken.checkToken, updateUser.updateUser);
 routes.put   ('/user/email',      checkToken.checkToken, updateEmail.updateEmail);
+routes.put   ('/user/registerEmail',registerUpdateEmail.registerUpdateEmail);
 
 
 //GET || READ
@@ -143,7 +152,7 @@ routes.get   ('/user/auth/google', googleAuth.authGoogle);
 
 // DELETE || DELETE
 //excluir conta de usuário
-routes.delete('/user',            deleteUser.deleteUser);
+routes.delete('/user',checkToken.checkToken,deleteUser.deleteUser);
 
 
 module.exports = routes;

@@ -15,7 +15,7 @@ async function (req,res) {
         return res.status(400).json({message: "Erro ao buscar avatar"})
     }
     //retorna o resultado da query
-    return res.status(200).json(result)
+    return res.status(200).json(result[0])
     }catch(erro){
         console.log(erro)
     }

@@ -1,37 +1,46 @@
-const connection = require('../../../data/connection');
+const connection     = require('../../../data/connection');
 
 // função de modificação do avatar do usuário que pode ser exportada
-exports.updateAvatar = async (req, res) => {
-    const avatarId = req.body.avatarId; // pegando o ID do avatar
-    const newAvatar = req.body.newAvatar; // o novo link do avatar enviado no corpo da requisição
+// adaptar posteriormente para o Azure...
+exports.updateAvatar =
+async (req, res) => {
+    const avatarId    = req.body.avatarId;  // pegando o ID do avatar
+    // URL do novo avatar
+    const newAvatar   = req.body.newAvatar;
+    const limitLength = 2048;
 
-    // variável de conexão com o banco de dados
+    // verifica se o tamanho da URL está aceitável
+    if (checkLength(newAvatar, limitLength)) {
+        return res.status(400).json({ msg: `A URL da imagem ultrapassou o limite de ${limitLength} caracteres.` });
+    };
+
+    //executa a conexão com o banco de dados
     const executeConnection = await connection.getConnection();
 
     // Verifica se o novo avatar foi fornecido
+    // mais uma função de verificar campo vazio, etc.
     if (!newAvatar) {
         return res.status(400).json({ msg: "Novo link do avatar não fornecido." });
     }
 
-    try {
+    try{
         // query para modificar o avatar do usuário
-        const query = "CALL ModifyAvatar(?, ?)";
-        const values = [avatarId, newAvatar]; // passando o ID do avatar e o novo link
+        const query  = "CALL ModifyAvatar(?, ?)";
+        const values = [avatarId, newAvatar]; // passando o ID do avatar e a nova URL
 
-        // envio de query e captação de resposta
-        const [results] = await executeConnection.query(query, values);
-        if (results && results.affectedRows > 0) {
-            res.status(200).json({ msg: "Avatar atualizado com sucesso." });
-        } else {
-            return res.status(404).json({ msg: "Algo deu errado ao modificar o avatar, tente novamente." });
-        }
-    } catch (erro) {
-        console.error(erro); // log do erro
-        res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-    } finally {
-        // Fecha a conexão com o banco de dados, se foi estabelecida
-        if (executeConnection) {
-            await executeConnection.end();
-        }
-    }
+		//executa a query
+		const [results] = await executeConnection.query(query, values);
+		results;
+
+		return res.status(200).json({msg:"Avatar alterado com sucesso."});
+	}catch(error){
+		console.error("Algo deu errado ao alterar o avatar, tente novamente:", error);
+		return res.status(500).json({msg: "Erro interno no servidor, tente novamente."});
+	}
+	finally{
+		if(executeConnection){
+			//Fecha a conexão com o banco de dados
+			await executeConnection.end();
+		}
+	};
 };

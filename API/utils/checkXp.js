@@ -1,4 +1,4 @@
-const connection = require('../data/connection'); ////conexão com o banco de dados
+const connection = require('../data/connection'); //conexão com o banco de dados
 
 //função assíncrona com uma promise
 module.exports =
@@ -22,7 +22,7 @@ async function checkXp(id,type,xp_material,peso){
                 calculateLevelMaterial(results);
             }
             else{
-                console.error("Algo deu errado verificar os dados de XP do usuário." );
+                console.error("Algo deu errado ao verificar os dados de XP do usuário." );
             };
             
             function calculateLevelQuest(results){
