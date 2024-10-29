@@ -13,7 +13,7 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
     //verificano os dados
     console.log(dados); 
     
-    const executeConnection = await connection.getConnection();//variável de conexão com o banco de dados
+    const executeConnection = await connection.getConnection();// variável que armazena a execução de conexão com o banco de dados
     
     const xp    = dados[0]; //armazenando o xp do usuário
     const level = dados[1]; //armazenando o level do usuário

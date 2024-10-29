@@ -1,7 +1,6 @@
 const connection  = require('../../../data/connection');     // conexão com o banco de dados
 const nullValue   = require('../../../utils/nullValue');     // verifica se a variável possui valor nulo 
 const checkLength = require('../../../utils/characterLimit') //importa a função que verifica o tamanho max
-
 // modelo ES: import connection from '../../../data/connection';
 
 exports.updateQuest =
