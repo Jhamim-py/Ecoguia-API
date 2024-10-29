@@ -102,7 +102,7 @@ routes.delete('/deleteTip', deleteTip.deleteTip);
 
 //GET || READ
 //visualiza horário de coleta
-routes.get('/pickupTime', viewPickupTime.pickupTime);
+routes.post('/pickupTime', viewPickupTime.pickupTime);
 
 //visualiza a dica diária
 routes.get('/tip', viewTip.getTip);
