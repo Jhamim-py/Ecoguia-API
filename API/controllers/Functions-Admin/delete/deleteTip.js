@@ -1,32 +1,29 @@
-const connection = require('../../../data/connection')
+const connection  = require('../../../data/connection'); // conexão com o banco de dados
 
-exports.deleteTip = async (req, res) => {
-    console.log("Corpo da requisição:", req.body); // Para depuração
-    const { id } = req.body;
+exports.deleteTip = 
+async (req, res) => {
+    // variável responsável por armazenar o dado
+    const {id} = req.body;
 
-    if (!id) {
-        return res.status(400).json({ msg: "ID da dica não fornecido." });
-    }
+	// executa a conexão com o banco de dados
+	const executeConnection = await connection.getConnection();
 
-    const query = `CALL DeleteTip(?);`;
-    const value = [id];
-    
     try {
-        executeConnection = await connection.getConnection();
-        const [result] = await executeConnection.query(query, value);
+        const query = `CALL DeleteTip(?);`;
+        const values = [id];
 
-        // Se a procedure retornar resultados, analise-os
-        if (result && result.length > 0 && result[0].affectedRows > 0) {
-            return res.status(200).json({ msg: "Dica deletada com sucesso!" });
-        } else {
-            return res.status(404).json({ msg: "Dica não encontrada ou já deletada." });
-        }
+		//executa a query
+		const [results] = await executeConnection.query(query, values);
+		results;
+
+		return res.status(200).json({ msg: "Dica deletado com sucesso." });
     } catch (error) {
-        console.error("Erro ao deletar dica: ", error);
-        return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
+        console.error("Erro ao tentar deletar dica: ", error);
+        return res.status(500).json({ msg: "Erro interno no servidor, tente novamente." });
     } finally {
-        if (executeConnection) {
-            executeConnection.end();
-        }
-    }
+		// Fecha a conexão com o banco de dados
+		if (executeConnection) {
+			await executeConnection.end();
+		};
+	};
 };

@@ -23,6 +23,7 @@
     "node-cep-correios": "^1.0.6",
     "nodemailer": "^6.9.14",
     "nodemon": "^3.1.4",
+    "organizarapi": "file:",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "puppeteer": "^23.4.0"

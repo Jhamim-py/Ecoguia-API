@@ -9,9 +9,9 @@ const getID            = require('../../../utils/getID')         // pegar o id d
 // função de visualização que pode ser exportada
 exports.password =   
 async (req, res) => {
-    const {pwd,email}   = req.body;                               // variável responsável por armazenar os dados
+    const {pwd, email}   = req.body;                               // variável responsável por armazenar os dados
     
-    const executeConnection = await connection.getConnection();    //guarda a conexão com o banco
+    const executeConnection = await connection.getConnection();   //guarda a conexão com o banco
 
     const userID = await getID(email);
     console.log(userID)                       
@@ -32,7 +32,7 @@ async (req, res) => {
     try{
         // executa a query de atualização da senha no banco de dados
         const query  = `CALL ModifyUser(?, ?, ?);`;
-        const values = [userID,email,passwordHash];
+        const values = [userID, email, passwordHash];
 
         const [results] = await executeConnection.query(query, values);
         if(results.length != 0){
