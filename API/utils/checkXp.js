@@ -12,9 +12,8 @@ async function checkXp(id,type,xp_material,peso){
             // query para pegar os dados de xp,level e quest do usuário
             const query  = `CALL SelectXPUser(?);`;
             const values = id;
-
             // envio de query e captação de resposta
-            const [results] = await executeConnection.query(query,values);
+            const [results] = await executeConnection.query(query,[values]);
             if(results.length > 0 && type == 0){
                 calculateLevelQuest(results);             
             }
@@ -74,8 +73,6 @@ async function checkXp(id,type,xp_material,peso){
 
         }catch(error){
             console.error("Algo deu errado ao atualizar XP, tente novamente: ", error); 
-            return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-    
         }finally {
             // Fecha a conexão com o banco de dados, se foi estabelecida
             if (executeConnection) {
