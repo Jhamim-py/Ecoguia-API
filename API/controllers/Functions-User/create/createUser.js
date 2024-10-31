@@ -12,16 +12,8 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
     const {
         name, lastname, email, pwd, avatar
     } = req.body;                                   // variável responsável por armazenar o token enviado ao cliente
-    const executeConnection = await connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
 
-    // puxa os dados do cliente e bota numa matriz
-    const data = [
-        ["nome",       name], 
-        ["sobrenome",  lastname], 
-        ["E-mail",     email], 
-        ["Senha",      pwd], 
-        ["Avatar",     avatar]
-    ];
+    const executeConnection = await connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
 
     // criptografa a senha dada em hash
     const salt     = await bcrypt.genSalt(12);     // define o tamanho do hash (12 caracteres)
