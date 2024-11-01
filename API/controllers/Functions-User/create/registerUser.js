@@ -45,7 +45,7 @@ async (req, res)     => {
 		const [title, value] = data[i]; // Captura o título e valor do campo
 
 		if (checkLength(value, limitlength[i])) {
-			return res.status(400).json({ msg: `O campo de ${title} ultrapassou o limite de ${limitlength[i]} caracteres.` });
+			return res.status(420).json({ msg: `O campo de ${title} ultrapassou o limite de ${limitlength[i]} caracteres.` });
 		};
 	};
 
