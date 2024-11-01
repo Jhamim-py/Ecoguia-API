@@ -3,6 +3,10 @@ const Correios  = require('node-cep-correios');
 
 let correios    = new Correios();
 
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function timeLoga(result){
     let response;
 
@@ -12,6 +16,16 @@ async function timeLoga(result){
     });
 
     const page = await browser.newPage();
+
+    await page.setRequestInterception(true);
+
+    page.on('request', (request) => {
+        if (request.resourceType() === 'image') {
+            request.abort();
+        } else {
+            request.continue();
+        }
+    });
 
     page.on('requestfailed', request => {
         console.log('A requisição de página falhou:', request.url(), request.failure().errorText);
@@ -28,32 +42,44 @@ async function timeLoga(result){
     });
 
     try {
-        console.log('Acessando site...');
-        await page.goto('https://sgo3.loga.com.br/consultav2/', { waitUntil: 'networkidle2' });
+        console.log('Acessando site LOGA...');
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+        await page.goto('https://sgo3.loga.com.br/consultav2/', { waitUntil: 'networkidle0', timeout: 6000 });
+        
+        await page.waitForSelector('#inputSearch', { visible: true, timeout: 6000 });
 
-        console.log('Preparando informações de entrada...');
-        await page.waitForSelector('#inputSearch', { visible: true, timeout: 10000 });
+        await page.type('#inputSearch', result, {delay: 10});
 
-        console.log('Inserindo informações de entrada..');
-        await page.type('#inputSearch', result);
-
-        console.log('Pressionando Enter...');
         await page.keyboard.press('Enter');
 
-        // Ajuste o seletor para corresponder corretamente ao elemento
-        console.log('Esperando pelos resultados...');
-        await page.waitForSelector('.result-header--item.toggle-off', { visible: true, timeout: 10000 });
+        await delay(2000);
 
-        console.log('Extraindo itens de cabeçalho...');
-        const headerItem = await page.evaluate(() => {
-            const headerElement = document.querySelector('.result-header--item.toggle-off tbody');
-            return headerElement ? headerElement.innerText.trim() : 'Nenhum item encontrado';
+        // Verifica se há um erro específico de "não atendido"
+        const logaError = await page.evaluate(() => {
+            const errorElement = document.querySelector('div');
+            return errorElement && errorElement.textContent.includes('Endereço não atendido pela LOGA') ? errorElement.innerText : null;
         });
 
-        response = headerItem;
+        if (logaError) {
+            console.log('Endereço não atendido pela LOGA.');
+            await browser.close();
+            return null;
+        }
+
+        console.log('Esperando pelos resultados...');
+        const selector = await page.waitForSelector('.result-header--item.toggle-off', { visible: true, timeout: 6000 });
+
+        if(selector){
+            console.log('Resultados encontrados.');
+            const headerItem = await page.evaluate(() => {
+                const headerElement = document.querySelector('.result-header--item.toggle-off tbody');
+                return headerElement ? headerElement.innerText.trim() : 'Nenhum item encontrado.';
+            });
+            response = headerItem;
+        }
     }catch (error) {
-        console.error('Erro ao processar a página:', error.message);
-        return null
+        console.error('Erro ao processar a página LOGA:', error.message);
+        return null;
     } finally {
         await browser.close();
         return response;
@@ -64,53 +90,71 @@ async function timeUrbis(result2){
     let response;
 
     const browser = await puppeteer.launch({
-        headless: false, // Mude para true para produção
-        args: ['--disable-web-security', '--disable-features=IsolateOrigins,site-per-process', '--no-sandbox', '--disable-setuid-sandbox']
+        headless: false,
+        args: [
+            '--disable-web-security',
+            '--disable-features=IsolateOrigins,site-per-process',
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+        ]
     });
+
     const page = await browser.newPage();
 
+    await page.setRequestInterception(true);
+
+    page.on('request', (request) => {
+        if (request.resourceType() === 'image') {
+            request.abort();
+        } else {
+            request.continue();
+        }
+    });
+
     page.on('requestfailed', request => {
-        console.log('Request failed:', request.url(), request.failure().errorText);
+        console.log('A requisição de página falhou:', request.url(), request.failure().errorText);
     });
 
     page.on('console', msg => {
         if (msg.type() === 'error') {
-            console.log('Console error:', msg.text());
+            console.log('Erro de console no website:', msg.text());
         }
     });
 
     page.on('pageerror', err => {
-        console.log('Page error:', err.message);
+        console.log('Algo deu errado no carregamento da página:', err.message);
     });
 
     try {
-        console.log('Navigating to the page...');
-        await page.goto('https://www.ecourbis.com.br/coleta/index.html', { waitUntil: 'networkidle2' });
+        console.log('Acessando site Urbis...');
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+        await page.goto('https://www.ecourbis.com.br/coleta/index.html', { waitUntil: 'networkidle0', timeout: 6000 });
         
-        await page.setViewport({width: 1080, height: 1024});
+        await page.setViewport({width: 1030, height: 600});
         
-        console.log('Waiting for the search input...');
-        await page.waitForSelector('.form-control.theme-border-2', { visible: false, timeout: 60000 });
+        await page.waitForSelector('.form-control.theme-border-2', { visible: true, timeout: 6000 });
 
-        console.log('Typing search term...');
-        await page.type('.form-control.theme-border-2', result2);
+        await page.type('.form-control.theme-border-2', result2, {delay: 10});
 
-        console.log('Pressing Enter to initiate search...');
         await page.keyboard.press('Enter');
 
-        console.log('Waiting for the results...');
-        await page.waitForSelector('.cd-loc-table--result', { visible: true, timeout: 60000 });
+        await delay(2000);
 
-        console.log('Extracting header item...');
-        const headerItem = await page.evaluate(() => {
-            const headerElement = document.querySelector('.cd-loc-table--result tbody');
-            return headerElement ? headerElement.innerText.trim() : 'Nenhum item encontrado';
-        });
+        console.log('Esperando pelos resultados...');
+        const selector = await page.waitForSelector('.cd-loc-table--result', { visible: true, timeout: 6000 });
 
-        response = headerItem;
-        
+        if (selector) {
+            console.log('Resultados encontrados.');
+
+            const headerItem = await page.evaluate(() => {
+                const headerElement = document.querySelector('.cd-loc-table--result tbody');
+                return headerElement ? headerElement.innerText.trim() : 'Nenhum item encontrado';
+            });
+
+            response = headerItem;
+        }
     } catch (error) {
-        console.error('Erro ao processar a página:', error.message);
+        console.error('Erro ao processar a página Ecourbis:', error.message);
         return null;
     } finally {
         await browser.close();
@@ -121,48 +165,56 @@ async function timeUrbis(result2){
 exports.pickupTime = async (req, res) => {
     //verificar qual empresa atende X região chamando as funções
     const {cep} = req.body;
-    console.log("olha: "+cep)
-    //verifica se o cep é válido
-    let erro = 0
+
+    let error = 0;
+
+    //verifica se o CEP é válido através da API dos correios
     await correios.consultaCEP({ cep: cep })
-    .then(result => { 
-      if(result.code){
-      erro = 1
-      }
-    })
-    .catch(error => {
-      console.log(error);
-    });
-    if(erro == 1){
-       return res.status(400).json({msg:"cep inválido"})
+        .then(res  => { 
+            if(res.code){
+                error += 1;
+            }
+        })
+        .catch(err => {
+            console.error("Algo deu errado ao verificar CEP: ", err);
+            return res.status(500).json({msg:"Algo deu errado ao verificar se o CEP é válido, tente novamente."});
+        });
+
+    if(error >= 1){
+        return res.status(400).json({msg:"O CEP inserido é considerado inválido, verifique."});
     }
 
-    //faz as buscas dos horários no site da ecourbis 
-    const ecoUrbis = await timeUrbis(cep);
+    try{
+        // Função para processar dados retornados dos sites
+        const parseData = (dataString) => {
+            const linhas = dataString.split('\n').slice(1);
+            const dados  = {};
+          
+            linhas.forEach(linha => {
+                const [dia, domiciliar, seletiva] = linha.split('\t');
+                dados [dia] = { domiciliar, seletiva };
+            });
+            return dados;
+        }
 
-    //faz as buscas dos horários no site da LOGA
-    const ecoLoga  = await timeLoga(cep);
+        // Tenta obter os horários no site da LOGA
+        const ecoLoga = await timeLoga(cep);
+        if (ecoLoga) {
+            const dados = parseData(ecoLoga);
+            return res.status(202).json(dados);
+        }
 
-    const parseData = (dataString) => {
-        const linhas = dataString.split('\n').slice(1); // Remove a primeira linha (cabeçalho)
-        const dados = {};
-      
-        linhas.forEach(linha => {
-          const [dia, diurno, noturno] = linha.split('\t');
-          dados[dia] = { diurno, noturno };
-        });
-        return dados;
-      }
+        // Se LOGA não atende o endereço, tenta no site da EcoUrbis
+        const ecoUrbis = await timeUrbis(cep);
+        if (ecoUrbis) {
+            const dados = parseData(ecoUrbis);
+            return res.status(202).json(dados);
+        } else {
+            return res.status(400).json({ msg: "Nenhum horário de coleta encontrado em LOGA ou EcoUrbis." });
+        }
 
-    //manda a resposta pro usuario se houver respota no site da LOGA ou Ecourbis
-    if (ecoLoga){
-        const dados = parseData(ecoLoga)
-        return res.status(202).json(dados);
-       }
-     else if(ecoUrbis){
-        const dados = parseData(ecoUrbis) 
-        return res.status(202).json(dados);
-    }else{
-        return res.status(404).json("Verifique se o cep está digitado corretamente." );
+    }catch(error){
+        console.error("Algo deu errado ao buscar horários: ", error);
+        return res.status(404).json("Verifique se o CEP digitado está correto." );
     }
 };
