@@ -69,10 +69,9 @@ async function checkXp(id,type,xp_material,peso){
                 //retorno da promise
                 resolve([addXp, level, quest]);
             }
-            
-
         }catch(error){
             console.error("Algo deu errado ao atualizar XP, tente novamente: ", error); 
+            resolve("Algo deu errado na conexão com o servidor, tente novamente.");
         }finally {
             // Fecha a conexão com o banco de dados, se foi estabelecida
             if (executeConnection) {
