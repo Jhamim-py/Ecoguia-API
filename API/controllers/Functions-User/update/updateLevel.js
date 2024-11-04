@@ -24,13 +24,11 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
 
         // envio de query e captação de resposta
         const [results] = await executeConnection.query(query, values);
-        if (results != 0){
-            res.status(200).json({msg:"Level atualizado com sucesso: "+results});
-        }else{
-            return res.status(404).json({ msg: "Algo deu errado ao modificar o level no banco de dados, tente novamente." });
-        };
-    } catch(erro){
-        console.log(erro) //verificação
+        results;
+        
+        res.status(200).json({msg:"Level atualizado com sucesso: "+results});
+    } catch(error){
+        console.error(error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
     } finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida
