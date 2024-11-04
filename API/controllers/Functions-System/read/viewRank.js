@@ -3,15 +3,15 @@ const connection = require('../../../data/connection'); //conexão com o banco d
 exports.viewRank =
 async (req, res) =>{
   let createRank = {}; //array que armazena os rankings
-
+ const executeConnection = await connection.getConnection();
   try{
     //realiza a conexão com o banco de dados
-    const executeConnection = await connection.getConnection();
-    const query             = `SELECT * FROM ViewAllNicknames LIMIT 3;`;
+    
+    const query             = `SELECT * FROM ViewAllNicknames ORDER BY XP_user DESC LIMIT 3 ;`;
 
     //executa a query
     const [results] = await executeConnection.query(query);
-    if (results > 0){
+    if (results != 0){
       //armazena o resultado da query
       createRank = results;
 
