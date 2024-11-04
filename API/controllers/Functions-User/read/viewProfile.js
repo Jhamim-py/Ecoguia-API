@@ -22,20 +22,8 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
            
         return res.status(200).json({results});
     }catch(error){
-        // Separado por tipo de erro
-        switch(error.code){
-            case ('ER_ACCESS_DENIED_ERROR'): //Acesso negado
-                res.status(500).json({ msg: "Erro de autenticação com o banco de dados." });
-            break;
-
-            case ('ECONNREFUSED'): //Conexão recusada
-                res.status(500).json({ msg: "Servidor offline. Tente novamente mais tarde." });
-            break;
-            default:
-            // Erro genérico
-            console.error(error);
-            res.status(500).json({ msg: "Algo deu errado ao visualizar os dados de perfil, tente novamente." }); 
-        };
+        console.error("Algo deu errado ao realizar o login, tente novamente: ", error);
+        res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
     }finally{
         // Fecha a conexão com o banco de dados
         if (executeConnection) {

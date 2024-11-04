@@ -5,13 +5,10 @@ const checkXp    = require('../../../utils/checkXp');          //checar e modifi
 exports.updateLevel = 
 async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
     
-    const {userID, type, xp_material, peso} = req.user.id;  //pegando o id do usuário pelo token
-    
+    const userID = req.user.id;  //pegando o id do usuário pelo token
+    const {type, xp_material,peso} = req.body
     //pegando os dados a serem modificados
     const dados = await checkXp(userID, type, xp_material, peso); // variável responsável por armazenar os dados
-   
-    //verificano os dados
-    console.log(dados); 
     
     const executeConnection = await connection.getConnection();// variável que armazena a execução de conexão com o banco de dados
     
@@ -27,13 +24,11 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
 
         // envio de query e captação de resposta
         const [results] = await executeConnection.query(query, values);
-        if (results > 0){
-            res.status(200).json(results);
-        }else{
-            return res.status(404).json({ msg: "Algo deu errado ao modificar o level no banco de dados, tente novamente." });
-        };
-    } catch(erro){
-        console.log(erro) //verificação
+        results;
+        
+        res.status(200).json({msg:"Level atualizado com sucesso: "+results});
+    } catch(error){
+        console.error(error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
     } finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida
