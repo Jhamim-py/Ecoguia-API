@@ -1,8 +1,7 @@
 const puppeteer = require('puppeteer');
-const Correios = require('node-cep-correios');
+const Correios  = require('node-cep-correios');
 
-
-let correios = new Correios();
+let correios    = new Correios();
 
 async function timeLoga(result){
     let response;
@@ -11,50 +10,48 @@ async function timeLoga(result){
         headless: false, // Mude para true para produção
         args: ['--disable-web-security', '--disable-features=IsolateOrigins,site-per-process', '--no-sandbox', '--disable-setuid-sandbox']
     });
+
     const page = await browser.newPage();
 
     page.on('requestfailed', request => {
-        console.log('Request failed:', request.url(), request.failure().errorText);
+        console.log('A requisição de página falhou:', request.url(), request.failure().errorText);
     });
 
     page.on('console', msg => {
         if (msg.type() === 'error') {
-            console.log('Console error:', msg.text());
+            console.log('Erro de console no website:', msg.text());
         }
     });
 
     page.on('pageerror', err => {
-        console.log('Page error:', err.message);
+        console.log('Algo deu errado no carregamento da página:', err.message);
     });
 
     try {
-        console.log('Navigating to the page...');
+        console.log('Acessando site...');
         await page.goto('https://sgo3.loga.com.br/consultav2/', { waitUntil: 'networkidle2' });
 
-        console.log('Waiting for the search input...');
-
+        console.log('Preparando informações de entrada...');
         await page.waitForSelector('#inputSearch', { visible: true, timeout: 10000 });
 
-        console.log('Typing search term...');
+        console.log('Inserindo informações de entrada..');
         await page.type('#inputSearch', result);
 
-        console.log('Pressing Enter to initiate search...');
+        console.log('Pressionando Enter...');
         await page.keyboard.press('Enter');
 
-        console.log('Waiting for the results...');
         // Ajuste o seletor para corresponder corretamente ao elemento
-      
+        console.log('Esperando pelos resultados...');
         await page.waitForSelector('.result-header--item.toggle-off', { visible: true, timeout: 10000 });
 
-        console.log('Extracting header item...');
+        console.log('Extraindo itens de cabeçalho...');
         const headerItem = await page.evaluate(() => {
             const headerElement = document.querySelector('.result-header--item.toggle-off tbody');
             return headerElement ? headerElement.innerText.trim() : 'Nenhum item encontrado';
         });
 
         response = headerItem;
-
-    } catch (error) {
+    }catch (error) {
         console.error('Erro ao processar a página:', error.message);
         return null
     } finally {
@@ -64,7 +61,6 @@ async function timeLoga(result){
 };
 
 async function timeUrbis(result2){
-    
     let response;
 
     const browser = await puppeteer.launch({

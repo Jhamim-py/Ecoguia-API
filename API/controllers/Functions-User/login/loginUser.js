@@ -35,7 +35,7 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
 
         // checa a senha com o hash armazenado no banco através da biblioteca bcrypt
         const checkPwd = await bcrypt.compare(pwd, user.pwd);
-        if (!checkPwd) {  
+        if (!checkPwd) {
             return res.status(400).json({ msg: "Senha incorreta." });
         }
 
@@ -45,7 +45,7 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         // isto faz com que o usuário consiga transitar no app sem logar novamente
         const token  = jwt.sign({ id: user.pk_IDuser, pwd:pwd }, secret);
 
-        res.status(200).json({ msg: "Autenticação realizada com sucesso.", TokenID: token });
+        res.status(200).json({ msg: "Autenticação realizada com sucesso.", token: token });
     }catch (error) {
         console.error("Algo deu errado ao realizar o login, tente novamente: ", error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });

@@ -52,9 +52,6 @@ async (req, res)     => {
     // executa a conexão com o banco de dados
 	const executeConnection = await connection.getConnection();
 
-    // comando que reseta o cachê do app (CACHE)
-    appcacheTemp.flushAll();                                        
- 
     try{
         // verificar existência do e-mail no Banco de Dados através do uso de View
         // transformar numa função interna da procedure de criação!!!
@@ -63,8 +60,9 @@ async (req, res)     => {
 
         // envio de query para o banco de dados e retorna o resultado
         const [results] = await executeConnection.query(query, values);
+
         if(results.length > 0){
-            return res.status(422).json({ msg: "Este e-mail já é utilizado numa conta."});
+            return res.status(422).json({ msg: "Este e-mail já esta sendo utilizado numa conta Eco."});
         };
 
         // verifica a formatação do dado colocado no campo 'senha' com função externa
@@ -74,21 +72,14 @@ async (req, res)     => {
             return res.status(400).json({error: verificate[1]});
         }
 
-        // armazena os valores passados no cachê do app (CACHE)
-        appcacheTemp.set("name",    name);
-        appcacheTemp.set("lastname",lastname);
-        appcacheTemp.set("email",   email);
-        appcacheTemp.set("pwd",     pwd);
-        appcacheTemp.set("avatar",  avatar);
-
-        // cria e armazena o token no cachê do app      (CACHE)
+        // cria o token de validação de e-mail
         const sendToken = crypto.randomBytes(2).toString("hex");
-        appcacheTemp.set(sendToken,true); 
 
-        // envia o token armazenado no e-mail
+        // armazena o token num formato válido
         const message = `${sendToken}`;
         
-        sendEmail(message,email, name);
+        // função externa que cria e manda o e-mail
+        sendEmail(message, email, name);
         res.status(200).json({ msg: "Registro de usuário criado. Por favor, verifique o token enviado em seu e-mail.", token: sendToken});
 	}catch(error){
 		console.error("Algo deu errado ao registrar usuário, tente novamente:", error);

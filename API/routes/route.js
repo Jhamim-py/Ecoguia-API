@@ -4,8 +4,6 @@ const { Router }    = require ("express");
 // rotas de ADMIN
 const createQuest = require('../controllers/Functions-Admin/create/createQuest');
 
-const createArticles = require('../controllers/Functions-Admin/create/createArticles');
-
 const createArticle = require('../controllers/Functions-Admin/create/createArticle');
 
 const createTip     = require('../controllers/Functions-Admin/create/createTip');
@@ -29,7 +27,7 @@ const deleteTip     = require('../controllers/Functions-Admin/delete/deleteTip')
 const viewPickupTime= require('../controllers/Functions-System/read/viewPickupTime');
 const viewTip       = require('../controllers/Functions-System/read/viewTip');
 const viewArticles  = require('../controllers/Functions-System/read/viewArticles');
-const viewRank      = require('../controllers/Functions-System/read/viewRank');
+//const viewRank      = require('../controllers/Functions-System/read/viewRank');
 const viewAvatars    = require('../controllers/Functions-System/read/viewAvatar');
 const selectArticle = require('../controllers/Functions-System/read/selectArticle');
 
@@ -64,9 +62,6 @@ const routes = Router();
 
 //criar uma nova quest com a entrada das informações
 routes.post('/createQuest', createQuest.createQuest);
-
-//cria 10 novos artigos de API externa
-routes.post('/createArticles', createArticles.createArticles);
 
 //cria artigo manualmente com os dados de entrada
 routes.post('/createArticle',createArticle.createArticle);
@@ -114,7 +109,7 @@ routes.get('/articles', viewArticles.viewArticles);
 routes.get('/selectArticle', selectArticle.selectArticle);
 
 //visualiza o ranking de usuários por XP
-routes.get('/rank',viewRank.viewRank);
+//routes.get('/rank',viewRank.viewRank);
 
 //visializar todos os avatares
 routes.get('/avatars', viewAvatars.viewAvatar);

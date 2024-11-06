@@ -1,5 +1,6 @@
 //componente do node 
 const jwt = require('jsonwebtoken'); //gera um token
+
 // importação do arquivo de configuração .env
 require('dotenv').config();
 
@@ -7,6 +8,7 @@ require('dotenv').config();
 exports.checkToken =  (req, res, next) => {
     //armazenar o token requerido no header da requisição
     const authHeader = req.headers['authorization'];
+    
     //verifica a existência do bearer token e separa em um array e armazenando apenas o valor do token 
     const token = authHeader && authHeader.split(" ")[1];
 
