@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server",
+    "swagger": "node swagger.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,6 +13,7 @@
   "dependencies": {
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
     "config": "^3.3.12",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -26,6 +28,10 @@
     "organizarapi": "file:",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
-    "puppeteer": "^23.4.0"
+    "puppeteer": "^23.4.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "swagger-autogen": "^2.23.7"
   }
 }
