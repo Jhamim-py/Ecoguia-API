@@ -16,3 +16,4 @@ exports.getConnection = async () => {
     throw error; // Lance o erro para que possa ser tratado onde a conexão é chamada
   }
 };
+ 

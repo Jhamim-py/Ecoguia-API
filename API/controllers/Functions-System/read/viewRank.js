@@ -7,7 +7,7 @@ const userID = req.user.id  //variáveis responsáveis por armazenar os dados
   try{
     //realiza a conexão com o banco de dados
     
-    const query             = `CALL getRankUser(?);`;
+    const query             = `CALL SelectRank(?);`;
     const values            = userID 
     //executa a query
     const [results] = await executeConnection.query(query,values);
