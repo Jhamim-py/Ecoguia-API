@@ -28,8 +28,9 @@ const viewPickupTime= require('../controllers/Functions-System/read/viewPickupTi
 const viewTip       = require('../controllers/Functions-System/read/viewTip');
 const viewArticles  = require('../controllers/Functions-System/read/viewArticles');
 const viewRank      = require('../controllers/Functions-System/read/viewRank');
-const viewAvatars    = require('../controllers/Functions-System/read/viewAvatar');
+const viewAvatars   = require('../controllers/Functions-System/read/viewAvatar');
 const selectArticle = require('../controllers/Functions-System/read/selectArticle');
+const viewAllTips   = require('../controllers/Functions-System/read/viewAllTips')
 
 
 // rotas de USUÁRIO
@@ -70,6 +71,7 @@ routes.post('/createArticle',createArticle.createArticle);
 routes.post('/createTips', createTip.createTip);
 
 // PUT || UPDATE
+
 //modificar três missões e uma badge de acordo com o o ID de entrada
 //sendo ele aquele que detém o badge
 routes.put('/updateQuest', updateQuest.updateQuest);
@@ -102,6 +104,9 @@ routes.post('/pickupTime', viewPickupTime.pickupTime);
 //visualiza a dica diária
 routes.get('/tip', viewTip.getTip);
 
+//visualizar todas as dicas
+routes.get('/AllTips',viewAllTips.getAllTips);
+
 //visualiza os artigos
 routes.get('/articles', viewArticles.viewArticles);
 
@@ -109,7 +114,7 @@ routes.get('/articles', viewArticles.viewArticles);
 routes.get('/selectArticle', selectArticle.selectArticle);
 
 //visualiza o ranking de usuários por XP
-routes.get('/rank',viewRank.viewRank);
+routes.get('/rank',checkToken.checkToken,viewRank.viewRank);
 
 //visializar todos os avatares
 routes.get('/avatars', viewAvatars.viewAvatar);

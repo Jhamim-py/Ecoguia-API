@@ -11,6 +11,7 @@ async (req, res) => {
     try {
         const query = `CALL DeleteTip(?);`;
         const values = [id];
+		console.log(id)
 
 		//executa a query
 		const [results] = await executeConnection.query(query, values);
