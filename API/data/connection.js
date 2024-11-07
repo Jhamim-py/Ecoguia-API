@@ -1,13 +1,14 @@
 const mysql2 = require('mysql2/promise');
-
+require('dotenv').config();
 // Função para obter a conexão com o banco de dados
 exports.getConnection = async () => {
-  try { 
+  try {
     const connection = await mysql2.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: 'root',
-      database: 'bd_ecoguia' 
+      host: process.env.HOSTNAME_BD_AZURE,
+      user: 'Eco12Biotech',
+      password: process.env.PWD_BD_AZURE,
+      database: 'bd_ecoguia',
+      port: process.env.PORT,
     });
     return connection;
   }catch (error) {
