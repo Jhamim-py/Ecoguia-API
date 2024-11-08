@@ -18,6 +18,7 @@ exports.getConnection = async () => {
         rejectUnauthorized: true,
         ca: serverCa
       }
+
     });
     return connection; 
   }catch (error) {
