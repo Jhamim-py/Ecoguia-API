@@ -1,6 +1,7 @@
 // funções externas
 const connection  = require('../../../data/connection');
 const checkLength = require('../../../utils/characterLimit');
+
 // função assíncrona para adicionar uma nova dica
 exports.createTip = 
 async (req, res) => {
