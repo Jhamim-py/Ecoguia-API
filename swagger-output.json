@@ -11,124 +11,77 @@
     }
   ],
   "paths": {
-    "/createQuest": {
-      "post": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "422": {
-            "description": "Unprocessable Entity"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "description_3": {
-                    "example": "any"
-                  },
-                  "XP_3": {
-                    "example": "any"
-                  },
-                  "description_2": {
-                    "example": "any"
-                  },
-                  "XP_2": {
-                    "example": "any"
-                  },
-                  "description_1": {
-                    "example": "any"
-                  },
-                  "XP_1": {
-                    "example": "any"
-                  },
-                  "blob_url": {
-                    "example": "any"
-                  },
-                  "blob_title": {
-                    "example": "any"
-                  },
-                  "blob_description": {
-                    "example": "any"
-                  }
-                }
+   "/createQuest": {
+  "post": {
+    "tags": ["Admin"],  
+    "description": "Rota utilizada para criação de novas Quests usada pelo administrador",
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "400": {
+        "description": "Bad Request"
+      },
+      "422": {
+        "description": "Unprocessable Entity"
+      },
+      "500": {
+        "description": "Internal Server Error"
+      }
+    },
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "description_3": {
+                "type": "string",
+                "example": "any"
+              },
+              "XP_3": {
+                "type": "integer",
+                "example": 100
+              },
+              "description_2": {
+                "type": "string",
+                "example": "any"
+              },
+              "XP_2": {
+                "type": "integer",
+                "example": 50
+              },
+              "description_1": {
+                "type": "string",
+                "example": "any"
+              },
+              "XP_1": {
+                "type": "integer",
+                "example": 25
+              },
+              "blob_url": {
+                "type": "string",
+                "example": "http://example.com/image.jpg"
+              },
+              "blob_title": {
+                "type": "string",
+                "example": "Título da imagem"
+              },
+              "blob_description": {
+                "type": "string",
+                "example": "Descrição da imagem"
               }
             }
           }
         }
       }
-    },
-    "/createArticles": {
-      "post": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/createArticle": {
-      "post": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "422": {
-            "description": "Unprocessable Entity"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "image": {
-                    "example": "any"
-                  },
-                  "title": {
-                    "example": "any"
-                  },
-                  "category": {
-                    "example": "any"
-                  },
-                  "description": {
-                    "example": "any"
-                  },
-                  "reference": {
-                    "example": "any"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+    }
+  }
+},
     "/createTips": {
       "post": {
-        "description": "",
+        "tags": ["Admin"],  
+        "description": "Rota utilizada para criação de novas dicas diárias usada pelo administrador",
         "responses": {
           "201": {
             "description": "Created"
@@ -150,7 +103,8 @@
                 "type": "object",
                 "properties": {
                   "tip_description": {
-                    "example": "any"
+                    "type":"string",
+                    "example": "Não jogue lixo na rua"
                   }
                 }
               }
@@ -161,7 +115,8 @@
     },
     "/updateQuest": {
       "put": {
-        "description": "",
+        "tags":["Admin"],
+        "description": "Rota utilizada para a atualização de uma quest no banco de dados usada pelo administrador",
         "responses": {
           "200": {
             "description": "OK"
@@ -180,33 +135,43 @@
                 "type": "object",
                 "properties": {
                   "IDquest": {
-                    "example": "any"
+                    "type": "integer",
+                    "example": 1
                   },
                   "description_3": {
+                    "type": "string",
                     "example": "any"
                   },
                   "XP_3": {
+                    "type": "integer",
                     "example": "any"
                   },
                   "description_2": {
+                    "type": "string",
                     "example": "any"
                   },
                   "XP_2": {
+                    "type": "integer",
                     "example": "any"
                   },
                   "description_1": {
+                    "type": "string",
                     "example": "any"
                   },
                   "XP_1": {
+                    "type": "integer",
                     "example": "any"
                   },
                   "blob_url": {
-                    "example": "any"
+                    "type": "string",
+                    "example": "Link de uma imagem"
                   },
                   "blob_title": {
+                    "type": "string",
                     "example": "any"
                   },
                   "blob_description": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -218,7 +183,8 @@
     },
     "/updateArticle": {
       "put": {
-        "description": "",
+        "tags":["Admin"],
+        "description": "Rota utilizada para a atualização de um artigo no banco de dados usada pelo administrador",
         "responses": {
           "200": {
             "description": "OK"
@@ -237,21 +203,27 @@
                 "type": "object",
                 "properties": {
                   "id": {
-                    "example": "any"
+                    "type": "integer",
+                    "example": 1
                   },
                   "image": {
+                    "type": "string",
                     "example": "any"
                   },
                   "title": {
+                    "type": "string",
                     "example": "any"
                   },
                   "category": {
+                    "type": "string",
                     "example": "any"
                   },
                   "description": {
+                    "type": "string",
                     "example": "any"
                   },
                   "reference": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -263,7 +235,8 @@
     },
     "/updateAvatar": {
       "put": {
-        "description": "",
+        "tags":["Admin"],
+        "description": "Rota utilizada para a atualização de um avatar no banco de dados usada pelo administrador",
         "responses": {
           "200": {
             "description": "OK"
@@ -282,9 +255,11 @@
                 "type": "object",
                 "properties": {
                   "avatarId": {
+                    "type": "integer",
                     "example": "any"
                   },
                   "newAvatar": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -296,7 +271,8 @@
     },
     "/updateTip": {
       "put": {
-        "description": "",
+        "tags":["Admin"],
+        "description": "Rota utilizada para a atualização de uma dica no banco de dados usada pelo administrador",
         "responses": {
           "200": {
             "description": "OK"
@@ -315,9 +291,11 @@
                 "type": "object",
                 "properties": {
                   "id": {
+                    "type": "integer",
                     "example": "any"
                   },
                   "description_tip": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -329,7 +307,8 @@
     },
     "/deleteQuest": {
       "delete": {
-        "description": "",
+         "tags":["Admin"],
+        "description": "Rota utilizada para a exclusão de uma quest usada pelo administrador",
         "responses": {
           "200": {
             "description": "OK"
@@ -345,7 +324,8 @@
     },
     "/deleteArticle": {
       "delete": {
-        "description": "",
+        "tags":["Admin"],
+        "description": "Rota utilizada para a exclusão de um artigo usada pelo administrador",
         "responses": {
           "200": {
             "description": "OK"
@@ -361,6 +341,7 @@
                 "type": "object",
                 "properties": {
                   "id": {
+                    "type": "integer",
                     "example": "any"
                   }
                 }
@@ -372,7 +353,8 @@
     },
     "/deleteTip": {
       "delete": {
-        "description": "",
+        "tags":["Admin"], 
+        "description": "Rota utilizada para a exclusão de uma dica diária usada pelo administrador",
         "responses": {
           "200": {
             "description": "OK"
@@ -388,6 +370,7 @@
                 "type": "object",
                 "properties": {
                   "id": {
+                    "type": "integer",
                     "example": "any"
                   }
                 }
@@ -399,7 +382,8 @@
     },
     "/pickupTime": {
       "post": {
-        "description": "",
+        "tags":["System"],
+        "description": "Rota utilizada pelo sistema para a extração de dados sobre os horários de coleta.",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -418,6 +402,7 @@
                 "type": "object",
                 "properties": {
                   "cep": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -429,7 +414,8 @@
     },
     "/tip": {
       "get": {
-        "description": "",
+      "tags":["System"],  
+        "description": "Rota utilizada pelo sistema pegar uma dica diária no banco de dados",
         "responses": {
           "200": {
             "description": "OK"
@@ -445,17 +431,22 @@
     },
     "/articles": {
       "get": {
-        "description": "",
+        "tags":["System"],
+        "description": "Rota utilizada pelo sistema para pegar 3 artigos no banco de dados",
         "responses": {
-          "default": {
+          "200": {
             "description": ""
+          },
+          "500":{
+            "description": "Internal Server Error"
           }
         }
       }
     },
     "/selectArticle": {
       "get": {
-        "description": "",
+        "tags":["System"],
+        "description": "Rota utilizada pelo sistema para pegar 3 artigos no banco de dados",
         "responses": {
           "200": {
             "description": "OK"
@@ -463,12 +454,28 @@
           "500": {
             "description": "Internal Server Error"
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
     "/rank": {
       "get": {
-        "description": "",
+        "tags":["System"],
+        "description": "Rota utilizada pelo sistema para pegar dados sobre o rank dos usuários de acordo com a quantidade de XP",
         "responses": {
           "200": {
             "description": "OK"
@@ -481,17 +488,25 @@
     },
     "/avatars": {
       "get": {
-        "description": "",
+        "tags":["System"],
+        "description": "Rota utilizada pelo sistema para pegar todos os avatares",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "404":{
+            "description": "Not Found"
+          },
+          "500":{
+            "description": "Internal Server Error"
           }
         }
       }
     },
     "/user/register": {
       "post": {
-        "description": "",
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para a validação dos dados para o cadastro incluindo a confirmação do email pelo envio de um token",
         "responses": {
           "200": {
             "description": "OK"
@@ -522,18 +537,23 @@
                 "type": "object",
                 "properties": {
                   "name": {
+                    "type":"string",
                     "example": "any"
                   },
                   "lastname": {
+                    "type": "string",
                     "example": "any"
                   },
                   "email": {
+                    "type": "string",
                     "example": "any"
                   },
                   "pwd": {
+                    "type": "string",
                     "example": "any"
                   },
                   "avatar": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -544,8 +564,9 @@
       }
     },
     "/user/create": {
-      "post": {
-        "description": "",
+      "post": { 
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para a criação do cadastro no banco de dados",
         "responses": {
           "200": {
             "description": "OK"
@@ -564,18 +585,23 @@
                 "type": "object",
                 "properties": {
                   "name": {
+                    "type":"string",
                     "example": "any"
                   },
                   "lastname": {
+                    "type":"string",
                     "example": "any"
                   },
                   "email": {
+                    "type": "string",
                     "example": "any"
                   },
                   "pwd": {
+                    "type": "string",
                     "example": "any"
                   },
                   "avatar": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -587,7 +613,8 @@
     },
     "/user/token": {
       "post": {
-        "description": "",
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para o envio de um token de confirmação para a redefinição de senha caso a tenha esquecido.",
         "responses": {
           "200": {
             "description": "OK"
@@ -606,6 +633,7 @@
                 "type": "object",
                 "properties": {
                   "email": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -616,8 +644,9 @@
       }
     },
     "/user/login": {
-      "post": {
-        "description": "",
+      "post": { 
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para a realização do login",
         "responses": {
           "200": {
             "description": "OK"
@@ -642,9 +671,11 @@
                 "type": "object",
                 "properties": {
                   "email": {
+                    "type":"string",
                     "example": "any"
                   },
                   "pwd": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -656,7 +687,8 @@
     },
     "/user/auth/google/callback": {
       "post": {
-        "description": "",
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para a realização do login com o google.",
         "responses": {
           "200": {
             "description": "OK"
@@ -672,7 +704,8 @@
     },
     "/user/pwd": {
       "post": {
-        "description": "",
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para a redefinição da senha.",
         "responses": {
           "200": {
             "description": "OK"
@@ -691,9 +724,11 @@
                 "type": "object",
                 "properties": {
                   "pwd": {
+                    "type":"string",
                     "example": "any"
                   },
                   "email": {
+                    "type":"string",
                     "example": "any"
                   }
                 }
@@ -703,13 +738,22 @@
         }
       },
       "put": {
-        "description": "",
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para atuzalizar sua senha no perfil.",
+        "security": [
+          {
+            "BearerAuth": []  
+          }
+        ],
         "parameters": [
           {
-            "name": "authorization",
+            "name": "authorization", 
             "in": "header",
+            "description": "Token de autenticação do usuário",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "Bearer YOUR_TOKEN_HERE"
             }
           }
         ],
@@ -734,9 +778,11 @@
                 "type": "object",
                 "properties": {
                   "pwdUser": {
+                    "type": "string",
                     "example": "any"
                   },
                   "newPwd": {
+                    "type":"string",
                     "example": "any"
                   }
                 }
@@ -748,13 +794,22 @@
     },
     "/user/profile": {
       "put": {
-        "description": "",
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para a atualização do seus dados de perfil",
+        "security": [
+          {
+            "BearerAuth": []  
+          }
+        ],
         "parameters": [
           {
-            "name": "authorization",
+            "name": "authorization", 
             "in": "header",
+            "description": "Token de autenticação do usuário",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "Bearer YOUR_TOKEN_HERE"
             }
           }
         ],
@@ -779,12 +834,15 @@
                 "type": "object",
                 "properties": {
                   "name": {
+                    "type": "string",
                     "example": "any"
                   },
                   "lastname": {
+                    "type": "string",
                     "example": "any"
                   },
                   "avatar": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -794,13 +852,22 @@
         }
       },
       "get": {
-        "description": "",
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para pegar os dados do seu perfil.",
+        "security": [
+          {
+            "BearerAuth": []  
+          }
+        ],
         "parameters": [
           {
-            "name": "authorization",
+            "name": "authorization", 
             "in": "header",
+            "description": "Token de autenticação do usuário",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "Bearer YOUR_TOKEN_HERE"
             }
           }
         ],
@@ -825,13 +892,22 @@
     },
     "/user/levelup": {
       "put": {
-        "description": "",
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para a atualização do seu level e quest atual",
+        "security": [
+          {
+            "BearerAuth": []  
+          }
+        ],
         "parameters": [
           {
-            "name": "authorization",
+            "name": "authorization", 
             "in": "header",
+            "description": "Token de autenticação do usuário",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "Bearer YOUR_TOKEN_HERE"
             }
           }
         ],
@@ -856,13 +932,22 @@
     },
     "/user/email": {
       "put": {
-        "description": "",
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para a atualização do email no banco de dados",
+        "security": [
+          {
+            "BearerAuth": []  
+          }
+        ],
         "parameters": [
           {
-            "name": "authorization",
+            "name": "authorization", 
             "in": "header",
+            "description": "Token de autenticação do usuário",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "Bearer YOUR_TOKEN_HERE"
             }
           }
         ],
@@ -887,6 +972,7 @@
                 "type": "object",
                 "properties": {
                   "email": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -898,7 +984,8 @@
     },
     "/user/registerEmail": {
       "put": {
-        "description": "",
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para o envio de um token para a confirmação do email a ser atualizado",
         "responses": {
           "200": {
             "description": "OK"
@@ -917,6 +1004,7 @@
                 "type": "object",
                 "properties": {
                   "email": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -928,6 +1016,7 @@
     },
     "/user/auth/google": {
       "get": {
+        "tags":["User"],
         "description": "",
         "responses": {
           "default": {
@@ -938,13 +1027,22 @@
     },
     "/user": {
       "delete": {
-        "description": "",
+        "tags":["User"],
+        "description": "Rota utilizado pelo usuário para a exclusão da conta",
+        "security": [
+          {
+            "BearerAuth": []  
+          }
+        ],
         "parameters": [
           {
-            "name": "authorization",
+            "name": "authorization", 
             "in": "header",
+            "description": "Token de autenticação do usuário",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "Bearer YOUR_TOKEN_HERE"
             }
           }
         ],
@@ -975,6 +1073,7 @@
                 "type": "object",
                 "properties": {
                   "pwdHash": {
+                    "type": "string",
                     "example": "any"
                   }
                 }
@@ -1056,7 +1155,7 @@
       },
       "someEnum": {
         "type": "string",
-        "enum": [
+        "enum": [ 
           "red",
           "yellow",
           "green"
