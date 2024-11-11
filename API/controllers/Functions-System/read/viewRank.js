@@ -10,7 +10,8 @@ const userID = req.user.id  //variáveis responsáveis por armazenar os dados
     const query             = `CALL SelectRank(?);`;
     const values            = userID 
     //executa a query
-    const [results] = await executeConnection.query(query,values);
+    const [results] = await executeConnection.query(query, values);
+    results;
    
     //retorna o array em ordem decrescente com base no XP
     return res.status(200).json(results[0]);
