@@ -4,14 +4,11 @@ require('dotenv').config();
 // funções externas
 const connection        = require('../../../data/connection');       //conexão com o banco de dados
 const checkLength       = require('../../../utils/characterLimit');  //verifica se o dado ultrapassa o limite de caracteres
-// const formatCategory	= require('../../../utils/formatData');		 //formata o dado para letras minúsculas e sem acento
 
 exports.createArticle   =
-async (req, res) => {
+async (req, res) 	    => {
   	// array de requisição dos dados
-	const {
-		image, title, category, description, reference
-	} = req.body;
+	const {image, title, category, description, reference} = req.body;
 
 	// validação de campo vazio
 	if (!image || !title || !category || !description || !reference) {
