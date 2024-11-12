@@ -34,8 +34,9 @@ const viewArticles  = require('../controllers/Functions-System/read/viewArticles
 const viewRank      = require('../controllers/Functions-System/read/viewRank');
 const viewAvatars   = require('../controllers/Functions-System/read/viewAvatar');
 const selectArticle = require('../controllers/Functions-System/read/selectArticle');
-const viewAllTips   = require('../controllers/Functions-System/read/viewAllTips')
-const viewLevels     = require('../controllers/Functions-System/read/viewLevel')
+const viewAllTips   = require('../controllers/Functions-System/read/viewAllTips');
+const viewLevels    = require('../controllers/Functions-System/read/viewLevel');
+const viewQuests    = require('../controllers/Functions-System/read/viewQuests') 
 
 // rotas de USUÁRIO
 const registerUser  = require('../controllers/Functions-User/create/registerUser');
@@ -131,6 +132,9 @@ routes.get('/avatars', viewAvatars.viewAvatar);
 
 //visualizar todos os leveis
 routes.get('/levels', viewLevels.viewLevels);
+
+//visualizar informações sobre todas as quest
+routes.get('/quests', viewQuests.viewQuests)
 // HTTPS de USUÁRIO
 
 // POST || CREATE
