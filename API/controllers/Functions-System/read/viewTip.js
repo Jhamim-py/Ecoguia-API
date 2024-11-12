@@ -9,7 +9,7 @@ exports.getTip =
 async (req, res) => {
     const executeConnection = await connection.getConnection();  // Variável para armazenar a conexão com o banco de dados
 
-    try {
+    try { 
         const today = new Date(); // Obtém a data e hora atuais
         const formattedDate = today.toISOString().split('T')[0]; // Formata a data no formato YYYY-MM-DD
 

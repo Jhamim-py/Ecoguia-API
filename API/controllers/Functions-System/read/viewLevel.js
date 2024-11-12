@@ -1,6 +1,6 @@
 const connection = require('../../../data/connection') //conexão com o banco de dados
 
-exports.viewLevel =
+exports.viewLevels =
 async function (req, res) {
     const executeConnection = await connection.getConnection();
    

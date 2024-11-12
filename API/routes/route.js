@@ -2,11 +2,13 @@
 const { Router }    = require ("express");
 
 // rotas de ADMIN
-const createQuest = require('../controllers/Functions-Admin/create/createQuest');
+const createQuest  = require('../controllers/Functions-Admin/create/createQuest');
 
 const createArticle = require('../controllers/Functions-Admin/create/createArticle');
 
 const createTip     = require('../controllers/Functions-Admin/create/createTip');
+
+const createLevel   = require('../controllers/Functions-Admin/create/createLevel')
 
 const updateQuest   = require('../controllers/Functions-Admin/update/updateQuest');
 
@@ -22,6 +24,8 @@ const deleteArticle = require('../controllers/Functions-Admin/delete/deleteArtic
 
 const deleteTip     = require('../controllers/Functions-Admin/delete/deleteTip');
 
+const deleteLevel   = require('../controllers/Functions-Admin/delete/deleteLevel');
+
 
 // rotas de SISTEMA
 const viewPickupTime= require('../controllers/Functions-System/read/viewPickupTime');
@@ -31,7 +35,7 @@ const viewRank      = require('../controllers/Functions-System/read/viewRank');
 const viewAvatars   = require('../controllers/Functions-System/read/viewAvatar');
 const selectArticle = require('../controllers/Functions-System/read/selectArticle');
 const viewAllTips   = require('../controllers/Functions-System/read/viewAllTips')
-
+const viewLevels     = require('../controllers/Functions-System/read/viewLevel')
 
 // rotas de USUÁRIO
 const registerUser  = require('../controllers/Functions-User/create/registerUser');
@@ -70,6 +74,9 @@ routes.post('/createArticle',createArticle.createArticle);
 //cria uma nova dica com a entrada da descrição
 routes.post('/createTips', createTip.createTip);
 
+//Cria um novo level 
+routes.post('/createLevel', createLevel.createLevel);
+
 // PUT || UPDATE
 
 //modificar três missões e uma badge de acordo com o o ID de entrada
@@ -94,6 +101,9 @@ routes.delete('/deleteArticle', deleteArticle.deleteArticle);
 //Excluir uma dica de acordo com o ID de entrada
 routes.delete('/deleteTip', deleteTip.deleteTip);
 
+//Excluir um level de acordo com o ID de entrada
+routes.delete('/deleteLevel', deleteLevel.deleteLevel)
+
 
 // HTTPS de SISTEMA
 
@@ -116,8 +126,11 @@ routes.get('/selectArticle', selectArticle.selectArticle);
 //visualiza o ranking de usuários por XP
 routes.get('/rank',checkToken.checkToken,viewRank.viewRank);
 
-//visializar todos os avatares
+//visualizar todos os avatares
 routes.get('/avatars', viewAvatars.viewAvatar);
+
+//visualizar todos os leveis
+routes.get('/levels', viewLevels.viewLevels);
 // HTTPS de USUÁRIO
 
 // POST || CREATE
