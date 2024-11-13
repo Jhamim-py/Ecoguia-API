@@ -18,6 +18,8 @@ const updateAvatar  = require('../controllers/Functions-Admin/update/updateAvata
 
 const updateTip     = require('../controllers/Functions-Admin/update/updateTip');
 
+const updateMaterial= require('../controllers/Functions-Admin/update/updateMaterial');
+
 const deleteQuest   = require('../controllers/Functions-Admin/delete/deleteQuest');
 
 const deleteArticle = require('../controllers/Functions-Admin/delete/deleteArticle');
@@ -37,6 +39,7 @@ const selectArticle = require('../controllers/Functions-System/read/selectArticl
 const viewAllTips   = require('../controllers/Functions-System/read/viewAllTips');
 const viewLevels    = require('../controllers/Functions-System/read/viewLevel');
 const viewQuests    = require('../controllers/Functions-System/read/viewQuests') 
+const viewMaterial  = require('../controllers/Functions-System/read/viewMaterial');
 
 // rotas de USUÁRIO
 const registerUser  = require('../controllers/Functions-User/create/registerUser');
@@ -92,6 +95,9 @@ routes.put('/updateAvatar', updateAvatar.updateAvatar);
 //modificar uma dica de acordo com o ID de entrada
 routes.put('/updateTip', updateTip.updateTip);
 
+//modificar um material de acordo com o ID de entrada
+routes.put('/updateMaterial',updateMaterial.updateMaterial)
+
 // DELETE || DELETE
 //excluiri uma quest de acordo com o ID de entrada
 routes.delete('/deleteQuest', deleteQuest.deleteQuest);
@@ -135,6 +141,9 @@ routes.get('/levels', viewLevels.viewLevels);
 
 //visualizar informações sobre todas as quest
 routes.get('/quests', viewQuests.viewQuests)
+
+//visualizar informações sobre os materiais de coleta
+routes.get('/materiais',viewMaterial.viewMaterial)
 // HTTPS de USUÁRIO
 
 // POST || CREATE
