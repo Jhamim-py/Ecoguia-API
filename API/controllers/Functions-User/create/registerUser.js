@@ -37,15 +37,15 @@ async (req, res)     => {
 	];
 
 	// array variável que armazena o limite dos campos no banco de dados
-	const limitlength = [60, 60, 120, 74, 120];
+	const limitLength = [60, 60, 120, 74, 120];
 
     // validação de tamanho
 	// verifica se os dados ultrapassam X caracteres e expõe caso seja verdadeiro
 	for (let i = 0; i < data.length; i++){
 		const [title, value] = data[i]; // Captura o título e valor do campo
 
-		if (checkLength(value, limitlength[i])) {
-			return res.status(420).json({ msg: `O campo de ${title} ultrapassou o limite de ${limitlength[i]} caracteres.` });
+		if (checkLength(value, limitLength[i])) {
+			return res.status(420).json({ msg: `O campo de ${title} ultrapassou o limite de ${limitLength[i]} caracteres.` });
 		};
 	};
 
