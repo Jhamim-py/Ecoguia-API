@@ -10,7 +10,7 @@ exports.getConnection = async () => {
   try {
     const connection = await mysql2.createConnection({
       host: process.env.HOSTNAME_BD_AZURE,
-      user: 'Eco12Biotech',
+      user: 'Eco12Biotech', 
       password: process.env.PWD_BD_AZURE,
       database: 'bd_ecoguia',
       port: process.env.PORT,

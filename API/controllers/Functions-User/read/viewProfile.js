@@ -10,7 +10,7 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
     try{
         // Armazena a query que chama a procedure de visualização de perfil
         const query = `CALL SelectProfile(?);`;
-        const values = userID;
+        const values = userID; 
 
         // Executa a consulta
         const [results] = await executeConnection.query(query, values);
