@@ -7,7 +7,7 @@ const appcacheTemp     = require('../../../utils/cacheTemp');    // armazena os 
 const generateNickname = require('../../../utils/generateNickname');   // função externa que é responsável por gerar um nickname (exige a entrada da variável 'name') 
 
 // função de registro que pode ser exportada 
-exports.createUser =
+exports.sendNewUser =
 async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
     const {
         name, lastname, email, pwd, avatar

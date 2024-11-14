@@ -5,7 +5,7 @@ let dailyTip = null; // Armazena a dica que será retornada ao usuário
 let lastTipDate = null; // Armazena a data em que a dica foi buscada
 
 // Função assíncrona para obter a dica
-exports.getTip = 
+exports.getDailyTip = 
 async (req, res) => {
     const executeConnection = await connection.getConnection();  // Variável para armazenar a conexão com o banco de dados
 

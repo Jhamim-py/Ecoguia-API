@@ -1,6 +1,6 @@
 const connection = require('../../../data/connection') //conexão com o banco de dados
 
-exports.viewQuests =
+exports.getQuests =
 async function (req,res) {
     const executeConnection = await connection.getConnection();
    

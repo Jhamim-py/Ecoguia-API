@@ -1,6 +1,6 @@
-const connection     =  require('../../../data/connection');  // conexão com o banco de dados
+const connection     =  require('../../../../data/connection');  // conexão com o banco de dados
 // Função assíncrona para atualizar o E-mail do usuário
-exports.updateEmail =
+exports.newEmail =
 async (req, res) => {
 	// variáveis responsáveis por armazenar os dados
 	const userId  = req.user.id;

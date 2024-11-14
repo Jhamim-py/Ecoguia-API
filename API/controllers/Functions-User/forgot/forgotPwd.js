@@ -7,15 +7,15 @@ const verificatePwd    = require('../../../utils/verificatePwd');// importa fun�
 const getID            = require('../../../utils/getID')         // pegar o id do usuario pelo email
 
 // função de visualização que pode ser exportada
-exports.password =   
+exports.newPwd =   
 async (req, res) => {
-    const {pwd, email}   = req.body;                               // variável responsável por armazenar os dados
+    const {pwd, email}   = req.body;                             // variável responsável por armazenar os dados
     
-    const executeConnection = await connection.getConnection();   //guarda a conexão com o banco
+    const executeConnection = await connection.getConnection();  //aguarda a conexão com o banco
 
     const userID = await getID(email);
     console.log(userID)                       
-    const checkPwd = verificatePwd(pwd);                        //Verifica se a senha está nos padrões corretos
+    const checkPwd = verificatePwd(pwd);                         //Verifica se a senha está nos padrões corretos
 
     // verificação de dados
     console.log(pwd);

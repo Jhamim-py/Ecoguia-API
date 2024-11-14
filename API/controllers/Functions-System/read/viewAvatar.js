@@ -1,6 +1,6 @@
 const connection = require('../../../data/connection') //conexão com o banco de dados
 
-exports.viewAvatar =
+exports.getAvatars =
 async function (req, res) {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection.getConnection();

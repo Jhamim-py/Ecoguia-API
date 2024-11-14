@@ -3,14 +3,13 @@ const crypto         =  require('crypto');          // gera um token aleatório
 const validatorEmail =  require('email-validator'); // verifica e valida o formato 'e-mail', se contém @, .com, etc.
 
 // variáveis de ambiente para importar funções
-const connection     = require('../../../data/connection');          // conexão com o banco de dados
-const appcacheTemp   = require('../../../utils/cacheTemp');          // armazena os dados de usuário, usado posteriormente para validações
+const connection     = require('../../../data/connection');         // armazena os dados de usuário, usado posteriormente para validações
 const sendEmail      = require('../../../utils/sendEmail');          // importa função de enviar token por email
 const verificatePwd  = require('../../../utils/verificatePwd');      // verifica e valida o formato 'senha', se contém 8 caracteres, etc.
 const checkLength    = require('../../../utils/characterLimit');     // verifica se o dado ultrapassa o limite de caracteres
 
 // função assíncrona com parâmetros de requisição e resposta
-exports.postRegister =
+exports.newUser =
 async (req, res)     => {
     
   	// array de requisição dos dados

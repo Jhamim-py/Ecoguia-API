@@ -1,14 +1,14 @@
 const connection = require('../../../data/connection'); //conexão com o banco de dados
 
-exports.selectArticle =
+exports.getIDArticle =
 async(req, res) => {
     const {id} = req.body;  //variáveis responsáveis por armazenar os dados
 
     //executa a conexão com o banco de dados
-    const executeConnection = connection.getConnection();
+    const executeConnection = await connection.getConnection();
 
     try{
-        const query  = "CALL SelectIDArticle(?);";
+        const query  = "SELECT * FROM ViewAllArticle WHERE pk_IDarticle = (?);";
         const values = [id];
     
         //executa a query
@@ -20,7 +20,7 @@ async(req, res) => {
 
     } catch (error) {
         // Caso ocorra um erro durante a execução, retorna um erro 500
-        console.error("Algo deu errado ao buscar artigo, tente novamente: ", error);
+        console.error("Algo deu errado ao buscar artigo, tente novamente: ", error.sqlMessage);
         return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
     } finally {
         // Fecha a conexão com o banco de dados, se foi estabelecida

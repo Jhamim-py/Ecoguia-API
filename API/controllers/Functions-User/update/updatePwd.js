@@ -4,7 +4,7 @@ const bcrypt         = require('bcrypt');                    // criptografa dado
 const connection     = require('../../../data/connection');  // conexão com o banco de dados
 const verificatePwd  = require('../../../utils/verificatePwd'); // importa função de verificar padrão de senha
 
-exports.updateUser =
+exports.updatePwd =
 async (req, res) => {
    // variáveis responsáveis por armazenar os dados
     const userId = req.user.id;   // variável que armazena o ID do usuário

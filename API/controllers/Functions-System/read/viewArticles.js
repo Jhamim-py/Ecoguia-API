@@ -1,6 +1,6 @@
 const connection = require('../../../data/connection'); // conexão com o banco de dados
 
-exports.viewArticles = 
+exports.getAllArticles = 
 async (req, res) => { // Incluindo req como parâmetro
     const executeConnection = await connection.getConnection();
     try {
