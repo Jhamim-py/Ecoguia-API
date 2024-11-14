@@ -102,7 +102,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "tip_description": {
+                  "description_tip": {
                     "type":"string",
                     "example": "Não jogue lixo na rua"
                   }

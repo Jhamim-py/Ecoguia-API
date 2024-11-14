@@ -1,46 +1,53 @@
-const connection     = require('../../../data/connection');
+//funções externas
+const connection     = require('../../../data/connection');     //conexão com o banco de dados
 
-// função de modificação do avatar do usuário que pode ser exportada
+//função assíncrona para modificar uma avatar
 // adaptar posteriormente para o Azure...
 exports.updateAvatar =
 async (req, res) => {
-    const avatarId    = req.body.avatarId;  // pegando o ID do avatar
-    // URL do novo avatar
-    const newAvatar   = req.body.newAvatar;
-    const limitLength = 2048;
+    //(Mudar isso?? Otimizar!!)
 
-    // verifica se o tamanho da URL está aceitável
-    if (checkLength(newAvatar, limitLength)) {
+    //array de requisição dos dados
+    const avatarId    = req.body.avatarId;
+    const newAvatar   = req.body.newAvatar;
+
+    //array variável que armazena o limite do campo no banco de dados
+    const limitLength = 2048;    
+
+    if (!newAvatar) {
+        // validação de campo vazio
+        return res.status(422).json({ msg: "É obrigatório preencher o campo de nova URL." });
+	
+        //verifica se já existe um avatar deste tipo no banco de dados
+	    //...?
+
+    }else if (checkLength(newAvatar, limitLength)){
+        //verifica se os dados ultrapassam X caracteres e expõe caso seja verdadeiro
         return res.status(400).json({ msg: `A URL da imagem ultrapassou o limite de ${limitLength} caracteres.` });
     };
 
     //executa a conexão com o banco de dados
-    const executeConnection = await connection.getConnection();
-
-    // Verifica se o novo avatar foi fornecido
-    // mais uma função de verificar campo vazio, etc.
-    if (!newAvatar) {
-        return res.status(400).json({ msg: "Novo link do avatar não fornecido." });
-    }
+	const executeConnection = await connection.getConnection();
 
     try{
-        // query para modificar o avatar do usuário
+        //chama a procedure de criação e coloca os dados
         const query  = "CALL ModifyAvatar(?, ?)";
-        const values = [avatarId, newAvatar]; // passando o ID do avatar e a nova URL
+        const values = [avatarId, newAvatar];
 
-		//executa a query
+		//envia a query e retorna caso tenha dado certo
 		const [results] = await executeConnection.query(query, values);
 		results;
 
 		return res.status(200).json({msg:"Avatar alterado com sucesso."});
 	}catch(error){
-		console.error("Algo deu errado ao alterar o avatar, tente novamente:", error);
-		return res.status(500).json({msg: "Erro interno no servidor, tente novamente."});
+		//caso dê algo errado, retorna no console e avisa
+		console.error("Algo deu errado ao modificar o avatar, tente novamente:", error);
+		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
 	}
-	finally{
-		if(executeConnection){
-			//Fecha a conexão com o banco de dados
-			await executeConnection.end();
-		}
-	};
+    finally{
+        if (executeConnection) {
+            //fecha a conexão com o banco de dados
+            await executeConnection.end();
+        };
+    };
 };
