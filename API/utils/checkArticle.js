@@ -9,7 +9,7 @@ async function checkArticle(title){
     try{
         // armazena a query que chama a view que retorna somente o ID, nickname e e-mail
         const query = "SELECT * FROM ViewAllArticle WHERE title_article=?;";
-        const value = title;
+        const value = title; 
         
         //executa a query
         const [results] = await executeConnection.query(query, value);

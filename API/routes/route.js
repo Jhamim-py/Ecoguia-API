@@ -128,9 +128,9 @@ routes.get('/AllTips',viewAllTips.getAllTips);
 routes.get('/articles', viewArticles.viewArticles);
 
 //visualiza um artigo
-routes.get('/selectArticle', selectArticle.selectArticle);
+routes.get('/selectArticle', selectArticle.selectArticle); 
 
-//visualiza o ranking de usuários por XP
+//visualiza o ranking de usuários por XP 
 routes.get('/rank',checkToken.checkToken,viewRank.viewRank);
 
 //visualizar todos os avatares
@@ -138,7 +138,7 @@ routes.get('/avatars', viewAvatars.viewAvatar);
 
 //visualizar todos os leveis
 routes.get('/levels', viewLevels.viewLevels);
-
+ 
 //visualizar informações sobre todas as quest
 routes.get('/quests', viewQuests.viewQuests)
 
@@ -158,7 +158,6 @@ routes.post('/user/auth/google/callback',       googleAuth.authGoogleCallback);
 
 //recuperação de conta
 routes.post('/user/pwd',          forgetPwd.password);
-
 
 //PUT || UPDATE
 routes.put   ('/user/profile',    checkToken.checkToken, updateProfile.updateProfile);
