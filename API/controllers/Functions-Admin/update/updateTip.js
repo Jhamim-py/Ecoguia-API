@@ -1,5 +1,5 @@
 const connection  = require('../../../data/connection'); // conexão com o banco de dados
-const nullValue   = require('../../../utils/nullValue'); // verifica se a variável possui valor nulo 
+const checkLength   = require('../../../utils/characterLimit'); // verifica se a variável possui valor maior que o esperado 
 
 exports.updateTip = 
 async (req, res) => {
