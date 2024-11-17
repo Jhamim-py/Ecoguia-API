@@ -1,28 +1,30 @@
-const connection = require('../../../data/connection') //conexão com o banco de dados
+//funções externas
+const connection = require('../../../data/connection'); //conexão com o banco de dados
 
+//função assíncrona para visualizar os materiais
 exports.viewMaterial =
 async function (req, res) {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection.getConnection();
-  
-    try{
-        const query     = "SELECT * FROM ViewAllMaterial;";
-        const [results] = await executeConnection.query(query);
-        results;
 
-        if(results.length <= 0){
-            return res.status(404).json({msg: "Não foram encontrados materiais no banco de dados."});
-        };
+    try{
+        //chama a view pronta de visualização
+        const query     = "SELECT * FROM ViewAllMaterial;";
+
+        //envia a query e retorna caso tenha dado certo
+		const [results] = await executeConnection.query(query);
+		results;
 
         return res.status(200).json({msg: "Materiais: ", materiais: results});
+		//caso dê algo errado, retorna no console e avisa
     }catch(error){
-        console.error("Erro ao visualizar registros de materiais: ", error);
-        return res.status(500).json({ msg: "Erro interno no servidor, tente novamente." });
-    }
-    finally {
-        // Fecha a conexão com o banco de dados, se foi estabelecida
-        if (executeConnection) {
-            await executeConnection.end();
-        };
-    };
-}
+		console.error("Algo deu errado ao visualizar os materiais, tente novamente:", error);
+		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
+	}
+	finally{
+		if(executeConnection){
+			//fecha a conexão com o banco de dados
+			await executeConnection.end();
+		}
+	};
+};

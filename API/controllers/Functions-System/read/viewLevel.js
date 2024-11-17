@@ -1,29 +1,30 @@
-const connection = require('../../../data/connection') //conexão com o banco de dados
+//funções externas
+const connection = require('../../../data/connection'); //conexão com o banco de dados
 
+//função assíncrona para visualizar os levels
 exports.getLevels =
 async function (req, res) {
-    const executeConnection = await connection.getConnection();
-   
-    try{ 
+	//executa a conexão com o banco de dados
+	const executeConnection = await connection.getConnection();
+
+    try{
+        //chama a view pronta de visualização
         const query = "SELECT * FROM ViewAllLevel;";
 
-        const [results] = await executeConnection.query(query);
-        results;
+        //envia a query e retorna caso tenha dado certo
+		const [results] = await executeConnection.query(query);
+		results;
 
-        if(results.length <= 0){
-            return res.status(404).json({msg: "Não foram encontrados levels no banco de dados."});
-        };
-
-        return res.status(200).json({msg: "Levels disponíveis: ", levels: results});
-    
-    }catch(error){
-        console.error("Erro ao visualizar registros de levels: ", error);
-        return res.status(500).json({ msg: "Erro interno no servidor, tente novamente." });
-    }
-    finally {
-        // Fecha a conexão com o banco de dados, se foi estabelecida
-        if (executeConnection) {
-            await executeConnection.end();
-        };
-    };
-}
+        return res.status(200).json({msg: "Níveis disponíveis: ", levels: results});    
+	}catch(error){
+		//caso dê algo errado, retorna no console e avisa
+		console.error("Algo deu errado ao visualizar os níveis, tente novamente:", error);
+		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
+	}
+	finally{
+		if(executeConnection){
+			//fecha a conexão com o banco de dados
+			await executeConnection.end();
+		}
+	};
+};

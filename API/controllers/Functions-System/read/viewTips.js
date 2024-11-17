@@ -1,31 +1,30 @@
-const connection =  require('../../../data/connection')
+//funções externas
+const connection = require('../../../data/connection'); //conexão com o banco de dados
 
+//função assíncrona para visualizar todas as dicas
 exports.getAllTips =
-async (req,res) => {
+async (req, res) => {
+	//executa a conexão com o banco de dados
+	const executeConnection = await connection.getConnection();
 
-    const executeConnection = await connection.getConnection(); // Variável para armazenar a conexão com o banco de dados
-try{
-      // Query para buscar todas as dicas armazenadas na tabela ViewAllTips
-    const query = "SELECT * FROM ViewAllTips";
-    const result = await executeConnection.query(query); // Executa a consulta
-    if(result.length != 0){ // Verifica se há resultados
+    try{
+        //chama a view pronta de visualização
+        const query = "SELECT * FROM ViewAllTips;";
 
-        // Retorna as dicas encontradas em formato JSON
-        res.status(200).json(result[0])
-    }
-    else{
-         // Se não encontrar nenhuma dica, retorna um erro 404
-         return res.status(404).json({ msg: "Nenhuma dica disponível no momento." });
-    }
-}
-    catch(error){
-         // Caso ocorra um erro durante a execução, retorna um erro 500
-         console.error("Algo deu errado ao buscar as dicas, tente novamente: ", error);
-         return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-    }finally {
-         // Fecha a conexão com o banco de dados, se foi estabelecida
-         if (executeConnection) {
-         await executeConnection.end();
-     };
-    };
-}
+        //envia a query e retorna caso tenha dado certo
+		const [results] = await executeConnection.query(query);
+		results;
+
+        res.status(200).json({msg: "Dicas disponíveis: ", tips: results});
+	}catch(error){
+		//caso dê algo errado, retorna no console e avisa
+		console.error("Algo deu errado ao visualizar as dicas, tente novamente:", error);
+		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
+	}
+	finally{
+		if(executeConnection){
+			//fecha a conexão com o banco de dados
+			await executeConnection.end();
+		}
+	};
+};

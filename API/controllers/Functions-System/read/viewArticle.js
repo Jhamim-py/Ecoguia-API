@@ -1,31 +1,34 @@
+//funções externas
 const connection = require('../../../data/connection'); //conexão com o banco de dados
 
+//função assíncrona para visualizar um artigo
 exports.getIDArticle =
 async(req, res) => {
-    const {id} = req.body;  //variáveis responsáveis por armazenar os dados
+    //array de requisição dos dados
+    const {id} = req.body;
 
-    //executa a conexão com o banco de dados
-    const executeConnection = await connection.getConnection();
+	//executa a conexão com o banco de dados
+	const executeConnection = await connection.getConnection();
 
     try{
+        //chama a view pronta de visualização e passa o ID
         const query  = "SELECT * FROM ViewAllArticle WHERE pk_IDarticle = (?);";
         const values = [id];
     
-        //executa a query
-        const [results] = await executeConnection.query(query, values);
+        //envia a query e retorna caso tenha dado certo
+		const [results] = await executeConnection.query(query);
+		results;
     
-        if(results.length > 0){
-            return res.status(200).json(results);
-        };
-
-    } catch (error) {
-        // Caso ocorra um erro durante a execução, retorna um erro 500
-        console.error("Algo deu errado ao buscar artigo, tente novamente: ", error.sqlMessage);
-        return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-    } finally {
-        // Fecha a conexão com o banco de dados, se foi estabelecida
-        if (executeConnection) {
-            await executeConnection.end();
-        };
-    };
+        return res.status(200).json({msg:"Artigo criado com sucesso."});
+	}catch(error){
+		//caso dê algo errado, retorna no console e avisa
+		console.error("Algo deu errado ao visualizar o artigo, tente novamente:", error);
+		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
+	}
+	finally{
+		if(executeConnection){
+			//fecha a conexão com o banco de dados
+			await executeConnection.end();
+		}
+	};
 };
