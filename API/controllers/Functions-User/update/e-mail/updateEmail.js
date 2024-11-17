@@ -1,13 +1,14 @@
-const connection     =  require('../../../../data/connection');  // conexão com o banco de dados
+import connection  from '../../../../data/connection.js';  // conexão com o banco de dados
+
 // Função assíncrona para atualizar o E-mail do usuário
-exports.newEmail =
+const newEmail =
 async (req, res) => {
 	// variáveis responsáveis por armazenar os dados
 	const userId  = req.user.id;
 	const {email} = req.body;
 	const pwd = null;
 	
-	const executeConnection = await connection.getConnection();   //variável que armazena a execução de conexão com o banco de dados
+	const executeConnection = await connection();   //variável que armazena a execução de conexão com o banco de dados
 	try{
 		// executa a query de atualização da senha e do email no banco de dados
 		const query  = `CALL ModifyUser(?, ?, ?);`;
@@ -34,3 +35,5 @@ async (req, res) => {
 		
 	};
 };
+
+export default newEmail;

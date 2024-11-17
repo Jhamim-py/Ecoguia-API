@@ -1,12 +1,11 @@
-const cache = require('./cache');
+import cache from './cache.js';
 
 // Inicializa o valor no cache se ele ainda não existir
 if (!cache.get('nickname')) {
     cache.set('nickname', 1);
 }
 // função para gerar nickname de novos usuários
-module.exports =
-function generateNickname (lastname) {
+export default function generateNickname (lastname) {
 //  Cria a lógica da constante do ID:
 
     //obtém o número atual do cache

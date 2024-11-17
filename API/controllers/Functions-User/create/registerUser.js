@@ -1,15 +1,15 @@
 // componentes do Node
-const crypto         =  require('crypto');          // gera um token aleatório
-const validatorEmail =  require('email-validator'); // verifica e valida o formato 'e-mail', se contém @, .com, etc.
+import crypto         from 'crypto';         // gera um token aleatório
+import validatorEmail from 'email-validator' // verifica e valida o formato 'e-mail', se contém @, .com, etc.
 
 // variáveis de ambiente para importar funções
-const connection     = require('../../../data/connection');         // armazena os dados de usuário, usado posteriormente para validações
-const sendEmail      = require('../../../utils/sendEmail');          // importa função de enviar token por email
-const verificatePwd  = require('../../../utils/verificatePwd');      // verifica e valida o formato 'senha', se contém 8 caracteres, etc.
-const checkLength    = require('../../../utils/characterLimit');     // verifica se o dado ultrapassa o limite de caracteres
+import connection    from '../../../data/connection.js';         // armazena os dados de usuário, usado posteriormente para validações
+import sendEmail     from '../../../utils/sendEmail.js';         // importa função de enviar token por email
+import verificatePwd from '../../../utils/verificatePwd.js';     // verifica e valida o formato 'senha', se contém 8 caracteres, etc.
+import checkLength   from '../../../utils/characterLimit.js';    // verifica se o dado ultrapassa o limite de caracteres
 
 // função assíncrona com parâmetros de requisição e resposta
-exports.newUser =
+const newUser =
 async (req, res)     => {
     
   	// array de requisição dos dados
@@ -49,7 +49,7 @@ async (req, res)     => {
 	};
 
     // executa a conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	const executeConnection = await connection();
 
     try{
         // verificar existência do e-mail no Banco de Dados através do uso de View
@@ -91,3 +91,5 @@ async (req, res)     => {
 		};
 	};
 };
+
+export default newUser;

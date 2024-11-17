@@ -1,18 +1,18 @@
 // componentes do Node
-const bcrypt     =  require('bcrypt');                  // gera um token aleatório
+import bcrypt from 'bcrypt';    // gera um token aleatório
 
 // variáveis de ambiente para importar funções
-const connection = require('../../../data/connection'); // conexão com o banco de dados
+import connection  from '../../../data/connection.js'; // conexão com o banco de dados
 
 // função de exclusão que pode ser exportada
 // modificar maneira de validar e-mail e retorno de procedure...
-exports.deleteUser = 
+const deleteUser = 
 async (req, res) => {    //função assíncrona com parâmetros de requisição e resposta
     const  userID   = req.user.id;                          // variável que armazena o ID do usuário
     const {pwdHash} = req.body;                             // variável que armazena o hash da senha
 
     //variável de conexão com o banco de dados
-    const executeConnection = await connection.getConnection();
+    const executeConnection = await connection();
     try{
         // executa procedure de seleção de usuário
         // transformar numa função interna da procedure de criação!!!         
@@ -69,3 +69,5 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
         };
     };
 };
+
+export default deleteUser;

@@ -1,15 +1,15 @@
 //funções externas
-const connection = require('../../../data/connection'); //conexão com o banco de dados
+import connection  from '../../../data/connection.js'; //conexão com o banco de dados
 
 //variável global para armazenar a dica do dia
 let dailyTip    = null; // Armazena a dica que será retornada ao usuário
 let lastTipDate = null; // Armazena a data em que a dica foi buscada
 
 //função assíncrona para visualizar a dica diária
-exports.getDailyTip = 
+const getDailyTip = 
 async (req, res) => {
 	//executa a conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	const executeConnection = await connection();
 
     try { 
         const today         = new Date();                        //obtém a data e hora atuais do sistema
@@ -44,3 +44,5 @@ async (req, res) => {
 		}
 	};
 };
+
+export default getDailyTip;

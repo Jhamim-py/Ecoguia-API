@@ -1,10 +1,11 @@
 // componentes do Node
-const crypto         = require('crypto');                    // gera um token aleatório
-const validator      = require('email-validator');           //verificação de formato do email
-// funções exportadas
-const sendEmail      = require('../../../../utils/sendEmail');  //importa função de enviar token por email
+import crypto 	 from 'crypto';              		   // gera um token aleatório
+import validator from 'email-validator';  			   //verificação de formato do email
 
-exports.sendToken =
+// funções exportadas
+import sendEmail from '../../../../utils/sendEmail.js';  //importa função de enviar token por email
+
+const sendToken =
 async (req, res) => {
 	// variáveis responsáveis por armazenar os dados
 	const {email} = req.body;
@@ -33,3 +34,5 @@ async (req, res) => {
 		}
 
 };
+
+export default sendToken;

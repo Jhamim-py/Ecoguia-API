@@ -1,19 +1,18 @@
 // componentes do Node
-const bcrypt = require('bcrypt')  // criptografa dados em hash
+import bcrypt from 'bcrypt';  // criptografa dados em hash
 
 // variáveis de ambiente para importar funções
-const connection       = require('../../../data/connection');    // conexão com o banco de dados
-const appcacheTemp     = require('../../../utils/cacheTemp');    // armazena os dados de usuário, usado posteriormente para validações
-const generateNickname = require('../../../utils/generateNickname');   // função externa que é responsável por gerar um nickname (exige a entrada da variável 'name') 
+import connection  	    from '../../../data/connection.js';    	   // conexão com o banco de dados
+import generateNickname from '../../../utils/generateNickname.js'; // função externa que é responsável por gerar um nickname (exige a entrada da variável 'name') 
 
 // função de registro que pode ser exportada 
-exports.sendNewUser =
+const sendNewUser =
 async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
     const {
         name, lastname, email, pwd, avatar
     } = req.body;                                   // variável responsável por armazenar o token enviado ao cliente
 
-    const executeConnection = await connection.getConnection(); // variável que armazena a execução de conexão com o banco de dados
+    const executeConnection = await connection(); // variável que armazena a execução de conexão com o banco de dados
 
     // criptografa a senha dada em hash
     const salt     = await bcrypt.genSalt(12);     // define o tamanho do hash (12 caracteres)
@@ -51,3 +50,5 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
 		};
 	};
 }; 
+
+export default sendNewUser;

@@ -4,7 +4,7 @@ const connection = require('../data/connection');    // conexão com o banco de 
 module.exports =
 async function checkArticle(title){
     //executa a conexão com o banco de dados
-    const executeConnection = await connection.getConnection();
+    const executeConnection = await connection();
 
     try{
         // armazena a query que chama a view que retorna somente o ID, nickname e e-mail

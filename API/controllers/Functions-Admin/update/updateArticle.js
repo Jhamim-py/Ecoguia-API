@@ -1,10 +1,10 @@
 //funções externas
-const connection      = require('../../../data/connection');       //conexão com o banco de dados
-const nullValue       = require('../../../utils/nullValue');       //verifica se a variável possui valor nulo 
-const checkLength     = require('../../../utils/characterLimit');  //verifica se o dado ultrapassa o limite de caracteres
+import connection  from '../../../data/connection.js';       //conexão com o banco de dados
+import nullValue   from '../../../utils/nullValue.js';	 	     //verifica se a variável possui valor nulo 
+import checkLength from '../../../utils/characterLimit.js';  //verifica se o dado ultrapassa o limite de caracteres
 
 //função assíncrona para modificar um artigo
-exports.updateArticle =
+const updateArticle =
 async(req, res) =>{
     //array de requisição dos dados
     const {id, image, title, category, description, reference} = req.body;
@@ -49,7 +49,7 @@ async(req, res) =>{
 	};
 
     //executa a conexão com o banco de dados
-    const executeConnection = await connection.getConnection();
+    const executeConnection = await connection();
 
 	try{
 		//chama a procedure de criação e coloca os dados
@@ -73,3 +73,5 @@ async(req, res) =>{
 		}
 	};
 };
+
+export default updateArticle;

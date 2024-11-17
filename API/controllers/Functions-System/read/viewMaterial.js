@@ -5,7 +5,7 @@ const connection = require('../../../data/connection'); //conexão com o banco d
 exports.viewMaterial =
 async function (req, res) {
 	//executa a conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	const executeConnection = await connection();
 
     try{
         //chama a view pronta de visualização

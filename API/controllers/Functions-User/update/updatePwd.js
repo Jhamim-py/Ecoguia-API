@@ -1,10 +1,11 @@
 // componente do Node
-const bcrypt         = require('bcrypt');                    // criptografa dados em hash
-// funções exportadas
-const connection     = require('../../../data/connection');  // conexão com o banco de dados
-const verificatePwd  = require('../../../utils/verificatePwd'); // importa função de verificar padrão de senha
+import bcrypt from 'bcrypt';                           // criptografa dados em hash
 
-exports.updatePwd =
+// funções exportadas
+import connection    from '../../../data/connection.js';     // conexão com o banco de dados
+import verificatePwd from '../../../utils/verificatePwd.js'; // importa função de verificar padrão de senha
+
+const updatePwd =
 async (req, res) => {
    // variáveis responsáveis por armazenar os dados
     const userId = req.user.id;   // variável que armazena o ID do usuário
@@ -16,7 +17,7 @@ async (req, res) => {
         return res.status(401).json({message: "Senha inválida!"});
     }
 
-    const executeConnection = await connection.getConnection();// variável que armazena a execução de conexão com o banco de dados  
+    const executeConnection = await connection();// variável que armazena a execução de conexão com o banco de dados  
     
     //verificar o padrão da senha
     const check  = verificatePwd(newPwd);
@@ -52,3 +53,5 @@ async (req, res) => {
         };
     };
 };
+
+export default updatePwd;

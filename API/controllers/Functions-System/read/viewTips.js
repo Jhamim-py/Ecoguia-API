@@ -1,11 +1,11 @@
 //funções externas
-const connection = require('../../../data/connection'); //conexão com o banco de dados
+import connection  from '../../../data/connection.js'; //conexão com o banco de dados
 
 //função assíncrona para visualizar todas as dicas
-exports.getAllTips =
+const getAllTips =
 async (req, res) => {
 	//executa a conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	const executeConnection = await connection();
 
     try{
         //chama a view pronta de visualização
@@ -28,3 +28,5 @@ async (req, res) => {
 		}
 	};
 };
+
+export default getAllTips;

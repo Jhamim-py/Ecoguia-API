@@ -1,8 +1,8 @@
 //funções externas
-const connection = require('../../../data/connection'); // conexão com o banco de dados
+import connection  from '../../../data/connection.js'; // conexão com o banco de dados
 
 //função assíncrona para deletar um artigo
-exports.deleteArticle =
+const deleteArticle =
 async(req, res) 	  => {
     //array de requisição dos dados
 	const {id} = req.body;
@@ -13,7 +13,7 @@ async(req, res) 	  => {
 	};
 
 	//executa a conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	const executeConnection = await connection();
 
 	try{
 		//chama a procedure de exclusão e coloca os dados
@@ -37,3 +37,5 @@ async(req, res) 	  => {
 		};
 	};
 };
+
+export default deleteArticle;

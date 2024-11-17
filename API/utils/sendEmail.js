@@ -1,8 +1,9 @@
-const nodemailer = require('nodemailer');
-require('dotenv').config();
-const path = require('path');
+import nodemailer from 'nodemailer';
+import path       from 'path';
 
-module.exports = function checkEmail(message, email, name) {
+import 'dotenv/config';
+
+export default function checkEmail(message, email, name) {
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,

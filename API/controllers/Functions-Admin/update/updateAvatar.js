@@ -1,9 +1,9 @@
 //funções externas
-const connection     = require('../../../data/connection');     //conexão com o banco de dados
+import connection  from '../../../data/connection.js';		//conexão com o banco de dados
 
 //função assíncrona para modificar uma avatar
 // adaptar posteriormente para o Azure...
-exports.updateAvatar =
+const updateAvatar =
 async (req, res) => {
     //(Mudar isso?? Otimizar!!)
 
@@ -27,7 +27,7 @@ async (req, res) => {
     };
 
     //executa a conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	const executeConnection = await connection();
 
     try{
         //chama a procedure de criação e coloca os dados
@@ -51,3 +51,5 @@ async (req, res) => {
         };
     };
 };
+
+export default updateAvatar;

@@ -1,9 +1,9 @@
 //funções externas
-const connection        = require('../../../data/connection');       //conexão com o banco de dados
-const checkLength       = require('../../../utils/characterLimit');  //verifica se o dado ultrapassa o limite de caracteres
+import connection  from '../../../data/connection.js';		//conexão com o banco de dados
+import checkLength from '../../../utils/characterLimit.js'; //verifica se o dado ultrapassa o limite de caracteres
 
 //função assíncrona para adicionar uma nova dica
-exports.createTip = 
+const createTip = 
 async (req, res)  => {
     //array de requisição dos dados
     const { description_tip } = req.body;
@@ -24,7 +24,7 @@ async (req, res)  => {
     };
     
     //executa a conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	const executeConnection = await connection();
 
     try {
         //chama a procedure de criação e coloca os dados
@@ -55,3 +55,5 @@ async (req, res)  => {
         };
     };
 };
+
+export default createTip;

@@ -1,11 +1,11 @@
 //funções externas
-const connection = require('../../../data/connection'); //conexão com o banco de dados
+import connection  from '../../../data/connection.js'; //conexão com o banco de dados
 
 //função assíncrona para visualizar as missões
-exports.getQuests =
+const getQuests =
 async function (req,res) {
 	//executa a conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	const executeConnection = await connection();
 
     try{
 		//chama a view pronta de visualização
@@ -15,7 +15,7 @@ async function (req,res) {
 		const [results] = await executeConnection.query(query);
 		results;
 
-		return res.status(200).json({msg: "Missões disponíveis: ", quests: results[0]});
+		return res.status(200).json({msg: "Missões disponíveis: ", quests: results});
 	}catch(error){
 		//caso dê algo errado, retorna no console e avisa
 		console.error("Algo deu errado ao visualizar as missões, tente novamente:", error);
@@ -28,3 +28,5 @@ async function (req,res) {
 		}
 	};
 };
+
+export default getQuests;

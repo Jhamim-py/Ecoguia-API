@@ -1,18 +1,18 @@
 // componentes do Node
-const crypto = require('crypto');  // gera token aleatório
+import crypto from 'crypto';  // gera token aleatório
 
 // variáveis de ambiente para importar funções
-const connection       = require('../../../data/connection');    // conexão com o banco de dados       
-const sendEmail        = require('../../../utils/sendEmail');    // importa função de enviar token por email
+import connection  from '../../../data/connection.js';   // conexão com o banco de dados 
+import sendEmail   from '../../../utils/sendEmail.js';   // importa função de enviar token por email
 
 // importação do arquivo de configuração .env
-require('dotenv').config();
+import 'dotenv/config';
 
 // função que gera e envia um token para função 'esqueci senha'
-exports.sendToken =
+const sendToken =
 async (req, res)  => {
     const {email} = req.body;                                     // variável responsável por armazenar os dados
-    const executeConnection = await connection.getConnection();   // variável que armazena a execução de conexão com o banco de dados
+    const executeConnection = await connection();   // variável que armazena a execução de conexão com o banco de dados
    
     try{
         // verificar existência do e-mail no Banco de Dados através do uso da view
@@ -44,3 +44,5 @@ async (req, res)  => {
         };
     };
 };
+
+export default sendToken;

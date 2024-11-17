@@ -1,14 +1,14 @@
 //funções externas
-const connection = require('../../../data/connection'); //conexão com o banco de dados
+import connection  from '../../../data/connection.js';	//conexão com o banco de dados
 
 //função assíncrona para visualizar um artigo
-exports.getIDArticle =
+const getIDArticle =
 async(req, res) => {
     //array de requisição dos dados
     const {id} = req.body;
 
 	//executa a conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	const executeConnection = await connection();
 
     try{
         //chama a view pronta de visualização e passa o ID
@@ -32,3 +32,5 @@ async(req, res) => {
 		}
 	};
 };
+
+export default getIDArticle;

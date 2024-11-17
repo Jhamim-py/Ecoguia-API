@@ -1,17 +1,17 @@
 // componentes do Node
-const bcrypt = require('bcrypt')  // codifica em hash
+import bcrypt from 'bcrypt';  // codifica em hash
 
 // variáveis de ambiente para importar funções
-const connection       = require('../../../data/connection');    // conexão com o banco de dados
-const verificatePwd    = require('../../../utils/verificatePwd');// importa função de verificar padrão de senha
-const getID            = require('../../../utils/getID')         // pegar o id do usuario pelo email
+import connection    from '../../../data/connection.js';    // conexão com o banco de dados
+import verificatePwd from '../../../utils/verificatePwd.js';// importa função de verificar padrão de senha
+import getID         from '../../../utils/getID.js';        // pegar o id do usuario pelo email
 
 // função de visualização que pode ser exportada
-exports.newPwd =   
+const newPwd =   
 async (req, res) => {
     const {pwd, email}   = req.body;                             // variável responsável por armazenar os dados
     
-    const executeConnection = await connection.getConnection();  //aguarda a conexão com o banco
+    const executeConnection = await connection();  //aguarda a conexão com o banco
 
     const userID = await getID(email);
     console.log(userID)                       
@@ -51,3 +51,5 @@ async (req, res) => {
         };
     };
 };
+
+export default newPwd;

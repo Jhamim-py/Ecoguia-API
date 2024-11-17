@@ -1,8 +1,8 @@
-const connection = require('../../../data/connection');        //conexão com o banco de dados
-const checkXp    = require('../../../utils/checkXp');          //checar e modificar o xp,level e quest do usuário
+import connection  from '../../../data/connection.js';       //conexão com o banco de dados
+import checkXp     from '../../../utils/checkXp.js';         //checar e modificar o xp,level e quest do usuário
 
 // função de modificação de level do usuário que pode ser exportada
-exports.updateLevel = 
+const updateLevel = 
 async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
     
     const userID = req.user.id;  //pegando o id do usuário pelo token
@@ -10,7 +10,7 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
     //pegando os dados a serem modificados
     const dados = await checkXp(userID, type, xp_material, peso); // variável responsável por armazenar os dados
     
-    const executeConnection = await connection.getConnection();   // variável que armazena a execução de conexão com o banco de dados
+    const executeConnection = await connection();   // variável que armazena a execução de conexão com o banco de dados
     
     const xp    = dados[0]; //armazenando o xp do usuário
     const level = dados[1]; //armazenando o level do usuário
@@ -37,3 +37,5 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
         };
     }
 };
+
+export default updateLevel;
