@@ -5,7 +5,7 @@ import connection  from '../../../data/connection.js';	// conexão com o banco d
 const deleteLevel = 
 async (req, res) => {
 	//executa a conexão com o banco de dados
-	const executeConnection = await connection();
+	const executeConnection = await connection(); 
 
     try {
 		//chama a procedure de exclusão e coloca os dados

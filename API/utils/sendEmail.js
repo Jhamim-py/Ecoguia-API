@@ -1,8 +1,7 @@
 import nodemailer from 'nodemailer';
 import path       from 'path';
-
 import 'dotenv/config';
-
+import { fileURLToPath } from 'url';
 export default function checkEmail(message, email, name) {
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -15,8 +14,18 @@ export default function checkEmail(message, email, name) {
     });
 
     
-    const logoPath = path.join(__dirname, 'assets', 'logo.png'); 
-    const florPath = path.join(__dirname, 'assets', 'flor.png'); 
+    // Convertendo a URL para um caminho de arquivo normal
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    
+    // Agora, você pode usar path.join() ou path.resolve() normalmente
+    const logoPath = path.join(__dirname,'assets', 'logo.png');
+    const florPath = path.join(__dirname,'assets', 'flor.png');
+    
+    // Verificando os caminhos no console
+    console.log('Logo path:', logoPath);
+    console.log('Flor path:', florPath);
+    
 
     
     const htmlContent = `

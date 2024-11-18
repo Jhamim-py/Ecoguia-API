@@ -15,8 +15,6 @@ async (req, res) => {
 	 }
 	  
 	 try{
-		 //Se houver um novo endereço de email na requisição,
-		 //será enviado um token para esse novo endereço.
 
 		 //cria um token para verificação
 		  const token = crypto.randomBytes(3).toString("hex");

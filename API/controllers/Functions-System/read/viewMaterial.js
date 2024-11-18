@@ -1,8 +1,8 @@
 //funções externas
-const connection = require('../../../data/connection'); //conexão com o banco de dados
+import connection from "../../../data/connection.js"; //conexão com o banco de dados
 
 //função assíncrona para visualizar os materiais
-exports.viewMaterial =
+const viewMaterial =
 async function (req, res) {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection();
@@ -28,3 +28,4 @@ async function (req, res) {
 		}
 	};
 };
+export default viewMaterial;
