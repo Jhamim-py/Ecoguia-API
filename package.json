@@ -12,7 +12,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@azure/storage-blob": "^12.25.0",
     "axios": "^1.7.7",
+    "azure": "^0.10.6",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "config": "^3.3.12",
@@ -21,6 +23,7 @@
     "email-validator": "^2.0.4",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
     "mysql2": "^3.11.0",
     "node-cache": "^5.1.2",
     "node-cep-correios": "^1.0.6",

@@ -1,5 +1,6 @@
 // controle de rotas na URL e funções utilizadas
-import { Router } from 'express';
+import { Router }  from 'express';
+import validateFile from '../middleware/multer.js';
 
 // rotas de ADMIN
 import  createQuest    from '../controllers/Functions-Admin/create/createQuest.js';
@@ -69,7 +70,7 @@ routes.put('/updateQuest',   updateQuest);
 routes.put('/updateArticle', updateArticle);
 
 //modifica um avatar com uma nova URL
-routes.put('/updateAvatar',  updateAvatar);
+routes.put('/updateAvatar',  validateFile, updateAvatar);
 
 //modifica uma dica com uma nova descrição
 routes.put('/updateTip',     updateTip);
