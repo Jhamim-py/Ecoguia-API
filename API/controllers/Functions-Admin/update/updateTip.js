@@ -1,5 +1,5 @@
 import connection  from '../../../data/connection.js';   // conexão com o banco de dados
-
+import checkLength from '../../../utils/characterLimit.js';
 const updateTip = 
 async (req, res) => {
     // array de requisição dos dados

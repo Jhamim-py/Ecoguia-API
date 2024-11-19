@@ -1,6 +1,6 @@
 //funções externas
 import connection  from '../../../data/connection.js';		//conexão com o banco de dados
-
+import checkLength from '../../../utils/characterLimit.js';
 //função assíncrona para modificar uma avatar
 // adaptar posteriormente para o Azure...
 const updateAvatar =

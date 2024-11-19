@@ -25,7 +25,7 @@ import  viewArticle    from '../controllers/Functions-System/read/viewArticle.js
 import  viewTips       from '../controllers/Functions-System/read/viewTips.js';
 import  viewLevels     from '../controllers/Functions-System/read/viewLevel.js';
 import  viewQuests     from '../controllers/Functions-System/read/viewQuests.js';
-
+import viewMaterial    from '../controllers/Functions-System/read/viewMaterial.js';
 // rotas de USUÁRIO
 import  registerUser   from '../controllers/Functions-User/create/registerUser.js';
 import  createUser     from '../controllers/Functions-User/create/createUser.js';
@@ -115,9 +115,12 @@ routes.get('/avatars',       viewAvatars);
 
 //visualiza todos os níveis de conta
 routes.get('/levels',        viewLevels);
-
+ 
 //visualiza todas as missões
 routes.get('/quests',        viewQuests);
+
+//visualiza todos os materiais
+routes.get('/materiais',     viewMaterial)
 
 
 // HTTP de USUÁRIO
