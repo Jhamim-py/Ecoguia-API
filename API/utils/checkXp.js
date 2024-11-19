@@ -1,10 +1,9 @@
-const connection = require('../data/connection'); //conexão com o banco de dados
+import connection  from '../data/connection.js'; //conexão com o banco de dados
 
 //função assíncrona com uma promise
-module.exports =
-async function checkXp(id,type,xp_material,peso){ 
+export default async function checkXp(id,type,xp_material,peso){ 
     // variável que armazena a execução de conexão com o banco de dados
-    const executeConnection = await connection.getConnection(); 
+    const executeConnection = await connection(); 
     
     //retorna uma promise com o resultado da query executada
     return new Promise( async (resolve) => {
@@ -13,7 +12,7 @@ async function checkXp(id,type,xp_material,peso){
             const query  = `CALL SelectXPUser(?);`;
             const values = id;
             // envio de query e captação de resposta
-            const [results] = await executeConnection.query(query,[values]);
+            const [results] = await executeConnection.query(query,values);
             if(results.length > 0 && type == 0){
                 calculateLevelQuest(results);             
             }
@@ -52,8 +51,7 @@ async function checkXp(id,type,xp_material,peso){
                 const userXp = response.XP_user; 
                 const xpMaterial = xp_material
                 const pesoMaterial = peso
-                const calculate = xpMaterial / 1000
-                const xp_total = calculate * pesoMaterial      
+                const xp_total = xpMaterial * pesoMaterial      
                 const addXp   = userXp + xp_total
 
                 let level  = response.ID_nowlevel;      //armazena o level do usuário
@@ -77,6 +75,6 @@ async function checkXp(id,type,xp_material,peso){
             if (executeConnection) {
                 await executeConnection.end();
             };
-        };
+        }; 
     });
 };

@@ -1,11 +1,11 @@
 //componente do node 
-const jwt = require('jsonwebtoken'); //gera um token
+import jwt from 'jsonwebtoken'; //gera um token
 
 // importação do arquivo de configuração .env
-require('dotenv').config();
+import 'dotenv/config';
 
 //função de verificação que pode ser exportada
-exports.checkToken =  (req, res, next) => {
+const checkToken =  (req, res, next) => {
     //armazenar o token requerido no header da requisição
     const authHeader = req.headers['authorization'];
     
@@ -27,3 +27,5 @@ exports.checkToken =  (req, res, next) => {
         res.status(400).json({ msg: 'Token inválido!', error: e.message });
     }
 }
+
+export default checkToken;

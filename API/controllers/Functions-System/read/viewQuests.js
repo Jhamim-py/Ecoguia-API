@@ -1,24 +1,32 @@
-const connection = require('../../../data/connection') //conexão com o banco de dados
+//funções externas
+import connection  from '../../../data/connection.js'; //conexão com o banco de dados
 
-exports.viewQuests =
+//função assíncrona para visualizar as missões
+const getQuests =
 async function (req,res) {
-    const executeConnection = await connection.getConnection();
-   
+	//executa a conexão com o banco de dados
+	const executeConnection = await connection();
+
     try{
-        const query = "SELECT * FROM ViewAllQuest"
-        const result = await executeConnection.query(query)
-        if(result <= 0){
-            return res.status(400).json({message: "Erro ao buscar avatar"})
-        }
-        return res.status(200).json(result)
+		//chama a view pronta de visualização
+        const query = "SELECT * FROM ViewAllQuest;";
+
+        //envia a query e retorna caso tenha dado certo
+		const [results] = await executeConnection.query(query);
+		results;
+
+		return res.status(200).json({msg: "Missões disponíveis: ", quests: results});
 	}catch(error){
-		console.error("Algo deu errado ao visualizar missões, tente novamente:", error);
-		return res.status(500).json({msg: "Erro interno no servidor, tente novamente."});
+		//caso dê algo errado, retorna no console e avisa
+		console.error("Algo deu errado ao visualizar as missões, tente novamente:", error);
+		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
 	}
 	finally{
 		if(executeConnection){
-			//Fecha a conexão com o banco de dados
+			//fecha a conexão com o banco de dados
 			await executeConnection.end();
-		};
+		}
 	};
-}
+};
+
+export default getQuests;

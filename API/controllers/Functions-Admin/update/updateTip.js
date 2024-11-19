@@ -1,27 +1,29 @@
-const connection  = require('../../../data/connection'); // conexão com o banco de dados
-const nullValue   = require('../../../utils/nullValue'); // verifica se a variável possui valor nulo 
+import connection  from '../../../data/connection.js';   // conexão com o banco de dados
 
-exports.updateTip = 
+const updateTip = 
 async (req, res) => {
     // array de requisição dos dados
     const {
         id, description_tip
 	} = req.body;
+
+    // array variável que armazena o limite dos campos no banco de dados
     const limitLength = 120;
 
-    // verifica se o tamanho da URL está aceitável
-    if (checkLength(description_tip, limitLength)) {
+    if (!description_tip || typeof description_tip !== 'string') {
+        // validação de campo vazio
+        return res.status(422).json({ msg: "É obrigatório preencher o campo da descrição de dica." });
+	
+        //verifica se já existe uma dica deste tipo no banco de dados
+	    //...?
+
+    }else if (checkLength(description_tip, limitLength)){
+        //verifica se os dados ultrapassam X caracteres e expõe caso seja verdadeiro
         return res.status(400).json({ msg: `A descrição da dica ultrapassou o limite de ${limitLength} caracteres.` });
     };
 
-    // Verifica se o novo avatar foi fornecido
-    // mais uma função de verificar campo vazio, etc.
-    if (!description_tip) {
-        return res.status(400).json({ msg: "Descrição nova não foi fornecida." });
-    };
-
     //executa a conexão com o banco de dados
-    const executeConnection = await connection.getConnection();
+    const executeConnection = await connection();
 
     
     try {
@@ -44,3 +46,5 @@ async (req, res) => {
 		}
 	};
 };
+
+export default updateTip;

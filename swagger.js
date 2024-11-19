@@ -15,7 +15,7 @@ const doc = {
     components: {
         schemas: {
             someBody: {
-                $name: "Jhon Doe",
+                $name: "",
                 $age: 29,
                 about: ""
             },

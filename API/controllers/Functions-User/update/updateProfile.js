@@ -1,12 +1,12 @@
 // variáveis de ambiente para importar funções
-const connection       = require('../../../data/connection');     // conexão com o banco de dados
-const nullValue        = require('../../../utils/nullValue');     // função para formatar valores vazios como nulos
+import connection  from '../../../data/connection.js';     // conexão com o banco de dados
+import nullValue   from '../../../utils/nullValue.js';     // função para formatar valores vazios como nulos
 
 // função de modificação que pode ser exportada
-exports.updateProfile =
+const updateProfile =
 async (req, res) => {    //função assíncrona com parâmetros de requisição e resposta
     const userID = req.user.id;                          // variável que armazena o ID do usuário
-    const executeConnection = await connection.getConnection();// variável que armazena a execução de conexão com o banco de dados
+    const executeConnection = await connection();// variável que armazena a execução de conexão com o banco de dados
 
     let {name, lastname, avatar} = req.body;             // variável local responsável por armazenar os dados
     
@@ -40,3 +40,5 @@ async (req, res) => {    //função assíncrona com parâmetros de requisição 
         };
     };
 };
+
+export default updateProfile;

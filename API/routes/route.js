@@ -1,158 +1,165 @@
 // controle de rotas na URL e funções utilizadas
-const { Router }    = require ("express");
+import { Router } from 'express';
 
 // rotas de ADMIN
-const createQuest = require('../controllers/Functions-Admin/create/createQuest');
-
-const createArticle = require('../controllers/Functions-Admin/create/createArticle');
-
-const createTip     = require('../controllers/Functions-Admin/create/createTip');
-
-const updateQuest   = require('../controllers/Functions-Admin/update/updateQuest');
-
-const updateArticle = require('../controllers/Functions-Admin/update/updateArticle');
-
-const updateAvatar  = require('../controllers/Functions-Admin/update/updateAvatar');
-
-const updateTip     = require('../controllers/Functions-Admin/update/updateTip');
-
-const deleteQuest   = require('../controllers/Functions-Admin/delete/deleteQuest');
-
-const deleteArticle = require('../controllers/Functions-Admin/delete/deleteArticle');
-
-const deleteTip     = require('../controllers/Functions-Admin/delete/deleteTip');
-
+import  createQuest    from '../controllers/Functions-Admin/create/createQuest.js';
+import  createArticle  from '../controllers/Functions-Admin/create/createArticle.js';
+import  createTip      from '../controllers/Functions-Admin/create/createTip.js';
+import  createLevel    from '../controllers/Functions-Admin/create/createLevel.js';
+import  updateQuest    from '../controllers/Functions-Admin/update/updateQuest.js';
+import  updateArticle  from '../controllers/Functions-Admin/update/updateArticle.js';
+import  updateAvatar   from '../controllers/Functions-Admin/update/updateAvatar.js';
+import  updateTip      from '../controllers/Functions-Admin/update/updateTip.js';
+import  updateMaterial from '../controllers/Functions-Admin/update/updateMaterial.js';
+import  deleteQuest    from '../controllers/Functions-Admin/delete/deleteQuest.js';
+import  deleteArticle  from '../controllers/Functions-Admin/delete/deleteArticle.js';
+import  deleteTip      from '../controllers/Functions-Admin/delete/deleteTip.js';
+import  deleteLevel    from '../controllers/Functions-Admin/delete/deleteLevel.js';
 
 // rotas de SISTEMA
-const viewPickupTime= require('../controllers/Functions-System/read/viewPickupTime');
-const viewTip       = require('../controllers/Functions-System/read/viewTip');
-const viewArticles  = require('../controllers/Functions-System/read/viewArticles');
-const viewRank      = require('../controllers/Functions-System/read/viewRank');
-const viewAvatars   = require('../controllers/Functions-System/read/viewAvatar');
-const selectArticle = require('../controllers/Functions-System/read/selectArticle');
-const viewAllTips   = require('../controllers/Functions-System/read/viewAllTips')
-
+import  viewPickupTime from '../controllers/Functions-System/read/viewPickupTime.js';
+import  viewTip        from '../controllers/Functions-System/read/viewTip.js';
+import  viewArticles   from '../controllers/Functions-System/read/viewArticles.js';
+import  viewAvatars    from '../controllers/Functions-System/read/viewAvatar.js';
+import  viewArticle    from '../controllers/Functions-System/read/viewArticle.js';
+import  viewTips       from '../controllers/Functions-System/read/viewTips.js';
+import  viewLevels     from '../controllers/Functions-System/read/viewLevel.js';
+import  viewQuests     from '../controllers/Functions-System/read/viewQuests.js';
 
 // rotas de USUÁRIO
-const registerUser  = require('../controllers/Functions-User/create/registerUser');
-const createUser    = require('../controllers/Functions-User/create/createUser');
-
-const deleteUser    = require('../controllers/Functions-User/delete/deleteUser');
-
-const forgetPwd     = require('../controllers/Functions-User/forget/forgetPassword');
-const generateToken = require('../controllers/Functions-User/forget/generateToken');
-
-const loginUser     = require('../controllers/Functions-User/login/loginUser');
-const checkToken    = require('../controllers/Functions-User/login/checkToken');
-const googleAuth    = require('../controllers/Functions-User/login/authGoogle');
-
-const viewProfile   = require('../controllers/Functions-User/read/viewProfile');
-
-const updateUser    = require('../controllers/Functions-User/update/updateUser');
-const updateLevel  = require('../controllers/Functions-User/update/updateLevel');
-const updateProfile = require('../controllers/Functions-User/update/updateProfile');
-const registerUpdateEmail = require('../controllers/Functions-User/update/registerUpdateEmail')
-const updateEmail   = require('../controllers/Functions-User/update/updateEmail');
+import  registerUser   from '../controllers/Functions-User/create/registerUser.js';
+import  createUser     from '../controllers/Functions-User/create/createUser.js';
+import  deleteUser     from '../controllers/Functions-User/delete/deleteUser.js';
+import  forgotPwd      from '../controllers/Functions-User/forgot/forgotPwd.js';
+import  sendTokenPwd   from '../controllers/Functions-User/forgot/sendTokenPwd.js';
+import  loginUser      from '../controllers/Functions-User/login/loginUser.js';
+import  checkToken     from '../controllers/Functions-User/login/checkToken.js';
+import  viewProfile    from '../controllers/Functions-User/read/viewProfile.js';
+import  viewRanking    from '../controllers/Functions-User/read/viewRanking.js';
+import  updatePwd      from '../controllers/Functions-User/update/updatePwd.js';
+import  updateLevel    from '../controllers/Functions-User/update/updateLevel.js';
+import  updateProfile  from '../controllers/Functions-User/update/updateProfile.js';
+import  sendTokenEmail from '../controllers/Functions-User/update/e-mail/sendTokenEmail.js';
+import  updateEmail    from '../controllers/Functions-User/update/e-mail/updateEmail.js';
 
 // composição da requisições
 const routes = Router();
 
-// HTTPS de ADMIN
+
+// HTTP de ADMIN
 
 // POST || CREATE
+//cria uma nova quest
+routes.post('/createQuest',    createQuest);
 
-//criar uma nova quest com a entrada das informações
-routes.post('/createQuest', createQuest.createQuest);
+//cria um novo artigo
+routes.post('/createArticle',  createArticle);
 
-//cria artigo manualmente com os dados de entrada
-routes.post('/createArticle',createArticle.createArticle);
+//cria uma nova dica
+routes.post('/createTips',     createTip);
 
-//cria uma nova dica com a entrada da descrição
-routes.post('/createTips', createTip.createTip);
+//cria um novo level
+routes.post('/createLevel',    createLevel);
+
 
 // PUT || UPDATE
+//modifica uma cadeia de missões(3), começando pela 3ª
+routes.put('/updateQuest',   updateQuest);
 
-//modificar três missões e uma badge de acordo com o o ID de entrada
-//sendo ele aquele que detém o badge
-routes.put('/updateQuest', updateQuest.updateQuest);
-//modificar um artigo de acordo com o ID de entrada
-routes.put('/updateArticle', updateArticle.updateArticle);
+//modifica um artigo
+routes.put('/updateArticle', updateArticle);
 
-//modificar um avatar de acordo com o ID de entrada e o ID do novo avatar
-routes.put('/updateAvatar', updateAvatar.updateAvatar);
+//modifica um avatar com uma nova URL
+routes.put('/updateAvatar',  updateAvatar);
 
-//modificar uma dica de acordo com o ID de entrada
-routes.put('/updateTip', updateTip.updateTip);
+//modifica uma dica com uma nova descrição
+routes.put('/updateTip',     updateTip);
+
+//modificar um material de acordo com o ID de entrada
+routes.put('/updateMaterial', updateMaterial);
 
 // DELETE || DELETE
-//excluiri uma quest de acordo com o ID de entrada
-routes.delete('/deleteQuest', deleteQuest.deleteQuest);
+//deleta uma cadeia de missões(3), referenciando a 3ª
+routes.delete('/deleteQuest',   deleteQuest);
 
-//excluir um artigo de acordo com o ID e título de entrada
-routes.delete('/deleteArticle', deleteArticle.deleteArticle);
+//deleta um artigo
+routes.delete('/deleteArticle', deleteArticle);
 
-//Excluir uma dica de acordo com o ID de entrada
-routes.delete('/deleteTip', deleteTip.deleteTip);
+//deleta uma dica
+routes.delete('/deleteTip',     deleteTip);
+
+//deleta um level
+routes.delete('/deleteLevel',   deleteLevel);
 
 
-// HTTPS de SISTEMA
+// HTTP de SISTEMA
 
-//GET || READ
-//visualiza horário de coleta
-routes.post('/pickupTime', viewPickupTime.pickupTime);
+// GET || READ
+//visualiza um horário de coleta de acordo com o CEP de entrada
+routes.post('/pickupTime',   viewPickupTime);
 
 //visualiza a dica diária
-routes.get('/tip', viewTip.getTip);
+routes.get('/tip',           viewTip);
 
-//visualizar todas as dicas
-routes.get('/AllTips',viewAllTips.getAllTips);
+//visualiza todas as dicas
+routes.get('/tips',          viewTips);
 
-//visualiza os artigos
-routes.get('/articles', viewArticles.viewArticles);
+//visualiza um artigo de acordo com o ID de entrada
+routes.post('/article',      viewArticle);
 
-//visualiza um artigo
-routes.get('/selectArticle', selectArticle.selectArticle);
+//visualiza todos os artigos
+routes.get('/articles',      viewArticles);
 
-//visualiza o ranking de usuários por XP
-routes.get('/rank',checkToken.checkToken,viewRank.viewRank);
+//visualiza todos os avatares de perfil
+routes.get('/avatars',       viewAvatars);
 
-//visializar todos os avatares
-routes.get('/avatars', viewAvatars.viewAvatar);
-// HTTPS de USUÁRIO
+//visualiza todos os níveis de conta
+routes.get('/levels',        viewLevels);
+
+//visualiza todas as missões
+routes.get('/quests',        viewQuests);
+
+
+// HTTP de USUÁRIO
 
 // POST || CREATE
-//criar usuário
-routes.post('/user/register',     registerUser.postRegister);
-routes.post('/user/create',       createUser.createUser);
+//cria um nova conta de usuário
+routes.post('/user/register',      registerUser);    //registra e valida informações de conta
+routes.post('/user/create',        createUser);  //envia nova conta para o banco de dados
 
-//autenticação de conta
-routes.post('/user/token',        generateToken.getForget);
-routes.post('/user/login',        loginUser.postLogin);
-routes.post('/user/auth/google/callback',       googleAuth.authGoogleCallback);
+//valida o login de usuário e retorna um token de identificação
+routes.post('/user/login',         loginUser);
 
-//recuperação de conta
-routes.post('/user/pwd',          forgetPwd.password);
+//função 'esqueci senha'
+routes.post('/user/pwd/token',     sendTokenPwd); //envia um token de validação ao e-mail cadastrado
+routes.post('/user/pwd/new',       forgotPwd);       //valida o token e retorna alteração de senha
 
 
 //PUT || UPDATE
-routes.put   ('/user/profile',    checkToken.checkToken, updateProfile.updateProfile);
-routes.put   ('/user/levelup',    checkToken.checkToken, updateLevel.updateLevel);
-routes.put   ('/user/pwd',        checkToken.checkToken, updateUser.updateUser);
-routes.put   ('/user/email',      checkToken.checkToken, updateEmail.updateEmail);
-routes.put   ('/user/registerEmail',registerUpdateEmail.registerUpdateEmail);
+//altera os dados de perfil
+routes.put('/user/profile',     checkToken, updateProfile);
+
+//atualiza missão, XP e nível da conta
+routes.put('/user/levelup',     checkToken, updateLevel); //type: 0 == missão : type: 1 == material
+
+//altera a senha do usuário após validação
+routes.put('/user/pwd',         checkToken, updatePwd);
+
+//altera o e-mail do usuário
+routes.put('/user/email/token', sendTokenEmail);                    //envia um token de validação ao novo e-mail
+routes.put('/user/email/new',   checkToken, updateEmail); //valida o token e retorna alteração de e-mail
 
 
 //GET || READ
-//visualizar dados do perfil do usuário
-routes.get   ('/user/profile',    checkToken.checkToken, viewProfile.getPerfil);
+//visualiza dados de perfil do usuário logado
+routes.get('/user/profile',    checkToken, viewProfile);
 
-//???
-routes.get   ('/user/auth/google', googleAuth.authGoogle);
+//visualiza ranking de XP de acordo com o ID logado
+routes.get('/ranking',         checkToken, viewRanking);
 
 
 // DELETE || DELETE
-//excluir conta de usuário
-routes.delete('/user',checkToken.checkToken,deleteUser.deleteUser);
+//deleta a conta de usuário
+routes.delete('/user',         checkToken, deleteUser);
 
-
-module.exports = routes;
+export default routes;

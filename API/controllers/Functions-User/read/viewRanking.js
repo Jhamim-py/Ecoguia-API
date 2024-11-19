@@ -1,13 +1,13 @@
-const connection = require('../../../data/connection'); //conexão com o banco de dados
+import connection  from '../../../data/connection.js';  //conexão com o banco de dados
 
-exports.viewRank =
+const getRanking =
 async (req, res) =>{
 const userID = req.user.id  //variáveis responsáveis por armazenar os dados
- const executeConnection = await connection.getConnection();
+ const executeConnection = await connection();
   try{
     //realiza a conexão com o banco de dados
     
-    const query             = `CALL SelectRank(?);`;
+    const query             = `CALL SelectRanking(?);`;
     const values            = userID 
     //executa a query
     const [results] = await executeConnection.query(query, values);
@@ -25,3 +25,5 @@ const userID = req.user.id  //variáveis responsáveis por armazenar os dados
       };
   };
 }; 
+
+export default getRanking;

@@ -1,24 +1,24 @@
 //funções externas
-const connection = require('../../../data/connection'); //conexão com o banco de dados
+import connection  from '../../../data/connection.js'; //conexão com o banco de dados
 
-//função assíncrona para visualizar os materiais
-exports.viewMaterial =
-async function (req, res) {
+//função assíncrona para visualizar todas as dicas
+const getAllTips =
+async (req, res) => {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection();
 
     try{
         //chama a view pronta de visualização
-        const query     = "SELECT * FROM ViewAllMaterial;";
+        const query = "SELECT * FROM ViewAllTips;";
 
         //envia a query e retorna caso tenha dado certo
 		const [results] = await executeConnection.query(query);
 		results;
 
-        return res.status(200).json({msg: "Materiais: ", materiais: results});
+        res.status(200).json({msg: "Dicas disponíveis: ", tips: results});
+	}catch(error){
 		//caso dê algo errado, retorna no console e avisa
-    }catch(error){
-		console.error("Algo deu errado ao visualizar os materiais, tente novamente:", error);
+		console.error("Algo deu errado ao visualizar as dicas, tente novamente:", error);
 		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
 	}
 	finally{
@@ -28,3 +28,5 @@ async function (req, res) {
 		}
 	};
 };
+
+export default getAllTips;

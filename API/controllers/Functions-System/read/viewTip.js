@@ -1,46 +1,48 @@
-const connection = require('../../../data/connection');
+//funções externas
+import connection  from '../../../data/connection.js'; //conexão com o banco de dados
 
-// Variável global para armazenar a dica do dia
-let dailyTip = null; // Armazena a dica que será retornada ao usuário
+//variável global para armazenar a dica do dia
+let dailyTip    = null; // Armazena a dica que será retornada ao usuário
 let lastTipDate = null; // Armazena a data em que a dica foi buscada
 
-// Função assíncrona para obter a dica
-exports.getTip = 
+//função assíncrona para visualizar a dica diária
+const getDailyTip = 
 async (req, res) => {
-    const executeConnection = await connection.getConnection();  // Variável para armazenar a conexão com o banco de dados
+	//executa a conexão com o banco de dados
+	const executeConnection = await connection();
 
-    try {
-        const today = new Date(); // Obtém a data e hora atuais
-        const formattedDate = today.toISOString().split('T')[0]; // Formata a data no formato YYYY-MM-DD
+    try { 
+        const today         = new Date();                        //obtém a data e hora atuais do sistema
+        const formattedDate = today.toISOString().split('T')[0]; //formata a data no formato YYYY-MM-DD
 
-        // Verifica se já existe uma dica armazenada para hoje
+        //verifica se já existe uma dica armazenada para a data atual obtida
         if (lastTipDate === formattedDate && dailyTip) {
-            return res.json(dailyTip); // Retorna a dica armazenada se for o mesmo dia
+            return res.json(dailyTip); //exibe a dica armazenada
         };
 
-        // Query para buscar uma dica aleatória da tabela ViewAllTip
-        const query = `SELECT * FROM ViewRandomTip`;
-        const [results] = await executeConnection.query(query); // Executa a consulta
+        //chama a view pronta de visualização de dica aleatória
+        const query = `SELECT * FROM ViewRandomTip;`;
 
-        if (results.length > 0) { // Verifica se há resultados
-            // Armazena a dica do dia e a data atual
-            dailyTip = results[0]; // A primeira dica encontrada é armazenada
-            lastTipDate = formattedDate; // Atualiza a data da dica
+        //envia a query e retorna caso tenha dado certo
+		const [results] = await executeConnection.query(query);
+		results;
 
-            // Retorna a dica encontrada em formato JSON
-            return res.status(200).json(dailyTip);
-        } else {
-            // Se não encontrar nenhuma dica, retorna um erro 404
-            return res.status(404).json({ msg: "Nenhuma dica disponível no momento." });
-        }
-    } catch (error) {
-        // Caso ocorra um erro durante a execução, retorna um erro 500
-        console.error("Algo deu errado ao buscar dica, tente novamente: ", error);
-        return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-    } finally {
-        // Fecha a conexão com o banco de dados, se foi estabelecida
-        if (executeConnection) {
-            await executeConnection.end();
-        };
-    };
+        //armazena a dica do dia e a data atual
+        dailyTip    = results[0];
+        lastTipDate = formattedDate;
+
+        return res.status(200).json(dailyTip);
+	}catch(error){
+		//caso dê algo errado, retorna no console e avisa
+		console.error("Algo deu errado ao visualizar a dica diária, tente novamente:", error);
+		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
+	}
+	finally{
+		if(executeConnection){
+			//fecha a conexão com o banco de dados
+			await executeConnection.end();
+		}
+	};
 };
+
+export default getDailyTip;

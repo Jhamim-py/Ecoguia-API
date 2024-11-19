@@ -1,13 +1,14 @@
-const app  = require('./config/express')();
+import app  from './config/express.js';
+
+import cors       from 'cors';
+import bodyParser from 'body-parser';
+
+import swaggerUi   from 'swagger-ui-express';
+import swaggerFile from './swagger-output.json' assert { type: 'json' };
+
+import router from './API/routes/route.js';
 
 const port = app.get('port');
-const cors = require('cors');
-
-const bodyParser = require('body-parser');
-const swaggerUi  = require('swagger-ui-express');
-
-const swaggerFile = require('./swagger-output.json');
-const router      = require('./API/routes/route');
 
 app.use(cors());
 app.use(bodyParser.json());
