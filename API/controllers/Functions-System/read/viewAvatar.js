@@ -9,7 +9,7 @@ async function (req, res) {
         const query = "SELECT * FROM ViewAllAvatar;";
 
         //executa a query
-        const [results] = await executeConnection.query(query);
+        const [results] = await executeConnection.query(query); 
         results;
 
         if(results.length <= 0){

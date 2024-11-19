@@ -40,6 +40,7 @@ const viewAllTips   = require('../controllers/Functions-System/read/viewAllTips'
 const viewLevels    = require('../controllers/Functions-System/read/viewLevel');
 const viewQuests    = require('../controllers/Functions-System/read/viewQuests') 
 const viewMaterial  = require('../controllers/Functions-System/read/viewMaterial');
+const viewInfoUser  = require('../controllers/Functions-System/read/viewInfoUser')
 
 // rotas de USUÁRIO
 const registerUser  = require('../controllers/Functions-User/create/registerUser');
@@ -144,6 +145,9 @@ routes.get('/quests', viewQuests.viewQuests)
 
 //visualizar informações sobre os materiais de coleta
 routes.get('/materiais',viewMaterial.viewMaterial)
+
+//visualizar informações sobre o usuário
+routes.get('/userInfo', checkToken.checkToken,viewInfoUser.viewInfoUser)
 // HTTPS de USUÁRIO
 
 // POST || CREATE
