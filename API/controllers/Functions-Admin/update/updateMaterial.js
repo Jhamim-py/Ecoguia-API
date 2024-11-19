@@ -1,9 +1,8 @@
-const connection  = require('../../../data/connection'); // conexão com o banco de dados
-const checkLength   = require('../../../utils/characterLimit'); // verifica se a variável possui valor maior que o esperado 
+import connection from '../../../data/connection.js';       // conexão com o banco de dados
+import checkLength from '../../../utils/characterLimit.js'; // verifica se a variável possui valor maior que o esperado 
 
-
-exports.updateMaterial = 
-async (req, res) => {
+const updateMaterial = 
+async (req, res)     => {
     // array de requisição dos dados
     const {
         id, type,xp_material
@@ -36,3 +35,5 @@ async (req, res) => {
 		}
 	};
 };
+
+export default updateMaterial;

@@ -1,10 +1,9 @@
-const connection = require('../data/connection'); //conexão com o banco de dados
+import connection  from '../data/connection.js'; //conexão com o banco de dados
 
 //função assíncrona com uma promise
-module.exports =
-async function checkXp(id,type,xp_material,peso){ 
+export default async function checkXp(id,type,xp_material,peso){ 
     // variável que armazena a execução de conexão com o banco de dados
-    const executeConnection = await connection.getConnection(); 
+    const executeConnection = await connection(); 
     
     //retorna uma promise com o resultado da query executada
     return new Promise( async (resolve) => {

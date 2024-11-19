@@ -1,6 +1,7 @@
 // utilizado para armazenar dados no cachê da API
-const NodeCache = require('node-cache');
-require('dotenv').config();
+import NodeCache from 'node-cache';
+import 'dotenv/config';
 
 const cache = new NodeCache({});
-module.exports = cache; 
+
+export default cache;

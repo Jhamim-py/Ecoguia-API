@@ -1,7 +1,6 @@
-const connection  = require('../../../data/connection'); // conexão com o banco de dados
-const checkLength   = require('../../../utils/characterLimit'); // verifica se a variável possui valor maior que o esperado 
+import connection  from '../../../data/connection.js';   // conexão com o banco de dados
 
-exports.updateTip = 
+const updateTip = 
 async (req, res) => {
     // array de requisição dos dados
     const {
@@ -24,7 +23,7 @@ async (req, res) => {
     };
 
     //executa a conexão com o banco de dados
-    const executeConnection = await connection.getConnection();
+    const executeConnection = await connection();
 
     
     try {
@@ -47,3 +46,5 @@ async (req, res) => {
 		}
 	};
 };
+
+export default updateTip;

@@ -1,11 +1,11 @@
 //importação do arquivo de configuração .env
-require('dotenv').config();
+import 'dotenv/config';
 
 //funções externas
-const connection        = require('../../../data/connection');       //conexão com o banco de dados
+import connection  from '../../../data/connection.js';      //conexão com o banco de dados
 
 //função assíncrona para adicionar um novo artigo
-exports.createLevel   =
+const createLevel   =
 async (req, res) 	  => {
   	//array de requisição dos dados
 	const {XP} = req.body;
@@ -16,7 +16,7 @@ async (req, res) 	  => {
 	};
 
 	//executa a conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	const executeConnection = await connection();
 
 	try{
 		//chama a procedure de criação e coloca os dados
@@ -46,4 +46,6 @@ async (req, res) 	  => {
 			await executeConnection.end();
 		}
 	};
-}; 
+};
+
+export default createLevel;

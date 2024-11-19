@@ -1,11 +1,10 @@
 //funções externas
-const connection  = require('../../../data/connection');     // conexão com o banco de dados
-const nullValue   = require('../../../utils/nullValue');     // verifica se a variável possui valor nulo 
-const checkLength = require('../../../utils/characterLimit') //importa a função que verifica o tamanho max
-// modelo ES: import connection from '../../../data/connection';
+import connection  from '../../../data/connection.js';    // conexão com o banco de dados 
+import nullValue   from '../../../utils/nullValue.js';    // verifica se a variável possui valor nulo
+import checkLength from '../../../utils/characterLimit.js';  //importa a função que verifica o tamanho max
 
 //função assíncrona para modificar uma cadeia de missões
-exports.updateQuest =
+const updateQuest =
 async (req, res) => {
     // array de requisição dos dados
     const {
@@ -52,7 +51,7 @@ async (req, res) => {
     };
 
     //executa a conexão com o banco de dados
-    const executeConnection = await connection.getConnection();
+    const executeConnection = await connection();
 
     try {
         //chama a procedure de criação e coloca os dados
@@ -83,3 +82,5 @@ async (req, res) => {
         }
     };
 };
+
+export default updateQuest;

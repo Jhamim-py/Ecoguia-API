@@ -1,6 +1,5 @@
 // função de verificação de senha
-module.exports = 
-function verificatePwd(pwd){
+export default function verificatePwd(pwd){
     // verifica o tamanho da senha de no mínimo 8 caracteres
     let mensagem   = "";
     let minuscula  = pwd.match(/[a-z]/g);

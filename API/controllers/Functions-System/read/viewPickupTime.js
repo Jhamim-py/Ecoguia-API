@@ -1,5 +1,5 @@
-const puppeteer = require('puppeteer');
-const Correios  = require('node-cep-correios');
+import puppeteer from 'puppeteer';
+import Correios from 'node-cep-correios';
 
 let correios    = new Correios();
 
@@ -162,7 +162,7 @@ async function timeUrbis(result2){
     }
 };
 
-exports.pickupTime = async (req, res) => {
+const pickupTime = async (req, res) => {
     //verificar qual empresa atende X região chamando as funções
     const {cep} = req.body;
 
@@ -218,3 +218,5 @@ exports.pickupTime = async (req, res) => {
         return res.status(404).json("Verifique se o CEP digitado está correto." );
     }
 };
+
+export default pickupTime;

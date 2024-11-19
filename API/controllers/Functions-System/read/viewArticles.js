@@ -1,22 +1,32 @@
-const connection = require('../../../data/connection'); // conexão com o banco de dados
+//funções externas
+import connection  from '../../../data/connection.js'; //conexão com o banco de dados
 
-exports.viewArticles = 
-async (req, res) => { // Incluindo req como parâmetro
-    const executeConnection = await connection.getConnection();
+//função assíncrona para visualizar todos os artigos
+const getAllArticles = 
+async (req, res) => {
+	//executa a conexão com o banco de dados
+	const executeConnection = await connection();
+
     try {
+        //chama a view pronta de visualização
         const query = `SELECT * FROM ViewAllArticle;`;
 
-        // Envio de query para o banco de dados e retorna o resultado
-        const [results] = await executeConnection.query(query);
-
-        return res.status(200).json(results);
-    } catch (error) {
-        console.error("Algo deu errado ao visualizar os artigos:", error);
-        return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-    } finally {
-        // Fecha a conexão com o banco de dados, se foi estabelecida
-        if (executeConnection) {
-            await executeConnection.end();
-        }
-    }
+        //envia a query e retorna caso tenha dado certo
+		const [results] = await executeConnection.query(query);
+		results;
+    
+        return res.status(200).json({results});
+	}catch(error){
+		//caso dê algo errado, retorna no console e avisa
+		console.error("Algo deu errado ao visualizar os artigos, tente novamente:", error);
+		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
+	}
+	finally{
+		if(executeConnection){
+			//fecha a conexão com o banco de dados
+			await executeConnection.end();
+		}
+	};
 };
+
+export default getAllArticles;
