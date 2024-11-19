@@ -16,12 +16,9 @@ async (req, res) => {
     const userID = await getID(email);
     console.log(userID)                       
     const checkPwd = verificatePwd(pwd);                        //Verifica se a senha está nos padrões corretos
-
-    // verificação de dados
-    console.log(pwd);
-
+ 
     //Resultado da verificação da senha
-    if(checkPwd[0] == false){   
+    if(checkPwd[0] == false){    
         return res.status(400).json({erro: checkPwd[1]});       //Mensagem correspondente ao erro encontrado na senha
     }
     
