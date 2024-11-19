@@ -19,7 +19,7 @@ async(req, res) => {
 		const [results] = await executeConnection.query(query,values);
 		results;
     
-        return res.status(200).json({results});
+        return res.status(200).json(msg: "artigo criado com sucesso", response: {results});
 	}catch(error){
 		//caso dê algo errado, retorna no console e avisa
 		console.error("Algo deu errado ao visualizar o artigo, tente novamente:", error);
