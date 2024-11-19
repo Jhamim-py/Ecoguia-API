@@ -1,10 +1,11 @@
 // componentes do Node
-const crypto         = require('crypto');                    // gera um token aleatório
-const validator      = require('email-validator');           //verificação de formato do email
-// funções exportadas
-const sendEmail      = require('../../../utils/sendEmail');  //importa função de enviar token por email
+import crypto 	 from 'crypto';              		   // gera um token aleatório
+import validator from 'email-validator';  			   //verificação de formato do email
 
-exports.registerUpdateEmail =
+// funções exportadas
+import sendEmail from '../../../../utils/sendEmail.js';  //importa função de enviar token por email
+
+const sendToken =
 async (req, res) => {
 	// variáveis responsáveis por armazenar os dados
 	const {email} = req.body;
@@ -16,14 +17,15 @@ async (req, res) => {
 	 try{
 		 //Se houver um novo endereço de email na requisição,
 		 //será enviado um token para esse novo endereço.
-
+		 
 		 //cria um token para verificação
 		  const token = crypto.randomBytes(3).toString("hex");
 
 		 // envia o token no e-mail
 		  const message =`Utilize o token para validação de troca de e-mail \n
 		  token: ${token}`;
-		  sendEmail(message,email);
+		  const name    = "Usuário";
+		  sendEmail(message, email, name);
 
 		  return res.status(200).json({message:"Confirme o token enviado pelo email para efetuar a atualização.",token:token});
 		}
@@ -32,3 +34,5 @@ async (req, res) => {
 		}
 
 };
+
+export default sendToken;

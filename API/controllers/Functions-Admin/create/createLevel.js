@@ -1,42 +1,51 @@
-// funções externas
-const connection  = require('../../../data/connection');
+//importação do arquivo de configuração .env
+import 'dotenv/config';
 
+//funções externas
+import connection  from '../../../data/connection.js';      //conexão com o banco de dados
 
-// função assíncrona para adicionar uma nova dica
-exports.createLevel = 
-async (req, res) => {
-    // Obtém os dados da nova dica do corpo da requisição
-    const { xp_level } = req.body;
+//função assíncrona para adicionar um novo artigo
+const createLevel   =
+async (req, res) 	  => {
+  	//array de requisição dos dados
+	const {XP} = req.body;
 
-    //executa a conexão com o banco de dados
-	const executeConnection = await connection.getConnection();
+	//validação de campo vazio
+	if (!XP) {
+		return res.status(422).json({ msg: "É obrigatório preencher o único campo para criar um novo level." });
+	};
 
-    try {
-        // Query para chamar a procedure de criação da dica
-        const query  = `CALL CreateLevel(?)`; // Chama a procedure
-        const values = [xp_level]; // Valores a serem passados para a procedure
+	//executa a conexão com o banco de dados
+	const executeConnection = await connection();
 
-		// Executa a query
+	try{
+		//chama a procedure de criação e coloca os dados
+		const query = `CALL CreateLevel(?);`;
+		const values = [XP];
+
+		//envia a query e retorna caso tenha dado certo
 		const [results] = await executeConnection.query(query, values);
 		results;
 
-        return res.status(201).json({ msg: "Novo Level adicionado com sucesso" });
-    }catch (error) {
+		return res.status(200).json({msg:"Um novo level foi criado com sucesso."});
+	}catch(error){
 		if (error.sqlState === '45000') {
-			// Caso o erro SQL seja por regras de negócio
+			//caso o erro SQL seja por regras de negócio, expõe-o
 			return res.status(400).json({ 
-				msg: `Erro ao tentar criar novo level: ${error.sqlMessage}`
+				msg: `Erro ao tentar criar um novo level: ${error.sqlMessage}`
 			});
 		} else {
-			// Caso o erro seja inerente as regras
-			console.error("Erro ao tentar criar novo level: ", error);
+			//caso dê algo errado, retorna no console e avisa
+			console.error("Erro ao tentar criar um novo level: ", error);
 			return res.status(500).json({ msg: "Erro interno no servidor, tente novamente." });
 		};
-    }
-    finally{
-        // Fecha a conexão com o banco de dados, se foi estabelecida
-        if (executeConnection) {
-            await executeConnection.end();
-        };
-    };
+	}
+	finally{
+		if(executeConnection){
+			//fecha a conexão com o banco de dados
+			await executeConnection.end();
+		}
+	};
 };
+
+export default createLevel;

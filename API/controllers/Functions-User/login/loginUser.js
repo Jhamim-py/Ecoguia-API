@@ -1,18 +1,18 @@
 // importação do arquivo de configuração .env
-require('dotenv').config();
+import 'dotenv/config';
 
 // componentes do Node
-const bcrypt         =  require('bcrypt');                   // criptografa dados em hash
-const jwt            =  require('jsonwebtoken');             // token web do Javascript (salva informações como credenciais)
+import bcrypt from 'bcrypt';          // criptografa dados em hash
+import jwt    from 'jsonwebtoken';    // token web do Javascript (salva informações como credenciais)
 
 // variáveis de ambiente para importar funções
-const connection     =  require('../../../data/connection'); // conexão com o banco de dados
+import connection  from '../../../data/connection.js'; // conexão com o banco de dados
 
 // função de visualização que pode ser exportada
-exports.postLogin = 
+const postLogin = 
 async (req, res) => {   //função assíncrona com parâmetros de requisição e resposta
     const { email, pwd } = req.body;                         // variável responsável por armazenar os dados
-    const executeConnection = await connection.getConnection();    // variável que armazena a execução de conexão com o banco de dados
+    const executeConnection = await connection();    // variável que armazena a execução de conexão com o banco de dados
  
     // validação de campo
     if (!email || !pwd) { 
@@ -43,7 +43,7 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         const secret = process.env.SECRET;
 
         // isto faz com que o usuário consiga transitar no app sem logar novamente
-        const token  = jwt.sign({ id: user.pk_IDuser, pwd:pwd }, secret);
+        const token  = jwt.sign({ id: user.pk_IDuser}, secret);
 
         res.status(200).json({ msg: "Autenticação realizada com sucesso.", token: token });
     }catch (error) {
@@ -55,3 +55,5 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         await executeConnection.end();
     };
 };
+
+export default postLogin;

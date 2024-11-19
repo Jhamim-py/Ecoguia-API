@@ -1,6 +1,6 @@
-const connection = require('../../../data/connection'); //conexão com o banco de dados
+import connection from '../../../data/connection.js'; //conexão com o banco de dados
 
-exports.viewInfoUser =
+const viewInfoUser =
 async (req, res) =>{
 const userID = req.user.id  //variáveis responsáveis por armazenar os dados
 
@@ -26,3 +26,5 @@ const userID = req.user.id  //variáveis responsáveis por armazenar os dados
       };
   };
 }; 
+
+export default viewInfoUser;

@@ -1,9 +1,9 @@
-const connection = require('../data/connection'); // conexão com o banco de dados
+import connection  from '../data/connection.js'; // conexão com o banco de dados
 
 // função de verificação de e-mail no banco de dados para recuperação de senha
-module.exports = 
+export default
 async function getID(email) {
-    const executeConnection = await connection.getConnection();
+    const executeConnection = await connection();
 
     try{
         // armazena a query que chama a view que retorna somente o ID, nickname e e-mail

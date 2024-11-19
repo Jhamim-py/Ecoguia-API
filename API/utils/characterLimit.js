@@ -1,6 +1,5 @@
 // função que valida o length dos dados de entrada
-module.exports =
-function checkLength(data, length){
+export default function checkLength(data, length){
     //verifica se há dados
     if(data == null){
         return false;
