@@ -11,6 +11,7 @@ import  updateQuest    from '../controllers/Functions-Admin/update/updateQuest.j
 import  updateArticle  from '../controllers/Functions-Admin/update/updateArticle.js';
 import  updateAvatar   from '../controllers/Functions-Admin/update/updateAvatar.js';
 import  updateTip      from '../controllers/Functions-Admin/update/updateTip.js';
+import  updateMaterial from '../controllers/Functions-Admin/update/updateMaterial.js';
 import  deleteQuest    from '../controllers/Functions-Admin/delete/deleteQuest.js';
 import  deleteArticle  from '../controllers/Functions-Admin/delete/deleteArticle.js';
 import  deleteTip      from '../controllers/Functions-Admin/delete/deleteTip.js';
@@ -25,7 +26,7 @@ import  viewArticle    from '../controllers/Functions-System/read/viewArticle.js
 import  viewTips       from '../controllers/Functions-System/read/viewTips.js';
 import  viewLevels     from '../controllers/Functions-System/read/viewLevel.js';
 import  viewQuests     from '../controllers/Functions-System/read/viewQuests.js';
-
+import viewMaterial    from '../controllers/Functions-System/read/viewMaterial.js';
 // rotas de USUÁRIO
 import  registerUser   from '../controllers/Functions-User/create/registerUser.js';
 import  createUser     from '../controllers/Functions-User/create/createUser.js';
@@ -75,6 +76,8 @@ routes.put('/updateAvatar',  validateFile, updateAvatar);
 //modifica uma dica com uma nova descrição
 routes.put('/updateTip',     updateTip);
 
+//modificar um material de acordo com o ID de entrada
+routes.put('/updateMaterial', updateMaterial);
 
 // DELETE || DELETE
 //deleta uma cadeia de missões(3), referenciando a 3ª
@@ -113,9 +116,12 @@ routes.get('/avatars',       viewAvatars);
 
 //visualiza todos os níveis de conta
 routes.get('/levels',        viewLevels);
-
+ 
 //visualiza todas as missões
 routes.get('/quests',        viewQuests);
+
+//visualiza todos os materiais
+routes.get('/materiais',     viewMaterial)
 
 
 // HTTP de USUÁRIO

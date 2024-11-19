@@ -9,6 +9,7 @@ import connection           from '../../../data/connection.js';		//conexão com 
 const connection_azure = process.env.STORAGE_URL_AZURE;
 const blob_azure       = process.env.CONTANEIR_AZURE;
 
+
 //função assíncrona para modificar uma avatar
 const updateAvatar =
 async (req, res) => {
