@@ -78,7 +78,6 @@ async (req, res)     => {
         const message = `${sendToken}`;
         
         // função externa que cria e manda o e-mail
-        console.log(name)
         sendEmail(message, email, name);
         res.status(200).json({ msg: "Registro de usuário criado. Por favor, verifique o token enviado em seu e-mail.", token: sendToken});
 	}catch(error){
