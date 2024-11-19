@@ -9,13 +9,9 @@ const updatePwd =
 async (req, res) => {
    // variáveis responsáveis por armazenar os dados
     const userId = req.user.id;   // variável que armazena o ID do usuário
-    const pwd    = req.user.pwd
-    const {pwdUser,newPwd} = req.body;
+    const {newPwd} = req.body;
  
     const email = null;
-    if(pwdUser != pwd){
-        return res.status(401).json({message: "Senha inválida!"});
-    }
 
     const executeConnection = await connection();// variável que armazena a execução de conexão com o banco de dados  
     
