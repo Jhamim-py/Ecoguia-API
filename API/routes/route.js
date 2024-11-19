@@ -10,6 +10,7 @@ import  updateQuest    from '../controllers/Functions-Admin/update/updateQuest.j
 import  updateArticle  from '../controllers/Functions-Admin/update/updateArticle.js';
 import  updateAvatar   from '../controllers/Functions-Admin/update/updateAvatar.js';
 import  updateTip      from '../controllers/Functions-Admin/update/updateTip.js';
+import  updateMaterial from '../controllers/Functions-Admin/update/updateMaterial.js';
 import  deleteQuest    from '../controllers/Functions-Admin/delete/deleteQuest.js';
 import  deleteArticle  from '../controllers/Functions-Admin/delete/deleteArticle.js';
 import  deleteTip      from '../controllers/Functions-Admin/delete/deleteTip.js';
@@ -74,6 +75,8 @@ routes.put('/updateAvatar',  updateAvatar);
 //modifica uma dica com uma nova descrição
 routes.put('/updateTip',     updateTip);
 
+//modificar um material de acordo com o ID de entrada
+routes.put('/updateMaterial', updateMaterial);
 
 // DELETE || DELETE
 //deleta uma cadeia de missões(3), referenciando a 3ª

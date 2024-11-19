@@ -113,6 +113,38 @@
         }
       }
     },
+    "/createLevel": {
+      "post": {
+        "tags": ["Admin"],  
+        "description": "Rota utilizada para criação de novos levels usada pelo administrador",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "xp_level": {
+                    "type":"number",
+                    "example": 100
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/updateQuest": {
       "put": {
         "tags":["Admin"],
@@ -305,6 +337,46 @@
         }
       }
     },
+    "/updateMaterial": {
+      "put": {
+        "tags":["Admin"],
+        "description": "Rota utilizada para a atualização de um material no banco de dados usada pelo administrador",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": "any"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "any"
+                  },
+                  "xp_material":{
+                    "type":"integer",
+                    "example":10
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/deleteQuest": {
       "delete": {
          "tags":["Admin"],
@@ -347,6 +419,20 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/deleteLevel": {
+      "delete": {
+        "tags":["Admin"],
+        "description": "Rota utilizada para a exclusão do ultimo level adicionado usada pelo administrador",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -498,6 +584,75 @@
             "description": "Not Found"
           },
           "500":{
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/materiais": {
+      "get": {
+        "tags":["System"],
+        "description": "Rota utilizada pelo sistema para pegar todos os materiais recicláveis no banco de dados",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404":{
+            "description": "Not Found"
+          },
+          "500":{
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/levels": {
+      "get": {
+        "tags":["System"],
+        "description": "Rota utilizada pelo sistema para pegar os dados sobre todos os levels ",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404":{
+            "description": "Not Found"
+          },
+          "500":{
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/AllTips": {
+      "get": {
+        "tags":["System"],
+        "description": "Rota utilizada pelo sistema para pegar todas as dicas",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404":{
+            "description": "Not Found"
+          },
+          "500":{
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/quests": {
+      "delete": {
+         "tags":["System"],
+        "description": "Rota utilizada para pegar todas as quests no banco de dados",
+
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
             "description": "Internal Server Error"
           }
         }

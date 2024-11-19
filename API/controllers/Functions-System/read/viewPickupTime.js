@@ -11,7 +11,7 @@ async function timeLoga(result){
     let response;
 
     const browser = await puppeteer.launch({
-        headless: false, // Mude para true para produção
+        headless: true, // Mude para true para produção
         args: ['--disable-web-security', '--disable-features=IsolateOrigins,site-per-process', '--no-sandbox', '--disable-setuid-sandbox']
     });
 
@@ -90,7 +90,7 @@ async function timeUrbis(result2){
     let response;
 
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         args: [
             '--disable-web-security',
             '--disable-features=IsolateOrigins,site-per-process',
