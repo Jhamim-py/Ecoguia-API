@@ -28,13 +28,13 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         // envio de query e captação de resposta
         const [results] = await executeConnection.query(query, values);
         if(results.length == 0){
-            return res.status(404).json({msg: "Usuário não encontrado."});
+            return res.status(404).json({msg: "Usuário não encontrado."}); 
         };  
         // armazena o valor retornado numa variável (neste caso, o e-mail)
         const user = results[0];
 
         // checa a senha com o hash armazenado no banco através da biblioteca bcrypt
-        const checkPwd = await bcrypt.compare(pwd, user.pwd);
+        const checkPwd = await bcrypt.compare(pwd, user.pwd); 
         if (!checkPwd) {
             return res.status(400).json({ msg: "Senha incorreta." });
         }
@@ -43,7 +43,7 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         const secret = process.env.SECRET;
 
         // isto faz com que o usuário consiga transitar no app sem logar novamente
-        const token  = jwt.sign({ id: user.pk_IDuser, pwd:pwd }, secret);
+        const token  = jwt.sign({ id: user.pk_IDuser}, secret);
 
         res.status(200).json({ msg: "Autenticação realizada com sucesso.", token: token });
     }catch (error) {
