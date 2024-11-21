@@ -55,15 +55,9 @@ async (req, res)    => {
 	try{
 		//chama a procedure de criação e coloca os dados	
 		const query  = `CALL CreateQuestAndBadge(?, ?, ?, ?, ?, ?, ?, ?, ?);`;
-		const values = [ 
-			blob_description,
-			blob_title, blob_url,
-		    description_1, XP_1,
-			description_2, XP_2,   
-            description_3, XP_3, 
-            
-           
-           
+		const values = [
+			blob_description, blob_title, blob_url,
+			description_1, XP_1, description_2, XP_2, description_3, XP_3,
         ];
 
 		//envia a query e retorna caso tenha dado certo
@@ -90,4 +84,5 @@ async (req, res)    => {
 		};
 	};
 };
+
 export default createQuest;

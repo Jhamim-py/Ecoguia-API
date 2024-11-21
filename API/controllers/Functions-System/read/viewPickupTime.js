@@ -162,7 +162,8 @@ async function timeUrbis(result2){
     }
 };
 
-const pickupTime = async (req, res) => {
+const pickupTime = 
+async (req, res) => {
     //verificar qual empresa atende X região chamando as funções
     const {cep} = req.body;
 

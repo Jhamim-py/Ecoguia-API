@@ -5,14 +5,16 @@ import bcrypt from 'bcrypt';  // criptografa dados em hash
 import connection  	    from '../../../data/connection.js';    	   // conexão com o banco de dados
 import generateNickname from '../../../utils/generateNickname.js'; // função externa que é responsável por gerar um nickname (exige a entrada da variável 'name') 
 
-// função de registro que pode ser exportada 
+//função assíncrona com parâmetros de requisição e resposta
 const sendNewUser =
-async (req, res) => {  //função assíncrona com parâmetros de requisição e resposta
+async (req, res)  => {  
+	//array de requisição dos dados
     const {
         name, lastname, email, pwd, avatar
-    } = req.body;                                   // variável responsável por armazenar o token enviado ao cliente
+    } = req.body;
 
-    const executeConnection = await connection(); // variável que armazena a execução de conexão com o banco de dados
+	//executa a conexão com o banco de dados
+	const executeConnection = await connection();
 
     // criptografa a senha dada em hash
     const salt     = await bcrypt.genSalt(12);     // define o tamanho do hash (12 caracteres)
@@ -22,11 +24,11 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
     const nickname = generateNickname(lastname);
 
     try{
-        // armazena a query de criação de usuário
+        //chama a procedure de criação e coloca os dados
         const query  = `CALL CreateUser(?, ?, ?, ?, ?, ?);`;
         const values = [name, lastname, email, pwdHash, nickname, avatar];
 
-        // envio de query para o banco de dados e retorna o resultado
+        //envia a query e retorna caso tenha dado certo
 		const [results] = await executeConnection.query(query, values);
 		results;
 
@@ -34,7 +36,7 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
 	}catch(error){
 		if (error.sqlState === '45000') {
 			// Caso o erro SQL seja por regras de negócio
-			return res.status(401).json({ 
+			return res.status(400).json({ 
 				msg: `Erro ao tentar criar conta: ${error.sqlMessage}`
 			});
 		} else {
@@ -42,13 +44,13 @@ async (req, res) => {  //função assíncrona com parâmetros de requisição e 
 			console.error("Algo deu errado ao criar a conta, tente novamente: ", error);
 			return res.status(500).json({ msg: "Erro interno no servidor, tente novamente." });
 		};
-    }
+	}
 	finally{
 		if(executeConnection){
 			//Fecha a conexão com o banco de dados
 			await executeConnection.end();
 		};
 	};
-}; 
+};
 
 export default sendNewUser;

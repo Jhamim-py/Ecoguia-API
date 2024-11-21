@@ -58,7 +58,7 @@ routes.post('/createQuest',    createQuest);
 routes.post('/createArticle',  createArticle);
 
 //cria uma nova dica
-routes.post('/createTips',     createTip);
+routes.post('/createTip',      createTip);
 
 //cria um novo level
 routes.post('/createLevel',    createLevel);
