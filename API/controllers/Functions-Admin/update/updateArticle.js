@@ -11,6 +11,7 @@ async(req, res) =>{
 	} = req.body;
 
 	// array com dados que contém limite de campo
+	//ratamanata
 	const data = [
 		['imagem do artigo',  image], 
 		['título do artigo',  title], 
