@@ -9,7 +9,6 @@ const extractBlobNameFromUrl = (url) => {
 exports.deleteAzure   =
 async (blobUrl) 	  => {
     try {
- 
         // Extrai o nome do blob da URL
         const blobName = decodeURIComponent(extractBlobNameFromUrl(blobUrl));
  

@@ -27,6 +27,7 @@ import  viewTips       from '../controllers/Functions-System/read/viewTips.js';
 import  viewLevels     from '../controllers/Functions-System/read/viewLevel.js';
 import  viewQuests     from '../controllers/Functions-System/read/viewQuests.js';
 import viewMaterial    from '../controllers/Functions-System/read/viewMaterial.js';
+
 // rotas de USUÁRIO
 import  registerUser   from '../controllers/Functions-User/create/registerUser.js';
 import  createUser     from '../controllers/Functions-User/create/createUser.js';
@@ -51,10 +52,10 @@ const routes = Router();
 
 // POST || CREATE
 //cria uma nova quest
-routes.post('/createQuest',    createQuest);
+routes.post('/createQuest',    validateFile, createQuest);
 
 //cria um novo artigo
-routes.post('/createArticle',  createArticle);
+routes.post('/createArticle',  validateFile, createArticle);
 
 //cria uma nova dica
 routes.post('/createTips',     createTip);
@@ -65,10 +66,10 @@ routes.post('/createLevel',    createLevel);
 
 // PUT || UPDATE
 //modifica uma cadeia de missões(3), começando pela 3ª
-routes.put('/updateQuest',   updateQuest);
+routes.put('/updateQuest',   validateFile, updateQuest);
 
 //modifica um artigo
-routes.put('/updateArticle', updateArticle);
+routes.put('/updateArticle', validateFile, updateArticle);
 
 //modifica um avatar com uma nova URL
 routes.put('/updateAvatar',  validateFile, updateAvatar);
