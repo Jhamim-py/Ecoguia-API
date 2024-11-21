@@ -27,6 +27,8 @@ import  viewTips       from '../controllers/Functions-System/read/viewTips.js';
 import  viewLevels     from '../controllers/Functions-System/read/viewLevel.js';
 import  viewQuests     from '../controllers/Functions-System/read/viewQuests.js';
 import viewMaterial    from '../controllers/Functions-System/read/viewMaterial.js';
+import viewInfoUser    from '../controllers/Functions-System/read/viewInfoUser.js';
+
 
 // rotas de USUÁRIO
 import  registerUser   from '../controllers/Functions-User/create/registerUser.js';
@@ -124,8 +126,11 @@ routes.get('/quests',        viewQuests);
 //visualiza todos os materiais
 routes.get('/materiais',     viewMaterial)
 
+//visualizar informações sobre o usuário
+routes.get('/userInfo', checkToken, viewInfoUser);
 
-// HTTP de USUÁRIO
+
+// HTTPS de USUÁRIO
 
 // POST || CREATE
 //cria um nova conta de usuário
