@@ -60,7 +60,7 @@ routes.post('/createQuest',    validateFile, createQuest);
 routes.post('/createArticle',  validateFile, createArticle);
 
 //cria uma nova dica
-routes.post('/createTips',     createTip);
+routes.post('/createTip',      createTip);
 
 //cria um novo level
 routes.post('/createLevel',    createLevel);

@@ -1,7 +1,6 @@
-import express from 'express';                 // biblioteca Express 
 import connection  from '../../../data/connection.js';    // conexão com o banco de dados
 
-// função de visualização de perfil que pode ser exportada
+//função de visualização de perfil que pode ser exportada
 const getProfile =
 async (req, res) => {   //função assíncrona com parâmetros de requisição e resposta
     const executeConnection = await connection(); // variável que armazena a execução de conexão com o banco de dados

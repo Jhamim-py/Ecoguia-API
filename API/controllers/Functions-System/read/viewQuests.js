@@ -2,8 +2,8 @@
 import connection  from '../../../data/connection.js'; //conexão com o banco de dados
 
 //função assíncrona para visualizar as missões
-const getQuests =
-async function (req,res) {
+const getQuests  =
+async (req, res) => {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection();
 

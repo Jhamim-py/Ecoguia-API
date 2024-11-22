@@ -7,7 +7,7 @@ let lastTipDate = null; // Armazena a data em que a dica foi buscada
 
 //função assíncrona para visualizar a dica diária
 const getDailyTip = 
-async (req, res) => {
+async (req, res)  => {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection();
 

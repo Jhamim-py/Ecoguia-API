@@ -3,7 +3,7 @@ import path       from 'path';
 import 'dotenv/config';
 import { fileURLToPath } from 'url';
 
-export default function checkEmail(message, email, name) {
+export default function checkEmail(email, name, message, token) {
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,
@@ -35,10 +35,10 @@ export default function checkEmail(message, email, name) {
             <div style="padding: 20px; text-align: left;">
                 <h2 style="color: #34a853;">Token de verificação</h2>
                 <p>Olá ${name},</p>
-                <p>Bem-vindo(a) ao nosso aplicativo! Para finalizar seu cadastro, verifique seu e-mail usando o código:</p>
-                <h3 style="color: #34a853;">${message}</h3>
-                <p>Se não se cadastrou, ignore este e-mail.</p>
-                <p>Obrigado por escolher nosso serviço!</p>
+                <p>${message}</p>
+                <h3 style="color: #34a853;">${token}</h3>
+                <p>Se não solicitou este serviço, ignore este e-mail.</p>
+                <p>Obrigado por escolher nosso app!</p>
                 <p style="margin-top: 20px;">Atenciosamente,<br>Ecoguia</p>
             </div>
         </div>
