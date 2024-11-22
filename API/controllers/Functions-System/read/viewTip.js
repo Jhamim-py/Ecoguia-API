@@ -11,7 +11,7 @@ async (req, res)  => {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection();
 
-    try { 
+    try {
         const today         = new Date();                        //obtém a data e hora atuais do sistema
         const formattedDate = today.toISOString().split('T')[0]; //formata a data no formato YYYY-MM-DD
 
