@@ -33,7 +33,7 @@ const getConnection = async () => {
 		return connection; 
 	}catch (error) {
 		console.error('Erro ao conectar: ' + error.stack);
-		throw error; // Lance o erro para que possa ser tratado onde a conexão é chamada
+		throw error; 
 	}
 };
 

@@ -9,9 +9,8 @@ import verificatePwd from '../../../utils/verificatePwd.js';     // verifica e v
 import checkLength   from '../../../utils/characterLimit.js';    // verifica se o dado ultrapassa o limite de caracteres
 
 // função assíncrona com parâmetros de requisição e resposta
-const newUser =
-async (req, res)     => {
-    
+const newUser    =
+async (req, res) => {
   	// array de requisição dos dados
 	const {
 		name, lastname, email, pwd, avatar
@@ -52,33 +51,33 @@ async (req, res)     => {
 	const executeConnection = await connection();
 
     try{
-        // verificar existência do e-mail no Banco de Dados através do uso de View
-        // transformar numa função interna da procedure de criação!!!
+        //chama a procedure de criação e coloca os dados
         const query  = `SELECT * FROM ViewAllEmails WHERE email=?`;
         const values = email;  //aloca o valor colocado no campo 'E-mail' para essa variável
 
-        // envio de query para o banco de dados e retorna o resultado
+        //envio de query para o banco de dados e retorna o resultado
         const [results] = await executeConnection.query(query, values);
 
         if(results.length > 0){
             return res.status(422).json({ msg: "Este e-mail já esta sendo utilizado numa conta Eco."});
         };
 
-        // verifica a formatação do dado colocado no campo 'senha' com função externa
+        //verifica a formatação do dado colocado no campo 'senha' com função externa
         const verificate = verificatePwd(pwd);
         if (verificate[0] == false) {
             // retorna os resultados da função externa caso dê erro
             return res.status(400).json({error: verificate[1]});
         }
 
-        // cria o token de validação de e-mail
+        //cria o token de validação de e-mail
         const sendToken = crypto.randomBytes(2).toString("hex");
 
-        // armazena o token num formato válido
-        const message = `${sendToken}`;
+        //armazena o token num formato válido
+        const message = `Bem-vindo(a) ao nosso querido app feito para você! <br> Está quase lá, use o token abaixo para terminar o cadastro:`;
+        const token   = `${sendToken}`;
         
-        // função externa que cria e manda o e-mail
-        sendEmail(message, email, name);
+        //função externa que cria e manda o e-mail
+        sendEmail(email, name, message, token);
         res.status(200).json({ msg: "Registro de usuário criado. Por favor, verifique o token enviado em seu e-mail.", token: sendToken});
 	}catch(error){
 		console.error("Algo deu errado ao registrar usuário, tente novamente:", error);

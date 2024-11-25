@@ -3,7 +3,7 @@ import connection from "../../../data/connection.js"; //conexão com o banco de 
 
 //função assíncrona para visualizar os materiais
 const viewMaterial =
-async function (req, res) {
+async (req, res)   => {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection();
 

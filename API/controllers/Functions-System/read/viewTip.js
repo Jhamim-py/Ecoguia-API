@@ -7,11 +7,11 @@ let lastTipDate = null; // Armazena a data em que a dica foi buscada
 
 //função assíncrona para visualizar a dica diária
 const getDailyTip = 
-async (req, res) => {
+async (req, res)  => {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection();
 
-    try { 
+    try {
         const today         = new Date();                        //obtém a data e hora atuais do sistema
         const formattedDate = today.toISOString().split('T')[0]; //formata a data no formato YYYY-MM-DD
 

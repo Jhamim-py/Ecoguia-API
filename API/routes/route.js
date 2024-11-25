@@ -1,5 +1,6 @@
 // controle de rotas na URL e funções utilizadas
-import { Router } from 'express';
+import { Router }  from 'express';
+import validateFile from '../middleware/multer.js';
 
 // rotas de ADMIN
 import  createQuest    from '../controllers/Functions-Admin/create/createQuest.js';
@@ -25,8 +26,8 @@ import  viewArticle    from '../controllers/Functions-System/read/viewArticle.js
 import  viewTips       from '../controllers/Functions-System/read/viewTips.js';
 import  viewLevels     from '../controllers/Functions-System/read/viewLevel.js';
 import  viewQuests     from '../controllers/Functions-System/read/viewQuests.js';
-import viewMaterial    from '../controllers/Functions-System/read/viewMaterial.js';
-import viewInfoUser    from '../controllers/Functions-System/read/viewInfoUser.js';
+import  viewMaterial   from '../controllers/Functions-System/read/viewMaterial.js';
+import  viewInfoUser   from '../controllers/Functions-System/read/viewInfoUser.js';
 
 // rotas de USUÁRIO
 import  registerUser   from '../controllers/Functions-User/create/registerUser.js';
@@ -52,13 +53,13 @@ const routes = Router();
 
 // POST || CREATE
 //cria uma nova quest
-routes.post('/createQuest',    createQuest);
+routes.post('/createQuest',    validateFile, createQuest);
 
 //cria um novo artigo
-routes.post('/createArticle',  createArticle);
+routes.post('/createArticle',  validateFile, createArticle);
 
 //cria uma nova dica
-routes.post('/createTips',     createTip);
+routes.post('/createTip',      createTip);
 
 //cria um novo level
 routes.post('/createLevel',    createLevel);
@@ -66,13 +67,13 @@ routes.post('/createLevel',    createLevel);
 
 // PUT || UPDATE
 //modifica uma cadeia de missões(3), começando pela 3ª
-routes.put('/updateQuest',   updateQuest);
+routes.put('/updateQuest',   validateFile, updateQuest);
 
 //modifica um artigo
-routes.put('/updateArticle', updateArticle);
+routes.put('/updateArticle', validateFile, updateArticle);
 
 //modifica um avatar com uma nova URL
-routes.put('/updateAvatar',  updateAvatar);
+routes.put('/updateAvatar',  validateFile, updateAvatar);
 
 //modifica uma dica com uma nova descrição
 routes.put('/updateTip',     updateTip);
@@ -163,7 +164,7 @@ routes.put('/user/email/new',   checkToken, updateEmail); //valida o token e ret
 routes.get('/user/profile',    checkToken, viewProfile);
 
 //visualiza ranking de XP de acordo com o ID logado
-routes.get('/ranking',         checkToken, viewRanking);
+routes.get('/user/ranking',         checkToken, viewRanking);
 
 
 // DELETE || DELETE

@@ -3,7 +3,7 @@ import connection  from '../../../data/connection.js';	//conexão com o banco de
 
 //função assíncrona para visualizar um artigo
 const getIDArticle =
-async(req, res) => {
+async (req, res)   => {
     //array de requisição dos dados
     const {id} = req.body;
 
