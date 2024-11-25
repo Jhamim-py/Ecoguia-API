@@ -48,6 +48,7 @@ async (req, res) 	  => {
 	//array variável que armazena o limite dos campos no banco de dados
 	const limitLength = [280, 40, 65535, 2048];
 
+
 	//verifica se os dados ultrapassam X caracteres e expõe caso seja verdadeiro
 	for (let i = 0; i < data.length; i++){
 		const [title, value] = data[i]; //captura o título e valor do campo

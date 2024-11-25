@@ -59,7 +59,7 @@ routes.post('/createQuest',    validateFile, createQuest);
 routes.post('/createArticle',  validateFile, createArticle);
 
 //cria uma nova dica
-routes.post('/createTips',     createTip);
+routes.post('/createTip',      createTip);
 
 //cria um novo level
 routes.post('/createLevel',    createLevel);
@@ -164,7 +164,7 @@ routes.put('/user/email/new',   checkToken, updateEmail); //valida o token e ret
 routes.get('/user/profile',    checkToken, viewProfile);
 
 //visualiza ranking de XP de acordo com o ID logado
-routes.get('/ranking',         checkToken, viewRanking);
+routes.get('/user/ranking',         checkToken, viewRanking);
 
 
 // DELETE || DELETE

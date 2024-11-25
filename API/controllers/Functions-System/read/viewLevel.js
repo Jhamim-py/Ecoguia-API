@@ -2,8 +2,8 @@
 import connection  from '../../../data/connection.js';	//conexão com o banco de dados
 
 //função assíncrona para visualizar os levels
-const getLevels =
-async function (req, res) {
+const getLevels  =
+async (req, res) => {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection();
 

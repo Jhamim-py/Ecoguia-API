@@ -9,7 +9,7 @@ import jwt    from 'jsonwebtoken';    // token web do Javascript (salva informa�
 import connection  from '../../../data/connection.js'; // conexão com o banco de dados
 
 // função de visualização que pode ser exportada
-const postLogin = 
+const postLogin  = 
 async (req, res) => {   //função assíncrona com parâmetros de requisição e resposta
     const { email, pwd } = req.body;                         // variável responsável por armazenar os dados
     const executeConnection = await connection();    // variável que armazena a execução de conexão com o banco de dados

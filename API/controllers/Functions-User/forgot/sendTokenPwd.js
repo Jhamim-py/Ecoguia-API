@@ -1,5 +1,6 @@
 // componentes do Node
 import crypto from 'crypto';  // gera token aleatório
+import validatorEmail from 'email-validator' // verifica e valida o formato 'e-mail', se contém @, .com, etc.
 
 // variáveis de ambiente para importar funções
 import connection  from '../../../data/connection.js';   // conexão com o banco de dados 
@@ -11,27 +12,33 @@ import 'dotenv/config';
 // função que gera e envia um token para função 'esqueci senha'
 const sendToken =
 async (req, res)  => {
-    const {email} = req.body;                                     // variável responsável por armazenar os dados
+    const {email} = req.body;                       // variável responsável por armazenar os dados
     const executeConnection = await connection();   // variável que armazena a execução de conexão com o banco de dados
-   
     try{
-        // verificar existência do e-mail no Banco de Dados através do uso da view
-        const query  = `SELECT * FROM ViewAllEmails WHERE email=?`;
+        if (!email){
+            return res.status(400).json({msg: "O campo não foi preenchido na requisição."});
+        }else if(!validatorEmail.validate(email)){
+            return res.status(401).json({msg: "O e-mail informado não é válido."});
+        }
+
+        //verifica existência do e-mail no Banco de Dados através do uso da view
+        const query  = `SELECT * FROM ViewAllEmails WHERE email = (?)`;
         const values = email;    //aloca o valor colocado no campo 'E-mail' para essa variável
 
         // envio de query para o banco de dados e retorna o resultado
         const [results] = await executeConnection.query(query, values);
         if(results.length == 0){
-            return res.status(422).json({msg: "Usuário não registrado no banco de dados."});
+            return res.status(404).json({msg: "Usuário não registrado no banco de dados."});
         };
         
-        // cria e armazena o token no cachê da app
+        // cria o token
         const sendToken = crypto.randomBytes(2).toString("hex");
     
-        // envia o token armazenado no e-mail
-        const message = `Insira este token no aplicativo para validar seu e-mail. Expira em 30 minutos. \n Token: ${sendToken}`;
-        const name    = "Usuário";
-        sendEmail(message, email, name);
+        // envia o token no e-mail
+        const name    = 'usuário';
+        const message = 'Bem-vindo de volta! <br> Esqueceu a senha? Sem problemas, use o token abaixo no nosso app e seja feliz de novo! <br> Expira em 5 minutos.';
+        const token   = `${sendToken}`;
+        sendEmail(email, name, message, token);
         res.status(200).json({ msg: "E-mail enviado", token:sendToken });
 
     }catch(error){

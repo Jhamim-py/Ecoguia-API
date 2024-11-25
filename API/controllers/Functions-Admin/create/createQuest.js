@@ -105,7 +105,7 @@ async (req, res)    => {
             description_2, XP_2, 
             description_1, XP_1,
 			newImage_url,  blob_title, blob_description
-        ];
+      ];
 
 		//envia a query e retorna caso tenha dado certo
 		const [results] = await executeConnection.query(query, values);

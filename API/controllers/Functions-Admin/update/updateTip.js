@@ -1,5 +1,7 @@
-import connection  from '../../../data/connection.js';   // conexão com o banco de dados
-import checkLength from '../../../utils/characterLimit.js';
+import connection  from '../../../data/connection.js';      // conexão com o banco de dados
+import checkLength from '../../../utils/characterLimit.js'; // checa o tamanho de caracteres e retorna booleano
+
+//função assíncrona para modificar uma dica
 const updateTip = 
 async (req, res) => {
     // array de requisição dos dados

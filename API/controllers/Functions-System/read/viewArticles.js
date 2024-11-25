@@ -3,7 +3,7 @@ import connection  from '../../../data/connection.js'; //conexão com o banco de
 
 //função assíncrona para visualizar todos os artigos
 const getAllArticles = 
-async (req, res) => {
+async (req, res)     => {
 	//executa a conexão com o banco de dados
 	const executeConnection = await connection();
 
