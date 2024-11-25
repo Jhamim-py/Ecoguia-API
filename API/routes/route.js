@@ -26,9 +26,8 @@ import  viewArticle    from '../controllers/Functions-System/read/viewArticle.js
 import  viewTips       from '../controllers/Functions-System/read/viewTips.js';
 import  viewLevels     from '../controllers/Functions-System/read/viewLevel.js';
 import  viewQuests     from '../controllers/Functions-System/read/viewQuests.js';
-import viewMaterial    from '../controllers/Functions-System/read/viewMaterial.js';
-import viewInfoUser    from '../controllers/Functions-System/read/viewInfoUser.js';
-
+import  viewMaterial   from '../controllers/Functions-System/read/viewMaterial.js';
+import  viewInfoUser   from '../controllers/Functions-System/read/viewInfoUser.js';
 
 // rotas de USUÁRIO
 import  registerUser   from '../controllers/Functions-User/create/registerUser.js';

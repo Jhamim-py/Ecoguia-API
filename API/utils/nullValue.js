@@ -1,11 +1,22 @@
-// função que checa e automatiza o valor nulo para dados de entrada
-export default
-function nullValue(value){
-    //se o valor do dado estiver '' (vazio) ou 'undefined', retorna como nulo
-    if(value == undefined || value === ''){
+export default function nullValue(value) {
+    // Verifica se o valor é nulo ou indefinido
+    if (value === undefined || value === null) {
         return null;
     }
-    else{
-        return value;
-    };
-};
+
+    // Verifica se o valor é uma string vazia ou composta apenas por espaços
+    if (typeof value === 'string' && value.trim() === '') {
+        return null;
+    }
+
+    // Verifica se o valor é um array ou objeto vazio
+    if (Array.isArray(value) && value.length === 0) {
+        return null;
+    }
+    if (typeof value === 'object' && Object.keys(value).length === 0) {
+        return null;
+    }
+
+    // Retorna o valor original caso não seja "vazio"
+    return value;
+}

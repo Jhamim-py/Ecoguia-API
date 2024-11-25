@@ -1,6 +1,6 @@
 //funções externas
 import connection  from '../../../data/connection.js'; // conexão com o banco de dados
-import deleteBlob  from '../../../utils/extractNameBlob.js';//extrai e exclui o blob pela URL
+import deleteBlob  from '../../../middleware/deleteImage.js';//extrai e exclui o blob pela URL
 
 //função assíncrona para deletar a cadeia de missões mais recente
 const deleteQuest = 

@@ -7,7 +7,7 @@ import 'dotenv/config';
 //funções externas
 import connection  from '../../../data/connection.js';		//conexão com o banco de dados
 import checkLength from '../../../utils/characterLimit.js'; //verifica se o dado ultrapassa o limite de caracteres
-import deleteBlob  from '../../../utils/extractNameBlob.js';//extrai e exclui o blob pela URL
+import deleteBlob  from '../../../middleware/deleteImage.js';//extrai e exclui o blob pela URL
 
 //variáveis de ambiente
 const connection_azure = process.env.STORAGE_URL_AZURE;
