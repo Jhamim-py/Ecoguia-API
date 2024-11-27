@@ -28,6 +28,7 @@ import  viewLevels     from '../controllers/Functions-System/read/viewLevel.js';
 import  viewQuests     from '../controllers/Functions-System/read/viewQuests.js';
 import  viewMaterial   from '../controllers/Functions-System/read/viewMaterial.js';
 import  viewInfoUser   from '../controllers/Functions-System/read/viewInfoUser.js';
+import viewEcopontos   from '../controllers/Functions-System/read/viewEcopontos.js';
 
 // rotas de USUÁRIO
 import  registerUser   from '../controllers/Functions-User/create/registerUser.js';
@@ -127,6 +128,8 @@ routes.get('/materiais',     viewMaterial)
 
 //visualizar informações sobre o usuário
 routes.get('/userInfo', checkToken, viewInfoUser);
+
+routes.get('/ecopontos',viewEcopontos)
 
 
 // HTTPS de USUÁRIO
