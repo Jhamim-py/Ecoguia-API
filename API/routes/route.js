@@ -124,12 +124,10 @@ routes.get('/levels',        viewLevels);
 routes.get('/quests',        viewQuests);
 
 //visualiza todos os materiais
-routes.get('/materiais',     viewMaterial)
+routes.get('/materiais',     viewMaterial);
 
-//visualizar informações sobre o usuário
-routes.get('/userInfo', checkToken, viewInfoUser);
-
-routes.get('/ecopontos',viewEcopontos)
+//visualiza os ecopontos de São Paulo
+routes.get('/ecopontos',     viewEcopontos);
 
 
 // HTTPS de USUÁRIO
@@ -158,7 +156,7 @@ routes.put('/user/levelup',     checkToken, updateLevel); //type: 0 == missão :
 routes.put('/user/pwd',         checkToken, updatePwd);
 
 //altera o e-mail do usuário
-routes.put('/user/email/token', sendTokenEmail);                    //envia um token de validação ao novo e-mail
+routes.put('/user/email/token', sendTokenEmail);          //envia um token de validação ao novo e-mail
 routes.put('/user/email/new',   checkToken, updateEmail); //valida o token e retorna alteração de e-mail
 
 
@@ -167,8 +165,10 @@ routes.put('/user/email/new',   checkToken, updateEmail); //valida o token e ret
 routes.get('/user/profile',    checkToken, viewProfile);
 
 //visualiza ranking de XP de acordo com o ID logado
-routes.get('/user/ranking',         checkToken, viewRanking);
+routes.get('/user/ranking',    checkToken, viewRanking);
 
+//visualizar informações sobre o usuário
+routes.get('/userInfo',        checkToken, viewInfoUser);
 
 // DELETE || DELETE
 //deleta a conta de usuário
