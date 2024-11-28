@@ -21,8 +21,7 @@ async (req, res)  => {
     const pwdHash  = await bcrypt.hash(pwd, salt); // cria o hash da senha
 
     // envia os dados do nickname e armazena a response na variável
-    const nickname = generateNickname(lastname);
-
+    const nickname = await generateNickname(lastname);
     try{
         //chama a procedure de criação e coloca os dados
         const query  = `CALL CreateUser(?, ?, ?, ?, ?, ?);`;

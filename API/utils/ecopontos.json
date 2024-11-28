@@ -1,0 +1,3568 @@
+{
+    "type": "FeatureCollection",
+    "name": "Ecopontos",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Viaduto Engenheiro Alberto Badra (gesso)",
+                "N_ecpt": 6.0,
+                "Subprefeitura": "Aricanduva\/Formosa\/Carrão",
+                "Distrito": "Carrão",
+                "Endere__o": "Avenida Aricanduva, 200, Praça Lúcia Mekhitarian (baixo do Viaduto Engenheiro Alberto Badra)",
+                "CEP": "03501-010",
+                "SUB": "AF",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.537149,
+                "Longitude": -46.547398,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 6,
+                "o": "Avenida Aricanduva, 200, Praça Lúcia Mekhitarian (baixo do Viaduto Engenheiro Alberto Badra)",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.547398,
+                    -23.537149
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Astarte (gesso)",
+                "N_ecpt": 11.0,
+                "Subprefeitura": "Aricanduva\/Formosa\/Carrão",
+                "Distrito": "Carrão",
+                "Endere__o": "Rua Astarte, 500",
+                "CEP": "03446-090",
+                "SUB": "AF",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.550053,
+                "Longitude": -46.525048,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 11,
+                "o": "Rua Astarte, 500",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.525048,
+                    -23.550053
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Nova York",
+                "N_ecpt": 75.0,
+                "Subprefeitura": "Aricanduva\/Formosa\/Carrão",
+                "Distrito": "Aricanduva",
+                "Endere__o": "Rua Amélia Vanso Magnoli, 480",
+                "CEP": "03907-010",
+                "SUB": "AF",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.587377,
+                "Longitude": -46.509065,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 75,
+                "o": "Rua Amélia Vanso Magnoli, 480",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.509065,
+                    -23.587377
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Aricanduva I (gesso)",
+                "N_ecpt": 116.0,
+                "Subprefeitura": "Aricanduva\/Formosa\/Carrão",
+                "Distrito": "Aricanduva",
+                "Endere__o": "Rua Professora Alzira Oliveira Gilioli, 400",
+                "CEP": "03905-090",
+                "SUB": "AF",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.58078,
+                "Longitude": -46.514344,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 116,
+                "o": "Rua Professora Alzira Oliveira Gilioli, 400",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.514344,
+                    -23.58078
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Jardim Maria do Carmo",
+                "N_ecpt": 16.0,
+                "Subprefeitura": "Butantã",
+                "Distrito": "Vila Sônia",
+                "Endere__o": "Rua Caminho do Engenho, 800",
+                "CEP": "05524-000",
+                "SUB": "BT",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.595505,
+                "Longitude": -46.746679,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 16,
+                "o": "Rua Caminho do Engenho, 800",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.746679,
+                    -23.595505
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Jardim Jaqueline (gesso)",
+                "N_ecpt": 58.0,
+                "Subprefeitura": "Butantã",
+                "Distrito": "Raposo Tavares",
+                "Endere__o": "Parque Raposo Tavares",
+                "CEP": "05543-040",
+                "SUB": "BT",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.589384,
+                "Longitude": -46.755069,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 58,
+                "o": "Parque Raposo Tavares",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.755069,
+                    -23.589384
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Politécnica",
+                "N_ecpt": 65.0,
+                "Subprefeitura": "Butantã",
+                "Distrito": "Rio Pequeno",
+                "Endere__o": "Rua Paulino Baptista Conti, 2",
+                "CEP": "05382-140",
+                "SUB": "BT",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.575925,
+                "Longitude": -46.765202,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 65,
+                "o": "Rua Paulino Baptista Conti, 2",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.765202,
+                    -23.575925
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Giovani Gronchi",
+                "N_ecpt": 73.0,
+                "Subprefeitura": "Butantã",
+                "Distrito": "Morumbi",
+                "Endere__o": "Avenida Giovani Gronchi, 3413",
+                "CEP": "05651-002",
+                "SUB": "BT",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.610037,
+                "Longitude": -46.726834,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 73,
+                "o": "Avenida Giovani Gronchi, 3413",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.726834,
+                    -23.610037
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Parque Fernanda",
+                "N_ecpt": 21.0,
+                "Subprefeitura": "Campo Limpo",
+                "Distrito": "Capão Redondo",
+                "Endere__o": "Avenida Doutor Salvador Rocco, 261, defronte Rua Antonio Cânon",
+                "CEP": "05888-050",
+                "SUB": "CL",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.671795,
+                "Longitude": -46.792359,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 21,
+                "o": "Avenida Doutor Salvador Rocco, 261, defronte Rua Antonio Cânon",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.792359,
+                    -23.671795
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Olinda",
+                "N_ecpt": 61.0,
+                "Subprefeitura": "Campo Limpo",
+                "Distrito": "Campo Limpo",
+                "Endere__o": "Rua Nelsom Brissac, 1235, esquina com Avenida Padre Adolfo Kolping",
+                "CEP": "05773-110",
+                "SUB": "CL",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.634054,
+                "Longitude": -46.758065,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 61,
+                "o": "Rua Nelsom Brissac, 1235, esquina com Avenida Padre Adolfo Kolping",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.758065,
+                    -23.634054
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila das Belezas (gesso)",
+                "N_ecpt": 71.0,
+                "Subprefeitura": "Campo Limpo",
+                "Distrito": "Vila Andrade",
+                "Endere__o": "Rua Campo Novo do Sul, 500",
+                "CEP": "05729-100",
+                "SUB": "CL",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.638045,
+                "Longitude": -46.741561,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 71,
+                "o": "Rua Campo Novo do Sul, 500",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.741561,
+                    -23.638045
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Paraisópolis",
+                "N_ecpt": 82.0,
+                "Subprefeitura": "Campo Limpo",
+                "Distrito": "Vila Andrade",
+                "Endere__o": "Rua Irapará, 73",
+                "CEP": "05706-300",
+                "SUB": "CL",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.623101,
+                "Longitude": -46.725207,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 82,
+                "o": "Rua Irapará, 73",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.725207,
+                    -23.623101
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Cidade Saudável (gesso)",
+                "N_ecpt": 62.0,
+                "Subprefeitura": "Capela do Socorro",
+                "Distrito": "Socorro",
+                "Endere__o": "Rua Ptolomeu, 869",
+                "CEP": "04762-040",
+                "SUB": "CS",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.662269,
+                "Longitude": -46.722329,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 62,
+                "o": "Rua Ptolomeu, 869",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.722329,
+                    -23.662269
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Parque Peruche",
+                "N_ecpt": 27.0,
+                "Subprefeitura": "Casa Verde",
+                "Distrito": "Casa Verde",
+                "Endere__o": "Avenida Engenheiro Caetano Álvares, 3142",
+                "CEP": "02535-008",
+                "SUB": "CV",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.491714,
+                "Longitude": -46.65598,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 27,
+                "o": "Avenida Engenheiro Caetano Álvares, 3142",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.65598,
+                    -23.491714
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Nova Cachoeirinha",
+                "N_ecpt": 34.0,
+                "Subprefeitura": "Casa Verde",
+                "Distrito": "Cachoeirinha",
+                "Endere__o": "Rua Felix Alves Pereira, 113",
+                "CEP": "02882-030",
+                "SUB": "CV",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.47225,
+                "Longitude": -46.669856,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 34,
+                "o": "Rua Felix Alves Pereira, 113",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.669856,
+                    -23.47225
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Santa Maria",
+                "N_ecpt": 35.0,
+                "Subprefeitura": "Casa Verde",
+                "Distrito": "Limão",
+                "Endere__o": "Rua André Bolsena x Travessa Luiz Sá",
+                "CEP": "02560-170",
+                "SUB": "CV",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.494036,
+                "Longitude": -46.671505,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 35,
+                "o": "Rua André Bolsena x Travessa Luiz Sá",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.671505,
+                    -23.494036
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Jardim Antártica",
+                "N_ecpt": 93.0,
+                "Subprefeitura": "Casa Verde",
+                "Distrito": "Cachoeirinha",
+                "Endere__o": "Rua Dom Aquino, 309",
+                "CEP": "02652-170",
+                "SUB": "CV",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.454948,
+                "Longitude": -46.659512,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 93,
+                "o": "Rua Dom Aquino, 309",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.659512,
+                    -23.454948
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "São Leandro",
+                "N_ecpt": 109.0,
+                "Subprefeitura": "Casa Verde",
+                "Distrito": "Limão",
+                "Endere__o": "Rua São Leandro, 13",
+                "CEP": "02725-010",
+                "SUB": "CV",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.496897,
+                "Longitude": -46.683885,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 109,
+                "o": "Rua São Leandro, 13",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.683885,
+                    -23.496897
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Alvarenga",
+                "N_ecpt": 39.0,
+                "Subprefeitura": "Cidade Ademar",
+                "Distrito": "Pedreira",
+                "Endere__o": "Estrada do Alvarenga, 2475",
+                "CEP": "04474-340",
+                "SUB": "AD",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.695436,
+                "Longitude": -46.651477,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 39,
+                "o": "Estrada do Alvarenga, 2475",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.651477,
+                    -23.695436
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Cupecê",
+                "N_ecpt": 44.0,
+                "Subprefeitura": "Cidade Ademar",
+                "Distrito": "Cidade Ademar",
+                "Endere__o": "Rua Anália Maria de Jesus, 130 – Travessa Avenida Cupecê",
+                "CEP": "04385-110",
+                "SUB": "AD",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.665406,
+                "Longitude": -46.654227,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 44,
+                "o": "Rua Anália Maria de Jesus, 130 – Travessa Avenida Cupecê",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.654227,
+                    -23.665406
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Nascer do Sol",
+                "N_ecpt": 20.0,
+                "Subprefeitura": "Cidade Tiradentes",
+                "Distrito": "Cidade Tiradentes",
+                "Endere__o": "Rua Nascer do Sol, 356",
+                "CEP": "08485-020",
+                "SUB": "CT",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.593678,
+                "Longitude": -46.415157,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 20,
+                "o": "Rua Nascer do Sol, 356",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.415157,
+                    -23.593678
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Setor G",
+                "N_ecpt": 81.0,
+                "Subprefeitura": "Cidade Tiradentes",
+                "Distrito": "Cidade Tiradentes",
+                "Endere__o": "Rua Alfonso Asturaro, 600 (altura)",
+                "CEP": "08473-591",
+                "SUB": "CT",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.586431,
+                "Longitude": -46.396444,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 81,
+                "o": "Rua Alfonso Asturaro, 600 (altura)",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.396444,
+                    -23.586431
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Inácio Monteiro (gesso)",
+                "N_ecpt": 88.0,
+                "Subprefeitura": "Cidade Tiradentes",
+                "Distrito": "Cidade Tiradentes",
+                "Endere__o": "Rua Regresso Feliz, 1190",
+                "CEP": "08472-210",
+                "SUB": "CT",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.573334,
+                "Longitude": -46.401497,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 88,
+                "o": "Rua Regresso Feliz, 1190",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.401497,
+                    -23.573334
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Jardim São Nicolau",
+                "N_ecpt": 17.0,
+                "Subprefeitura": "Ermelino Matarazzo",
+                "Distrito": "Ponte Rasa",
+                "Endere__o": "Rua Agreste de Itabaiana, 590, esquina com Rua Eduardo Kiyoshi Shimuta",
+                "CEP": "03683-000",
+                "SUB": "EM",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.523043,
+                "Longitude": -46.482725,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 17,
+                "o": "Rua Agreste de Itabaiana, 590, esquina com Rua Eduardo Kiyoshi Shimuta",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.482725,
+                    -23.523043
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Boturussu",
+                "N_ecpt": 94.0,
+                "Subprefeitura": "Ermelino Matarazzo",
+                "Distrito": "Ermelino Matarazzo",
+                "Endere__o": "Rua Nélio Batista Guimarães, 183",
+                "CEP": "03802-005",
+                "SUB": "EM",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.503731,
+                "Longitude": -46.485023,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 94,
+                "o": "Rua Nélio Batista Guimarães, 183",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.485023,
+                    -23.503731
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Bandeirantes",
+                "N_ecpt": 12.0,
+                "Subprefeitura": "Freguesia\/Brasilândia",
+                "Distrito": "Freguesia do Ó",
+                "Endere__o": "Rua Itaiquara, 237 – Travessa Avenida Itaberaba",
+                "CEP": "02803-050",
+                "SUB": "FB",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.486309,
+                "Longitude": -46.695077,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 12,
+                "o": "Rua Itaiquara, 237 – Travessa Avenida Itaberaba",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.695077,
+                    -23.486309
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Freguesia do Ó",
+                "N_ecpt": 74.0,
+                "Subprefeitura": "Freguesia\/Brasilândia",
+                "Distrito": "Freguesia do Ó",
+                "Endere__o": "Rua Sousa Filho, 690",
+                "CEP": "02911-040",
+                "SUB": "FB",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.505874,
+                "Longitude": -46.704816,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 74,
+                "o": "Rua Sousa Filho, 690",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.704816,
+                    -23.505874
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Rica",
+                "N_ecpt": 78.0,
+                "Subprefeitura": "Freguesia\/Brasilândia",
+                "Distrito": "Brasilândia",
+                "Endere__o": "Rua Jorge Mamede da Silva, 200",
+                "CEP": "02860-050",
+                "SUB": "FB",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.469848,
+                "Longitude": -46.674858,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 78,
+                "o": "Rua Jorge Mamede da Silva, 200",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.674858,
+                    -23.469848
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Jardim São Paulo",
+                "N_ecpt": 33.0,
+                "Subprefeitura": "Guaianases",
+                "Distrito": "Guaianases",
+                "Endere__o": "Rua Utaro Kanai, 374",
+                "CEP": "08465-000",
+                "SUB": "G",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.56539,
+                "Longitude": -46.398491,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 33,
+                "o": "Rua Utaro Kanai, 374",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.398491,
+                    -23.56539
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Guaiaponto (gesso)",
+                "N_ecpt": 76.0,
+                "Subprefeitura": "Guaianases",
+                "Distrito": "Guaianases",
+                "Endere__o": "Rua da Passagem Funda, 250",
+                "CEP": "08411-010",
+                "SUB": "G",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.55532,
+                "Longitude": -46.41324,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 76,
+                "o": "Rua da Passagem Funda, 250",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.41324,
+                    -23.55532
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Lajeado",
+                "N_ecpt": 101.0,
+                "Subprefeitura": "Guaianases",
+                "Distrito": "Lajeado",
+                "Endere__o": "Rua Isabela, 405",
+                "CEP": "08440-520",
+                "SUB": "G",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.530822,
+                "Longitude": -46.406203,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 101,
+                "o": "Rua Isabela, 405",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.406203,
+                    -23.530822
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Padre Nildo do Amaral",
+                "N_ecpt": 117.0,
+                "Subprefeitura": "Guaianases",
+                "Distrito": "Lajeado",
+                "Endere__o": "Rua Padre Nildo do Amaral Junior, 900",
+                "CEP": "08032-650",
+                "SUB": "G",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.52063,
+                "Longitude": -46.428962,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 117,
+                "o": "Rua Padre Nildo do Amaral Junior, 900",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.428962,
+                    -23.52063
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Tereza Cristina (gesso)",
+                "N_ecpt": 25.0,
+                "Subprefeitura": "Ipiranga",
+                "Distrito": "Ipiranga",
+                "Endere__o": "Rua Tereza Cristina, 10, esquina com Avenida do Estado",
+                "CEP": "01552-020",
+                "SUB": "IP",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.569032,
+                "Longitude": -46.608505,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 25,
+                "o": "Rua Tereza Cristina, 10, esquina com Avenida do Estado",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.608505,
+                    -23.569032
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Santa Cruz",
+                "N_ecpt": 30.0,
+                "Subprefeitura": "Ipiranga",
+                "Distrito": "Cursino",
+                "Endere__o": "Rua Santa Cruz, 1452 (Baixos Viaduto Santa Cruz)",
+                "CEP": "04122-000",
+                "SUB": "IP",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.599707,
+                "Longitude": -46.623211,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 30,
+                "o": "Rua Santa Cruz, 1452 (Baixos Viaduto Santa Cruz)",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.623211,
+                    -23.599707
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila das Mercês",
+                "N_ecpt": 86.0,
+                "Subprefeitura": "Ipiranga",
+                "Distrito": "Sacomã",
+                "Endere__o": "Rua Italva, 86",
+                "CEP": "04294-030",
+                "SUB": "IP",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.623798,
+                "Longitude": -46.605532,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 86,
+                "o": "Rua Italva, 86",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.605532,
+                    -23.623798
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Comandante Taylor",
+                "N_ecpt": 95.0,
+                "Subprefeitura": "Ipiranga",
+                "Distrito": "Ipiranga",
+                "Endere__o": "Rua Comandante Taylor, 690 (Baixos Viaduto Comandante Taylor)",
+                "CEP": "04218-000",
+                "SUB": "IP",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.600122,
+                "Longitude": -46.59728,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 95,
+                "o": "Rua Comandante Taylor, 690 (Baixos Viaduto Comandante Taylor)",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.59728,
+                    -23.600122
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Moreira",
+                "N_ecpt": 18.0,
+                "Subprefeitura": "Itaim Paulista",
+                "Distrito": "Itaim Paulista",
+                "Endere__o": "Rua João Batista de Godoy, 1164",
+                "CEP": "08111-430",
+                "SUB": "IT",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.497485,
+                "Longitude": -46.370896,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 18,
+                "o": "Rua João Batista de Godoy, 1164",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.370896,
+                    -23.497485
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Mãe Preta (gesso)",
+                "N_ecpt": 80.0,
+                "Subprefeitura": "Itaim Paulista",
+                "Distrito": "Vila Curuçá",
+                "Endere__o": "Avenida Dama Entre Verdes, 21",
+                "CEP": "08030-610",
+                "SUB": "IT",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.508471,
+                "Longitude": -46.416884,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 80,
+                "o": "Avenida Dama Entre Verdes, 21",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.416884,
+                    -23.508471
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Pesqueiro (gesso)",
+                "N_ecpt": 83.0,
+                "Subprefeitura": "Itaim Paulista",
+                "Distrito": "Itaim Paulista",
+                "Endere__o": "Rua Caiuas, 18, esquina com Avenida Itamerendiba",
+                "CEP": "08120-580",
+                "SUB": "IT",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.50125,
+                "Longitude": -46.389389,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 83,
+                "o": "Rua Caiuas, 18, esquina com Avenida Itamerendiba",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.389389,
+                    -23.50125
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Flamingo",
+                "N_ecpt": 89.0,
+                "Subprefeitura": "Itaim Paulista",
+                "Distrito": "Vila Curuçá",
+                "Endere__o": "Rua Alexandre Dias Nogueira, 353",
+                "CEP": "08031-240",
+                "SUB": "IT",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.514526,
+                "Longitude": -46.421281,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 89,
+                "o": "Rua Alexandre Dias Nogueira, 353",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.421281,
+                    -23.514526
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Itaim Paulista",
+                "N_ecpt": 121.0,
+                "Subprefeitura": "Itaim Paulista",
+                "Distrito": "Itaim Paulista",
+                "Endere__o": "Rua Barão Almeida Galeão, 61 (altura)",
+                "CEP": "08575-210",
+                "SUB": "IT",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.504685,
+                "Longitude": -46.372824,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 121,
+                "o": "Rua Barão Almeida Galeão, 61 (altura)",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.372824,
+                    -23.504685
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Jardim Indaiá",
+                "N_ecpt": 122.0,
+                "Subprefeitura": "Itaim Paulista",
+                "Distrito": "Itaim Paulista",
+                "Endere__o": "Rua Rossini Pinto, 214 (altura)",
+                "CEP": "08143-010",
+                "SUB": "IT",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.516006,
+                "Longitude": -46.394333,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 122,
+                "o": "Rua Rossini Pinto, 214 (altura)",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.394333,
+                    -23.516006
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Parque Guarani",
+                "N_ecpt": 28.0,
+                "Subprefeitura": "Itaquera",
+                "Distrito": "Itaquera",
+                "Endere__o": "Rua Manuel Alves da Rocha, 584",
+                "CEP": "08235-620",
+                "SUB": "IQ",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.520989,
+                "Longitude": -46.463616,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 28,
+                "o": "Rua Manuel Alves da Rocha, 584",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.463616,
+                    -23.520989
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Osvaldo Valle Cordeiro (gesso)",
+                "N_ecpt": 66.0,
+                "Subprefeitura": "Itaquera",
+                "Distrito": "Cidade Líder",
+                "Endere__o": "Avenida Osvaldo Valle Cordeiro, 405",
+                "CEP": "03584-000",
+                "SUB": "IQ",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.556601,
+                "Longitude": -46.491688,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 66,
+                "o": "Avenida Osvaldo Valle Cordeiro, 405",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.491688,
+                    -23.556601
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Cidade Lider",
+                "N_ecpt": 87.0,
+                "Subprefeitura": "Itaquera",
+                "Distrito": "Cidade Líder",
+                "Endere__o": "Rua Charles Manguin, 20",
+                "CEP": "03579-150",
+                "SUB": "IQ",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.562776,
+                "Longitude": -46.497178,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 87,
+                "o": "Rua Charles Manguin, 20",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.497178,
+                    -23.562776
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Parque do Carmo",
+                "N_ecpt": 96.0,
+                "Subprefeitura": "Itaquera",
+                "Distrito": "Parque do Carmo",
+                "Endere__o": "Rua Machado Nunes, 95",
+                "CEP": "08275-310",
+                "SUB": "IQ",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.578981,
+                "Longitude": -46.486245,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 96,
+                "o": "Rua Machado Nunes, 95",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.486245,
+                    -23.578981
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Corinthians (gesso)",
+                "N_ecpt": 97.0,
+                "Subprefeitura": "Itaquera",
+                "Distrito": "José Bonifácio",
+                "Endere__o": "Rua Ana Perena, 155",
+                "CEP": "08253-230",
+                "SUB": "IQ",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.547919,
+                "Longitude": -46.43706,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 97,
+                "o": "Rua Ana Perena, 155",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.43706,
+                    -23.547919
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Caldeirão",
+                "N_ecpt": 118.0,
+                "Subprefeitura": "Itaquera",
+                "Distrito": "José Bonifácio",
+                "Endere__o": "Rua Major Vitorino de Souza Rocha, 148 (altura)",
+                "CEP": "08247-080",
+                "SUB": "IQ",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.537606,
+                "Longitude": -46.431761,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 118,
+                "o": "Rua Major Vitorino de Souza Rocha, 148 (altura)",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.431761,
+                    -23.537606
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Imigrantes (gesso)",
+                "N_ecpt": 51.0,
+                "Subprefeitura": "Jabaquara",
+                "Distrito": "Jabaquara",
+                "Endere__o": "Rua Opixe s\/n",
+                "CEP": "04312-080",
+                "SUB": "JA",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.632349,
+                "Longitude": -46.630586,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 51,
+                "o": "Rua Opixe s\/n",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.630586,
+                    -23.632349
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Jabaquara (gesso)",
+                "N_ecpt": 77.0,
+                "Subprefeitura": "Jabaquara",
+                "Distrito": "Jabaquara",
+                "Endere__o": "Rua Jupatis, 140",
+                "CEP": "04377-200",
+                "SUB": "JA",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.653148,
+                "Longitude": -46.649511,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 77,
+                "o": "Rua Jupatis, 140",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.649511,
+                    -23.653148
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Anselmo Machado",
+                "N_ecpt": 110.0,
+                "Subprefeitura": "Jaçanã\/Tremembé",
+                "Distrito": "Tremembé",
+                "Endere__o": "Avenida Paulo Lincoln do Valle Pontin, 550 (altura)",
+                "CEP": "02273-011",
+                "SUB": "JT",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.458943,
+                "Longitude": -46.585633,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 110,
+                "o": "Avenida Paulo Lincoln do Valle Pontin, 550 (altura)",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.585633,
+                    -23.458943
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Viaduto Antártica",
+                "N_ecpt": 54.0,
+                "Subprefeitura": "Lapa",
+                "Distrito": "Barra Funda",
+                "Endere__o": "Rua Robert Bosch (Baixos Viaduto Antártica)",
+                "CEP": "05003-020",
+                "SUB": "LA",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.524367,
+                "Longitude": -46.670633,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 54,
+                "o": "Rua Robert Bosch (Baixos Viaduto Antártica)",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.670633,
+                    -23.524367
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Jaguara",
+                "N_ecpt": 63.0,
+                "Subprefeitura": "Lapa",
+                "Distrito": "Jaguara",
+                "Endere__o": "Rua Agrestina, 189",
+                "CEP": "05117-100",
+                "SUB": "LA",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.516479,
+                "Longitude": -46.742006,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 63,
+                "o": "Rua Agrestina, 189",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.742006,
+                    -23.516479
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Piraporinha (gesso)",
+                "N_ecpt": 90.0,
+                "Subprefeitura": "M'Boi Mirim",
+                "Distrito": "Jardim São Luis",
+                "Endere__o": "Rua João de Abreu, 326",
+                "CEP": "04904-000",
+                "SUB": "MB",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.669829,
+                "Longitude": -46.736534,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 90,
+                "o": "Rua João de Abreu, 326",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.736534,
+                    -23.669829
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Bresser (gesso)",
+                "N_ecpt": 1.0,
+                "Subprefeitura": "Mooca",
+                "Distrito": "Brás",
+                "Endere__o": "Praça Giuseppe Cesari, 54 (Baixos do Viaduto Bresser)",
+                "CEP": "03053-020",
+                "SUB": "MO",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.54364,
+                "Longitude": -46.606225,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 1,
+                "o": "Praça Giuseppe Cesari, 54 (Baixos do Viaduto Bresser)",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.606225,
+                    -23.54364
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Tatuapé (gesso)",
+                "N_ecpt": 3.0,
+                "Subprefeitura": "Mooca",
+                "Distrito": "Tatuapé",
+                "Endere__o": "Avenida Salim Farah Maluf, 179, Praça Tito Lívio Ferreira (Central de Triagem)",
+                "CEP": "03076-000",
+                "SUB": "MO",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.529488,
+                "Longitude": -46.583325,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 3,
+                "o": "Avenida Salim Farah Maluf, 179, Praça Tito Lívio Ferreira (Central de Triagem)",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.583325,
+                    -23.529488
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Brás",
+                "N_ecpt": 45.0,
+                "Subprefeitura": "Mooca",
+                "Distrito": "Brás",
+                "Endere__o": "Avenida Presidente Wilson, 1 (Baixo Viaduto Professor Alberto Mesquita de Carvalho)",
+                "CEP": "03101-001",
+                "SUB": "MO",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.554502,
+                "Longitude": -46.610758,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 45,
+                "o": "Avenida Presidente Wilson, 1 (Baixo Viaduto Professor Alberto Mesquita de Carvalho)",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.610758,
+                    -23.554502
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Moóca",
+                "N_ecpt": 46.0,
+                "Subprefeitura": "Mooca",
+                "Distrito": "Mooca",
+                "Endere__o": "Avenida Pires do Rio, 600 (Baixo Viaduto Bresser)",
+                "CEP": "03163-010",
+                "SUB": "MO",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.547671,
+                "Longitude": -46.602706,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 46,
+                "o": "Avenida Pires do Rio, 600 (Baixo Viaduto Bresser)",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.602706,
+                    -23.547671
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Pari",
+                "N_ecpt": 47.0,
+                "Subprefeitura": "Mooca",
+                "Distrito": "Pari",
+                "Endere__o": "Avenida Carlos de Campos, 996 (defronte), esquina com Avenida Presidente Castelo Branco",
+                "CEP": "01142-300",
+                "SUB": "MO",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.524442,
+                "Longitude": -46.609364,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 47,
+                "o": "Avenida Carlos de Campos, 996 (defronte), esquina com Avenida Presidente Castelo Branco",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.609364,
+                    -23.524442
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Belém",
+                "N_ecpt": 59.0,
+                "Subprefeitura": "Mooca",
+                "Distrito": "Belém",
+                "Endere__o": "Rua Belarmino Matos, 26 (baixos do Viaduto Guadalajara)",
+                "CEP": "03062-030",
+                "SUB": "MO",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.543242,
+                "Longitude": -46.593918,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 59,
+                "o": "Rua Belarmino Matos, 26 (baixos do Viaduto Guadalajara)",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.593918,
+                    -23.543242
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Luisa (gesso)",
+                "N_ecpt": 67.0,
+                "Subprefeitura": "Mooca",
+                "Distrito": "Penha",
+                "Endere__o": "Praça Dante Maron, 92 (Baixos Viaduto Engenheiro Alberto Badra)",
+                "CEP": "03631-120",
+                "SUB": "MO",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.531187,
+                "Longitude": -46.552478,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 67,
+                "o": "Praça Dante Maron, 92 (Baixos Viaduto Engenheiro Alberto Badra)",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.552478,
+                    -23.531187
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Água Rasa (gesso)",
+                "N_ecpt": 70.0,
+                "Subprefeitura": "Mooca",
+                "Distrito": "Belém",
+                "Endere__o": "Avenida Salim Farah Maluf, 1500",
+                "CEP": "03304-090",
+                "SUB": "MO",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.543748,
+                "Longitude": -46.580578,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 70,
+                "o": "Avenida Salim Farah Maluf, 1500",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.580578,
+                    -23.543748
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Mendes Caldeira",
+                "N_ecpt": 91.0,
+                "Subprefeitura": "Mooca",
+                "Distrito": "Brás",
+                "Endere__o": "Rua Monsenhor Andrade, 865",
+                "CEP": "03008-000",
+                "SUB": "MO",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.539283,
+                "Longitude": -46.622342,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 91,
+                "o": "Rua Monsenhor Andrade, 865",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.622342,
+                    -23.539283
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Mooca II",
+                "N_ecpt": 114.0,
+                "Subprefeitura": "Mooca",
+                "Distrito": "Água Rasa",
+                "Endere__o": "Rua Pantojo, 1147",
+                "CEP": "03343-000",
+                "SUB": "MO",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.561199,
+                "Longitude": -46.566469,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 114,
+                "o": "Rua Pantojo, 1147",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.566469,
+                    -23.561199
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Penha I",
+                "N_ecpt": 8.0,
+                "Subprefeitura": "Penha",
+                "Distrito": "Penha",
+                "Endere__o": "Rua Doutor Heládio, 104",
+                "CEP": "03650-020",
+                "SUB": "PE",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.53128,
+                "Longitude": -46.52547,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 8,
+                "o": "Rua Doutor Heládio, 104",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.52547,
+                    -23.53128
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Tiquatira",
+                "N_ecpt": 36.0,
+                "Subprefeitura": "Penha",
+                "Distrito": "Cangaíba",
+                "Endere__o": "Rua Amorim Diniz, 495",
+                "CEP": "03730-040",
+                "SUB": "PE",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.513354,
+                "Longitude": -46.543808,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 36,
+                "o": "Rua Amorim Diniz, 495",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.543808,
+                    -23.513354
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Gamelinha",
+                "N_ecpt": 43.0,
+                "Subprefeitura": "Penha",
+                "Distrito": "Artur Alvim",
+                "Endere__o": "Rua Morfeu, 25, esquina com Avenida Edgar dos Santos",
+                "CEP": "03563-295",
+                "SUB": "PE",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.550775,
+                "Longitude": -46.494907,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 43,
+                "o": "Rua Morfeu, 25, esquina com Avenida Edgar dos Santos",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.494907,
+                    -23.550775
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Matilde",
+                "N_ecpt": 55.0,
+                "Subprefeitura": "Penha",
+                "Distrito": "Vila Matilde",
+                "Endere__o": "Rua Mateus de Siqueira, 375, com Praça Leonildes Ramos Saigo",
+                "CEP": "03554-000",
+                "SUB": "PE",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.53923,
+                "Longitude": -46.505182,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 55,
+                "o": "Rua Mateus de Siqueira, 375, com Praça Leonildes Ramos Saigo",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.505182,
+                    -23.53923
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Cangaíba",
+                "N_ecpt": 56.0,
+                "Subprefeitura": "Penha",
+                "Distrito": "Cangaíba",
+                "Endere__o": "Rua Luciano Nogueira, 241 (altura), esquina com Rua Hugo Wolf",
+                "CEP": "03721-080",
+                "SUB": "PE",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.503924,
+                "Longitude": -46.527588,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 56,
+                "o": "Rua Luciano Nogueira, 241 (altura), esquina com Rua Hugo Wolf",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.527588,
+                    -23.503924
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Franquinho",
+                "N_ecpt": 57.0,
+                "Subprefeitura": "Penha",
+                "Distrito": "Artur Alvim",
+                "Endere__o": "Rua Praia de Mucuripe, 685",
+                "CEP": "03687-100",
+                "SUB": "PE",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.532182,
+                "Longitude": -46.487484,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 57,
+                "o": "Rua Praia de Mucuripe, 685",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.487484,
+                    -23.532182
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "COHAB Artur Alvim",
+                "N_ecpt": 98.0,
+                "Subprefeitura": "Penha",
+                "Distrito": "Artur Alvim",
+                "Endere__o": "Avenida Padre Estanislau de Campos, 56",
+                "CEP": "03590-060",
+                "SUB": "PE",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.549201,
+                "Longitude": -46.483229,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 98,
+                "o": "Avenida Padre Estanislau de Campos, 56",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.483229,
+                    -23.549201
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Talarico",
+                "N_ecpt": 99.0,
+                "Subprefeitura": "Penha",
+                "Distrito": "Vila Matilde",
+                "Endere__o": "Avenida Doutor Bernardino Brito Fonseca de Carvalho, 1050",
+                "CEP": "03535-000",
+                "SUB": "PE",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.539235,
+                "Longitude": -46.515765,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 99,
+                "o": "Avenida Doutor Bernardino Brito Fonseca de Carvalho, 1050",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.515765,
+                    -23.539235
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Dalila",
+                "N_ecpt": 100.0,
+                "Subprefeitura": "Penha",
+                "Distrito": "Vila Matilde",
+                "Endere__o": "Rua Inacio da Costa, 740, esquina com Avenida Aricanduva",
+                "CEP": "03520-030",
+                "SUB": "PE",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.550572,
+                "Longitude": -46.522303,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 100,
+                "o": "Rua Inacio da Costa, 740, esquina com Avenida Aricanduva",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.522303,
+                    -23.550572
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Recanto dos Humildes",
+                "N_ecpt": 13.0,
+                "Subprefeitura": "Perus\/Anhanguera",
+                "Distrito": "Perus",
+                "Endere__o": "Rua Salles Gomes, 415",
+                "CEP": "05211-200",
+                "SUB": "PR",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.409112,
+                "Longitude": -46.750673,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 13,
+                "o": "Rua Salles Gomes, 415",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.750673,
+                    -23.409112
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Jardim Santa Fé",
+                "N_ecpt": 68.0,
+                "Subprefeitura": "Perus\/Anhanguera",
+                "Distrito": "Anhanguera",
+                "Endere__o": "Rua Salvador Albano, 156",
+                "CEP": "05271-090",
+                "SUB": "PR",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.431824,
+                "Longitude": -46.791921,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 68,
+                "o": "Rua Salvador Albano, 156",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.791921,
+                    -23.431824
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Pinheiros (gesso)",
+                "N_ecpt": 2.0,
+                "Subprefeitura": "Pinheiros",
+                "Distrito": "Itaim Bibi",
+                "Endere__o": "Praça do Cancioneiro, 15 (Baixos da Ponte Engenheiro Ary Torres)",
+                "CEP": "04571-200",
+                "SUB": "PI",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.59751,
+                "Longitude": -46.691428,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 2,
+                "o": "Praça do Cancioneiro, 15 (Baixos da Ponte Engenheiro Ary Torres)",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.691428,
+                    -23.59751
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Madalena",
+                "N_ecpt": 31.0,
+                "Subprefeitura": "Pinheiros",
+                "Distrito": "Pinheiros",
+                "Endere__o": "Rua Girassol, 15, esquina com Rua Luís Murat",
+                "CEP": "05433-000",
+                "SUB": "PI",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.558383,
+                "Longitude": -46.687486,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 31,
+                "o": "Rua Girassol, 15, esquina com Rua Luís Murat",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.687486,
+                    -23.558383
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Alto de Pinheiros",
+                "N_ecpt": 64.0,
+                "Subprefeitura": "Pinheiros",
+                "Distrito": "Alto de Pinheiros",
+                "Endere__o": "Praça Arcipreste Anselmo de Oliveira",
+                "CEP": "05425-070",
+                "SUB": "PI",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.557049,
+                "Longitude": -46.710529,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 64,
+                "o": "Praça Arcipreste Anselmo de Oliveira",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.710529,
+                    -23.557049
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Cônego José Salomon (gesso)",
+                "N_ecpt": 5.0,
+                "Subprefeitura": "Pirituba\/Jaraguá",
+                "Distrito": "Pirituba",
+                "Endere__o": "Avenida Cônego José Salomon, 861",
+                "CEP": "02918-170",
+                "SUB": "PJ",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.492132,
+                "Longitude": -46.722014,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 5,
+                "o": "Avenida Cônego José Salomon, 861",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.722014,
+                    -23.492132
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vigário Godói (gesso)",
+                "N_ecpt": 7.0,
+                "Subprefeitura": "Pirituba\/Jaraguá",
+                "Distrito": "Pirituba",
+                "Endere__o": "Rua Vigário Godói, 480",
+                "CEP": "02976-080",
+                "SUB": "PJ",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.477607,
+                "Longitude": -46.718208,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 7,
+                "o": "Rua Vigário Godói, 480",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.718208,
+                    -23.477607
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Voith",
+                "N_ecpt": 52.0,
+                "Subprefeitura": "Pirituba\/Jaraguá",
+                "Distrito": "Jaraguá",
+                "Endere__o": "Avenida Atílio Brugnoli, 489",
+                "CEP": "02996-010",
+                "SUB": "PJ",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.445144,
+                "Longitude": -46.739814,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 52,
+                "o": "Avenida Atílio Brugnoli, 489",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.739814,
+                    -23.445144
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Alexios Jafet",
+                "N_ecpt": 53.0,
+                "Subprefeitura": "Pirituba\/Jaraguá",
+                "Distrito": "Jaraguá",
+                "Endere__o": "Avenida Alexios Jafet, 233",
+                "CEP": "05187-010",
+                "SUB": "PJ",
+                "Lote_Indivis__veis": 5.0,
+                "Empresa": "LOTE V - ECOSS AMBIENTAL",
+                "Latitude": -23.453012,
+                "Longitude": -46.749689,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 53,
+                "o": "Avenida Alexios Jafet, 233",
+                "veis": 5
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.749689,
+                    -23.453012
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Tucuruvi",
+                "N_ecpt": 72.0,
+                "Subprefeitura": "Santana\/Tucuruvi",
+                "Distrito": "Tucuruvi",
+                "Endere__o": "Rua Eduardo Vicente Nasser, 519",
+                "CEP": "02345-000",
+                "SUB": "ST",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.467412,
+                "Longitude": -46.610169,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 72,
+                "o": "Rua Eduardo Vicente Nasser, 519",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.610169,
+                    -23.467412
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Santana",
+                "N_ecpt": 79.0,
+                "Subprefeitura": "Santana\/Tucuruvi",
+                "Distrito": "Santana",
+                "Endere__o": "Avenida Zaki Narchi, 375",
+                "CEP": "02029-000",
+                "SUB": "ST",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.511155,
+                "Longitude": -46.621453,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 79,
+                "o": "Avenida Zaki Narchi, 375",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.621453,
+                    -23.511155
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Alceu Maynard de Araújo",
+                "N_ecpt": 19.0,
+                "Subprefeitura": "Santo Amaro",
+                "Distrito": "Santo Amaro",
+                "Endere__o": "Avenida Professor Alceu Maynard de Araújo, 330, ao lado da Central de Triagem",
+                "CEP": "04728-110",
+                "SUB": "SA",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.636073,
+                "Longitude": -46.713796,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 19,
+                "o": "Avenida Professor Alceu Maynard de Araújo, 330, ao lado da Central de Triagem",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.713796,
+                    -23.636073
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vicente Rao (gesso)",
+                "N_ecpt": 40.0,
+                "Subprefeitura": "Santo Amaro",
+                "Distrito": "Santo Amaro",
+                "Endere__o": "Avenida Professor Vicente Rao, 308, sentido Diadema (Baixos do Viaduto Vereador José Diniz)",
+                "CEP": "04636-000",
+                "SUB": "SA",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.628355,
+                "Longitude": -46.685595,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 40,
+                "o": "Avenida Professor Vicente Rao, 308, sentido Diadema (Baixos do Viaduto Vereador José Diniz)",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.685595,
+                    -23.628355
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Pedro Bueno (gesso)",
+                "N_ecpt": 105.0,
+                "Subprefeitura": "Santo Amaro",
+                "Distrito": "Campo Belo",
+                "Endere__o": "Rua João de Lery, 503 (altura)",
+                "CEP": "04356-030",
+                "SUB": "SA",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.638579,
+                "Longitude": -46.660992,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 105,
+                "o": "Rua João de Lery, 503 (altura)",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.660992,
+                    -23.638579
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vitor Manzini (gesso)",
+                "N_ecpt": 106.0,
+                "Subprefeitura": "Santo Amaro",
+                "Distrito": "Santo Amaro",
+                "Endere__o": "Praça Dom Francisco de Sousa, 635",
+                "CEP": "04745-050",
+                "SUB": "SA",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.660688,
+                "Longitude": -46.705495,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 106,
+                "o": "Praça Dom Francisco de Sousa, 635",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.705495,
+                    -23.660688
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Cipoaba",
+                "N_ecpt": 22.0,
+                "Subprefeitura": "São Mateus",
+                "Distrito": "São Rafael",
+                "Endere__o": "Rua Padre Luis de Siqueira, 947, com Avenida Rodolfo Pirani",
+                "CEP": "08310-190",
+                "SUB": "SM",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.629349,
+                "Longitude": -46.462171,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 22,
+                "o": "Rua Padre Luis de Siqueira, 947, com Avenida Rodolfo Pirani",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.462171,
+                    -23.629349
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Iguatemi",
+                "N_ecpt": 50.0,
+                "Subprefeitura": "São Mateus",
+                "Distrito": "Iguatemi",
+                "Endere__o": "Rua Francisco de Melo Palheta, 1548",
+                "CEP": "08341-235",
+                "SUB": "SM",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.606258,
+                "Longitude": -46.451789,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 50,
+                "o": "Rua Francisco de Melo Palheta, 1548",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.451789,
+                    -23.606258
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Montalvania (gesso)",
+                "N_ecpt": 92.0,
+                "Subprefeitura": "São Mateus",
+                "Distrito": "São Mateus",
+                "Endere__o": "Rua Montalvania, 195",
+                "CEP": "03930-095",
+                "SUB": "SM",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.579239,
+                "Longitude": -46.49537,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 92,
+                "o": "Rua Montalvania, 195",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.49537,
+                    -23.579239
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Lima Bonfante",
+                "N_ecpt": 102.0,
+                "Subprefeitura": "São Mateus",
+                "Distrito": "São Rafael",
+                "Endere__o": "Rua Capitão Mor Lázaro da Costa, 251",
+                "CEP": "08390-262",
+                "SUB": "SM",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.628294,
+                "Longitude": -46.446311,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 102,
+                "o": "Rua Capitão Mor Lázaro da Costa, 251",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.446311,
+                    -23.628294
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Imperador",
+                "N_ecpt": 4.0,
+                "Subprefeitura": "São Miguel Paulista",
+                "Distrito": "Vila Jacuí",
+                "Endere__o": "Avenida Ribeirão Jacu, 201 (Baixos do Viaduto Jacu Pêssego)",
+                "CEP": "08050-420",
+                "SUB": "MP",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.513918,
+                "Longitude": -46.456668,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 4,
+                "o": "Avenida Ribeirão Jacu, 201 (Baixos do Viaduto Jacu Pêssego)",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.456668,
+                    -23.513918
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Carlito Maia",
+                "N_ecpt": 9.0,
+                "Subprefeitura": "São Miguel Paulista",
+                "Distrito": "Jardim Helena",
+                "Endere__o": "Rua Domingos Fernandes Nobre, 109",
+                "CEP": "08190-390",
+                "SUB": "MP",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.49008,
+                "Longitude": -46.393537,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 9,
+                "o": "Rua Domingos Fernandes Nobre, 109",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.393537,
+                    -23.49008
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Pedro Nunes",
+                "N_ecpt": 32.0,
+                "Subprefeitura": "São Miguel Paulista",
+                "Distrito": "Vila Jacuí",
+                "Endere__o": "Rua da Polka, 100",
+                "CEP": "08061-540",
+                "SUB": "MP",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.506489,
+                "Longitude": -46.462293,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 32,
+                "o": "Rua da Polka, 100",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.462293,
+                    -23.506489
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Itaqueruna (gesso)",
+                "N_ecpt": 69.0,
+                "Subprefeitura": "São Miguel Paulista",
+                "Distrito": "São Miguel",
+                "Endere__o": "Rua Domitilia d'Abril, 88",
+                "CEP": "08042-550",
+                "SUB": "MP",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.510043,
+                "Longitude": -46.432676,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 69,
+                "o": "Rua Domitilia d'Abril, 88",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.432676,
+                    -23.510043
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Varre Vila",
+                "N_ecpt": 103.0,
+                "Subprefeitura": "São Miguel Paulista",
+                "Distrito": "Vila Jacuí",
+                "Endere__o": "Rua Primeiro de Maio, 106 (defronte)",
+                "CEP": "08072-195",
+                "SUB": "MP",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.487712,
+                "Longitude": -46.458833,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 103,
+                "o": "Rua Primeiro de Maio, 106 (defronte)",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.458833,
+                    -23.487712
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vitória Popular",
+                "N_ecpt": 107.0,
+                "Subprefeitura": "São Miguel Paulista",
+                "Distrito": "Vila Jacuí",
+                "Endere__o": "Rua El Rey, 508",
+                "CEP": "08062-520",
+                "SUB": "MP",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.509382,
+                "Longitude": -46.472185,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 107,
+                "o": "Rua El Rey, 508",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.472185,
+                    -23.509382
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Jardim Lapena (gesso)",
+                "N_ecpt": 115.0,
+                "Subprefeitura": "São Miguel Paulista",
+                "Distrito": "São Miguel",
+                "Endere__o": "Rua Rafael Zimbardi, 78 (altura)",
+                "CEP": "08071-130",
+                "SUB": "MP",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.491205,
+                "Longitude": -46.452736,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 115,
+                "o": "Rua Rafael Zimbardi, 78 (altura)",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.452736,
+                    -23.491205
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Jardim Helena",
+                "N_ecpt": 119.0,
+                "Subprefeitura": "São Miguel Paulista",
+                "Distrito": "Jardim Helena",
+                "Endere__o": "Rua Cosme dos Santos, 110 (defronte)",
+                "CEP": "08090-753",
+                "SUB": "MP",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.479906,
+                "Longitude": -46.411933,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 119,
+                "o": "Rua Cosme dos Santos, 110 (defronte)",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.411933,
+                    -23.479906
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Jardim Romano",
+                "N_ecpt": 120.0,
+                "Subprefeitura": "São Miguel Paulista",
+                "Distrito": "Jardim Helena",
+                "Endere__o": "Rua Duarte Martins Mourão, 400",
+                "CEP": "08191-250",
+                "SUB": "MP",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.477799,
+                "Longitude": -46.383229,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 120,
+                "o": "Rua Duarte Martins Mourão, 400",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.383229,
+                    -23.477799
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Sapopemba",
+                "N_ecpt": 26.0,
+                "Subprefeitura": "Sapopemba",
+                "Distrito": "Sapopemba",
+                "Endere__o": "Rua Francesco Usper, 550",
+                "CEP": "03928-235",
+                "SUB": "SB",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.605446,
+                "Longitude": -46.496958,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 26,
+                "o": "Rua Francesco Usper, 550",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.496958,
+                    -23.605446
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Cardoso Franco",
+                "N_ecpt": 37.0,
+                "Subprefeitura": "Sapopemba",
+                "Distrito": "Sapopemba",
+                "Endere__o": "Rua dos Vorás, 25",
+                "CEP": "03978-310",
+                "SUB": "SB",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.623269,
+                "Longitude": -46.509099,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 37,
+                "o": "Rua dos Vorás, 25",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.509099,
+                    -23.623269
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Reynaldo José",
+                "N_ecpt": 111.0,
+                "Subprefeitura": "Sapopemba",
+                "Distrito": "Sapopemba",
+                "Endere__o": "Rua Silvestro Silvestri, 400",
+                "CEP": "03985-070",
+                "SUB": "SB",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.607448,
+                "Longitude": -46.517603,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 111,
+                "o": "Rua Silvestro Silvestri, 400",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.517603,
+                    -23.607448
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Joaquim Catuna",
+                "N_ecpt": 112.0,
+                "Subprefeitura": "Sapopemba",
+                "Distrito": "Sapopemba",
+                "Endere__o": "Rua Luca Conforti, 210",
+                "CEP": "03977-417",
+                "SUB": "SB",
+                "Lote_Indivis__veis": 1.0,
+                "Empresa": "LOTE I - CORPUS",
+                "Latitude": -23.61955,
+                "Longitude": -46.488658,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 112,
+                "o": "Rua Luca Conforti, 210",
+                "veis": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.488658,
+                    -23.61955
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Glicério (gesso)",
+                "N_ecpt": 29.0,
+                "Subprefeitura": "Sé",
+                "Distrito": "Sé",
+                "Endere__o": "Praça Ministro Francisco Sá Carneiro, 6 (Baixos do Viaduto Glicério, acesso pela Avenida do Estado, 4434)",
+                "CEP": "01517-100",
+                "SUB": "SE",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.554122,
+                "Longitude": -46.626463,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 29,
+                "o": "Praça Ministro Francisco Sá Carneiro, 6 (Baixos do Viaduto Glicério, acesso pela Avenida do Estado, 4434)",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.626463,
+                    -23.554122
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Liberdade",
+                "N_ecpt": 38.0,
+                "Subprefeitura": "Sé",
+                "Distrito": "Liberdade",
+                "Endere__o": "Rua Jaceguai, 67, esquina com Avenida Liberdade",
+                "CEP": "01315-010",
+                "SUB": "SE",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.55652,
+                "Longitude": -46.637099,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 38,
+                "o": "Rua Jaceguai, 67, esquina com Avenida Liberdade",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.637099,
+                    -23.55652
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Armênia",
+                "N_ecpt": 41.0,
+                "Subprefeitura": "Sé",
+                "Distrito": "Bom Retiro",
+                "Endere__o": "Rua General Carmona, 156",
+                "CEP": "01102-030",
+                "SUB": "SE",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.521423,
+                "Longitude": -46.627751,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 41,
+                "o": "Rua General Carmona, 156",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.627751,
+                    -23.521423
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Barra Funda",
+                "N_ecpt": 42.0,
+                "Subprefeitura": "Sé",
+                "Distrito": "Santa Cecília",
+                "Endere__o": "Rua Cônego Vicente Miguel Marino, 76 (Baixos Viaduto Engenheiro Orlando Murgel)",
+                "CEP": "01135-020",
+                "SUB": "SE",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.527086,
+                "Longitude": -46.648514,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 42,
+                "o": "Rua Cônego Vicente Miguel Marino, 76 (Baixos Viaduto Engenheiro Orlando Murgel)",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.648514,
+                    -23.527086
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Cambuci (gesso)",
+                "N_ecpt": 48.0,
+                "Subprefeitura": "Sé",
+                "Distrito": "Cambuci",
+                "Endere__o": "Avenida Dom Pedro I, 38",
+                "CEP": "01552-001",
+                "SUB": "SE",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.56482,
+                "Longitude": -46.611289,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 48,
+                "o": "Avenida Dom Pedro I, 38",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.611289,
+                    -23.56482
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "General Flores",
+                "N_ecpt": 104.0,
+                "Subprefeitura": "Sé",
+                "Distrito": "Bom Retiro",
+                "Endere__o": "Rua General Flores, 10",
+                "CEP": "01129-010",
+                "SUB": "SE",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.520902,
+                "Longitude": -46.64351,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 104,
+                "o": "Rua General Flores, 10",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.64351,
+                    -23.520902
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Bela Vista (gesso)",
+                "N_ecpt": 108.0,
+                "Subprefeitura": "Sé",
+                "Distrito": "República",
+                "Endere__o": "Rua Quatorze de Julho, 59",
+                "CEP": "01324-040",
+                "SUB": "SE",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.554612,
+                "Longitude": -46.643474,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 108,
+                "o": "Rua Quatorze de Julho, 59",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.643474,
+                    -23.554612
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Guilherme",
+                "N_ecpt": 15.0,
+                "Subprefeitura": "Vila Maria\/Vila Guilherme",
+                "Distrito": "Vila Guilherme",
+                "Endere__o": "Rua José Bernardo Pinto, 1480",
+                "CEP": "02055-001",
+                "SUB": "MG",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.517137,
+                "Longitude": -46.600415,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 15,
+                "o": "Rua José Bernardo Pinto, 1480",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.600415,
+                    -23.517137
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Sabrina",
+                "N_ecpt": 49.0,
+                "Subprefeitura": "Vila Maria\/Vila Guilherme",
+                "Distrito": "Vila Medeiros",
+                "Endere__o": "Avenida do Poeta, 931",
+                "CEP": "02162-100",
+                "SUB": "MG",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.486271,
+                "Longitude": -46.565648,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 49,
+                "o": "Avenida do Poeta, 931",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.565648,
+                    -23.486271
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Maria",
+                "N_ecpt": 60.0,
+                "Subprefeitura": "Vila Maria\/Vila Guilherme",
+                "Distrito": "Vila Maria",
+                "Endere__o": "Rua Curuçá, 1700",
+                "CEP": "02168-150",
+                "SUB": "MG",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.519514,
+                "Longitude": -46.580889,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 60,
+                "o": "Rua Curuçá, 1700",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.580889,
+                    -23.519514
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Mirandópolis (gesso)",
+                "N_ecpt": 10.0,
+                "Subprefeitura": "Vila Mariana",
+                "Distrito": "Saúde",
+                "Endere__o": "Avenida Casemiro da Rocha, 1220, esquina com Avenida José Maria Whitaker",
+                "CEP": "04047-003",
+                "SUB": "VM",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.611638,
+                "Longitude": -46.644682,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 10,
+                "o": "Avenida Casemiro da Rocha, 1220, esquina com Avenida José Maria Whitaker",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.644682,
+                    -23.611638
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Mariana (gesso)",
+                "N_ecpt": 84.0,
+                "Subprefeitura": "Vila Mariana",
+                "Distrito": "Vila Mariana",
+                "Endere__o": "Rua Mauricio Francisco Klabin, 37",
+                "CEP": "04120-020",
+                "SUB": "VM",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.593055,
+                "Longitude": -46.635041,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 84,
+                "o": "Rua Mauricio Francisco Klabin, 37",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.635041,
+                    -23.593055
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Saioa",
+                "N_ecpt": 85.0,
+                "Subprefeitura": "Vila Mariana",
+                "Distrito": "Vila Mariana",
+                "Endere__o": "Rua Mary Baida Salem, 01",
+                "CEP": "04116-120",
+                "SUB": "VM",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.59455,
+                "Longitude": -46.622344,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 85,
+                "o": "Rua Mary Baida Salem, 01",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.622344,
+                    -23.59455
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Anhaia Mello (gesso)",
+                "N_ecpt": 23.0,
+                "Subprefeitura": "Vila Prudente",
+                "Distrito": "Vila Prudente",
+                "Endere__o": "Rua da Prece, 296",
+                "CEP": "03156-210",
+                "SUB": "VP",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.582567,
+                "Longitude": -46.571178,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 23,
+                "o": "Rua da Prece, 296",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.571178,
+                    -23.582567
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "São Lucas (gesso)",
+                "N_ecpt": 24.0,
+                "Subprefeitura": "Vila Prudente",
+                "Distrito": "São Lucas",
+                "Endere__o": "Rua Florêncio Sanches, 307",
+                "CEP": "03266-120",
+                "SUB": "VP",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.599173,
+                "Longitude": -46.534543,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 24,
+                "o": "Rua Florêncio Sanches, 307",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.534543,
+                    -23.599173
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Vila Industrial (gesso)",
+                "N_ecpt": 113.0,
+                "Subprefeitura": "Vila Prudente",
+                "Distrito": "São Lucas",
+                "Endere__o": "Rua Lisa Ansorge, 645 (altura)",
+                "CEP": "03244-060",
+                "SUB": "VP",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.604455,
+                "Longitude": -46.536325,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 113,
+                "o": "Rua Lisa Ansorge, 645 (altura)",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.536325,
+                    -23.604455
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Santo Dias",
+                "N_ecpt": 14.0,
+                "Subprefeitura": "Campo Limpo",
+                "Distrito": "Capão Redondo",
+                "Endere__o": "Travessa Rosifloras, 301",
+                "CEP": "05868-600",
+                "SUB": "CL",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.663934,
+                "Longitude": -46.776782,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 14,
+                "o": "Travessa Rosifloras, 301",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.776782,
+                    -23.663934
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Condessa (gesso)",
+                "N_ecpt": 124.0,
+                "Subprefeitura": "Mooca",
+                "Distrito": "Tatuapé",
+                "Endere__o": "Avenida Condessa Elizabeth de Robiano, 930 (altura)",
+                "CEP": "03086-035",
+                "SUB": "MO",
+                "Lote_Indivis__veis": 2.0,
+                "Empresa": "LOTE II - SUSTENTARE",
+                "Latitude": -23.527795,
+                "Longitude": -46.56828,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 124,
+                "o": "Avenida Condessa Elizabeth de Robiano, 930 (altura)",
+                "veis": 2
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.56828,
+                    -23.527795
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Silvio Bittencourt",
+                "N_ecpt": 123.0,
+                "Subprefeitura": "Jaçanã\/Tremembé",
+                "Distrito": "Tremembé",
+                "Endere__o": "Rua Maria Amália Lopes Azevedo, 4008",
+                "CEP": "02350-003",
+                "SUB": "JT",
+                "Lote_Indivis__veis": 4.0,
+                "Empresa": "LOTE IV - LIMPA\/SP",
+                "Latitude": -23.457103,
+                "Longitude": -46.588433,
+                "Recebimento_diferenciado": "Gesso",
+                "Recebimento diferenciado": "Gesso",
+                "ecpt": 123,
+                "o": "Rua Maria Amália Lopes Azevedo, 4008",
+                "veis": 4
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.588433,
+                    -23.457103
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Rubem Berta",
+                "N_ecpt": 126.0,
+                "Subprefeitura": "Vila Mariana",
+                "Distrito": "Moema",
+                "Endere__o": "Avenida Rubem Berta, 1100 (baixo do Viaduto Onze de Junho) - Indianópolis",
+                "CEP": "04074-010",
+                "SUB": "VM",
+                "Lote_Indivis__veis": 3.0,
+                "Empresa": "LOTE III - LOCAT\/SP",
+                "Latitude": -23.602242,
+                "Longitude": -46.651099,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 126,
+                "o": "Avenida Rubem Berta, 1100 (baixo do Viaduto Onze de Junho) - Indianópolis",
+                "veis": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.651099,
+                    -23.602242
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "São Luis",
+                "N_ecpt": 125.0,
+                "Subprefeitura": "M'Boi Mirim",
+                "Distrito": "Jardim São Luis",
+                "Endere__o": "Rua Pedro Armani, 252 - Jardim Letícia",
+                "CEP": "05820-220",
+                "SUB": "MB",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOTE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.666674,
+                "Longitude": -46.745562,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 125,
+                "o": "Rua Pedro Armani, 252 - Jardim Letícia",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.745562,
+                    -23.666674
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Geraldo Honório",
+                "N_ecpt": 127.0,
+                "Subprefeitura": "Capela do Socorro",
+                "Distrito": "Grajaú",
+                "Endere__o": "Rua Geraldo Honório da Silva, 300 (altura)",
+                "CEP": "04843-650",
+                "SUB": "CS",
+                "Lote_Indivis__veis": 6.0,
+                "Empresa": "LOE VI - ECOSAMPA (SCK)",
+                "Latitude": -23.747789,
+                "Longitude": -46.692963,
+                "Recebimento_diferenciado": null,
+                "Recebimento diferenciado": null,
+                "ecpt": 127,
+                "o": "Rua Geraldo Honório da Silva, 300 (altura)",
+                "veis": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.692963,
+                    -23.747789
+                ]
+            }
+        }
+    ]
+}
