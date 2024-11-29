@@ -1,14 +1,18 @@
-FROM node:20.12.2
+FROM node:20.16.0
 
-ENV NODE_ENV=production
+ENV dotenv=production
 
 WORKDIR /api
 
+# Copiar todos os arquivos para o contêiner
 COPY . .
 
+# Instalar dependências
 RUN rm -rf node_modules
-RUN npm i --production
+RUN npm install --production
 
-CMD [ "npm", "start" ]
-
+# Expor a porta da aplicação
 EXPOSE 3000
+
+# Comando para iniciar a aplicação
+CMD [ "npm", "start" ]

@@ -11,7 +11,7 @@ async function timeLoga(result){
     let response;
 
     const browser = await puppeteer.launch({
-        headless: true, // Mude para true para produção
+        headless: false, // Mude para true para produção
         args: ['--disable-web-security', '--disable-features=IsolateOrigins,site-per-process', '--no-sandbox', '--disable-setuid-sandbox']
     });
 
@@ -90,7 +90,7 @@ async function timeUrbis(result2){
     let response;
 
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         args: [
             '--disable-web-security',
             '--disable-features=IsolateOrigins,site-per-process',
@@ -128,11 +128,11 @@ async function timeUrbis(result2){
     try {
         console.log('Acessando site Urbis...');
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
-        await page.goto('https://www.ecourbis.com.br/coleta/index.html', { waitUntil: 'networkidle0', timeout: 6000 });
+        await page.goto('https://www.ecourbis.com.br/coleta/index.html', { waitUntil: 'networkidle0', timeout: 8000 });
         
         await page.setViewport({width: 1030, height: 600});
         
-        await page.waitForSelector('.form-control.theme-border-2', { visible: true, timeout: 6000 });
+        await page.waitForSelector('.form-control.theme-border-2', { visible: true, timeout: 8000 });
 
         await page.type('.form-control.theme-border-2', result2, {delay: 10});
 
@@ -141,7 +141,7 @@ async function timeUrbis(result2){
         await delay(2000);
 
         console.log('Esperando pelos resultados...');
-        const selector = await page.waitForSelector('.cd-loc-table--result', { visible: true, timeout: 6000 });
+        const selector = await page.waitForSelector('.cd-loc-table--result', { visible: true, timeout: 8000 });
 
         if (selector) {
             console.log('Resultados encontrados.');
