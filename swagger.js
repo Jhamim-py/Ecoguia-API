@@ -9,7 +9,7 @@ const doc = {
     },
     servers: [
         {
-            url: 'http://localhost:3000'
+            url: 'https://contaneir-backend-ecoguia.blackbush-e76ee154.brazilsouth.azurecontainerapps.io/'
         }
     ],
     components: {

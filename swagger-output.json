@@ -78,7 +78,7 @@
     }
   }
 },
-    "/createTips": {
+    "/createTip": {
       "post": {
         "tags": ["Admin"],  
         "description": "Rota utilizada para criação de novas dicas diárias usada pelo administrador",
@@ -515,13 +515,16 @@
         }
       }
     },
-    "/articles": {
+    "/tips": {
       "get": {
         "tags":["System"],
-        "description": "Rota utilizada pelo sistema para pegar 3 artigos no banco de dados",
+        "description": "Rota utilizada pelo sistema para pegar todas as dicas",
         "responses": {
           "200": {
-            "description": ""
+            "description": "OK"
+          },
+          "404":{
+            "description": "Not Found"
           },
           "500":{
             "description": "Internal Server Error"
@@ -529,10 +532,39 @@
         }
       }
     },
-    "/selectArticle": {
+    "/article": {
+      "post": {
+        "tags":["System"],
+        "description": "Rota utilizada pelo sistema para pegar um artigo no banco de dados",
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "500":{
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles": {
       "get": {
         "tags":["System"],
-        "description": "Rota utilizada pelo sistema para pegar 3 artigos no banco de dados",
+        "description": "Rota utilizada pelo sistema para pegar artigos no banco de dados",
         "responses": {
           "200": {
             "description": "OK"
@@ -558,41 +590,10 @@
         }
       }
     },
-    "/rank": {
-      "get": {
-        "tags":["System"],
-        "description": "Rota utilizada pelo sistema para pegar dados sobre o rank dos usuários de acordo com a quantidade de XP",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
     "/avatars": {
       "get": {
         "tags":["System"],
         "description": "Rota utilizada pelo sistema para pegar todos os avatares",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404":{
-            "description": "Not Found"
-          },
-          "500":{
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/materiais": {
-      "get": {
-        "tags":["System"],
-        "description": "Rota utilizada pelo sistema para pegar todos os materiais recicláveis no banco de dados",
         "responses": {
           "200": {
             "description": "OK"
@@ -623,23 +624,6 @@
         }
       }
     },
-    "/AllTips": {
-      "get": {
-        "tags":["System"],
-        "description": "Rota utilizada pelo sistema para pegar todas as dicas",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404":{
-            "description": "Not Found"
-          },
-          "500":{
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
     "/quests": {
       "delete": {
          "tags":["System"],
@@ -653,6 +637,40 @@
             "description": "Bad Request"
           },
           "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/materiais": {
+      "get": {
+        "tags":["System"],
+        "description": "Rota utilizada pelo sistema para pegar todos os materiais recicláveis no banco de dados",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404":{
+            "description": "Not Found"
+          },
+          "500":{
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ecopontos": {
+      "get": {
+        "tags":["System"],
+        "description": "Rota utilizada pelo sistema para pegar todos os endereços de ecopontos",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404":{
+            "description": "Not Found"
+          },
+          "500":{
             "description": "Internal Server Error"
           }
         }
@@ -766,38 +784,6 @@
         }
       }
     },
-    "/user/token": {
-      "post": {
-        "tags":["User"],
-        "description": "Rota utilizada pelo usuário para o envio de um token de confirmação para a redefinição de senha caso a tenha esquecido.",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "422": {
-            "description": "Unprocessable Entity"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "example": "any"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/user/login": {
       "post": { 
         "tags":["User"],
@@ -840,24 +826,39 @@
         }
       }
     },
-    "/user/auth/google/callback": {
+    "/user/pwd/token": {
       "post": {
         "tags":["User"],
-        "description": "Rota utilizada pelo usuário para a realização do login com o google.",
+        "description": "Rota utilizada pelo usuário para o envio de um token de confirmação para a redefinição de senha caso a tenha esquecido.",
         "responses": {
           "200": {
             "description": "OK"
           },
-          "401": {
-            "description": "Unauthorized"
+          "422": {
+            "description": "Unprocessable Entity"
           },
           "500": {
             "description": "Internal Server Error"
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
-    "/user/pwd": {
+    "/user/pwd/new": {
       "post": {
         "tags":["User"],
         "description": "Rota utilizada pelo usuário para a redefinição da senha.",
@@ -1085,7 +1086,47 @@
         }
       }
     },
-    "/user/email": {
+    "/user/pwd": {
+        "put": {
+        "tags":["User"],
+        "description": "Rota utilizada pelo usuário para a atualização da sua senha",
+        "security": [
+          {
+            "BearerAuth": []  
+          }
+        ],
+        "parameters": [
+          {
+            "name": "authorization", 
+            "in": "header",
+            "description": "Token de autenticação do usuário",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Bearer YOUR_TOKEN_HERE"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/email/token": {
       "put": {
         "tags":["User"],
         "description": "Rota utilizada pelo usuário para a atualização do email no banco de dados",
@@ -1137,7 +1178,7 @@
         }
       }
     },
-    "/user/registerEmail": {
+    "/user/email/new": {
       "put": {
         "tags":["User"],
         "description": "Rota utilizada pelo usuário para o envio de um token para a confirmação do email a ser atualizado",
@@ -1165,17 +1206,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/user/auth/google": {
-      "get": {
-        "tags":["User"],
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }
