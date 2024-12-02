@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://contaneir-backend-ecoguia.blackbush-e76ee154.brazilsouth.azurecontainerapps.io/"
+      "url": "https://contaneir-backend-ecoguia.blackbush-e76ee154.brazilsouth.azurecontainerapps.io"
     }
   ],
   "paths": {

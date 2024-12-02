@@ -8,6 +8,8 @@ import swaggerFile from './swagger-output.json' assert { type: 'json' };
 
 import router from './API/routes/route.js';
 
+import 'dotenv/config';
+
 const port = app.get('port');
 
 app.use(cors());
