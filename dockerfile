@@ -1,7 +1,5 @@
 FROM node:20.16.0
 
-# Definir variáveis de ambiente
-ENV NODE_ENV=production
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 
 # Instalar dependências do sistema para o Chromium
@@ -27,7 +25,6 @@ RUN apt-get update && apt-get install -y \
   --no-install-recommends && \
   rm -rf /var/lib/apt/lists/*
 
-# Instalar dependências do projeto
 WORKDIR /api
 
 COPY . .
@@ -35,8 +32,6 @@ COPY . .
 RUN rm -rf node_modules
 RUN npm install --production
 
-# Expor a porta
 EXPOSE 3000
 
-# Iniciar a aplicação
 CMD [ "npm", "start" ]
