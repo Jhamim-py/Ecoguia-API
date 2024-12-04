@@ -18,6 +18,7 @@ import  deleteTip      from '../controllers/Functions-Admin/delete/deleteTip.js'
 import  deleteLevel    from '../controllers/Functions-Admin/delete/deleteLevel.js';
 
 // rotas de SISTEMA
+import  loginAdmin     from '../controllers/Functions-System/read/viewAdmin.js';
 import  viewPickupTime from '../controllers/Functions-System/read/viewPickupTime.js';
 import  viewTip        from '../controllers/Functions-System/read/viewTip.js';
 import  viewArticles   from '../controllers/Functions-System/read/viewArticles.js';
@@ -107,6 +108,8 @@ routes.get('/tip',           viewTip);
 
 //visualiza todas as dicas
 routes.get('/tips',          viewTips);
+
+routes.post('/admin/login',  loginAdmin);
 
 //visualiza um artigo de acordo com o ID de entrada
 routes.post('/article',      viewArticle);
