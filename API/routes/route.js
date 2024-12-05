@@ -28,8 +28,8 @@ import  viewLevels     from '../controllers/Functions-System/read/viewLevel.js';
 import  viewQuests     from '../controllers/Functions-System/read/viewQuests.js';
 import  viewMaterial   from '../controllers/Functions-System/read/viewMaterial.js';
 import  viewInfoUser   from '../controllers/Functions-System/read/viewInfoUser.js';
-import viewEcopontos   from '../controllers/Functions-System/read/viewEcopontos.js';
-
+import  viewEcopontos  from '../controllers/Functions-System/read/viewEcopontos.js';
+import  loginAdmin     from '../controllers/Functions-System/read/viewAdmin.js';
 // rotas de USUÁRIO
 import  registerUser   from '../controllers/Functions-User/create/registerUser.js';
 import  createUser     from '../controllers/Functions-User/create/createUser.js';
@@ -128,6 +128,9 @@ routes.get('/materiais',     viewMaterial);
 
 //visualiza os ecopontos de São Paulo
 routes.get('/ecopontos',     viewEcopontos);
+
+//visualiza dados do admin
+routes.post('/admin/login', loginAdmin);
 
 
 // HTTPS de USUÁRIO
