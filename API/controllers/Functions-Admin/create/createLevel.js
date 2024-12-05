@@ -16,12 +16,12 @@ async (req, res) 	  => {
 	};
 
 	//executa a conexão com o banco de dados
-	
+
 
 	try{
 		// Pega uma conexão
         const connection = await getConnection();
-		
+
 		//chama a procedure de criação e coloca os dados
 		const query = `CALL CreateLevel(?);`;
 		const values = [XP];
