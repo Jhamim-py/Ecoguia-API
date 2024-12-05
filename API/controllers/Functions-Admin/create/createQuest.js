@@ -5,7 +5,7 @@ import { BlobServiceClient} from '@azure/storage-blob';       //biblioteca de co
 import 'dotenv/config';
 
 //funções externas
-import connection  from '../../../data/connection.js';		//conexão com o banco de dados
+import getConnection  from '../../../data/connection.js';		//conexão com o banco de dados
 import checkLength from '../../../utils/characterLimit.js'; //verifica se o dado ultrapassa o limite de caracteres
 import deleteBlob  from '../../../middleware/deleteImage.js';//extrai e exclui o blob pela URL
 
@@ -67,15 +67,19 @@ async (req, res)    => {
     //nomeação do novo arquivo
     const blobName = `QUEST-NEW-DATE${Date.now()}-NAME${validNameArchive}`; //formata nome com ID e data
 
-	//executa a conexão com o banco de dados
-	let executeConnection = await connection();
-
 	//inicializa a variável de URL
 	let newImage_url = null;
 
+	
 	try{
+		// Pega uma conexão
+        const connection = await getConnection();
+		
+		// Pega uma conexão da pool para realizar a transação
+		const transactionConnection = await connection.getConnection();
+
 		//inicia transação
-		await executeConnection.beginTransaction();
+		await transactionConnection.beginTransaction();
 
         //estabelecendo conexão com o Azure
         const blobServiceClient = BlobServiceClient.fromConnectionString(connection_azure);
@@ -95,6 +99,7 @@ async (req, res)    => {
 
         //validação de tamanho da URL gerada
         if (newImage_url.length > 2048) {
+			transactionConnection.release();
             return res.status(400).json({msg: `A URL do novo badge ultrapassou o limite de 2048 caracteres.`});
         }
 
@@ -108,16 +113,16 @@ async (req, res)    => {
       ];
 
 		//envia a query e retorna caso tenha dado certo
-		const [results] = await executeConnection.query(query, values);
+		const [results] = await transactionConnection.query(query, values);
 		results;
 
 		//confirma a transação
-		await executeConnection.commit();
+		await transactionConnection.commit();
 
 		return res.status(200).json({msg:"Cadeia de missões criada com sucesso.", url_blob: `${newImage_url}`});
 	}catch(error){
 		//reverte a query e exclui o blob gerado
-		if (executeConnection) {await executeConnection.rollback()};
+		await transactionConnection.rollback();
 		if (newImage_url) {await deleteBlob(newImage_url)};
 
 		if (error.sqlState === '45000') {
@@ -130,12 +135,9 @@ async (req, res)    => {
 			console.error("Erro ao tentar criar cadeia de missões: ", error);
 			return res.status(500).json({ msg: "Erro interno no servidor, tente novamente." });
 		};
-	}
-	finally{
-		if(executeConnection){
-			//Fecha a conexão com o banco de dados
-			await executeConnection.end();
-		};
+	} finally {
+		// Garante que a conexão pega é solta de volta a pool
+		transactionConnection.release();
 	};
 };
 

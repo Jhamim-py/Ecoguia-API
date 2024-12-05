@@ -3,7 +3,7 @@ import crypto         from 'crypto';         // gera um token aleatório
 import validatorEmail from 'email-validator' // verifica e valida o formato 'e-mail', se contém @, .com, etc.
 
 // variáveis de ambiente para importar funções
-import connection    from '../../../data/connection.js';         // armazena os dados de usuário, usado posteriormente para validações
+import getConnection    from '../../../data/connection.js';         // armazena os dados de usuário, usado posteriormente para validações
 import sendEmail     from '../../../utils/sendEmail.js';         // importa função de enviar token por email
 import verificatePwd from '../../../utils/verificatePwd.js';     // verifica e valida o formato 'senha', se contém 8 caracteres, etc.
 import checkLength   from '../../../utils/characterLimit.js';    // verifica se o dado ultrapassa o limite de caracteres
@@ -48,15 +48,18 @@ async (req, res) => {
 	};
 
     // executa a conexão com o banco de dados
-	const executeConnection = await connection();
+	
 
     try{
+        // Pega uma conexão
+        const connection = await getConnection();
+        
         //chama a procedure de criação e coloca os dados
         const query  = `SELECT * FROM ViewAllEmails WHERE email=?`;
         const values = email;  //aloca o valor colocado no campo 'E-mail' para essa variável
 
         //envio de query para o banco de dados e retorna o resultado
-        const [results] = await executeConnection.query(query, values);
+        const [results] = await connection.query(query, values);
 
         if(results.length > 0){
             return res.status(422).json({ msg: "Este e-mail já esta sendo utilizado numa conta Eco."});
@@ -82,12 +85,6 @@ async (req, res) => {
 	}catch(error){
 		console.error("Algo deu errado ao registrar usuário, tente novamente:", error);
 		return res.status(500).json({msg: "Erro interno no servidor, tente novamente."});
-	}
-	finally{
-		if(executeConnection){
-			//Fecha a conexão com o banco de dados
-			await executeConnection.end();
-		};
 	};
 };
 
