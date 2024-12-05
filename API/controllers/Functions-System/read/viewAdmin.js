@@ -17,7 +17,7 @@ const loginAdmin = async (req, res) => {
         const values = [email];
 
         const [results] = await executeConnection.query(query, values);
-        
+
         if (results.length === 0) {
             return res.status(401).json({ msg: "Email ou senha incorretos." });
         }
@@ -29,8 +29,11 @@ const loginAdmin = async (req, res) => {
         if (!checkPwd) {
             return res.status(401).json({ msg: "Email ou senha incorretos." });
         }
+
+        const isAdmin = results.length > 0;
+
         const token = jwt.sign(
-            { id: user.pk_IDadmin, email: user.email },
+            { id: user.pk_IDadmin, email: user.email, isAdmin: isAdmin },
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
