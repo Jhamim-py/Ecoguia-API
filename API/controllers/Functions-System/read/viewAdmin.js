@@ -5,7 +5,6 @@ import getConnection from '../../../data/connection.js';
 
 const loginAdmin = async (req, res) => {
     const { email, pwd } = req.body;
-    
 
     if (!email || !pwd) {
         return res.status(422).json({
@@ -15,12 +14,12 @@ const loginAdmin = async (req, res) => {
     try {
         // Pega uma conexão
         const connection = await getConnection();
-        
+      
         const query = `SELECT * FROM ViewAllAdmins WHERE email=?;`;
         const values = [email];
 
         const [results] = await connection.query(query, values);
-        
+
         if (results.length === 0) {
             return res.status(401).json({ msg: "Email ou senha incorretos." });
         }
@@ -32,8 +31,11 @@ const loginAdmin = async (req, res) => {
         if (!checkPwd) {
             return res.status(401).json({ msg: "Email ou senha incorretos." });
         }
+
+        const isAdmin = results.length > 0;
+
         const token = jwt.sign(
-            { id: user.pk_IDadmin, email: user.email },
+            { id: user.pk_IDadmin, email: user.email, isAdmin: isAdmin },
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
@@ -47,7 +49,7 @@ const loginAdmin = async (req, res) => {
         res.status(500).json({
             msg: "Algo deu errado na conexão com o servidor, tente novamente."
         });
-    };
+    }
 };
 
 export default loginAdmin;
