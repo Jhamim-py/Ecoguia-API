@@ -5,7 +5,7 @@ import 'dotenv/config';
 //função para obter a conexão com o banco de dados
 const getConnection = async () => {
 	try {
-		const connection = await mysql2.createConnection({
+		const connection = await mysql2.createPool({
 			host: process.env.HOSTNAME_BD_AZURE,
 			user: 'Eco12Biotech', 
 			password: process.env.PWD_BD_AZURE,

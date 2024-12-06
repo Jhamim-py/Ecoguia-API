@@ -2,7 +2,7 @@
 import bcrypt from 'bcrypt';                           // criptografa dados em hash
 
 // funções exportadas
-import connection    from '../../../data/connection.js';     // conexão com o banco de dados
+import getConnection    from '../../../data/connection.js';     // conexão com o banco de dados
 import verificatePwd from '../../../utils/verificatePwd.js'; // importa função de verificar padrão de senha
 
 const updatePwd =
@@ -13,7 +13,7 @@ async (req, res) => {
  
     const email = null;
 
-    const executeConnection = await connection();// variável que armazena a execução de conexão com o banco de dados  
+    // variável que armazena a execução de conexão com o banco de dados  
     
     //verificar o padrão da senha
     const check  = verificatePwd(newPwd);
@@ -26,12 +26,15 @@ async (req, res) => {
     const passwordHash  = await bcrypt.hash(newPwd, salt); // cria o hash da senha
 
     try{
+        // Pega uma conexão
+        const connection = await getConnection();
+        
         // executa a query de atualização do usuário
         const query  = `CALL ModifyUser(?, ?, ?);`;
         const values = [userId, email, passwordHash];
 
         // Executa a consulta
-        const [results] = await executeConnection.query(query,values);
+        const [results] = await connection.query(query,values);
         results;
         if(results.length != 0){
             return res.status(200).json({msg: "Usuário atualizado com sucesso."});
@@ -42,11 +45,6 @@ async (req, res) => {
     }catch(error){
         console.error("Algo deu errado ao atualizar o usuário, tente novamente: ", error);
         return res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
-    }finally {
-        // Fecha a conexão com o banco de dados, se foi estabelecida
-        if (executeConnection) {
-            await executeConnection.end();
-        };
     };
 };
 
