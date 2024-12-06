@@ -1,4 +1,4 @@
-import connection  from '../../../data/connection.js';      // conexão com o banco de dados
+import getConnection  from '../../../data/connection.js';      // conexão com o banco de dados
 import checkLength from '../../../utils/characterLimit.js'; // checa o tamanho de caracteres e retorna booleano
 
 //função assíncrona para modificar uma dica
@@ -23,9 +23,12 @@ async (req, res) => {
     };
 
     //executa a conexão com o banco de dados
-    const executeConnection = await connection();
+    
 
     try {
+		// Pega uma conexão
+		const connection = await getConnection();
+
         //verifica se existe dica com este ID
 		const itsExist = await verifyImage(id, description_tip);
         
@@ -42,26 +45,21 @@ async (req, res) => {
         const values = [id, description_tip];
 
 		//executa a query
-		const [results] = await executeConnection.query(query, values);
+		const [results] = await connection.query(query, values);
 		results;
 
 		return res.status(200).json({msg:"Dica modificada com sucesso."});
 	}catch(error){
 		console.error("Algo deu errado ao modificar a dica, tente novamente:", error);
 		return res.status(500).json({msg: "Erro interno no servidor, tente novamente."});
-	}
-	finally{
-		if(executeConnection){
-			//Fecha a conexão com o banco de dados
-			await executeConnection.end();
-		}
 	};
 };
 
 //função assíncrona para verificar existência do material
 async function verifyImage(id, desc){
-	//executa a conexão com o banco de dados
-	const executeConnection = await connection();
+	
+	// Pega uma conexão
+	const connection = await getConnection();	
 
 	//exclusão do antigo blob que está armazenado
 	//chama a procedure de visualização para captar a URL de imagem
@@ -69,7 +67,7 @@ async function verifyImage(id, desc){
 	const values = [id, desc];
 
 	//envia a query e retorna resposta do banco
-	const [results] = await executeConnection.query(query, values);
+	const [results] = await connection.query(query, values);
 	results;
 
 	//caso não tenha registro associado ao ID selecionado, interrompe o processo

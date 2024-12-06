@@ -1,4 +1,4 @@
-import connection  from '../../../data/connection.js';       // conexão com o banco de dados
+import getConnection  from '../../../data/connection.js';       // conexão com o banco de dados
 import checkLength from '../../../utils/characterLimit.js'; // verifica se a variável possui valor maior que o esperado 
 
 const updateMaterial = 
@@ -24,9 +24,12 @@ async (req, res)     => {
 	};
 
     //executa a conexão com o banco de dados
-    const executeConnection = await connection();
+    
 
     try {
+		// Pega uma conexão
+		const connection = await getConnection();
+
 		//verifica se existe material com este ID
 		const itsExist = await verifyImage(id);
 
@@ -40,19 +43,13 @@ async (req, res)     => {
         const values = [id,type,xp_material];
 
 		//executa a query
-		const [results] = await executeConnection.query(query, values);
+		const [results] = await connection.query(query, values);
 		results;
 
 		return res.status(200).json({msg:"Material modificado com sucesso."});
 	}catch(error){
 		console.error("Algo deu errado ao modificar o material, tente novamente:", error);
 		return res.status(500).json({msg: "Erro interno no servidor, tente novamente."});
-	}
-	finally{
-		if(executeConnection){
-			//Fecha a conexão com o banco de dados
-			await executeConnection.end();
-		}
 	};
 };
 
@@ -60,8 +57,8 @@ async (req, res)     => {
 async function verifyImage(req){
 	const id = req;
 
-	//executa a conexão com o banco de dados
-	const executeConnection = await connection();
+	// Pega uma conexão
+	const connection = await getConnection();
 
 	//exclusão do antigo blob que está armazenado
 	//chama a procedure de visualização para captar a URL de imagem
@@ -69,7 +66,7 @@ async function verifyImage(req){
 	const values = id;
 
 	//envia a query e retorna resposta do banco
-	const [results] = await executeConnection.query(query, values);
+	const [results] = await connection.query(query, values);
 	results;
 
 	//caso não tenha registro associado ao ID selecionado, interrompe o processo

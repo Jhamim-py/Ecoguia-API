@@ -1,11 +1,10 @@
 import 'dotenv/config';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import connection from '../../../data/connection.js';
+import getConnection from '../../../data/connection.js';
 
 const loginAdmin = async (req, res) => {
     const { email, pwd } = req.body;
-    const executeConnection = await connection();
 
     if (!email || !pwd) {
         return res.status(422).json({
@@ -13,10 +12,13 @@ const loginAdmin = async (req, res) => {
         });
     }
     try {
+        // Pega uma conexão
+        const connection = await getConnection();
+      
         const query = `SELECT * FROM ViewAllAdmins WHERE email=?;`;
         const values = [email];
 
-        const [results] = await executeConnection.query(query, values);
+        const [results] = await connection.query(query, values);
 
         if (results.length === 0) {
             return res.status(401).json({ msg: "Email ou senha incorretos." });
@@ -47,8 +49,6 @@ const loginAdmin = async (req, res) => {
         res.status(500).json({
             msg: "Algo deu errado na conexão com o servidor, tente novamente."
         });
-    } finally {
-        await executeConnection.end();
     }
 };
 

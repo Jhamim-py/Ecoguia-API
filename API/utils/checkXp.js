@@ -1,18 +1,22 @@
-import connection  from '../data/connection.js'; //conexão com o banco de dados
+import getConnection  from '../data/connection.js'; //conexão com o banco de dados
 
 //função assíncrona com uma promise
 export default async function checkXp(id,type,xp_material,peso){ 
     // variável que armazena a execução de conexão com o banco de dados
-    const executeConnection = await connection(); 
+     
     
     //retorna uma promise com o resultado da query executada
     return new Promise( async (resolve) => {
         try{
+
+            // Pega uma conexão
+            const connection = await getConnection();
+
             // query para pegar os dados de xp,level e quest do usuário
             const query  = `CALL SelectXPUser(?);`;
             const values = id;
             // envio de query e captação de resposta
-            const [results] = await executeConnection.query(query,values);
+            const [results] = await connection.query(query,values);
             if(results.length > 0 && type == 0){
                 calculateLevelQuest(results);             
             }
@@ -70,11 +74,6 @@ export default async function checkXp(id,type,xp_material,peso){
         }catch(error){
             console.error("Algo deu errado ao atualizar XP, tente novamente: ", error); 
             resolve("Algo deu errado na conexão com o servidor, tente novamente.");
-        }finally {
-            // Fecha a conexão com o banco de dados, se foi estabelecida
-            if (executeConnection) {
-                await executeConnection.end();
-            };
         }; 
     });
 };
