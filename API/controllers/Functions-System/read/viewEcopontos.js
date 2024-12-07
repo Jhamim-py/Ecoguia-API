@@ -1,5 +1,5 @@
 //funções externas
-//import ecopontos from '../../../utils/ecopontos.json' assert{ type: 'json' };
+import ecopontos from '../../../utils/ecopontos.json' assert{ type: 'json' };
 //função assíncrona para visualizar informações sobre os ecopontos de São Paulo
 const viewEcopontos =
 async (req, res)   =>{
