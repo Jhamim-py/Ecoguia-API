@@ -18,7 +18,6 @@ import  deleteTip      from '../controllers/Functions-Admin/delete/deleteTip.js'
 import  deleteLevel    from '../controllers/Functions-Admin/delete/deleteLevel.js';
 
 // rotas de SISTEMA
-import  loginAdmin     from '../controllers/Functions-System/read/viewAdmin.js';
 import  viewPickupTime from '../controllers/Functions-System/read/viewPickupTime.js';
 import  viewTip        from '../controllers/Functions-System/read/viewTip.js';
 import  viewArticles   from '../controllers/Functions-System/read/viewArticles.js';
@@ -31,6 +30,7 @@ import  viewMaterial   from '../controllers/Functions-System/read/viewMaterial.j
 import  viewInfoUser   from '../controllers/Functions-System/read/viewInfoUser.js';
 import  viewEcopontos  from '../controllers/Functions-System/read/viewEcopontos.js';
 import  loginAdmin     from '../controllers/Functions-System/read/viewAdmin.js';
+
 // rotas de USUÁRIO
 import  registerUser   from '../controllers/Functions-User/create/registerUser.js';
 import  createUser     from '../controllers/Functions-User/create/createUser.js';
