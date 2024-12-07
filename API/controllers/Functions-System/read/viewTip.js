@@ -1,5 +1,5 @@
 //funções externas
-import connection  from '../../../data/connection.js'; //conexão com o banco de dados
+import getConnection  from '../../../data/connection.js'; //conexão com o banco de dados
 
 //variável global para armazenar a dica do dia
 let dailyTip    = null; // Armazena a dica que será retornada ao usuário
@@ -9,9 +9,12 @@ let lastTipDate = null; // Armazena a data em que a dica foi buscada
 const getDailyTip = 
 async (req, res)  => {
 	//executa a conexão com o banco de dados
-	const executeConnection = await connection();
+	
 
     try {
+        // Pega uma conexão
+        const connection = await getConnection();
+        
         const today         = new Date();                        //obtém a data e hora atuais do sistema
         const formattedDate = today.toISOString().split('T')[0]; //formata a data no formato YYYY-MM-DD
 
@@ -24,7 +27,7 @@ async (req, res)  => {
         const query = `SELECT * FROM ViewRandomTip;`;
 
         //envia a query e retorna caso tenha dado certo
-		const [results] = await executeConnection.query(query);
+		const [results] = await connection.query(query);
 		results;
 
         //armazena a dica do dia e a data atual
@@ -36,12 +39,6 @@ async (req, res)  => {
 		//caso dê algo errado, retorna no console e avisa
 		console.error("Algo deu errado ao visualizar a dica diária, tente novamente:", error);
 		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
-	}
-	finally{
-		if(executeConnection){
-			//fecha a conexão com o banco de dados
-			await executeConnection.end();
-		}
 	};
 };
 

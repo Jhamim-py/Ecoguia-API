@@ -2,7 +2,7 @@
 import 'dotenv/config';
 
 //funções externas
-import connection  from '../../../data/connection.js';		   //conexão com o banco de dados
+import getConnection  from '../../../data/connection.js';		   //conexão com o banco de dados
 import updateBlob  from '../../../middleware/updateImage.js';//extrai e adiciona o blob pela imagem tratada pelo Multer
 import deleteBlob  from '../../../middleware/deleteImage.js';  //extrai e exclui o blob pela URL
 
@@ -20,13 +20,16 @@ async (req, res) => {
     };
     
     //executa a conexão com o banco de dados
-	const executeConnection = await connection();
+	
 
 	//inicializa as variáveis de URL de imagem
 	let newImage_url = null;
 	let oldImage_url = null;
     
     try{
+		// Pega uma conexão
+		const connection = await getConnection();
+
         //verifica se existe avatar com este ID
 		const itsExist = await verifyImage(avatarId);
 
@@ -55,7 +58,7 @@ async (req, res) => {
         const values = [avatarId, newImage_url];
 
 		//envia a query e retorna caso tenha dado certo
-		const [results] = await executeConnection.query(query, values);
+		const [results] = await connection.query(query, values);
 		results;
 
         //chama a função para deletar o blob pela URL anteriormente armazenada
@@ -66,28 +69,22 @@ async (req, res) => {
 		//caso dê algo errado, retorna no console e avisa
 		console.error("Algo deu errado ao modificar o avatar, tente novamente:", error);
 		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
-	}
-    finally{
-        if (executeConnection) {
-            //fecha a conexão com o banco de dados
-            await executeConnection.end();
-        };
-    };
+	};
 };
 
 //função assíncrona para verificar existência do avatar e captar URL de imagem do avatar
 async function verifyImage(req){
 	const id = req;
 
-	//executa a conexão com o banco de dados
-	const executeConnection = await connection();
+	// Pega uma conexão
+	const connection = await getConnection();
 
 	//chama a procedure de visualização para verificar registro
     const query  = `SELECT * FROM ViewAllAvatar WHERE pk_IDAvatar = (?);`;
     const values = id;
 
 	//envia a query e retorna resposta do banco
-	const [results] = await executeConnection.query(query, values);
+	const [results] = await connection.query(query, values);
 	results;
 
 	//caso não tenha registro associado ao ID selecionado, interrompe o processo

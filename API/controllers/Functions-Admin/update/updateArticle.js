@@ -1,5 +1,5 @@
 //funções externas
-import connection  from '../../../data/connection.js';	//conexão com o banco de dados
+import getConnection  from '../../../data/connection.js';	//conexão com o banco de dados
 import nullValue   from '../../../utils/nullValue.js';	//verifica se a variável possui valor nulo 
 import checkLength from '../../../utils/characterLimit.js';	  //verifica se o dado ultrapassa o limite de caracteres
 import updateBlob  from '../../../middleware/updateImage.js'; //cria novo blob e retorna URL
@@ -70,13 +70,17 @@ async(req, res) =>{
 	};
 
     //executa a conexão com o banco de dados
-    const executeConnection = await connection();
+    
 
 	//inicializa as variáveis de URL de imagem
 	let newImage_url = null;
 	let oldImage_url = null;
 
 	try{
+
+		// Pega uma conexão
+		const connection = await getConnection();
+
 		//verifica se existe artigo com este ID
 		const itsExist = await verifyImage(id);
 
@@ -111,7 +115,7 @@ async(req, res) =>{
 		const values = [allData];
 
 		//envia a query e retorna caso tenha dado certo
-		const [results] = await executeConnection.query(query, values);
+		const [results] = await connection.query(query, values);
 		results;
 
 		//chama a função para deletar o blob da antiga imagem
@@ -122,12 +126,6 @@ async(req, res) =>{
 		//caso dê algo errado, retorna no console e avisa
 		console.error("Algo deu errado ao modificar o artigo, tente novamente:", error);
 		return res.status(500).json({msg: "Ocorreu um erro interno no servidor, verifique e tente novamente."});
-	}
-	finally{
-		if(executeConnection){
-			//fecha a conexão com o banco de dados
-			await executeConnection.end();
-		}
 	};
 };
 
@@ -135,8 +133,8 @@ async(req, res) =>{
 async function verifyImage(req){
 	const id = req;
 
-	//executa a conexão com o banco de dados
-	const executeConnection = await connection();
+	// Pega uma conexão
+	const connection = await getConnection();
 
 	//exclusão do antigo blob que está armazenado
 	//chama a procedure de visualização para captar a URL de imagem
@@ -144,7 +142,7 @@ async function verifyImage(req){
 	const values = id;
 
 	//envia a query e retorna resposta do banco
-	const [results] = await executeConnection.query(query, values);
+	const [results] = await connection.query(query, values);
 	results;
 
 	//caso não tenha registro associado ao ID selecionado, interrompe o processo

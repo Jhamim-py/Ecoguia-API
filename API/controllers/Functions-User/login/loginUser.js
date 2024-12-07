@@ -6,13 +6,13 @@ import bcrypt from 'bcrypt';          // criptografa dados em hash
 import jwt    from 'jsonwebtoken';    // token web do Javascript (salva informações como credenciais)
 
 // variáveis de ambiente para importar funções
-import connection  from '../../../data/connection.js'; // conexão com o banco de dados
+import getConnection  from '../../../data/connection.js'; // conexão com o banco de dados
 
 // função de visualização que pode ser exportada
 const postLogin  = 
 async (req, res) => {   //função assíncrona com parâmetros de requisição e resposta
     const { email, pwd } = req.body;                         // variável responsável por armazenar os dados
-    const executeConnection = await connection();    // variável que armazena a execução de conexão com o banco de dados
+        // variável que armazena a execução de conexão com o banco de dados
  
     // validação de campo
     if (!email || !pwd) { 
@@ -21,12 +21,15 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
 
     //try catch para autenticar usuário
     try {
+        // Pega uma conexão
+        const connection = await getConnection();
+        
         // query para visualizar email de acordo com o IDs
         const query = `SELECT * FROM ViewAllEmails WHERE email=?;`;
         const values = [email];
 
         // envio de query e captação de resposta
-        const [results] = await executeConnection.query(query, values);
+        const [results] = await connection.query(query, values);
         if(results.length == 0){
             return res.status(404).json({msg: "Usuário não encontrado."}); 
         };  
@@ -50,9 +53,6 @@ async (req, res) => {   //função assíncrona com parâmetros de requisição e
         console.error("Algo deu errado ao realizar o login, tente novamente: ", error);
         res.status(500).json({ msg: "Algo deu errado na conexão com o servidor, tente novamente." });
 
-    }finally {
-        // Fecha a conexão com o banco de dados, se foi estabelecida
-        await executeConnection.end();
     };
 };
 

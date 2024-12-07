@@ -1,5 +1,5 @@
 //funções externas
-import connection  from '../../../data/connection.js';    // conexão com o banco de dados 
+import getConnection  from '../../../data/connection.js';    // conexão com o banco de dados 
 import nullValue   from '../../../utils/nullValue.js';    // verifica se a variável possui valor nulo
 import checkLength from '../../../utils/characterLimit.js';  //importa a função que verifica o tamanho max
 import updateBlob  from '../../../middleware/updateImage.js'; //cria novo blob e retorna URL
@@ -56,13 +56,16 @@ async (req, res) => {
     };
 
     //executa a conexão com o banco de dados
-    const executeConnection = await connection();
+    
 
     //inicializa as variáveis de URL de imagem
 	let newImage_url = null;
 	let oldImage_url = null;
 
     try {
+        // Pega uma conexão
+	    const connection = await getConnection();
+
         //verifica se existe missão com este ID
 		const itsExist = await verifyImage(IDquest);
 
@@ -97,7 +100,7 @@ async (req, res) => {
         const values = [allData];
 
         //envia a query e retorna caso tenha dado certo
-        const [results] = await executeConnection.query(query, values);
+        const [results] = await connection.query(query, values);
         results;
 
         //chama a função para deletar o blob pela URL anteriormente armazenada
@@ -115,12 +118,6 @@ async (req, res) => {
 			console.error("Erro ao tentar modificar cadeia de missões: ", error);
 			return res.status(500).json({ msg: "Erro interno no servidor, tente novamente." });
 		};
-    }
-    finally{
-        if(executeConnection){
-            //fecha a conexão com o banco de dados
-            await executeConnection.end();
-        }
     };
 };
 
@@ -128,15 +125,15 @@ async (req, res) => {
 async function verifyImage(req){
 	const id = req;
 
-	//executa a conexão com o banco de dados
-	const executeConnection = await connection();
+	// Pega uma conexão
+    const connection = await getConnection();
 
 	//chama a procedure de visualização para verificar registro da missão com badge
     const query  = `SELECT * FROM ViewAllQuest WHERE pk_IDQuest = (?) AND fk_badge_quest IS NOT NULL;`;
     const values = id;
 
 	//envia a query e retorna resposta do banco
-	const [results] = await executeConnection.query(query, values);
+	const [results] = await connection.query(query, values);
 	results;
 
 	//caso não tenha registro associado ao ID selecionado, interrompe o processo

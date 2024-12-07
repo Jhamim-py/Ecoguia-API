@@ -1,5 +1,5 @@
 //funções externas
-import connection  from '../../../data/connection.js';		//conexão com o banco de dados
+import getConnection  from '../../../data/connection.js';		//conexão com o banco de dados
 import checkLength from '../../../utils/characterLimit.js'; //verifica se o dado ultrapassa o limite de caracteres
 
 //função assíncrona para adicionar uma nova dica
@@ -24,15 +24,18 @@ async (req, res)  => {
     };
     
     //executa a conexão com o banco de dados
-	const executeConnection = await connection();
+	
 
     try {
+        // Pega uma conexão
+        const connection = await getConnection();
+        
         //chama a procedure de criação e coloca os dados
         const query  = `CALL CreateTip(?)`;
         const values = [description_tip];
 
 		//envia a query e retorna caso tenha dado certo
-		const [results] = await executeConnection.query(query, values);
+		const [results] = await connection.query(query, values);
 		results;
 
         return res.status(200).json({ msg: "Nova dica criada com sucesso." });
@@ -47,12 +50,6 @@ async (req, res)  => {
 			console.error("Erro ao tentar criar cadeia de missões: ", error);
 			return res.status(500).json({ msg: "Erro interno no servidor, tente novamente." });
 		};
-    }
-    finally{
-        if (executeConnection) {
-            //fecha a conexão com o banco de dados
-            await executeConnection.end();
-        };
     };
 };
 
